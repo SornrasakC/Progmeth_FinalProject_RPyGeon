@@ -17,13 +17,13 @@ public abstract class Character
 	protected int currentHp;
 	protected int currentMP;
 	
-	protected int tempMinPhyAtk;
-	protected int tempMaxPhyAtk;
-	protected int tempMinMagAtk;
-	protected int tempMaxMagAtk;
-	protected int tempPhyDef;
-	protected int tempMagDef;
-	protected int tempMaxHp;
-	protected int tempMaxMp;
+	protected int modMinPhyAtk = 0;
+	protected int modMaxPhyAtk = 0;
+	protected int modMinMagAtk = 0;
+	protected int modMaxMagAtk = 0;
+	protected int modPhyDef = 0;
+	protected int modMagDef = 0;
+	protected int modMaxHp = 0;
+	protected int modMaxMp = 0;
 	
 }
