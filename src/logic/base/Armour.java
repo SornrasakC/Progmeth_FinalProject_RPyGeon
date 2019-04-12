@@ -1,6 +1,6 @@
 package logic.base;
 
-public abstract class Armour
+public abstract class Armour implements Cloneable
 {
 	protected String name;
 	protected String description;
@@ -13,6 +13,16 @@ public abstract class Armour
 		this.description = description;
 		this.basePhyDef = basePhyDef;
 		this.baseMagDef = baseMagDef;
+	}
+//	@Override
+//	protected Object clone() throws CloneNotSupportedException
+//	{
+//		return super.clone();
+//	}
+	@Override
+	public int hashCode()
+	{
+		return name.hashCode() + description.hashCode();
 	}
 	public String getName()
 	{
@@ -30,4 +40,5 @@ public abstract class Armour
 	{
 		return baseMagDef;
 	}
+	
 }

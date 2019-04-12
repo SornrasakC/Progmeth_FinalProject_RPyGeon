@@ -1,7 +1,10 @@
 package logic.logics;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import logic.base.Character;
+import logic.base.Magic;
+import logic.base.Potion;
 
 public class Player extends Character
 {
@@ -25,6 +28,9 @@ public class Player extends Character
 	private ArrayList<ChestArmour> chestArmourInventory = new ArrayList<ChestArmour>();
 	private ArrayList<LegArmour> legArmourInventory = new ArrayList<LegArmour>();
 	
+	private HashMap<Potion, Integer> potionInventory = new HashMap<Potion, Integer>();
+	private ArrayList<Magic> magicInventory = new ArrayList<Magic>();
+	
 	public Player(String name)
 	{
 		super();
@@ -46,4 +52,5 @@ public class Player extends Character
 		this.currentMP = this.baseMaxMp;
 		
 	}
+	
 }
