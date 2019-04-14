@@ -48,8 +48,7 @@ public class Player extends Character
 		
 		this.modMaxPhyAtk = 1;
 		this.modMinPhyAtk = 1;
-		this.currentHp = this.baseMaxHp;
-		this.currentMP = this.baseMaxMp;
+		fullHeal();
 		
 	}
 	

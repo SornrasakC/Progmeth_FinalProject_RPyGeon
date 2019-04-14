@@ -2,24 +2,36 @@ package logic.logics;
 
 import logic.base.LuckType;
 import logic.base.Magic;
+import logic.base.Monster;
 
 public class HealingMagic extends Magic
 {
-	private int multiplier;
-	private LuckType luckType;
 	
+
 	public HealingMagic(String name, String description, int manaCost, int multiplier, LuckType luckType)
 	{
-		super(name, description, manaCost);
-		this.multiplier = multiplier;
-		this.luckType = luckType;
+		super(name, description, manaCost, multiplier, luckType);
 	}
-	public int getMultiplier()
+
+	public int use(Player player, Monster monster)
 	{
-		return multiplier;
-	}
-	public LuckType getLuckType()
-	{
-		return luckType;
+		player.setCurrentMp(player.getCurrentMp() - this.manaCost);
+		int heal;
+		int max = player.getMaxMagAtk() * multiplier;
+		int min = player.getMinMagAtk() * multiplier;
+		if(luckType == LuckType.NORMAL)
+		{
+			heal = min + rand.nextInt(max - min);
+		}
+		else if(luckType == LuckType.RANDOM)
+		{
+			heal = rand.nextInt(max);
+		}
+		else
+		{
+			heal = 0;
+		}
+		player.receiveHeal(heal);
+		return heal;
 	}
 }

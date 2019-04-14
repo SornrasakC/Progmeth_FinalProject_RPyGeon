@@ -1,6 +1,6 @@
 package logic.base;
 
-public abstract class Potion implements Cloneable
+public abstract class Potion implements Cloneable, Droppable
 {
 	protected String name;
 	protected String description;

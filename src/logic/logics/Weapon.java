@@ -1,6 +1,8 @@
 package logic.logics;
 
-public class Weapon
+import logic.base.Droppable;
+
+public class Weapon implements Droppable
 {
 	private String name;
 	private String description;

@@ -1,6 +1,6 @@
 package logic.base;
 
-public abstract class Armour implements Cloneable
+public abstract class Armour implements Cloneable, Droppable
 {
 	protected String name;
 	protected String description;
