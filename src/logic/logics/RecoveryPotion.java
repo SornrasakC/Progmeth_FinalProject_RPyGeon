@@ -9,12 +9,12 @@ public class RecoveryPotion extends Potion
 	private int mpRecoverPercent;
 	private LuckType luckType;
 	public RecoveryPotion(String name, String description, int cost, int hpRecoverPercent, int mpRecoverPercent,
-			LuckType luckType)
+			String luckType)
 	{
 		super(name, description, cost);
 		this.hpRecoverPercent = hpRecoverPercent;
 		this.mpRecoverPercent = mpRecoverPercent;
-		this.luckType = luckType;
+		this.luckType = LuckType.convert(luckType);
 	}
 	public int getHpRecoverPercent()
 	{

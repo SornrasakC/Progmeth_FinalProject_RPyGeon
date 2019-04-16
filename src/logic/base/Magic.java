@@ -15,14 +15,14 @@ public abstract class Magic implements Cloneable
 	protected Random rand = new Random();
 	
 	
-	public Magic(String name, String description, int manaCost, int multiplier, LuckType luckType)
+	public Magic(String name, String description, int manaCost, int multiplier, String luckType)
 	{
 		super();
 		this.name = name;
 		this.description = description;
 		this.manaCost = manaCost;
 		this.multiplier = multiplier;
-		this.luckType = luckType;
+		this.luckType = LuckType.convert(luckType);
 	}
 
 	@Override
@@ -35,5 +35,5 @@ public abstract class Magic implements Cloneable
 	{
 		return player.getCurrentMp() >= this.manaCost;
 	}
-	public abstract int use(Player player, Monster monster);
+	public abstract int use(Player player, Monster monster) throws FalseConstructionError;
 }
