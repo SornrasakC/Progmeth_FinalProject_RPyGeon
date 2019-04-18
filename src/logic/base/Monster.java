@@ -1,6 +1,6 @@
 package logic.base;
 
-import java.util.ArrayList;
+import logic.logics.Player;
 
 public abstract class Monster extends Character
 {
@@ -21,4 +21,5 @@ public abstract class Monster extends Character
 		this.baseMaxMp = baseMaxMp;
 		fullHeal();
 	}
+	public abstract int attack(Player player) throws CustomException;
 }

@@ -1,6 +1,6 @@
 package logic.base;
 
-public class FalseConstructionError extends Exception
+public class CustomException extends Exception
 {
 
 	/**
@@ -8,7 +8,7 @@ public class FalseConstructionError extends Exception
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public FalseConstructionError(String message)
+	public CustomException(String message)
 	{
 		super(message);
 		
@@ -20,9 +20,13 @@ public class FalseConstructionError extends Exception
 		switch(super.getMessage())
 		{
 			case("Fail Offensive Magic"):
-				return "(possible) Wrong lucktype of offensiveMagic";
+				return "Wrong lucktype of offensiveMagic";
 			case("Fail Healing Magic"):
-				return "(possible) Wrong lucktype of HealingMagic";
+				return "Wrong lucktype of HealingMagic";
+			case("Fail Receive Damage"):
+				return "Wrong Damage Type";
+			case("Fail Recovery Potion"):
+				return "Wrong Recovery Potion";
 			default:
 				return "";
 		}

@@ -3,7 +3,7 @@ package logic.base;
 public enum StatType
 {
 	PHYATK, MAGATK, PHYDEF, MAGDEF;
-	public StatType convert(String statType)
+	public static StatType convert(String statType)
 	{
 		switch(statType)
 		{

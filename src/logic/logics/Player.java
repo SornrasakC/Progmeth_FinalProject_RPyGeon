@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import logic.base.Character;
+import logic.base.LuckType;
 import logic.base.Magic;
 import logic.base.Potion;
 

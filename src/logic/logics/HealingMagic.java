@@ -1,6 +1,6 @@
 package logic.logics;
 
-import logic.base.FalseConstructionError;
+import logic.base.CustomException;
 import logic.base.LuckType;
 import logic.base.Magic;
 import logic.base.Monster;
@@ -14,7 +14,7 @@ public class HealingMagic extends Magic
 		super(name, description, manaCost, multiplier, luckType);
 	}
 
-	public int use(Player player, Monster monster) throws FalseConstructionError
+	public int use(Player player, Monster monster) throws CustomException
 	{
 		player.setCurrentMp(player.getCurrentMp() - this.manaCost);
 		int heal;
@@ -30,7 +30,7 @@ public class HealingMagic extends Magic
 		}
 		else
 		{
-			throw new FalseConstructionError("Fail Healing Magic");
+			throw new CustomException("Fail Healing Magic");
 		}
 		player.receiveHeal(heal);
 		return heal;

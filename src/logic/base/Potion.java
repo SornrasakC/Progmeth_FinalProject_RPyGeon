@@ -1,5 +1,7 @@
 package logic.base;
 
+import logic.logics.Player;
+
 public abstract class Potion implements Cloneable, Droppable
 {
 	protected String name;
@@ -14,6 +16,7 @@ public abstract class Potion implements Cloneable, Droppable
 		this.description = description;
 		this.cost = cost;
 	}
+	public abstract void usePotion(Player player);
 
 	@Override
 	public int hashCode()

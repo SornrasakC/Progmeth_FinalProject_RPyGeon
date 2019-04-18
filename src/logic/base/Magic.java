@@ -35,5 +35,5 @@ public abstract class Magic implements Cloneable
 	{
 		return player.getCurrentMp() >= this.manaCost;
 	}
-	public abstract int use(Player player, Monster monster) throws FalseConstructionError;
+	public abstract int use(Player player, Monster monster) throws CustomException;
 }

@@ -1,9 +1,10 @@
 package logic.logics;
 
-import logic.base.FalseConstructionError;
+import logic.base.CustomException;
 import logic.base.LuckType;
 import logic.base.Magic;
 import logic.base.Monster;
+import logic.base.StatType;
 
 public class OffensiveMagic extends Magic
 {
@@ -11,7 +12,7 @@ public class OffensiveMagic extends Magic
 	{
 		super(name, description, manaCost, multiplier, luckType);
 	}
-	public int use(Player player, Monster monster) throws FalseConstructionError // ALWAYS confirm canUse() before using
+	public int use(Player player, Monster monster) throws CustomException // ALWAYS confirm canUse() before using
 	{
 		player.setCurrentMp(player.getCurrentMp() - this.manaCost);
 		int damage;
@@ -27,9 +28,9 @@ public class OffensiveMagic extends Magic
 		}
 		else
 		{
-			throw new FalseConstructionError("Fail Offensive Magic");
+			throw new CustomException("Fail Offensive Magic");
 		}
-		monster.receiveDamage(damage);
+		monster.receiveDamage(damage, StatType.MAGATK);
 		return damage;
 	}
 	public int getMultiplier()

@@ -1,5 +1,7 @@
 package logic.base;
 
+import java.util.Random;
+
 public abstract class Character
 {
 	protected String name;
@@ -27,8 +29,20 @@ public abstract class Character
 	protected int modMagDef = 0;
 	protected int modMaxHp = 0;
 	protected int modMaxMp = 0;
-	public void receiveDamage(int damage)
+	public void receiveDamage(int damage, StatType atkType) throws CustomException
 	{
+		if(atkType.equals(StatType.PHYATK))
+		{
+			damage = (damage < getPhyDef()) ? 0 : damage - getPhyDef();
+		}
+		else if (atkType.equals(StatType.MAGATK))
+		{
+			damage = (damage < getMagDef()) ? 0 : damage - getMagDef();
+		}
+		else
+		{
+			throw new CustomException("Fail Receive Damage");
+		}
 		this.currentHp = (this.currentHp < damage) ? 0 : this.currentHp - damage;
 		isDead = this.currentHp == 0;
 	}
@@ -37,6 +51,11 @@ public abstract class Character
 		currentHp += heal;
 		currentHp = (currentHp < 0) ? 0 : (currentHp > baseMaxHp) ? baseMaxHp : currentHp;
 		isDead = currentHp == 0;
+	}
+	public void receiveMana(int mana)
+	{
+		currentMp += mana;
+		currentMp = (currentMp < 0) ? 0 : (currentMp > baseMaxMp) ? baseMaxMp : currentMp;
 	}
 	public void fullHeal()
 	{
@@ -67,6 +86,35 @@ public abstract class Character
 	public int getMagDef()
 	{
 		return this.baseMagDef + this.modMagDef;
+	}
+	public int getMaxHp()
+	{
+		return this.baseMaxHp + this.modMaxHp;
+	}
+	public int getMaxMp()
+	{
+		return this.baseMaxMp + this.modMaxMp;
+	}
+	public int randPhyAtk()
+	{
+		Random rand = new Random();
+		return rand.nextInt(this.baseMaxPhyAtk - this.baseMinPhyAtk) + this.baseMinPhyAtk;
+	}
+	public int randMagAtk()
+	{
+		Random rand = new Random();
+		return rand.nextInt(this.baseMaxMagAtk - this.baseMinMagAtk) + this.baseMinMagAtk;
+	}
+	public void resetModStat()
+	{
+		modMinPhyAtk = 0;
+		modMaxPhyAtk = 0;
+		modMinMagAtk = 0;
+		modMaxMagAtk = 0;
+		modPhyDef = 0;
+		modMagDef = 0;
+		modMaxHp = 0;
+		modMaxMp = 0;
 	}
 	
 	public String getName()
