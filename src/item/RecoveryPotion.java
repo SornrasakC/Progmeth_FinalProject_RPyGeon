@@ -1,10 +1,11 @@
-package logic.logics;
+package item;
 
 import java.util.Random;
 
 import logic.base.CustomException;
 import logic.base.LuckType;
 import logic.base.Potion;
+import logic.logics.Player;
 
 public class RecoveryPotion extends Potion
 {

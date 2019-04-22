@@ -2,6 +2,10 @@ package logic.logics;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import item.ChestArmour;
+import item.HeadArmour;
+import item.LegArmour;
+import item.Weapon;
 import logic.base.Character;
 import logic.base.LuckType;
 import logic.base.Magic;

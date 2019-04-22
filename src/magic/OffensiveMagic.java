@@ -1,10 +1,11 @@
-package logic.logics;
+package magic;
 
 import logic.base.CustomException;
 import logic.base.LuckType;
 import logic.base.Magic;
 import logic.base.Monster;
 import logic.base.StatType;
+import logic.logics.Player;
 
 public class OffensiveMagic extends Magic
 {

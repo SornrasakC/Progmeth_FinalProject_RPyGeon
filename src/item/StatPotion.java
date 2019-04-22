@@ -1,7 +1,8 @@
-package logic.logics;
+package item;
 
 import logic.base.Potion;
 import logic.base.StatType;
+import logic.logics.Player;
 
 public class StatPotion extends Potion
 {
