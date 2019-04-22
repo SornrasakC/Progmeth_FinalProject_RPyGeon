@@ -1,5 +1,7 @@
 package logic.base;
 
+import java.util.Random;
+
 import logic.logics.Player;
 
 public abstract class Monster extends Character
@@ -8,9 +10,10 @@ public abstract class Monster extends Character
 	public Monster(String name, int level, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk, int baseMaxMagAtk,
 			int basePhyDef, int baseMagDef, int baseMaxHp, int baseMaxMp)
 	{
+
 		this.name = name;
 		this.level = level;
-		
+
 		this.baseMinPhyAtk = baseMinPhyAtk;
 		this.baseMaxPhyAtk = baseMaxPhyAtk;
 		this.baseMinMagAtk = baseMinMagAtk;
@@ -20,6 +23,16 @@ public abstract class Monster extends Character
 		this.baseMaxHp = baseMaxHp;
 		this.baseMaxMp = baseMaxMp;
 		fullHeal();
+//		this.money = rand.nextInt((int)((level - 1) * 30 * 0.50)) + (int)((level - 1) * 30 * 0.75);
 	}
+
 	public abstract int attack(Player player) throws CustomException;
+
+	@Override
+	public int getMoney()
+	{
+		Random rand = new Random();
+		return rand.nextInt((int) ((level - 1) * 30 * 0.50)) + (int) ((level - 1) * 30 * 0.75);
+	}
+
 }

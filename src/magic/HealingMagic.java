@@ -10,9 +10,9 @@ public class HealingMagic extends Magic
 {
 	
 
-	public HealingMagic(String name, String description, int manaCost, int multiplier, String luckType)
+	public HealingMagic(String name, String description, int manaCost, int multiplier, String luckType, int level)
 	{
-		super(name, description, manaCost, multiplier, luckType);
+		super(name, description, manaCost, multiplier, luckType, level);
 	}
 
 	public int use(Player player, Monster monster) throws CustomException

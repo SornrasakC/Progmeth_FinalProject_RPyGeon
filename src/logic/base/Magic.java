@@ -11,11 +11,12 @@ public abstract class Magic implements Cloneable
 	protected int manaCost;
 	protected int multiplier;
 	protected LuckType luckType;
+	protected int level;
 	
 	protected Random rand = new Random();
 	
 	
-	public Magic(String name, String description, int manaCost, int multiplier, String luckType)
+	public Magic(String name, String description, int manaCost, int multiplier, String luckType, int level)
 	{
 		super();
 		this.name = name;
@@ -23,6 +24,7 @@ public abstract class Magic implements Cloneable
 		this.manaCost = manaCost;
 		this.multiplier = multiplier;
 		this.luckType = LuckType.convert(luckType);
+		this.level = level;
 	}
 
 	@Override

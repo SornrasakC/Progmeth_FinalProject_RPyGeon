@@ -8,8 +8,17 @@ public abstract class Character
 	
 	protected int level;
 	protected boolean isDead = false;
+	protected int money = 0;
 	
 	
+	public int getMoney()
+	{
+		return money;
+	}
+	public void setMoney(int money)
+	{
+		this.money = money;
+	}
 	protected int baseMinPhyAtk;
 	protected int baseMaxPhyAtk;
 	protected int baseMinMagAtk;

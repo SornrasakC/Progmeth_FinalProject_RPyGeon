@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Wooden Sword",
+        "min_phy_atk": 1,
+        "max_phy_atk": 3,
+        "min_mag_atk": 0,
+        "max_mag_atk": 0,
+        "price": 20,
+        "floor": 0
+    },
+    {
+        "name": "Slightly Magical Stick",
+        "min_phy_atk": 1,
+        "max_phy_atk": 1,
+        "min_mag_atk": 2,
+        "max_mag_atk": 4,
+        "price": 25,
+        "floor": 0
+    },
+    {
+        "name": "Iron Sword",
+        "min_phy_atk": 3,
+        "max_phy_atk": 6,
+        "min_mag_atk": 0,
+        "max_mag_atk": 0,
+        "price": 50,
+        "floor": 0
+    },
+    {
+        "name": "Wooden Staff",
+        "min_phy_atk": 1,
+        "max_phy_atk": 2,
+        "min_mag_atk": 4,
+        "max_mag_atk": 7,
+        "price": 80,
+        "floor": 0
+    },
+    {
+        "name": "Steel Sword",
+        "min_phy_atk": 6,
+        "max_phy_atk": 9,
+        "min_mag_atk": 1,
+        "max_mag_atk": 1,
+        "price": 90,
+        "floor": 0
+    },
+    {
+        "name": "Emerald Staff",
+        "min_phy_atk": 3,
+        "max_phy_atk": 3,
+        "min_mag_atk": 6,
+        "max_mag_atk": 10,
+        "price": 100,
+        "floor": 0
+    },
+    {
+        "name": "Palladium Sword",
+        "min_phy_atk": 8,
+        "max_phy_atk": 12,
+        "min_mag_atk": 5,
+        "max_mag_atk": 8,
+        "price": 150,
+        "floor": 0
+    },
+    {
+        "name": "Caster's Ring",
+        "min_phy_atk": 6,
+        "max_phy_atk": 7,
+        "min_mag_atk": 8,
+        "max_mag_atk": 10,
+        "price": 170,
+        "floor": 0
+    },
+    {
+        "name": "Chinese Adamantium Sword",
+        "min_phy_atk": 0,
+        "max_phy_atk": 40,
+        "min_mag_atk": 2,
+        "max_mag_atk": 2,
+        "price": 500,
+        "floor": 0
+    },
+    {
+        "name": "Chinese Diamond Staff",
+        "min_phy_atk": 4,
+        "max_phy_atk": 5,
+        "min_mag_atk": 0,
+        "max_mag_atk": 40,
+        "price": 500,
+        "floor": 0
+    }
+]

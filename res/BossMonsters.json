@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Kobold Champion",
+        "level": 5,
+        "baseMaxPhyAtk": 10,
+        "baseMinPhyAtk": 8,
+        "baseMaxMagAtk": 7,
+        "baseMinMagAtk": 3,
+        "baseMaxHp": 107,
+        "baseMaxMp": 12,
+        "basePhyDef": 5,
+        "baseMagDefense": 5
+    },
+    {
+        "name": "Lavasioth",
+        "level": 6,
+        "baseMaxPhyAtk": 13,
+        "baseMinPhyAtk": 8,
+        "baseMaxMagAtk": 9,
+        "baseMinMagAtk": 7,
+        "baseMaxHp": 200,
+        "baseMaxMp": 15,
+        "basePhyDef": 8,
+        "baseMagDefense": 7
+    },
+    {
+        "name": "Phase Spider",
+        "level": 7,
+        "baseMaxPhyAtk": 14,
+        "baseMinPhyAtk": 12,
+        "baseMaxMagAtk": 17,
+        "baseMinMagAtk": 13,
+        "baseMaxHp": 252,
+        "baseMaxMp": 80,
+        "basePhyDef": 8,
+        "baseMagDefense": 9
+    },
+    {
+        "name": "Wyvern",
+        "level": 8,
+        "baseMaxPhyAtk": 18,
+        "baseMinPhyAtk": 16,
+        "baseMaxMagAtk": 20,
+        "baseMinMagAtk": 16,
+        "baseMaxHp": 350,
+        "baseMaxMp": 53,
+        "basePhyDef": 7,
+        "baseMagDefense": 12
+    },
+    {
+        "name": "Type O-10",
+        "level": 10,
+        "baseMaxPhyAtk": 150,
+        "baseMinPhyAtk": 0,
+        "baseMaxMagAtk": 150,
+        "baseMinMagAtk": 0,
+        "baseMaxHp": 20,
+        "baseMaxMp": 100,
+        "basePhyDef": 100,
+        "baseMagDefense": 100
+    },
+    {
+        "name": "SL-1-M3 Robot",
+        "level": 12,
+        "baseMaxPhyAtk": 70,
+        "baseMinPhyAtk": 55,
+        "baseMaxMagAtk": 60,
+        "baseMinMagAtk": 50,
+        "baseMaxHp": 666,
+        "baseMaxMp": 250,
+        "basePhyDef": 0,
+        "baseMagDefense": 200
+    },
+    {
+        "name": "Gate Guardian",
+        "level": 999,
+        "baseMaxPhyAtk": 120,
+        "baseMinPhyAtk": 60,
+        "baseMaxMagAtk": 200,
+        "baseMinMagAtk": 0,
+        "baseMaxHp": 999,
+        "baseMaxMp": 250,
+        "basePhyDef": 20,
+        "baseMagDefense": 80
+    }
+]

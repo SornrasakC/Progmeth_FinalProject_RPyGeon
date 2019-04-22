@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Red Cookies",
+        "description": "Heals 20% of max HP per usage",
+        "hpRecoverPercent": 20,
+        "mpRecoverPercent": 0,
+        "cost": 10,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Blue Cookies",
+        "description": "Heals 20% of max MP per usage",
+        "hpRecoverPercent": 0,
+        "mpRecoverPercent": 20,
+        "cost": 10,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Fairly Normal HP Potion",
+        "description": "Heals 50% of max HP per usage",
+        "hpRecoverPercent": 50,
+        "mpRecoverPercent": 0,
+        "cost": 50,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Fairly Normal MP Potion",
+        "description": "Heals 50% of max MP per usage",
+        "hpRecoverPercent": 0,
+        "mpRecoverPercent": 50,
+        "cost": 50,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Chicken Dinner",
+        "description": "Heals 80% of max HP per usage",
+        "hpRecoverPercent": 80,
+        "mpRecoverPercent": 0,
+        "cost": 150,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Cocaine",
+        "description": "Heals 80% of max MP per usage",
+        "hpRecoverPercent": 0,
+        "mpRecoverPercent": 80,
+        "cost": 150,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Phoenix Kit",
+        "description": "FULL HEAL REEE",
+        "hpRecoverPercent": 100,
+        "mpRecoverPercent": 100,
+        "cost": 300,
+        "luckType": "NORMAL"
+    },
+    {
+        "name": "Low Quality Super Duper Lucky Randomly Recovering Potion",
+        "description": "Heals both HP and MP randomly but since it's low quality potion - it might damage you as well",
+        "hpRecoverPercent": 60,
+        "mpRecoverPercent": 60,
+        "cost": 20,
+        "luckType": "BADRANDOM"
+    },
+    {
+        "name": "High Quality Super Duper Lucky Randomly Recovering Potion",
+        "description": "Heals both HP and MP randomly but since it's high quality potion - it'll always have positive effect",
+        "hpRecoverPercent": 100,
+        "mpRecoverPercent": 100,
+        "cost": 100,
+        "luckType": "RANDOM"
+    }
+]

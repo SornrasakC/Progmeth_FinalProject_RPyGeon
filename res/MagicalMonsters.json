@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Goblin Shaman",
+        "level": 3,
+        "baseMaxPhyAtk": 4,
+        "baseMinPhyAtk": 2,
+        "baseMaxMagAtk": 6,
+        "baseMinMagAtk": 3,
+        "baseMaxHp": 21,
+        "baseMaxMp": 10,
+        "basePhyDef": 1,
+        "baseMagDefense": 5
+    },
+    {
+        "name": "Hell Hound",
+        "level": 6,
+        "baseMaxPhyAtk": 8,
+        "baseMinPhyAtk": 7,
+        "baseMaxMagAtk": 13,
+        "baseMinMagAtk": 9,
+        "baseMaxHp": 180,
+        "baseMaxMp": 20,
+        "basePhyDef": 4,
+        "baseMagDefense": 9
+    },
+    {
+        "name": "Pikachu",
+        "level": 9,
+        "baseMaxPhyAtk": 20,
+        "baseMinPhyAtk": 12,
+        "baseMaxMagAtk": 22,
+        "baseMinMagAtk": 20,
+        "baseMaxHp": 450,
+        "baseMaxMp": 35,
+        "basePhyDef": 5,
+        "baseMagDefense": 10
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Love Touch",
+        "description": "Lovely sentiment heals 2x magical power",
+        "multiplier": 2,
+        "level": 3,
+        "manaCost": 7,
+        "lucktype": "NORMAL"
+    },
+    {
+        "name": "LoVe ToUcH eX",
+        "description": "Gayness win the game. heals (at most) 6x maximum magical power",
+        "multiplier": 6,
+        "level": 6,
+        "manaCost": 25,
+        "lucktype": "RANDOM"
+    }
+]

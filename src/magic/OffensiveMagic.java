@@ -9,9 +9,9 @@ import logic.logics.Player;
 
 public class OffensiveMagic extends Magic
 {
-	public OffensiveMagic(String name, String description, int manaCost, int multiplier, String luckType)
+	public OffensiveMagic(String name, String description, int manaCost, int multiplier, String luckType, int level)
 	{
-		super(name, description, manaCost, multiplier, luckType);
+		super(name, description, manaCost, multiplier, luckType, level);
 	}
 	public int use(Player player, Monster monster) throws CustomException // ALWAYS confirm canUse() before using
 	{

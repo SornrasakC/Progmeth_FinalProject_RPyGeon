@@ -11,8 +11,10 @@ public class Weapon implements Droppable
 	
 	private int baseMinMagAtk;
 	private int baseMaxMagAtk;
+	
+	private int floor;
 	public Weapon(String name, String description, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk,
-			int baseMaxMagAtk)
+			int baseMaxMagAtk, int floor)
 	{
 		super();
 		this.name = name;
@@ -21,6 +23,7 @@ public class Weapon implements Droppable
 		this.baseMaxPhyAtk = baseMaxPhyAtk;
 		this.baseMinMagAtk = baseMinMagAtk;
 		this.baseMaxMagAtk = baseMaxMagAtk;
+		this.floor = floor;
 	}
 	public String getName()
 	{
@@ -45,6 +48,10 @@ public class Weapon implements Droppable
 	public int getBaseMaxMagAtk()
 	{
 		return baseMaxMagAtk;
+	}
+	public int getFloor()
+	{
+		return floor;
 	}
 	
 }
