@@ -22,12 +22,9 @@ public class Dungeon
 	{
 		player.gainMoney(monster.getMoney());
 	}
-	public static void dungeonInit()
+	public static void dungeonInit() //start game
 	{
-		for(int i = 0; i < 5; i++)
-		{
-			dungeonList.add(new Dungeon("dun1", 1));
-		}
+		
 	}
 //	public Monster generateMonster()
 //	{
