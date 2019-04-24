@@ -26,16 +26,52 @@ public abstract class Magic implements Cloneable
 		this.luckType = LuckType.convert(luckType);
 		this.level = level;
 	}
-
+	
+	public String toString()
+	{
+		return this.name + " level : " + level; 
+	}
 	@Override
 	public int hashCode()
 	{
-		return name.hashCode() + description.hashCode();
+		return (name + description).hashCode();
 	}
+	
 	
 	public boolean canUse(Player player)
 	{
 		return player.getCurrentMp() >= this.manaCost;
 	}
 	public abstract int use(Player player, Monster monster) throws CustomException;
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public int getManaCost()
+	{
+		return manaCost;
+	}
+
+	public int getMultiplier()
+	{
+		return multiplier;
+	}
+
+	public LuckType getLuckType()
+	{
+		return luckType;
+	}
+
+	public int getLevel()
+	{
+		return level;
+	}
+	
 }

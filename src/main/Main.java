@@ -7,7 +7,9 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import logic.logics.BossMonster;
+import logic.base.Magic;
+import logic.logics.Dungeon;
+import logic.logics.Player;
 
 
 public class Main
@@ -29,8 +31,15 @@ public class Main
 	{
 		try
 		{
-			ArrayList<BossMonster> mons = readJson("res/BossMonsters.json", new TypeToken<ArrayList<BossMonster>>() {});
-			System.out.println(mons.get(0).getName());
+//			String filename = "MagicalMonsters.json";
+//			Scanner sc = new Scanner(new File(filename));
+			System.out.println(ClassLoader.getSystemResource("MagicalMonsters.json").toString());
+//			Dungeon.dungeonInit();
+//			Player m = new Player("name");
+//			for(Magic i : m.getMagicToLearn())
+//			{
+//				System.out.println(i);
+//			}
 	
 		}
 		catch (Exception e)

@@ -108,14 +108,13 @@ public class Dungeon
 		return (Monster) Rand.rand(tempMonsterList);
 	}
 
-	public <T extends Droppable> Object dropItem()
+	public Object dropItem()
 	{
 		if (Rand.chance(1))
 		{
 			ArrayList<Droppable> tempDropList = dropList.stream().filter(x -> x.getFloor() == 0)
 					.collect(Collectors.toCollection(ArrayList::new));
 			return Rand.rand(tempDropList);
-//			Rand.rand(dropList.stream().filter(x -> x.getFloor() == 0).collect(Collectors.toCollection(ArrayList::new));
 		}
 		if (Rand.chance(25))
 		{

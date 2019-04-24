@@ -7,7 +7,7 @@ public abstract class Character
 	protected String name;
 	
 	protected int level;
-	protected boolean isDead = false;
+//	protected boolean isDead = false;
 	protected int money = 0;
 	
 	
@@ -38,7 +38,7 @@ public abstract class Character
 	protected int modMagDef = 0;
 	protected int modMaxHp = 0;
 	protected int modMaxMp = 0;
-	public void receiveDamage(int damage, StatType atkType) throws CustomException
+	public void receiveDamage(int damage, StatType atkType)
 	{
 		if(atkType.equals(StatType.PHYATK))
 		{
@@ -50,16 +50,14 @@ public abstract class Character
 		}
 		else
 		{
-			throw new CustomException("Fail Receive Damage");
+			new CustomException("Fail Receive Damage").printStackTrace();
 		}
 		this.currentHp = (this.currentHp < damage) ? 0 : this.currentHp - damage;
-		isDead = this.currentHp == 0;
 	}
 	public void receiveHeal(int heal)
 	{
 		currentHp += heal;
 		currentHp = (currentHp < 0) ? 0 : (currentHp > baseMaxHp) ? baseMaxHp : currentHp;
-		isDead = currentHp == 0;
 	}
 	public void receiveMana(int mana)
 	{
@@ -70,7 +68,6 @@ public abstract class Character
 	{
 		currentHp = baseMaxHp;
 		currentMp = baseMaxMp;
-		isDead = false;
 	}
 	public int getMinPhyAtk()
 	{
@@ -144,12 +141,12 @@ public abstract class Character
 	}
 	public boolean isDead()
 	{
-		return isDead;
+		return currentHp <= 0;
 	}
-	public void setDead(boolean isDead)
-	{
-		this.isDead = isDead;
-	}
+//	public void setDead(boolean isDead)
+//	{
+//		this.isDead = isDead;
+//	}
 	public int getBaseMinPhyAtk()
 	{
 		return baseMinPhyAtk;

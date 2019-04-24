@@ -1,7 +1,10 @@
 package logic.logics;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+
+import com.google.gson.reflect.TypeToken;
 
 import item.ChestArmour;
 import item.PantsArmour;
@@ -10,6 +13,8 @@ import item.Weapon;
 import logic.base.Character;
 import logic.base.Magic;
 import logic.base.Potion;
+import magic.HealingMagic;
+import magic.OffensiveMagic;
 
 public class Player extends Character
 {
@@ -20,23 +25,24 @@ public class Player extends Character
 	private int money = 0;
 
 	private Weapon startingWeapon = new Weapon("Wooden Stick", "Normal woody stick", 1, 1, 0, 0, 1);
-	private PantsArmour startingHeadArmour = new PantsArmour("Normal Cotton T-Shirt", "This is T-Shirt", 0, 0, 1);
-	private ChestArmour startingChestArmour = new ChestArmour("Generic Pants", "This is pants", 0, 0, 1);
-	private ShoesArmour startingLegArmour = new ShoesArmour("Normal Shoes", "This is shoes", 0, 0, 1);
+	private PantsArmour startingPantsArmour = new PantsArmour("Generic Pants", "This is pants", 0, 0, 1);
+	private ChestArmour startingChestArmour = new ChestArmour("Normal Cotton T-Shirt", "This is T-shirt", 0, 0, 1);
+	private ShoesArmour startingShoesArmour = new ShoesArmour("Normal Shoes", "This is shoes", 0, 0, 1);
 
 	private Weapon equipedWeapon = startingWeapon;
-	private PantsArmour equipedHeadArmour = startingHeadArmour;
+	private PantsArmour equipedPantsArmour = startingPantsArmour;
 	private ChestArmour equipedChestArmour = startingChestArmour;
-	private ShoesArmour equipedLegArmour = startingLegArmour;
+	private ShoesArmour equipedShoesArmour = startingShoesArmour;
 
 	private ArrayList<Weapon> weaponInventory = new ArrayList<Weapon>();
-	private ArrayList<PantsArmour> headArmourInventory = new ArrayList<PantsArmour>();
+	private ArrayList<PantsArmour> pantsArmourInventory = new ArrayList<PantsArmour>();
 	private ArrayList<ChestArmour> chestArmourInventory = new ArrayList<ChestArmour>();
-	private ArrayList<ShoesArmour> legArmourInventory = new ArrayList<ShoesArmour>();
+	private ArrayList<ShoesArmour> shoesArmourInventory = new ArrayList<ShoesArmour>();
 
 	private HashMap<Potion, Integer> potionInventory = new HashMap<Potion, Integer>();
 	private ArrayList<Magic> magicInventory = new ArrayList<Magic>();
-
+	private ArrayList<Magic> magicToLearn = new ArrayList<Magic>();
+	@SuppressWarnings("unchecked")
 	public Player(String name)
 	{
 		super();
@@ -55,9 +61,150 @@ public class Player extends Character
 		this.modMaxPhyAtk = 1;
 		this.modMinPhyAtk = 1;
 		fullHeal();
+		try
+		{
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson(ClassLoader.getSystemResource("OffensiveMagics.json").toString(),new TypeToken<ArrayList<OffensiveMagic>>(){}));
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson(ClassLoader.getSystemResource("HealingMagics.json").toString(),new TypeToken<ArrayList<HealingMagic>>(){}));
+			magicToLearn.sort
+			(new Comparator<Magic>()
+			{
+				public int compare(Magic a, Magic b)
+				{
+					return a.getLevel() - b.getLevel();
+				}
+			}
+			);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
-//	public void gain()
+	public void gainItem(Object item)
+	{
+		if(item == null)
+			return;
+		if(item instanceof Weapon)
+		{
+			Weapon weapon = (Weapon) item;
+			if(!weaponInventory.contains(weapon))
+			{
+				weaponInventory.add(weapon);
+			}
+		}
+		else if(item instanceof ChestArmour)
+		{
+			ChestArmour armour = (ChestArmour) item;
+			if(!chestArmourInventory.contains(armour))
+			{
+				chestArmourInventory.add(armour);
+			}
+		}
+		else if(item instanceof PantsArmour)
+		{
+			PantsArmour armour = (PantsArmour) item;
+			if(!pantsArmourInventory.contains(armour))
+			{
+				pantsArmourInventory.add(armour);
+			}
+		}
+		else if(item instanceof ShoesArmour)
+		{
+			ShoesArmour armour = (ShoesArmour) item;
+			if(!shoesArmourInventory.contains(armour))
+			{
+				shoesArmourInventory.add(armour);
+			}
+		}
+		else
+		{
+//			throw();
+		}
+	}
+	public void equipItem(Object item)
+	{
+		if(item == null)
+			return;
+		if(item instanceof Weapon)
+		{
+			Weapon weapon = (Weapon) item;
+			gainItem(equipedWeapon);
+			equipedWeapon = weapon;
+		}
+		else if(item instanceof ChestArmour)
+		{
+			ChestArmour armour = (ChestArmour) item;
+			gainItem(equipedChestArmour);
+			equipedChestArmour = armour;
+		}
+		else if(item instanceof PantsArmour)
+		{
+			PantsArmour armour = (PantsArmour) item;
+			gainItem(equipedPantsArmour);
+			equipedPantsArmour = armour;
+		}
+		else if(item instanceof ShoesArmour)
+		{
+			ShoesArmour armour = (ShoesArmour) item;
+			gainItem(equipedShoesArmour);
+			equipedShoesArmour = armour;
+		}
+		else
+		{
+//			throw();
+		}
+	}
+	public void gainPotion(Object item)
+	{
+		Potion potion;
+		if(item == null)
+			return;
+		if(item instanceof Potion)
+		{
+			potion = (Potion) item;
+		}
+		else
+		{
+//			throw();
+			return;
+		}
+		if(potionInventory.containsKey(potion))
+		{
+			potionInventory.put(potion, potionInventory.get(potion) + 1);
+		}
+		else
+		{
+			potionInventory.put(potion, 1);
+		}
+	}
+	public boolean usePotion(Object item)
+	{
+		Potion potion;
+		if(item == null)
+			return false;
+		if(item instanceof Potion)
+		{
+			potion = (Potion) item;
+		}
+		else
+		{
+//			throw(); (or no)
+			return false;
+		}
+		if(potionInventory.containsKey(potion))
+		{
+			potion.usePotion(this);
+			potionInventory.put(potion, potionInventory.get(potion) - 1);
+			if(potionInventory.get(potion) == 0)
+			{
+				potionInventory.remove(potion);
+			}
+			return true;
+		}
+		return false;
+	}
+	
 
 	public void gainMoney(int money)
 	{
@@ -115,15 +262,7 @@ public class Player extends Character
 		this.startingWeapon = startingWeapon;
 	}
 
-	public PantsArmour getStartingHeadArmour()
-	{
-		return startingHeadArmour;
-	}
 
-	public void setStartingHeadArmour(PantsArmour startingHeadArmour)
-	{
-		this.startingHeadArmour = startingHeadArmour;
-	}
 
 	public ChestArmour getStartingChestArmour()
 	{
@@ -135,15 +274,6 @@ public class Player extends Character
 		this.startingChestArmour = startingChestArmour;
 	}
 
-	public ShoesArmour getStartingLegArmour()
-	{
-		return startingLegArmour;
-	}
-
-	public void setStartingLegArmour(ShoesArmour startingLegArmour)
-	{
-		this.startingLegArmour = startingLegArmour;
-	}
 
 	public Weapon getEquipedWeapon()
 	{
@@ -155,15 +285,6 @@ public class Player extends Character
 		this.equipedWeapon = equipedWeapon;
 	}
 
-	public PantsArmour getEquipedHeadArmour()
-	{
-		return equipedHeadArmour;
-	}
-
-	public void setEquipedHeadArmour(PantsArmour equipedHeadArmour)
-	{
-		this.equipedHeadArmour = equipedHeadArmour;
-	}
 
 	public ChestArmour getEquipedChestArmour()
 	{
@@ -175,19 +296,50 @@ public class Player extends Character
 		this.equipedChestArmour = equipedChestArmour;
 	}
 
-	public ShoesArmour getEquipedLegArmour()
-	{
-		return equipedLegArmour;
-	}
-
-	public void setEquipedLegArmour(ShoesArmour equipedLegArmour)
-	{
-		this.equipedLegArmour = equipedLegArmour;
-	}
-
+	
 	public ArrayList<Weapon> getWeaponInventory()
 	{
 		return weaponInventory;
+	}
+
+	public PantsArmour getEquipedPantsArmour()
+	{
+		return equipedPantsArmour;
+	}
+
+	public void setEquipedPantsArmour(PantsArmour equipedPantsArmour)
+	{
+		this.equipedPantsArmour = equipedPantsArmour;
+	}
+
+	public ShoesArmour getEquipedShoesArmour()
+	{
+		return equipedShoesArmour;
+	}
+
+	public void setEquipedShoesArmour(ShoesArmour equipedShoesArmour)
+	{
+		this.equipedShoesArmour = equipedShoesArmour;
+	}
+
+	public ArrayList<PantsArmour> getPantsArmourInventory()
+	{
+		return pantsArmourInventory;
+	}
+
+	public void setPantsArmourInventory(ArrayList<PantsArmour> pantsArmourInventory)
+	{
+		this.pantsArmourInventory = pantsArmourInventory;
+	}
+
+	public ArrayList<ShoesArmour> getShoesArmourInventory()
+	{
+		return shoesArmourInventory;
+	}
+
+	public void setShoesArmourInventory(ArrayList<ShoesArmour> shoesArmourInventory)
+	{
+		this.shoesArmourInventory = shoesArmourInventory;
 	}
 
 	public void setWeaponInventory(ArrayList<Weapon> weaponInventory)
@@ -195,15 +347,6 @@ public class Player extends Character
 		this.weaponInventory = weaponInventory;
 	}
 
-	public ArrayList<PantsArmour> getHeadArmourInventory()
-	{
-		return headArmourInventory;
-	}
-
-	public void setHeadArmourInventory(ArrayList<PantsArmour> headArmourInventory)
-	{
-		this.headArmourInventory = headArmourInventory;
-	}
 
 	public ArrayList<ChestArmour> getChestArmourInventory()
 	{
@@ -215,15 +358,6 @@ public class Player extends Character
 		this.chestArmourInventory = chestArmourInventory;
 	}
 
-	public ArrayList<ShoesArmour> getLegArmourInventory()
-	{
-		return legArmourInventory;
-	}
-
-	public void setLegArmourInventory(ArrayList<ShoesArmour> legArmourInventory)
-	{
-		this.legArmourInventory = legArmourInventory;
-	}
 
 	public HashMap<Potion, Integer> getPotionInventory()
 	{
@@ -243,6 +377,11 @@ public class Player extends Character
 	public void setMagicInventory(ArrayList<Magic> magicInventory)
 	{
 		this.magicInventory = magicInventory;
+	}
+
+	public ArrayList<Magic> getMagicToLearn()
+	{
+		return magicToLearn;
 	}
 
 }
