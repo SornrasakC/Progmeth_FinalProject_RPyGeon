@@ -49,35 +49,35 @@ public class Dungeon
 		{
 			monsterList = new ArrayList<Monster>();
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
-					ClassLoader.getSystemResource("BossMonsters.json").toString(),
+					"BossMonsters.json",
 					new TypeToken<ArrayList<BossMonster>>()
 					{
 					}));
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
-					ClassLoader.getSystemResource("PhysicalMonsters.json").toString(),
+					"PhysicalMonsters.json",
 					new TypeToken<ArrayList<PhysicalMonster>>()
 					{
 					}));
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
-					ClassLoader.getSystemResource("MagicalMonsters.json").toString(),
+					"MagicalMonsters.json",
 					new TypeToken<ArrayList<MagicalMonster>>()
 					{
 					}));
 
 			dropList = new ArrayList<Droppable>();
-			dropList.addAll(main.Main.readJson(ClassLoader.getSystemResource("dropWeapons.json").toString(),
+			dropList.addAll(main.Main.readJson("dropWeapons.json",
 					new TypeToken<ArrayList<Weapon>>()
 					{
 					}));
-			dropList.addAll(main.Main.readJson(ClassLoader.getSystemResource("ChestArmours.json").toString(),
+			dropList.addAll(main.Main.readJson("ChestArmours.json",
 					new TypeToken<ArrayList<ChestArmour>>()
 					{
 					}));
-			dropList.addAll(main.Main.readJson(ClassLoader.getSystemResource("PantsArmours.json").toString(),
+			dropList.addAll(main.Main.readJson("PantsArmours.json",
 					new TypeToken<ArrayList<PantsArmour>>()
 					{
 					}));
-			dropList.addAll(main.Main.readJson(ClassLoader.getSystemResource("ShoesArmours.json").toString(),
+			dropList.addAll(main.Main.readJson("ShoesArmours.json",
 					new TypeToken<ArrayList<ShoesArmour>>()
 					{
 					}));
