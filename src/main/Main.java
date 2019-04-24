@@ -21,7 +21,12 @@ public class Main
 	}
 	public static <T> ArrayList<T> readJson(String filename, TypeToken<ArrayList<T>> typeToken) throws Exception
 	{
-		Scanner sc = new Scanner(new File(filename));
+		System.out.println(filename);
+//		File file = new File("bin");
+//		for(String fileNames : file.list()) System.out.println(fileNames);
+//		Scanner sc = new Scanner(new File(filename.substring(6)));
+//		Scanner sc = new Scanner(new File(filename));
+		Scanner sc = new Scanner(ClassLoader.getSystemResourceAsStream(filename));
 		String fileText = sc.useDelimiter("\\A").next();
 		sc.close();
 		ArrayList<T> jsonList = new Gson().fromJson(fileText, typeToken.getType() );
@@ -34,7 +39,7 @@ public class Main
 //			String filename = "MagicalMonsters.json";
 //			Scanner sc = new Scanner(new File(filename));
 			System.out.println(ClassLoader.getSystemResource("MagicalMonsters.json").toString());
-//			Dungeon.dungeonInit();
+			Dungeon.dungeonInit();
 //			Player m = new Player("name");
 //			for(Magic i : m.getMagicToLearn())
 //			{
