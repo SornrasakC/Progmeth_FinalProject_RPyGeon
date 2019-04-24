@@ -31,7 +31,7 @@ public class Main
 		{
 			ArrayList<BossMonster> mons = readJson("res/BossMonsters.json", new TypeToken<ArrayList<BossMonster>>() {});
 			System.out.println(mons.get(0).getName());
-			
+	
 		}
 		catch (Exception e)
 		{

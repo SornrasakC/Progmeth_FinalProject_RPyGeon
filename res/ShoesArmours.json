@@ -3,30 +3,35 @@
         "name": "Sturdy Shoes",
         "phy_def": 1,
         "mag_def": 0,
-        "description": ""
+        "description": "",
+        "floor" : 1
     },
     {
         "name": "Reinforce Shoes",
         "phy_def": 1,
         "mag_def": 1,
-        "description": ""
+        "description": "",
+        "floor" : 2
     },
     {
         "name": "Greaves",
         "phy_def": 2,
         "mag_def": 1,
-        "description": ""
+        "description": "",
+        "floor" : 3
     },
     {
         "name": "Boots Of Protection",
         "phy_def": 3,
         "mag_def": 3,
-        "description": ""
+        "description": "",
+        "floor" : 4
     },
     {
         "name": "Boots Of Magic Resistance",
         "phy_def": 3,
         "mag_def": 5,
-        "description": ""
+        "description": "",
+        "floor" : 5
     }
 ]

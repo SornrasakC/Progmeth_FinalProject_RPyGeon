@@ -61,7 +61,7 @@
     },
     {
         "name": "SL-1-M3 Robot",
-        "level": 12,
+        "level": 11,
         "baseMaxPhyAtk": 70,
         "baseMinPhyAtk": 55,
         "baseMaxMagAtk": 60,
@@ -73,7 +73,7 @@
     },
     {
         "name": "Gate Guardian",
-        "level": 999,
+        "level": 12,
         "baseMaxPhyAtk": 120,
         "baseMinPhyAtk": 60,
         "baseMaxMagAtk": 200,

@@ -2,7 +2,7 @@ package logic.base;
 
 import logic.logics.Player;
 
-public abstract class Potion implements Cloneable, Droppable
+public abstract class Potion implements Cloneable
 {
 	protected String name;
 	protected String description;
