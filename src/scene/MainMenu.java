@@ -23,12 +23,9 @@ public class MainMenu extends Application {
     private Label menuTitle = new Label("Main Menu");
     private Pane root = new Pane();
     private VBox menuBox = new VBox(15);
+    Scene villageScene = new Scene(new Village());
     
-    private List<Pair<String, Runnable>> menuList = Arrays.asList(
-            new Pair<String, Runnable>("Start", () -> {}),
-            new Pair<String, Runnable>("Credits", () -> {}),
-            new Pair<String, Runnable>("Exit", Platform::exit)
-    );
+    private List<Pair<String, Runnable>> menuList;
     
     private void addMenu(double x, double y) {
         menuBox.setTranslateX(x);
@@ -56,6 +53,17 @@ public class MainMenu extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		menuList = Arrays.asList(
+	            new Pair<String, Runnable>("Start", () -> Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						primaryStage.setScene(villageScene);
+						primaryStage.show();
+					}
+				})),
+	            new Pair<String, Runnable>("Credits", () -> {}),
+	            new Pair<String, Runnable>("Exit", Platform::exit)
+	    );
 		addMenu(480, 300);
 		Scene scene = new Scene(root);
         primaryStage.setTitle("RJyGeon");
