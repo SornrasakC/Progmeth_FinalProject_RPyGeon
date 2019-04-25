@@ -5,12 +5,14 @@ import java.util.List;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -40,15 +42,21 @@ public class MainMenu extends Application {
             menuBox.getChildren().addAll(item);
         });
 
-        
+        Label title = new Label("RJyGeon");
+        title.setFont(new Font(50));
+        title.setPrefWidth(WIDTH);
+        title.setAlignment(Pos.CENTER);
+//        title.setTranslateX(WIDTH / 2 - title.getWidth() / 2);
+        title.setTranslateY(HEIGHT / 4);
         Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.WHITE);
         root.getChildren().add(rectBG);
+        root.getChildren().add(title);
         root.getChildren().add(menuBox);
     }
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		addMenu(500, 200);
+		addMenu(480, 300);
 		Scene scene = new Scene(root);
         primaryStage.setTitle("RJyGeon");
         primaryStage.setScene(scene);
