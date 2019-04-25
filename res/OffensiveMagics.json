@@ -8,7 +8,7 @@
         "lucktype": "NORMAL"
     },
     {
-        "name": "GRC Beam",
+        "name": "Prog Meth Beam",
         "description": "A powerful beam dealing 2x magical power",
         "multiplier": 2,
         "level": 4,
@@ -16,7 +16,7 @@
         "lucktype": "NORMAL"
     },
     {
-        "name": "GRC RNG BEAM",
+        "name": "PROG METH RNG BEAM",
         "description": "A RNG beam dealing (at most) 4x maximum magical power",
         "multiplier": 4,
         "level": 5,

@@ -33,7 +33,7 @@
         "min_mag_atk": 4,
         "max_mag_atk": 7,
         "price": 80,
-        "floor": 2
+        "floor": 1
     },
     {
         "name": "Steel Sword",

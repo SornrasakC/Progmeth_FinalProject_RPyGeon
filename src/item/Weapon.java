@@ -25,6 +25,10 @@ public class Weapon implements Droppable
 		this.baseMaxMagAtk = baseMaxMagAtk;
 		this.floor = floor;
 	}
+	public String toString()
+	{
+		return name + ", floor :" + floor;
+	}
 	public String getName()
 	{
 		return name;
