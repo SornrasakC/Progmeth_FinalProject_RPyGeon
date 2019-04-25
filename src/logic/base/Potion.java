@@ -18,6 +18,10 @@ public abstract class Potion implements Cloneable
 	}
 	public abstract void usePotion(Player player);
 
+	public String toString()
+	{
+		return name + " des: " + description;
+	}
 	@Override
 	public int hashCode()
 	{

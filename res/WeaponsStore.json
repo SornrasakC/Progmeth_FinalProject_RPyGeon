@@ -24,7 +24,7 @@
         "min_mag_atk": 0,
         "max_mag_atk": 0,
         "price": 50,
-        "floor": 0
+        "floor": 1
     },
     {
         "name": "Wooden Staff",
@@ -33,7 +33,7 @@
         "min_mag_atk": 4,
         "max_mag_atk": 7,
         "price": 80,
-        "floor": 0
+        "floor": 1
     },
     {
         "name": "Steel Sword",
@@ -42,7 +42,7 @@
         "min_mag_atk": 1,
         "max_mag_atk": 1,
         "price": 90,
-        "floor": 0
+        "floor": 2
     },
     {
         "name": "Emerald Staff",
@@ -51,7 +51,7 @@
         "min_mag_atk": 6,
         "max_mag_atk": 10,
         "price": 100,
-        "floor": 0
+        "floor": 3
     },
     {
         "name": "Palladium Sword",
@@ -60,7 +60,7 @@
         "min_mag_atk": 5,
         "max_mag_atk": 8,
         "price": 150,
-        "floor": 0
+        "floor": 3
     },
     {
         "name": "Caster's Ring",
@@ -69,7 +69,7 @@
         "min_mag_atk": 8,
         "max_mag_atk": 10,
         "price": 170,
-        "floor": 0
+        "floor": 3
     },
     {
         "name": "Chinese Adamantium Sword",
@@ -78,7 +78,7 @@
         "min_mag_atk": 2,
         "max_mag_atk": 2,
         "price": 500,
-        "floor": 0
+        "floor": 4
     },
     {
         "name": "Chinese Diamond Staff",
@@ -87,6 +87,6 @@
         "min_mag_atk": 0,
         "max_mag_atk": 40,
         "price": 500,
-        "floor": 0
+        "floor": 4
     }
 ]

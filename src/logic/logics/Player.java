@@ -15,6 +15,7 @@ import logic.base.Magic;
 import logic.base.Potion;
 import magic.HealingMagic;
 import magic.OffensiveMagic;
+import shops.BlackSmith;
 
 public class Player extends Character
 {
@@ -23,6 +24,7 @@ public class Player extends Character
 	private int exp = 0;
 	private int expToNextLevel = 100;
 	private int money = 0;
+	private int conqueredFloor = 0;
 
 	private Weapon startingWeapon = new Weapon("Wooden Stick", "Normal woody stick", 1, 1, 0, 0, 1);
 	private PantsArmour startingPantsArmour = new PantsArmour("Generic Pants", "This is pants", 0, 0, 1);
@@ -63,8 +65,8 @@ public class Player extends Character
 		fullHeal();
 		try
 		{
-			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson(ClassLoader.getSystemResource("OffensiveMagics.json").toString(),new TypeToken<ArrayList<OffensiveMagic>>(){}));
-			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson(ClassLoader.getSystemResource("HealingMagics.json").toString(),new TypeToken<ArrayList<HealingMagic>>(){}));
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("OffensiveMagics.json", new TypeToken<ArrayList<OffensiveMagic>>(){}));
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("HealingMagics.json", new TypeToken<ArrayList<HealingMagic>>(){}));
 			magicToLearn.sort
 			(new Comparator<Magic>()
 			{
@@ -80,7 +82,73 @@ public class Player extends Character
 			e.printStackTrace();
 		}
 	}
-	
+	public Weapon buyWeapon(BlackSmith blackSmith, Weapon weapon)
+	{
+		if(blackSmith.getWeaponAvailableList(this).contains(weapon))
+		{
+			return (Weapon) pop(weapon, blackSmith.getWeaponAvailableList(this));
+		}
+		return null;
+	}
+	public boolean gainExp(int exp) // return level up or not
+	{
+		if(exp < 0) return false;
+		this.exp += exp;
+		Boolean b = this.exp > this.expToNextLevel;
+		while(this.exp > this.expToNextLevel)
+		{
+			expToNextLevel = 2 * expToNextLevel + 150;
+			levelUp();
+			//TODO manualUpstat
+			//INTERFACE FOR MANUAL
+		}
+		return b;
+	}
+	public void levelUp()
+	{
+		magicInventory.add((Magic) pop(0, magicToLearn));
+		level += 1;
+		baseMaxPhyAtk += 1;
+		baseMinPhyAtk += 1;
+		baseMaxMagAtk += 1;
+		baseMinMagAtk += 1;
+		basePhyDef += 1;
+		baseMagDef += 1;
+		baseMaxHp += 16;
+		baseMaxMp += 10;
+		currentHp += 16;
+		currentMp += 10;
+	}
+	public void manualUpStat(int point)
+	{
+		switch(point)
+		{
+			case(0):
+				baseMaxPhyAtk += 1;
+				baseMinPhyAtk += 1;
+				break;
+			case(1):
+				baseMaxMagAtk += 1;
+				baseMinMagAtk += 1;
+				break;
+			case(2):
+				basePhyDef += 1;
+				break;
+			case(3):
+				baseMagDef += 1;
+				break;
+			case(4):
+				baseMaxHp += 16;
+				currentHp += 16;
+				break;
+			case(5):
+				baseMaxMp += 10;
+				currentMp += 10;
+				break;
+			default:
+				//throw;
+		}
+	}
 	public void gainItem(Object item)
 	{
 		if(item == null)
@@ -205,7 +273,25 @@ public class Player extends Character
 		return false;
 	}
 	
-
+	public <T> Object pop(Object item, ArrayList<T> itemList)
+	{
+		if(itemList.contains(item))
+		{
+			itemList.remove(item);
+			return item;
+		}
+		return null;
+	}
+	public <T> Object pop(int index, ArrayList<T> itemList)
+	{
+		if(index >= 0 && index < itemList.size())
+		{
+			Object object = itemList.get(index);
+			itemList.remove(index);
+			return object;
+		}
+		return null;
+	}
 	public void gainMoney(int money)
 	{
 		if (money < 0) return;
@@ -382,6 +468,14 @@ public class Player extends Character
 	public ArrayList<Magic> getMagicToLearn()
 	{
 		return magicToLearn;
+	}
+	public int getConqueredFloor()
+	{
+		return conqueredFloor;
+	}
+	public void setConqueredFloor(int conqueredFloor)
+	{
+		this.conqueredFloor = conqueredFloor;
 	}
 
 }
