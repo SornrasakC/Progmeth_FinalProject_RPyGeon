@@ -24,6 +24,7 @@ public class MainMenu extends Application {
     private Pane root = new Pane();
     private VBox menuBox = new VBox(15);
     Scene villageScene = new Scene(new Village());
+    Scene creditScene = new Scene(new Credit());
     
     private List<Pair<String, Runnable>> menuList;
     
@@ -61,7 +62,13 @@ public class MainMenu extends Application {
 						primaryStage.show();
 					}
 				})),
-	            new Pair<String, Runnable>("Credits", () -> {}),
+	            new Pair<String, Runnable>("Credits", () -> Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						primaryStage.setScene(creditScene);
+						primaryStage.show();
+					}
+				})),
 	            new Pair<String, Runnable>("Exit", Platform::exit)
 	    );
 		addMenu(480, 300);
