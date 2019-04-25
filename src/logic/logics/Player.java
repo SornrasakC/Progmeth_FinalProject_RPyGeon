@@ -15,6 +15,7 @@ import logic.base.Magic;
 import logic.base.Potion;
 import magic.HealingMagic;
 import magic.OffensiveMagic;
+import shops.BlackSmith;
 
 public class Player extends Character
 {
@@ -80,6 +81,14 @@ public class Player extends Character
 		{
 			e.printStackTrace();
 		}
+	}
+	public Weapon buyWeapon(BlackSmith blackSmith, Weapon weapon)
+	{
+		if(blackSmith.getWeaponAvailableList(this).contains(weapon))
+		{
+			return (Weapon) pop(weapon, blackSmith.getWeaponAvailableList(this));
+		}
+		return null;
 	}
 	public boolean gainExp(int exp) // return level up or not
 	{

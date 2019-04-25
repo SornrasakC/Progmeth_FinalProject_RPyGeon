@@ -1,6 +1,7 @@
 package shops;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 import com.google.gson.reflect.TypeToken;
@@ -19,7 +20,15 @@ public class BlackSmith
 		try
 		{
 			weaponToSellList.addAll((ArrayList<Weapon>) (ArrayList<?>) main.Main.readJson("WeaponsStore.json",new TypeToken<ArrayList<Weapon>>(){}));
-			
+			weaponToSellList.sort
+			(new Comparator<Weapon>()
+				{
+					public int compare(Weapon a, Weapon b)
+					{
+						return a.getPrice() - b.getPrice();
+					}
+				}
+			);
 		}
 		catch (Exception e)
 		{
@@ -35,6 +44,5 @@ public class BlackSmith
 	{
 		return weaponToSellList;
 	}
-	
 	
 }

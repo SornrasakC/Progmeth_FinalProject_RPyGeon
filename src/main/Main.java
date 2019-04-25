@@ -7,9 +7,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import item.Weapon;
+import logic.base.Potion;
 import logic.logics.Dungeon;
 import logic.logics.Player;
 import shops.BlackSmith;
+import shops.ItemShop;
 
 
 public class Main
@@ -27,6 +29,7 @@ public class Main
 		try
 		{
 			Dungeon.dungeonInit();
+			ItemShop shop = new ItemShop();
 			Player m = new Player("name");
 			Weapon wea1 = new Weapon("Wooden1 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
 			Weapon wea2 = new Weapon("Wooden2 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
@@ -34,7 +37,7 @@ public class Main
 			m.equipItem(wea2);
 			System.out.println(m.getWeaponInventory().size());
 			BlackSmith bs = new BlackSmith();
-			for(Weapon i: bs.getWeaponToSellList())
+			for(Potion i : shop.getPotionList())
 			{
 				System.out.println(i);
 			}
