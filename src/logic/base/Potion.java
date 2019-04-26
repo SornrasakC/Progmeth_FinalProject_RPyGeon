@@ -25,7 +25,7 @@ public abstract class Potion implements Cloneable
 	@Override
 	public int hashCode()
 	{
-		return name.hashCode() + description.hashCode();
+		return (name + description).hashCode();
 	}
 
 	public String getName()
@@ -42,5 +42,11 @@ public abstract class Potion implements Cloneable
 	{
 		return cost;
 	}
+	@Override
+	public Potion clone() throws CloneNotSupportedException
+	{
+		return (Potion) super.clone();
+	}
+	
 	
 }

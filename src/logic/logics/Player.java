@@ -16,6 +16,7 @@ import logic.base.Potion;
 import magic.HealingMagic;
 import magic.OffensiveMagic;
 import shops.BlackSmith;
+import shops.ItemShop;
 
 public class Player extends Character
 {
@@ -44,6 +45,7 @@ public class Player extends Character
 	private HashMap<Potion, Integer> potionInventory = new HashMap<Potion, Integer>();
 	private ArrayList<Magic> magicInventory = new ArrayList<Magic>();
 	private ArrayList<Magic> magicToLearn = new ArrayList<Magic>();
+
 	@SuppressWarnings("unchecked")
 	public Player(String name)
 	{
@@ -65,45 +67,82 @@ public class Player extends Character
 		fullHeal();
 		try
 		{
-			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("OffensiveMagics.json", new TypeToken<ArrayList<OffensiveMagic>>(){}));
-			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("HealingMagics.json", new TypeToken<ArrayList<HealingMagic>>(){}));
-			magicToLearn.sort
-			(new Comparator<Magic>()
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("OffensiveMagics.json",
+					new TypeToken<ArrayList<OffensiveMagic>>()
+					{
+					}));
+			magicToLearn.addAll((ArrayList<Magic>) (ArrayList<?>) main.Main.readJson("HealingMagics.json",
+					new TypeToken<ArrayList<HealingMagic>>()
+					{
+					}));
+			magicToLearn.sort(new Comparator<Magic>()
 			{
 				public int compare(Magic a, Magic b)
 				{
 					return a.getLevel() - b.getLevel();
 				}
-			}
-			);
+			});
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
+
+	public Potion buyPotion(ItemShop itemShop, Potion potion)
+	{
+		if (potion == null) return null;
+		if (itemShop.getPotionList().contains(potion))
+		{
+			if(potion.getCost() > money)
+			{
+				return null;
+			}
+			money -= potion.getCost();
+			gainPotion(potion);
+			try
+			{
+				return (Potion) potion.clone();
+			}
+			catch (CloneNotSupportedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
 	public Weapon buyWeapon(BlackSmith blackSmith, Weapon weapon)
 	{
-		if(blackSmith.getWeaponAvailableList(this).contains(weapon))
+		if (weapon == null) return null;
+		if (blackSmith.getWeaponAvailableList(this).contains(weapon))
 		{
+			if (weapon.getPrice() > money)
+			{
+				return null;
+			}
+			money -= weapon.getPrice();
+			gainItem(weapon);
 			return (Weapon) pop(weapon, blackSmith.getWeaponAvailableList(this));
 		}
 		return null;
 	}
+
 	public boolean gainExp(int exp) // return level up or not
 	{
-		if(exp < 0) return false;
+		if (exp < 0) return false;
 		this.exp += exp;
 		Boolean b = this.exp > this.expToNextLevel;
-		while(this.exp > this.expToNextLevel)
+		while (this.exp > this.expToNextLevel)
 		{
 			expToNextLevel = 2 * expToNextLevel + 150;
 			levelUp();
-			//TODO manualUpstat
-			//INTERFACE FOR MANUAL
+			// TODO manualUpstat
+			// INTERFACE FOR MANUAL
 		}
 		return b;
 	}
+
 	public void levelUp()
 	{
 		magicInventory.add((Magic) pop(0, magicToLearn));
@@ -119,68 +158,69 @@ public class Player extends Character
 		currentHp += 16;
 		currentMp += 10;
 	}
+
 	public void manualUpStat(int point)
 	{
-		switch(point)
+		switch (point)
 		{
-			case(0):
+			case (0):
 				baseMaxPhyAtk += 1;
 				baseMinPhyAtk += 1;
 				break;
-			case(1):
+			case (1):
 				baseMaxMagAtk += 1;
 				baseMinMagAtk += 1;
 				break;
-			case(2):
+			case (2):
 				basePhyDef += 1;
 				break;
-			case(3):
+			case (3):
 				baseMagDef += 1;
 				break;
-			case(4):
+			case (4):
 				baseMaxHp += 16;
 				currentHp += 16;
 				break;
-			case(5):
+			case (5):
 				baseMaxMp += 10;
 				currentMp += 10;
 				break;
 			default:
-				//throw;
+				// throw;
 		}
 	}
+
 	public void gainItem(Object item)
 	{
-		if(item == null)
-			return;
-		if(item instanceof Weapon)
+		if (item == null) return;
+		if (item instanceof Weapon)
 		{
 			Weapon weapon = (Weapon) item;
-			if(!weaponInventory.contains(weapon))
+			if (!weaponInventory.contains(weapon))
 			{
 				weaponInventory.add(weapon);
 			}
 		}
-		else if(item instanceof ChestArmour)
+		else if (item instanceof ChestArmour)
 		{
 			ChestArmour armour = (ChestArmour) item;
-			if(!chestArmourInventory.contains(armour))
+			if (!chestArmourInventory.contains(armour))
 			{
 				chestArmourInventory.add(armour);
 			}
 		}
-		else if(item instanceof PantsArmour)
+		else if (item instanceof PantsArmour)
 		{
 			PantsArmour armour = (PantsArmour) item;
-			if(!pantsArmourInventory.contains(armour))
+			if (!pantsArmourInventory.contains(armour))
 			{
 				pantsArmourInventory.add(armour);
 			}
 		}
-		else if(item instanceof ShoesArmour)
+		else if (item instanceof ShoesArmour)
 		{
 			ShoesArmour armour = (ShoesArmour) item;
-			if(!shoesArmourInventory.contains(armour))
+			if (!shoesArmourInventory.contains(armour))
 			{
 				shoesArmourInventory.add(armour);
 			}
@@ -190,29 +230,29 @@ public class Player extends Character
 //			throw();
 		}
 	}
+
 	public void equipItem(Object item)
 	{
-		if(item == null)
-			return;
-		if(item instanceof Weapon)
+		if (item == null) return;
+		if (item instanceof Weapon)
 		{
 			Weapon weapon = (Weapon) item;
 			gainItem(equipedWeapon);
 			equipedWeapon = weapon;
 		}
-		else if(item instanceof ChestArmour)
+		else if (item instanceof ChestArmour)
 		{
 			ChestArmour armour = (ChestArmour) item;
 			gainItem(equipedChestArmour);
 			equipedChestArmour = armour;
 		}
-		else if(item instanceof PantsArmour)
+		else if (item instanceof PantsArmour)
 		{
 			PantsArmour armour = (PantsArmour) item;
 			gainItem(equipedPantsArmour);
 			equipedPantsArmour = armour;
 		}
-		else if(item instanceof ShoesArmour)
+		else if (item instanceof ShoesArmour)
 		{
 			ShoesArmour armour = (ShoesArmour) item;
 			gainItem(equipedShoesArmour);
@@ -223,12 +263,12 @@ public class Player extends Character
 //			throw();
 		}
 	}
+
 	public void gainPotion(Object item)
 	{
 		Potion potion;
-		if(item == null)
-			return;
-		if(item instanceof Potion)
+		if (item == null) return;
+		if (item instanceof Potion)
 		{
 			potion = (Potion) item;
 		}
@@ -237,7 +277,7 @@ public class Player extends Character
 //			throw();
 			return;
 		}
-		if(potionInventory.containsKey(potion))
+		if (potionInventory.containsKey(potion))
 		{
 			potionInventory.put(potion, potionInventory.get(potion) + 1);
 		}
@@ -246,12 +286,12 @@ public class Player extends Character
 			potionInventory.put(potion, 1);
 		}
 	}
+
 	public boolean usePotion(Object item)
 	{
 		Potion potion;
-		if(item == null)
-			return false;
-		if(item instanceof Potion)
+		if (item == null) return false;
+		if (item instanceof Potion)
 		{
 			potion = (Potion) item;
 		}
@@ -260,11 +300,11 @@ public class Player extends Character
 //			throw(); (or no)
 			return false;
 		}
-		if(potionInventory.containsKey(potion))
+		if (potionInventory.containsKey(potion))
 		{
 			potion.usePotion(this);
 			potionInventory.put(potion, potionInventory.get(potion) - 1);
-			if(potionInventory.get(potion) == 0)
+			if (potionInventory.get(potion) == 0)
 			{
 				potionInventory.remove(potion);
 			}
@@ -272,19 +312,20 @@ public class Player extends Character
 		}
 		return false;
 	}
-	
+
 	public <T> Object pop(Object item, ArrayList<T> itemList)
 	{
-		if(itemList.contains(item))
+		if (itemList.contains(item))
 		{
 			itemList.remove(item);
 			return item;
 		}
 		return null;
 	}
+
 	public <T> Object pop(int index, ArrayList<T> itemList)
 	{
-		if(index >= 0 && index < itemList.size())
+		if (index >= 0 && index < itemList.size())
 		{
 			Object object = itemList.get(index);
 			itemList.remove(index);
@@ -292,6 +333,7 @@ public class Player extends Character
 		}
 		return null;
 	}
+
 	public void gainMoney(int money)
 	{
 		if (money < 0) return;
@@ -348,8 +390,6 @@ public class Player extends Character
 		this.startingWeapon = startingWeapon;
 	}
 
-
-
 	public ChestArmour getStartingChestArmour()
 	{
 		return startingChestArmour;
@@ -359,7 +399,6 @@ public class Player extends Character
 	{
 		this.startingChestArmour = startingChestArmour;
 	}
-
 
 	public Weapon getEquipedWeapon()
 	{
@@ -371,7 +410,6 @@ public class Player extends Character
 		this.equipedWeapon = equipedWeapon;
 	}
 
-
 	public ChestArmour getEquipedChestArmour()
 	{
 		return equipedChestArmour;
@@ -382,7 +420,6 @@ public class Player extends Character
 		this.equipedChestArmour = equipedChestArmour;
 	}
 
-	
 	public ArrayList<Weapon> getWeaponInventory()
 	{
 		return weaponInventory;
@@ -433,7 +470,6 @@ public class Player extends Character
 		this.weaponInventory = weaponInventory;
 	}
 
-
 	public ArrayList<ChestArmour> getChestArmourInventory()
 	{
 		return chestArmourInventory;
@@ -443,7 +479,6 @@ public class Player extends Character
 	{
 		this.chestArmourInventory = chestArmourInventory;
 	}
-
 
 	public HashMap<Potion, Integer> getPotionInventory()
 	{
@@ -469,10 +504,12 @@ public class Player extends Character
 	{
 		return magicToLearn;
 	}
+
 	public int getConqueredFloor()
 	{
 		return conqueredFloor;
 	}
+
 	public void setConqueredFloor(int conqueredFloor)
 	{
 		this.conqueredFloor = conqueredFloor;

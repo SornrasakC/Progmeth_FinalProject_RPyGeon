@@ -13,7 +13,6 @@ import logic.logics.Player;
 import shops.BlackSmith;
 import shops.ItemShop;
 
-
 public class Main
 {
 	public static <T> ArrayList<T> readJson(String filename, TypeToken<ArrayList<T>> typeToken) throws Exception
@@ -21,9 +20,10 @@ public class Main
 		Scanner sc = new Scanner(ClassLoader.getSystemResourceAsStream(filename));
 		String fileText = sc.useDelimiter("\\A").next();
 		sc.close();
-		ArrayList<T> jsonList = new Gson().fromJson(fileText, typeToken.getType() );
+		ArrayList<T> jsonList = new Gson().fromJson(fileText, typeToken.getType());
 		return jsonList;
 	}
+
 	public static void main(String args[])
 	{
 		try
@@ -37,11 +37,11 @@ public class Main
 			m.equipItem(wea2);
 			System.out.println(m.getWeaponInventory().size());
 			BlackSmith bs = new BlackSmith();
-			for(Potion i : shop.getPotionList())
+			for (Potion i : shop.getPotionList())
 			{
 				System.out.println(i);
 			}
-	
+
 		}
 		catch (Exception e)
 		{
