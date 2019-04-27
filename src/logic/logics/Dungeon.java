@@ -12,6 +12,7 @@ import item.Weapon;
 import logic.base.Droppable;
 import logic.base.Monster;
 
+
 public class Dungeon
 {
 	private String name;
@@ -34,9 +35,13 @@ public class Dungeon
 	{
 		player.gainMoney(monster.getMoney());
 	}
-
+	static
+	{
+		dungeonInit();
+	}
+	
 	@SuppressWarnings("unchecked")
-	public static void dungeonInit() // start game
+	public static void dungeonInit()
 	{
 		dungeonList = new ArrayList<Dungeon>();
 		dungeonList.add(new Dungeon("Dark Cave", 1));

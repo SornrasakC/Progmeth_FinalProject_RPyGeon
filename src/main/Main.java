@@ -35,7 +35,6 @@ public class Main extends Application
 	{
 		try
 		{
-			Dungeon.dungeonInit();
 			ItemShop shop = new ItemShop();
 			Player m = new Player("name");
 			Weapon wea1 = new Weapon("Wooden1 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
