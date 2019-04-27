@@ -1,5 +1,6 @@
 package main;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,15 +8,14 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import item.Weapon;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import logic.base.Potion;
+import javafx.util.Duration;
 import logic.logics.Dungeon;
 import logic.logics.Player;
-import scene.MainMenu;
 import scene.SceneManager;
-import shops.BlackSmith;
 import shops.ItemShop;
 
 public class Main extends Application
@@ -58,8 +58,18 @@ public class Main extends Application
 		
 	}
 	
-	public static void changeScene(Scene scene){
+	public static void changeScene(Scene scene)
+	{
+		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());
+		ft.setFromValue(1);
+		ft.setToValue(0);
+		ft.play();
+		FadeTransition ft2 = new FadeTransition(Duration.millis(500), scene.getRoot());
+		ft2.setFromValue(0);
+		ft2.setToValue(1);
+		ft2.play();
 		primaryStage.setScene(scene);
+		
 		primaryStage.show();
 	}
 
