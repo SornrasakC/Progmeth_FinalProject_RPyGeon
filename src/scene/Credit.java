@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import main.Main;
 
 public class Credit extends Pane
 {
@@ -31,7 +32,7 @@ public class Credit extends Pane
 				@Override
 				public void handle(ActionEvent event)
 				{
-					MainMenu.getPrimaryStage().setScene(MainMenu.menuScene());
+					Main.changeScene(SceneManager.mainScreenScene);
 					
 				}
 			}
