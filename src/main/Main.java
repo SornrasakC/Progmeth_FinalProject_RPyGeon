@@ -42,6 +42,7 @@ public class Main extends Application
 			Weapon wea2 = new Weapon("Wooden2 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
 //			Dungeon.getMonsterList().forEach(x -> System.out.println(x));
 			System.out.println(Dungeon.getMonsterList().size());
+			launch(args);
 
 		}
 		catch (Exception e)
