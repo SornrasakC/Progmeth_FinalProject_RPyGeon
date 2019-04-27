@@ -7,7 +7,10 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import entity.VillageEntityLogic;
+import input.InputUtility;
 import item.Weapon;
+import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,6 +19,8 @@ import javafx.util.Duration;
 import logic.logics.Dungeon;
 import logic.logics.Player;
 import scene.SceneManager;
+import scene.Village;
+import sharedObject.RenderableHolder;
 import shops.ItemShop;
 
 public class Main extends Application
@@ -55,6 +60,20 @@ public class Main extends Application
 		this.primaryStage = primaryStage;
 		primaryStage.setScene(SceneManager.mainScreenScene);
 		primaryStage.show();
+		
+		VillageEntityLogic villageLogic = new VillageEntityLogic();
+		
+		AnimationTimer animation = new AnimationTimer() {
+			public void handle(long now) {
+				//village
+				SceneManager.getVillagePane().drawBackground();
+				villageLogic.logicUpdate();
+				SceneManager.getVillagePane().paintCanvas();
+				InputUtility.updateInputState();
+				SceneManager.getVillagePane().getCanvas().requestFocus();
+			}
+		};
+		animation.start();
 		
 	}
 	
