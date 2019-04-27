@@ -60,7 +60,7 @@ public class StartNaming extends StackPane
 	            	if(name.length() > 0)
 	            	{
 	            		Player.player = new Player(name);
-	            		Main.changeScene(SceneManager.ConfirmPrologueScene);
+	            		Main.changeScene(SceneManager.confirmPrologueScene);
 	            	}
 	            }
 	        }

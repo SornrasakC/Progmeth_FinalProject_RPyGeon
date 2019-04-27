@@ -13,7 +13,7 @@ public class ShopEntity extends Entity {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(sprite, 620, 50);
+		gc.drawImage(sprite, x, y);
 	}
 
 }

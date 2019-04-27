@@ -32,7 +32,9 @@ public abstract class Entity implements IRenderable
 
 	protected boolean collideWith(Entity other)
 	{
-		Rectangle r1 = new Rectangle((int) x, (int) y, (int) (x + sprite.getWidth()), (int) (y + sprite.getHeight()));
+//		System.out.println("shop sprite " + other.sprite.getHeight() + "," + other.sprite.getWidth());
+//		System.out.println("player sprite " + this.sprite.getHeight() + "," + this.sprite.getWidth());
+		Rectangle r1 = new Rectangle((int) this.x, (int) this.y, (int) (this.x + sprite.getWidth()), (int) (this.y + sprite.getHeight()));
 		Rectangle r2 = new Rectangle((int) other.x, (int) other.y, (int) (other.x + other.sprite.getWidth()), (int)(other.y + other.sprite.getHeight()));
 		return r1.intersects(r2);
 	}

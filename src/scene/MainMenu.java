@@ -36,7 +36,7 @@ public class MainMenu extends Pane
 			public void run()
 			{
 //				Main.changeScene(SceneManager.villageScene);
-				Main.changeScene(SceneManager.StartNamingScene);
+				Main.changeScene(SceneManager.startNamingScene);
 			}
 		})), new Pair<String, Runnable>("Credits", () -> Platform.runLater(new Runnable()
 		{
