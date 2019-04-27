@@ -20,6 +20,7 @@ import shops.ItemShop;
 
 public class Player extends Character
 {
+	public static Player player;
 	private String battleClass = "jobless";
 
 	private int exp = 0;
@@ -145,7 +146,9 @@ public class Player extends Character
 
 	public void levelUp()
 	{
-		magicInventory.add((Magic) pop(0, magicToLearn));
+		Object magic = pop(0, magicToLearn);
+		if(magic != null)
+			magicInventory.add((Magic) magic);
 		level += 1;
 		baseMaxPhyAtk += 1;
 		baseMinPhyAtk += 1;

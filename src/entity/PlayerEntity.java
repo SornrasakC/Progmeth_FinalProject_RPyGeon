@@ -8,9 +8,8 @@ public class PlayerEntity extends Entity {
 	
 	private int direction;
 	private Image playerSprite;
-	
 	public PlayerEntity() {
-		// 0 = north, 1 = east, 2 = south, 4 = west
+		// 0 = north, 1 = east, 2 = south, 3 = west
 		direction = 2;
 	}
 

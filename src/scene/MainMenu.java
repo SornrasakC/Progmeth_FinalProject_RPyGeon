@@ -35,7 +35,8 @@ public class MainMenu extends Pane
 			@Override
 			public void run()
 			{
-				Main.changeScene(SceneManager.villageScene);
+//				Main.changeScene(SceneManager.villageScene);
+				Main.changeScene(SceneManager.StartNamingScene);
 			}
 		})), new Pair<String, Runnable>("Credits", () -> Platform.runLater(new Runnable()
 		{
