@@ -27,7 +27,11 @@ public abstract class Monster extends Character
 	}
 
 	public abstract int attack(Player player) throws CustomException;
-
+	
+	public String toString()
+	{
+		return name + " level: " + level;
+	}
 	@Override
 	public int getMoney()
 	{

@@ -40,16 +40,8 @@ public class Main extends Application
 			Player m = new Player("name");
 			Weapon wea1 = new Weapon("Wooden1 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
 			Weapon wea2 = new Weapon("Wooden2 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
-			m.equipItem(wea1);
-			m.equipItem(wea2);
-			System.out.println(m.getWeaponInventory().size());
-			BlackSmith bs = new BlackSmith();
-			for (Potion i : shop.getPotionList())
-			{
-				System.out.println(i);
-			}
-			
-			launch(args);
+//			Dungeon.getMonsterList().forEach(x -> System.out.println(x));
+			System.out.println(Dungeon.getMonsterList().size());
 
 		}
 		catch (Exception e)
