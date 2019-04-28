@@ -59,14 +59,6 @@ public class VillageEntityLogic
 					Main.changeScene(SceneManager.itemshopScene);
 				}
 			});
-//			Stage itemShopStage = new Stage();
-//			itemShopStage.setScene(SceneManager.itemshopScene);
-//			itemShopStage.setOnCloseRequest((WindowEvent) -> {
-//				isInOtherEntity = false;
-//				player.unFreeze();
-//				player.teleportTo(shop1.x + (shop1.sprite.getWidth() / 2), shop1.y + shop1.sprite.getHeight() + 70);
-//			});
-//			itemShopStage.show();
 		}
 		else if(!isInOtherEntity && player.collideWith(dungeon))
 		{
