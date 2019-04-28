@@ -72,11 +72,18 @@ public class ItemShopButton extends Button {
 	        Object objBehavior = fieldBehavior.get(tooltip);
 
 	        Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+	        Field fadeTimer = objBehavior.getClass().getDeclaredField("hideTimer");
 	        fieldTimer.setAccessible(true);
+	        fadeTimer.setAccessible(true);
+	        
 	        Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+	        Timeline objFadeTimer = (Timeline) fadeTimer.get(objBehavior);
 
 	        objTimer.getKeyFrames().clear();
 	        objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+	        
+	        objFadeTimer.getKeyFrames().clear();
+	        objFadeTimer.getKeyFrames().add(new KeyFrame(new Duration(50000)));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
