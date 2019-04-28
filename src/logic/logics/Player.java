@@ -10,6 +10,7 @@ import item.ChestArmour;
 import item.PantsArmour;
 import item.ShoesArmour;
 import item.Weapon;
+import javafx.scene.canvas.GraphicsContext;
 import logic.base.Character;
 import logic.base.Magic;
 import logic.base.Potion;
@@ -516,6 +517,13 @@ public class Player extends Character
 	public void setConqueredFloor(int conqueredFloor)
 	{
 		this.conqueredFloor = conqueredFloor;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Add animation
+		gc.drawImage(sprite, x, y);
+		
 	}
 
 }

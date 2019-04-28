@@ -2,6 +2,7 @@ package logic.base;
 
 import java.util.Random;
 
+import javafx.scene.canvas.GraphicsContext;
 import logic.logics.Player;
 
 public abstract class Monster extends Character
@@ -37,6 +38,12 @@ public abstract class Monster extends Character
 	{
 		Random rand = new Random();
 		return rand.nextInt((int) ((level - 1) * 30 * 0.50)) + (int) ((level - 1) * 30 * 0.75);
+	}
+	
+	@Override
+	public void draw(GraphicsContext gc) {
+		//TODO add animation
+		gc.drawImage(sprite, x, y);
 	}
 
 }

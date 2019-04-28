@@ -1,5 +1,6 @@
 package logic.logics;
 
+import javafx.scene.canvas.GraphicsContext;
 import logic.base.CustomException;
 import logic.base.Monster;
 import logic.base.StatType;
@@ -26,5 +27,4 @@ public class BossMonster extends Monster
 		player.receiveDamage(phyDamage, StatType.PHYATK);
 		return phyDamage;
 	}
-
 }

@@ -2,13 +2,23 @@ package logic.base;
 
 import java.util.Random;
 
-public abstract class Character
+import entity.Entity;
+import javafx.scene.image.Image;
+import sharedObject.IRenderable;
+
+public abstract class Character extends Entity
 {
 	protected String name;
+	protected Image spriteAnimation;
 	
 	protected int level;
 //	protected boolean isDead = false;
 	protected int money = 0;
+	
+	public Character() {
+		this.sprite = new Image(ClassLoader.getSystemResourceAsStream(this.name + "1.png"));
+		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream(this.name + "2.png"));
+	}
 	
 	
 	public int getMoney()
