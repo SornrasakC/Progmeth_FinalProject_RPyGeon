@@ -12,23 +12,37 @@ import logic.base.Potion;
 import main.Main;
 import scene.shop.ItemShopButton;
 
+<<<<<<< HEAD
 public class ItemShop extends GridPane {
 	
 	private static final double VGAP = 20;
 	private static final double HGAP = 20;
 	
+=======
+public class ItemShop extends Pane
+{
+
+>>>>>>> branch 'master' of https://github.com/SornrasakC/Progmeth_FinalProject_RPyGeon
 	private Label label = new Label("Item Shop");
 	private Button btn = new Button("back");
+<<<<<<< HEAD
 	private shops.ItemShop itemShop;
 	
 	public ItemShop() {
 		itemShop = new shops.ItemShop();
+=======
+
+	public ItemShop()
+	{
+>>>>>>> branch 'master' of https://github.com/SornrasakC/Progmeth_FinalProject_RPyGeon
 		label.setFont(new Font(20));
-		btn.setOnAction(new EventHandler<ActionEvent>() {
+		btn.setOnAction(new EventHandler<ActionEvent>()
+		{
 
 			@Override
-			public void handle(ActionEvent event) {
-				Main.getPrimaryStage().setScene(SceneManager.villageScene);
+			public void handle(ActionEvent event)
+			{
+				Main.changeScene(SceneManager.villageScene);
 				VillageEntityLogic.exitShop();
 			}
 		});

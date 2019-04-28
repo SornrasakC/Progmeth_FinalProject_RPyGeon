@@ -12,14 +12,19 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class UiButton extends Button
 {
 	public UiButton(String text)
 	{
-		setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		setText(text);
+		setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, new CornerRadii(20), BorderWidths.DEFAULT)));
+		
+//		setPadding(new Insets(0, 0, 10, 0));
+		setFont(new Font(30));
 		setEvent();
+		unhighlight();
 	}
 
 	private void setEvent()
@@ -49,12 +54,14 @@ public class UiButton extends Button
 	public void highlight()
 	{
 
-		this.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(20), Insets.EMPTY)));
+
 	}
 
 	public void unhighlight()
 	{
 
-		this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(20), Insets.EMPTY)));
+
 	}
 }

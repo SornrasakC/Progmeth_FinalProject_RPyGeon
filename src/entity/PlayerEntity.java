@@ -115,40 +115,42 @@ public class PlayerEntity extends Entity
 	public void update()
 	{
 		isInputed = false;
-		if (isFreeze) return;
-		if (InputUtility.getKeyPressed(KeyCode.A))
+		if (!isFreeze)
 		{
-			moveLeft();
-			isInputed = true;
-		}
-		if (InputUtility.getKeyPressed(KeyCode.D))
-		{
-			moveRight();
-			isInputed = true;
-		}
-		if (InputUtility.getKeyPressed(KeyCode.W))
-		{
-			moveUp();
-			isInputed = true;
-		}
-		if (InputUtility.getKeyPressed(KeyCode.S))
-		{
-			moveDown();
-			isInputed = true;
-		}
-		if (InputUtility.isLeftClickTriggered())
-		{
-			destinateX = InputUtility.mouseX;
-			destinateY = InputUtility.mouseY;			
-		}
-		if(isInputed)
-		{
-			destinateX = x;
-			destinateY = y;
-		}
-		if(!isInputed && !(Math.abs(destinateX - x) < 5 && Math.abs(destinateY - y) < 5))
-		{
-			moveToMouse();
+			if (InputUtility.getKeyPressed(KeyCode.A))
+			{
+				moveLeft();
+				isInputed = true;
+			}
+			if (InputUtility.getKeyPressed(KeyCode.D))
+			{
+				moveRight();
+				isInputed = true;
+			}
+			if (InputUtility.getKeyPressed(KeyCode.W))
+			{
+				moveUp();
+				isInputed = true;
+			}
+			if (InputUtility.getKeyPressed(KeyCode.S))
+			{
+				moveDown();
+				isInputed = true;
+			}
+			if (InputUtility.isLeftClickTriggered())
+			{
+				destinateX = InputUtility.mouseX;
+				destinateY = InputUtility.mouseY;			
+			}
+			if(isInputed)
+			{
+				destinateX = x;
+				destinateY = y;
+			}
+			if(!isInputed && !(Math.abs(destinateX - x) < 5 && Math.abs(destinateY - y) < 5))
+			{
+				moveToMouse();
+			}
 		}
 	}
 	
