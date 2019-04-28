@@ -17,7 +17,8 @@ public class SceneManager {
 	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT);
 	public static Scene prologueScene = new Scene(new Prologue(), WIDTH, HEIGHT);
 	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT);
-	public static Scene dungeonBattleScene = new Scene(new DungeonBattle(), WIDTH, HEIGHT);
+	public static Scene battleScene = new Scene(new Battle(), WIDTH, HEIGHT);
+	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 	
 	public SceneManager() {
 		
