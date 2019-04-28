@@ -11,31 +11,71 @@ public class PlayerEntity extends Entity {
 	private int direction;
 	private static final int MOVE_SPEED = 5;
 	private boolean isFreeze = false;
+	private int frame = 1;
+	private Thread thread;
 
 	public PlayerEntity(double x, double y, int direction) {
 		// 0 = north, 1 = east, 2 = south, 3 = west
 		this.direction = direction;
-		this.sprite = RenderableHolder.playerSpriteSouth;
+		this.sprite = RenderableHolder.playerSpriteSouth1;
 		this.x = x;
 		this.y = y;
 		this.z = 9;
 		this.visible = true;
+		
+		thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(true){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					if(frame == 1) {
+						frame = 2;
+					}else {
+						frame = 1;
+					}
+					
+				}
+			}
+		});
+		thread.start();
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		switch (direction) {
 		case 0:
-			this.sprite = RenderableHolder.playerSpriteNorth;
+			if(frame == 1) {
+				this.sprite = RenderableHolder.playerSpriteNorth1;
+			}else {
+				this.sprite = RenderableHolder.playerSpriteNorth2;
+			}
 			break;
 		case 1:
-			this.sprite = RenderableHolder.playerSpriteEast;
+			if(frame == 1) {
+				this.sprite = RenderableHolder.playerSpriteEast1;
+			}else {
+				this.sprite = RenderableHolder.playerSpriteEast2;
+			}
 			break;
 		case 2:
-			this.sprite = RenderableHolder.playerSpriteSouth;
+			if(frame == 1) {
+				this.sprite = RenderableHolder.playerSpriteSouth1;
+			}else {
+				this.sprite = RenderableHolder.playerSpriteSouth2;
+			}
 			break;
 		case 3:
-			this.sprite = RenderableHolder.playerSpriteWest;
+			if(frame == 1) {
+				this.sprite = RenderableHolder.playerSpriteWest1;
+			}else {
+				this.sprite = RenderableHolder.playerSpriteWest2;
+			}
 			break;
 		}
 		gc.drawImage(this.sprite, this.x, this.y);

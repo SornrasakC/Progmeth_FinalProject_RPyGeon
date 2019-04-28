@@ -14,10 +14,14 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	
-	public static Image playerSpriteNorth;
-	public static Image playerSpriteEast;
-	public static Image playerSpriteWest; 
-	public static Image playerSpriteSouth;
+	public static Image playerSpriteNorth1;
+	public static Image playerSpriteEast1;
+	public static Image playerSpriteWest1; 
+	public static Image playerSpriteSouth1;
+	public static Image playerSpriteNorth2;
+	public static Image playerSpriteEast2;
+	public static Image playerSpriteWest2; 
+	public static Image playerSpriteSouth2;
 	public static Image genericVendor;
 	
 	//TODO add some sound
@@ -41,10 +45,14 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		playerSpriteNorth = new Image(ClassLoader.getSystemResourceAsStream("1.png"));
-		playerSpriteEast = new Image(ClassLoader.getSystemResourceAsStream("2.png"));
-		playerSpriteSouth = new Image(ClassLoader.getSystemResourceAsStream("3.png"));
-		playerSpriteWest = new Image(ClassLoader.getSystemResourceAsStream("4.png"));
+		playerSpriteNorth1 = new Image(ClassLoader.getSystemResourceAsStream("11.png"));
+		playerSpriteEast1 = new Image(ClassLoader.getSystemResourceAsStream("21.png"));
+		playerSpriteSouth1 = new Image(ClassLoader.getSystemResourceAsStream("31.png"));
+		playerSpriteWest1 = new Image(ClassLoader.getSystemResourceAsStream("41.png"));
+		playerSpriteNorth2 = new Image(ClassLoader.getSystemResourceAsStream("12.png"));
+		playerSpriteEast2 = new Image(ClassLoader.getSystemResourceAsStream("22.png"));
+		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
+		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
 	}
 
