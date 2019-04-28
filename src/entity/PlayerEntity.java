@@ -156,6 +156,7 @@ public class PlayerEntity extends Entity
 	
 	private void moveToMouse()
 	{
+//		if(destinateX == 0 && destinateY == 0) return;
 		double delX = destinateX - x, delY = destinateY - y;
 		hypote = Math.hypot(delX, delY);
 		if(hypote == 0)

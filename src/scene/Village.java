@@ -70,6 +70,8 @@ public class Village extends Pane
 		this.canvas.setOnMousePressed((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY)
 				InputUtility.mouseLeftDown();
+				InputUtility.mouseX = event.getX();
+				InputUtility.mouseY = event.getY();	
 		});
 
 		this.canvas.setOnMouseReleased((MouseEvent event) -> {
