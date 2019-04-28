@@ -15,12 +15,6 @@ public abstract class Character extends Entity
 //	protected boolean isDead = false;
 	protected int money = 0;
 	
-	public Character() {
-		this.sprite = new Image(ClassLoader.getSystemResourceAsStream(this.name + "1.png"));
-		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream(this.name + "2.png"));
-	}
-	
-	
 	public int getMoney()
 	{
 		return money;

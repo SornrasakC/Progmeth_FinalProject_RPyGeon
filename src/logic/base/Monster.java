@@ -3,6 +3,7 @@ package logic.base;
 import java.util.Random;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import logic.logics.Player;
 
 public abstract class Monster extends Character
@@ -12,6 +13,8 @@ public abstract class Monster extends Character
 			int basePhyDef, int baseMagDef, int baseMaxHp, int baseMaxMp)
 	{
 
+		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("Monster/" + this.name + "1.png"));
+		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("Monster/" + this.name + "2.png"));
 		this.name = name;
 		this.level = level;
 
