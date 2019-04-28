@@ -6,6 +6,7 @@ import java.util.List;
 import input.InputUtility;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import main.Main;
@@ -48,7 +49,7 @@ public class VillageEntityLogic {
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
-					Main.getPrimaryStage().setScene(SceneManager.itemshopScene);
+					Main.changeScene(SceneManager.itemshopScene);
 				}
 			});
 //			Stage itemShopStage = new Stage();

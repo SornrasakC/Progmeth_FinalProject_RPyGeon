@@ -1,5 +1,6 @@
 package entity;
 
-public class BattleEntityLogic {
-
+public class BattleEntityLogic 
+{
+	
 }

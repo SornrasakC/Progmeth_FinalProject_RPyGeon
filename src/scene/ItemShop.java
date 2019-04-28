@@ -24,7 +24,7 @@ public class ItemShop extends Pane
 			@Override
 			public void handle(ActionEvent event)
 			{
-				Main.getPrimaryStage().setScene(SceneManager.villageScene);
+				Main.changeScene(SceneManager.villageScene);
 				VillageEntityLogic.exitShop();
 			}
 		});
