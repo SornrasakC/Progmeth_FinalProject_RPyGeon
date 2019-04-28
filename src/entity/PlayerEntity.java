@@ -29,7 +29,7 @@ public class PlayerEntity extends Entity {
 			public void run() {
 				while(true){
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(700);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -65,9 +65,11 @@ public class PlayerEntity extends Entity {
 			break;
 		case 2:
 			if(frame == 1) {
-				this.sprite = RenderableHolder.playerSpriteSouth1;
+//				this.sprite = RenderableHolder.playerSpriteSouth1;
+				this.sprite = RenderableHolder.emilia1;
 			}else {
-				this.sprite = RenderableHolder.playerSpriteSouth2;
+//				this.sprite = RenderableHolder.playerSpriteSouth2;
+				this.sprite = RenderableHolder.emilia2;
 			}
 			break;
 		case 3:

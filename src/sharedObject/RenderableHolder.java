@@ -23,6 +23,8 @@ public class RenderableHolder {
 	public static Image playerSpriteWest2; 
 	public static Image playerSpriteSouth2;
 	public static Image genericVendor;
+	public static Image emilia1;
+	public static Image emilia2;
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -54,6 +56,10 @@ public class RenderableHolder {
 		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
 		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
+		emilia1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
+		emilia2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+		
+		
 	}
 
 	public void add(IRenderable entity) {
