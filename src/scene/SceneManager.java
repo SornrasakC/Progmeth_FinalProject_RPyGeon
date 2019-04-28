@@ -5,15 +5,18 @@ import javafx.scene.layout.Pane;
 
 public class SceneManager {
 	
+	private static final int WIDTH = 1280;
+	private static final int HEIGHT = 720;
+	
 	public static Village villagePane = new Village();
 	
-	public static Scene villageScene = new Scene(villagePane);
-	public static Scene creditScene = new Scene(new Credit());
-	public static Scene mainScreenScene = new Scene(new MainMenu());
-	public static Scene startNamingScene = new Scene(new StartNaming());
-	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue());
-	public static Scene prologueScene = new Scene(new Prologue());
-	public static Scene itemshopScene = new Scene(new ItemShop());
+	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT);
+	public static Scene creditScene = new Scene(new Credit(), WIDTH, HEIGHT);
+	public static Scene mainScreenScene = new Scene(new MainMenu(), WIDTH, HEIGHT);
+	public static Scene startNamingScene = new Scene(new StartNaming(), WIDTH, HEIGHT);
+	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT);
+	public static Scene prologueScene = new Scene(new Prologue(), WIDTH, HEIGHT);
+	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT);
 	
 	public SceneManager() {
 		

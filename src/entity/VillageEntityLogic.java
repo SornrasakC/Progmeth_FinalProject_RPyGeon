@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import input.InputUtility;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import main.Main;
 import scene.SceneManager;
 import sharedObject.RenderableHolder;
 
@@ -14,12 +16,12 @@ public class VillageEntityLogic {
 	
 	private List<Entity> gameObjectContainer;
 	
-	private PlayerEntity player;
-	private ShopEntity shop1;
-	private ShopEntity shop2;
-	private ShopEntity shop3;
+	private static PlayerEntity player;
+	private static ShopEntity shop1;
+	private static ShopEntity shop2;
+	private static ShopEntity shop3;
 	
-	private boolean isInShop = false;
+	private static boolean isInShop = false;
 	
 	public VillageEntityLogic(){
 		this.gameObjectContainer = new ArrayList<Entity>();
@@ -42,19 +44,36 @@ public class VillageEntityLogic {
 	public void logicUpdate(){
 		player.update();
 		if(!isInShop && player.collideWith(shop1)) {
-			isInShop = true;
-			player.freeze();
-			System.out.println("Collision detected");
-			InputUtility.clearInput();
-			Stage itemShopStage = new Stage();
-			itemShopStage.setScene(SceneManager.itemshopScene);
-			itemShopStage.setOnCloseRequest((WindowEvent) -> {
-				isInShop = false;
-				player.unFreeze();
-				player.teleportTo(shop1.x + (shop1.sprite.getWidth() / 2), shop1.y + shop1.sprite.getHeight() + 70);
+			enterShop();
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					Main.getPrimaryStage().setScene(SceneManager.itemshopScene);
+				}
 			});
-			itemShopStage.show();
+//			Stage itemShopStage = new Stage();
+//			itemShopStage.setScene(SceneManager.itemshopScene);
+//			itemShopStage.setOnCloseRequest((WindowEvent) -> {
+//				isInShop = false;
+//				player.unFreeze();
+//				player.teleportTo(shop1.x + (shop1.sprite.getWidth() / 2), shop1.y + shop1.sprite.getHeight() + 70);
+//			});
+//			itemShopStage.show();
 		}
 	}
+	
+	public static void enterShop() {
+		isInShop = true;
+		player.freeze();
+		System.out.println("Collision detected");
+		InputUtility.clearInput();
+	}
+	
+	public static void exitShop() {
+		isInShop = false;
+		player.unFreeze();
+		player.teleportTo(shop1.x + (shop1.sprite.getWidth() / 2), shop1.y + shop1.sprite.getHeight() + 70);
+	}
+	
 
 }
