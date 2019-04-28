@@ -3,6 +3,7 @@ package scene;
 
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,8 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import logic.logics.Player;
 import main.Main;
@@ -49,6 +58,9 @@ public class StartNaming extends StackPane
 		textField.setFont(new Font(30));
 		textField.setPromptText("Your Name"); // ???
 		textField.setAlignment(Pos.CENTER);
+		textField.setMaxWidth(WIDTH / 3);
+		textField.setBackground(new Background(new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, null)));
+		textField.setBorder(new Border(new BorderStroke(Color.GREEN,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		textField.setOnKeyPressed(new EventHandler<KeyEvent>()
 	    {
 	        @Override

@@ -36,6 +36,7 @@ public class ConfirmPrologue extends StackPane
 		UiButton yesButton = new UiButton("YES");
 		yesButton.setFont(new Font(30));
 		yesButton.setTranslateX(-60);
+		yesButton.setTextFill(Color.DARKRED);
 		yesButton.setOnAction
 		(
 			new EventHandler<ActionEvent>()
@@ -53,6 +54,7 @@ public class ConfirmPrologue extends StackPane
 		UiButton noButton = new UiButton("NO");
 		noButton.setFont(new Font(30));
 		noButton.setTranslateX(60);
+		noButton.setTextFill(Color.GREEN);
 		noButton.setOnAction
 		(
 			new EventHandler<ActionEvent>()

@@ -2,11 +2,14 @@ package scene;
 
 import java.util.ArrayList;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class DungeonBattle extends GridPane
 {
@@ -16,15 +19,15 @@ public class DungeonBattle extends GridPane
 
 	public DungeonBattle()
 	{
-		battleCanvas = new Canvas(WIDTH,HEIGHT);
+		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		gc.setFill(Color.ALICEBLUE);
-		gc.fill();
+		gc.fillRect(0, 0, WIDTH * 4 / 5,HEIGHT * 4 / 5);
 
 		
 		ListView<String> listView = new ListView<String>();
-		listView.setPrefWidth(WIDTH/5);
+		listView.setPrefWidth(WIDTH / 5);
 		
 		UiButton attackButton = new UiButton("ATTACK");
 		UiButton spellButton = new UiButton("SPELL");
@@ -39,11 +42,16 @@ public class DungeonBattle extends GridPane
 		
 		buttonList.forEach
 		(button -> 
-			button.setPrefWidth(WIDTH/5)
+			{
+				button.setPrefSize(WIDTH / 5 - 5, HEIGHT * 9 / 10 - 5);
+				button.setFont(new Font(40));
+				GridPane.setMargin(button, new Insets(0, 0, 0, 5));
+			}
 		);
-		
-		add(battleCanvas, 0, 0, 4, 0);
-		add(listView, 1, 0, 0, 2);
+		GridPane.setMargin(escapeButton, new Insets(0, 5, 0, 5));
+//		setHgap(10);
+		add(battleCanvas, 0, 0, 4, 1);
+		add(listView, 4, 0, 1, 2);
 		add(attackButton, 0, 1);
 		add(spellButton, 1, 1);
 		add(itemButton, 2, 1);
