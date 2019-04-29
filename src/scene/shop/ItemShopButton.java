@@ -24,6 +24,9 @@ public class ItemShopButton extends Button {
 	Image image;
 	Potion thisPotion;
 	
+	public static final int HOVER_TO_APPEAR_DURATION = 250;
+	public static final int APPEAR_DURATION = 50000;
+	
 	public ItemShopButton(Potion potion) {
 		thisPotion = potion;
 		//TODO add sprites
@@ -80,10 +83,10 @@ public class ItemShopButton extends Button {
 	        Timeline objFadeTimer = (Timeline) fadeTimer.get(objBehavior);
 
 	        objTimer.getKeyFrames().clear();
-	        objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+	        objTimer.getKeyFrames().add(new KeyFrame(new Duration(HOVER_TO_APPEAR_DURATION)));
 	        
 	        objFadeTimer.getKeyFrames().clear();
-	        objFadeTimer.getKeyFrames().add(new KeyFrame(new Duration(50000)));
+	        objFadeTimer.getKeyFrames().add(new KeyFrame(new Duration(APPEAR_DURATION)));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
