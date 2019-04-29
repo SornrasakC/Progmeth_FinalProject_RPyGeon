@@ -1,7 +1,6 @@
 package scene;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 
 public class SceneManager {
 	
@@ -20,12 +19,18 @@ public class SceneManager {
 	public static Scene battleScene = new Scene(new Battle(), WIDTH, HEIGHT);
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 	
-	public SceneManager() {
+	public SceneManager() 
+	{
 		
 	}
 	
-	public static Village getVillagePane() {
+	public static Village getVillagePane() 
+	{
 		return villagePane;
+	}
+	static
+	{
+		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("Style.css").toString());
 	}
 
 }
