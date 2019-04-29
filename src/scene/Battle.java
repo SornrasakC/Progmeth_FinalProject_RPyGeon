@@ -3,26 +3,29 @@ package scene;
 import java.util.ArrayList;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import logic.base.Monster;
+import logic.logics.Dungeon;
 
-public class DungeonBattle extends GridPane
+public class Battle extends GridPane
 {
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
+	private static Monster monster;
+	private static Dungeon dungeon;
 	Canvas battleCanvas;
 
-	public DungeonBattle()
+	public Battle()
 	{
 		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
-		gc.setFill(Color.ALICEBLUE);
+		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, WIDTH * 4 / 5,HEIGHT * 4 / 5);
 
 		
@@ -58,5 +61,13 @@ public class DungeonBattle extends GridPane
 		add(escapeButton, 3, 1);
 		
 	}
-
+	public static void setMonster(Monster monster)
+	{
+		Battle.monster = monster;
+	}
+	public static void setDungeon(Dungeon dungeon)
+	{
+		Battle.dungeon = dungeon;
+	}
 }
+

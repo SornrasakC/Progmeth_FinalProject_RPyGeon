@@ -40,6 +40,21 @@ public class Dungeon
 		dungeonInit();
 	}
 	
+	public static ArrayList<Dungeon> getAvailableFloor()
+	{
+		ArrayList<Dungeon> list;
+		try
+		{
+			list = dungeonList.stream().filter(x -> x.floor <= Player.player.getConqueredFloor() + 1).collect(Collectors.toCollection(ArrayList::new));
+		}
+		catch (NullPointerException e) 
+		{	
+			list = dungeonList.stream().filter(x -> x.floor <= 1).collect(Collectors.toCollection(ArrayList::new));
+		}
+//		ArrayList<Dungeon> list = dungeonList.stream().filter(x -> x.floor <= 3).collect(Collectors.toCollection(ArrayList::new));
+
+		return list;
+	}
 	@SuppressWarnings("unchecked")
 	public static void dungeonInit()
 	{

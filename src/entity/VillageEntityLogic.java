@@ -68,7 +68,7 @@ public class VillageEntityLogic
 				@Override
 				public void run()
 				{
-					Main.changeScene(SceneManager.dungeonBattleScene);
+					Main.changeScene(SceneManager.dungeonChooseFloorScene);
 				}
 			});
 		}
