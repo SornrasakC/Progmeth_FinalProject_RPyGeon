@@ -1,0 +1,10 @@
+.myButton {
+	-fx-background-color: slateblue; -fx-text-fill: white;
+}
+.myButton:hover {
+	-fx-background-color: white; -fx-text-fill: white;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
