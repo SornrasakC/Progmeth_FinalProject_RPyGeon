@@ -4,7 +4,7 @@ import java.util.Random;
 
 import entity.Entity;
 import javafx.scene.image.Image;
-import sharedObject.IRenderable;
+import logic.logics.Rand;
 
 public abstract class Character extends Entity
 {
@@ -42,31 +42,35 @@ public abstract class Character extends Entity
 	protected int modMagDef = 0;
 	protected int modMaxHp = 0;
 	protected int modMaxMp = 0;
-	public void receiveDamage(int damage, StatType atkType)
+	public int receiveDamage(int damage, StatType atkType)
 	{
+		int modDamage = 0;
 		if(atkType.equals(StatType.PHYATK))
 		{
-			damage = (damage < getPhyDef()) ? 0 : damage - getPhyDef();
+			modDamage = (damage < getPhyDef()) ? 0 : damage - getPhyDef();
 		}
 		else if (atkType.equals(StatType.MAGATK))
 		{
-			damage = (damage < getMagDef()) ? 0 : damage - getMagDef();
+			modDamage = (damage < getMagDef()) ? 0 : damage - getMagDef();
 		}
 		else
 		{
 			new CustomException("Fail Receive Damage").printStackTrace();
 		}
-		this.currentHp = (this.currentHp < damage) ? 0 : this.currentHp - damage;
+		this.currentHp = (this.currentHp < modDamage) ? 0 : this.currentHp - modDamage;
+		return damage;
 	}
-	public void receiveHeal(int heal)
+	public int receiveHeal(int heal)
 	{
 		currentHp += heal;
 		currentHp = (currentHp < 0) ? 0 : (currentHp > baseMaxHp) ? baseMaxHp : currentHp;
+		return heal;
 	}
-	public void receiveMana(int mana)
+	public int receiveMana(int mana)
 	{
 		currentMp += mana;
 		currentMp = (currentMp < 0) ? 0 : (currentMp > baseMaxMp) ? baseMaxMp : currentMp;
+		return mana;
 	}
 	public void fullHeal()
 	{
@@ -107,8 +111,7 @@ public abstract class Character extends Entity
 	}
 	public int randPhyAtk()
 	{
-		Random rand = new Random();
-		return rand.nextInt(this.baseMaxPhyAtk - this.baseMinPhyAtk) + this.baseMinPhyAtk;
+		return Rand.rand(getMinPhyAtk(), getMaxPhyAtk());
 	}
 	public int randMagAtk()
 	{

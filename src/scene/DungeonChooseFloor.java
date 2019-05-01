@@ -5,10 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import logic.logics.Dungeon;
 import main.Main;
 
@@ -18,7 +21,10 @@ public class DungeonChooseFloor extends VBox
 //	private static final int HEIGHT = 720;
 	public DungeonChooseFloor()
 	{
-		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+//		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+		
+		setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream("chooseDungeon1.png")), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		          BackgroundSize.DEFAULT)));
 		Dungeon.getAvailableFloor().forEach
 		(dungeon ->
 			{
@@ -33,7 +39,9 @@ public class DungeonChooseFloor extends VBox
 						public void handle(ActionEvent event)
 						{
 							Battle.setMonster(dungeon.generateMonster());
+							Battle.setDungeon(dungeon);
 							Main.changeScene(SceneManager.battleScene);
+							
 						}
 					}
 				);

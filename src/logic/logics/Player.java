@@ -13,6 +13,7 @@ import item.Weapon;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.base.Character;
+import logic.base.CustomException;
 import logic.base.Magic;
 import logic.base.Potion;
 import magic.HealingMagic;
@@ -192,8 +193,6 @@ public class Player extends Character
 				baseMaxMp += 10;
 				currentMp += 10;
 				break;
-			default:
-				// throw;
 		}
 	}
 
@@ -232,10 +231,6 @@ public class Player extends Character
 				shoesArmourInventory.add(armour);
 			}
 		}
-		else
-		{
-//			throw();
-		}
 	}
 
 	public void equipItem(Object item)
@@ -245,29 +240,45 @@ public class Player extends Character
 		{
 			Weapon weapon = (Weapon) item;
 			gainItem(equipedWeapon);
+			modMinPhyAtk -= equipedWeapon.getBaseMinPhyAtk();
+			modMaxPhyAtk -= equipedWeapon.getBaseMaxPhyAtk();
+			modMinMagAtk -= equipedWeapon.getBaseMinMagAtk();
+			modMinMagAtk -= equipedWeapon.getBaseMinMagAtk();
 			equipedWeapon = weapon;
+			modMinPhyAtk += equipedWeapon.getBaseMinPhyAtk();
+			modMaxPhyAtk += equipedWeapon.getBaseMaxPhyAtk();
+			modMinMagAtk += equipedWeapon.getBaseMinMagAtk();
+			modMinMagAtk += equipedWeapon.getBaseMinMagAtk();
 		}
 		else if (item instanceof ChestArmour)
 		{
 			ChestArmour armour = (ChestArmour) item;
 			gainItem(equipedChestArmour);
+			modPhyDef -= equipedChestArmour.getBasePhyDef();
+			modMagDef -= equipedChestArmour.getBaseMagDef();
 			equipedChestArmour = armour;
+			modPhyDef += equipedChestArmour.getBasePhyDef();
+			modMagDef += equipedChestArmour.getBaseMagDef();
 		}
 		else if (item instanceof PantsArmour)
 		{
 			PantsArmour armour = (PantsArmour) item;
 			gainItem(equipedPantsArmour);
+			modPhyDef -= equipedPantsArmour.getBasePhyDef();
+			modMagDef -= equipedPantsArmour.getBaseMagDef();
 			equipedPantsArmour = armour;
+			modPhyDef += equipedPantsArmour.getBasePhyDef();
+			modMagDef += equipedPantsArmour.getBaseMagDef();
 		}
 		else if (item instanceof ShoesArmour)
 		{
 			ShoesArmour armour = (ShoesArmour) item;
 			gainItem(equipedShoesArmour);
+			modPhyDef -= equipedShoesArmour.getBasePhyDef();
+			modMagDef -= equipedShoesArmour.getBaseMagDef();
 			equipedShoesArmour = armour;
-		}
-		else
-		{
-//			throw();
+			modPhyDef += equipedShoesArmour.getBasePhyDef();
+			modMagDef += equipedShoesArmour.getBaseMagDef();
 		}
 	}
 
@@ -281,7 +292,6 @@ public class Player extends Character
 		}
 		else
 		{
-//			throw();
 			return;
 		}
 		if (potionInventory.containsKey(potion))
@@ -304,7 +314,7 @@ public class Player extends Character
 		}
 		else
 		{
-//			throw(); (or no)
+			new CustomException("UsePotion didn't receive potion").printStackTrace();
 			return false;
 		}
 		if (potionInventory.containsKey(potion))

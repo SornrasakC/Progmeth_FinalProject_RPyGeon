@@ -25,8 +25,9 @@ import shops.ItemShop;
 
 public class Main extends Application
 {
-	
+
 	public static Stage primaryStage;
+
 	public static <T> ArrayList<T> readJson(String filename, TypeToken<ArrayList<T>> typeToken) throws Exception
 	{
 		Scanner sc = new Scanner(ClassLoader.getSystemResourceAsStream(filename));
@@ -56,17 +57,20 @@ public class Main extends Application
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws Exception
+	{
 		this.primaryStage = primaryStage;
 		primaryStage.setTitle("RJyGeon");
 		primaryStage.setScene(SceneManager.mainScreenScene);
 		primaryStage.show();
-		
+
 		VillageEntityLogic villageLogic = new VillageEntityLogic();
-		
-		AnimationTimer animation = new AnimationTimer() {
-			public void handle(long now) {
-				//village
+
+		AnimationTimer animation = new AnimationTimer()
+		{
+			public void handle(long now)
+			{
+				// village
 				SceneManager.getVillagePane().drawBackground();
 				villageLogic.logicUpdate();
 				SceneManager.getVillagePane().paintCanvas();
@@ -75,9 +79,19 @@ public class Main extends Application
 			}
 		};
 		animation.start();
-		
+
+		AnimationTimer battleAnimation = new AnimationTimer()
+		{
+			@Override
+			public void handle(long now)
+			{
+				
+			}
+		};
+		battleAnimation.start();
+
 	}
-	
+
 	public static void changeScene(Scene scene)
 	{
 		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());
@@ -89,13 +103,13 @@ public class Main extends Application
 		ft2.setToValue(1);
 		ft2.play();
 		primaryStage.setScene(scene);
-		
+
 		primaryStage.show();
 	}
 
-	public static Stage getPrimaryStage() {
+	public static Stage getPrimaryStage()
+	{
 		return primaryStage;
 	}
-	
-	
+
 }

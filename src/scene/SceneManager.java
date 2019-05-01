@@ -30,7 +30,7 @@ public class SceneManager {
 	}
 	static
 	{
-		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("Style.css").toString());
+		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("DungeonChooseFloorStyle.css").toString());
 	}
 
 }
