@@ -1,6 +1,5 @@
 package main;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,8 +18,6 @@ import javafx.util.Duration;
 import logic.logics.Dungeon;
 import logic.logics.Player;
 import scene.SceneManager;
-import scene.Village;
-import sharedObject.RenderableHolder;
 import shops.ItemShop;
 
 public class Main extends Application

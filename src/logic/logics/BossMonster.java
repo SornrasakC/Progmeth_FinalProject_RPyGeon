@@ -1,6 +1,5 @@
 package logic.logics;
 
-import javafx.scene.canvas.GraphicsContext;
 import logic.base.CustomException;
 import logic.base.Monster;
 import logic.base.StatType;

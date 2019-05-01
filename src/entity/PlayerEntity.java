@@ -2,7 +2,6 @@ package entity;
 
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import sharedObject.RenderableHolder;
 
@@ -19,6 +18,7 @@ public class PlayerEntity extends Entity
 
 	public PlayerEntity(double x, double y, int direction)
 	{
+		super();
 		// 0 = north, 1 = east, 2 = south, 3 = west
 		this.direction = direction;
 		this.sprite = RenderableHolder.playerSpriteSouth1;
@@ -27,7 +27,7 @@ public class PlayerEntity extends Entity
 		destinateX = x;
 		destinateY = y;
 		this.z = 9;
-		this.visible = true;
+		
 
 		thread = new Thread(new Runnable()
 		{

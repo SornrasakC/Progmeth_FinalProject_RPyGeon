@@ -1,5 +1,5 @@
 package item;
-import logic.base.*;
+import logic.base.Armour;
 
 public class PantsArmour extends Armour
 {
