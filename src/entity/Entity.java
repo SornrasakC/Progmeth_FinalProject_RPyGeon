@@ -1,8 +1,10 @@
 package entity;
 
-import java.awt.Rectangle;
+
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import sharedObject.IRenderable;
 
 public abstract class Entity implements IRenderable
@@ -34,8 +36,9 @@ public abstract class Entity implements IRenderable
 	{
 //		System.out.println("shop sprite " + other.sprite.getHeight() + "," + other.sprite.getWidth());
 //		System.out.println("player sprite " + this.sprite.getHeight() + "," + this.sprite.getWidth());
-		Rectangle r1 = new Rectangle((int) this.x, (int) this.y, (int) (this.x + sprite.getWidth()), (int) (this.y + sprite.getHeight()));
-		Rectangle r2 = new Rectangle((int) other.x, (int) other.y, (int) (other.x + other.sprite.getWidth()), (int)(other.y + other.sprite.getHeight()));
-		return r1.intersects(r2);
+		Rectangle r1 = new Rectangle((int) this.x, (int) this.y, (int) (sprite.getWidth()), (int) (sprite.getHeight()));
+		Rectangle r2 = new Rectangle((int) other.x, (int) other.y, (int) (other.sprite.getWidth()), (int)(other.sprite.getHeight()));
+		Shape intersectedShape = Shape.intersect(r1, r2);
+		return intersectedShape.getBoundsInLocal().getWidth() != -1;
 	}
 }

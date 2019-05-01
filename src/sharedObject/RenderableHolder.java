@@ -83,8 +83,7 @@ public class RenderableHolder {
 		}
 	}
 
-	public void update() {
-	}
+
 
 	public List<IRenderable> getEntities() {
 		return entities;
