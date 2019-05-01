@@ -23,8 +23,14 @@ public class RenderableHolder {
 	public static Image playerSpriteWest2; 
 	public static Image playerSpriteSouth2;
 	public static Image genericVendor;
-	public static Image emilia1;
-	public static Image emilia2;
+	public static Image emiliaE1;
+	public static Image emiliaE2;
+	public static Image emiliaW1;
+	public static Image emiliaW2;
+	
+	//itemshop
+	public static Image redCookie;
+	public static Image blueCookie;
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -56,8 +62,14 @@ public class RenderableHolder {
 		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
 		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
-		emilia1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
-		emilia2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
+		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
+		emiliaW2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+		
+		//items
+		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"));
+		blueCookie = new Image(ClassLoader.getSystemResourceAsStream("bluecookie.png"));
 		
 		
 	}

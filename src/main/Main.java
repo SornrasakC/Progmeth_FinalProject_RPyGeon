@@ -87,6 +87,8 @@ public class Main extends Application
 		};
 		battleAnimation.start();
 
+		
+		
 	}
 
 	public static void changeScene(Scene scene)

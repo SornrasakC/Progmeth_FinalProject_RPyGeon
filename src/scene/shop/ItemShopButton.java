@@ -2,6 +2,9 @@ package scene.shop;
 
 import java.lang.reflect.Field;
 
+import javax.swing.ToolTipManager;
+
+import item.Weapon;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
@@ -20,6 +23,7 @@ import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import logic.base.Potion;
 import logic.logics.Player;
+import sharedObject.RenderableHolder;
 import shops.ItemShop;
 
 public class ItemShopButton extends Button {
@@ -54,8 +58,14 @@ public class ItemShopButton extends Button {
 		thisPotion = potion;
 		//TODO add sprites
 //		path = potion.getName() + ".png";
-		path =  "WIP.png";
-		image = new Image(ClassLoader.getSystemResourceAsStream(path));
+		switch(potion.getName()) {
+		case("Red Cookies"): image = RenderableHolder.redCookie; break;
+		case("Blue Cookies"): image = RenderableHolder.blueCookie; break;
+		default:path =  "WIP.png";
+				image = new Image(ClassLoader.getSystemResourceAsStream(path));
+				break;
+		}
+		
 		
 		this.setGraphic(new ImageView(image));
 		this.setPadding(new Insets(4));
@@ -66,6 +76,11 @@ public class ItemShopButton extends Button {
 		changeBackgroundOnHover(this);
 		
 //		this.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+		
+	}
+	
+	public ItemShopButton(Weapon weapon) {
+		
 		
 	}
 	
