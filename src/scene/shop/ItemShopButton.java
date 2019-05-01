@@ -2,6 +2,8 @@ package scene.shop;
 
 import java.lang.reflect.Field;
 
+import javax.swing.ToolTipManager;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
@@ -13,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.TooltipBuilder;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
@@ -40,8 +43,15 @@ public class ItemShopButton extends Button {
 											    "-fx-padding: 3 30 3 30;" +
 											    "-fx-text-fill: black;" +
 											    "-fx-font-size: 14px;";
-	private static final String HOVERED_STYLE = "-fx-background-color: black; -fx-text-fill: white;";
-	
+	private static final String HOVERED_STYLE = "-fx-background-color:" +
+										        "#3c7fb1," +
+										        "linear-gradient(#fafdfe, #fcf2e8)," +
+										        "linear-gradient(#fdf2e8 0%, #fcebd9 49%, #fddebf 50%, #f5cfa8 100%);" +
+											    "-fx-background-insets: 0,1,2;" +
+											    "-fx-background-radius: 3,2,1;" +
+											    "-fx-padding: 3 30 3 30;" +
+											    "-fx-text-fill: black;" +
+											    "-fx-font-size: 14px;";
 	
 	public ItemShopButton(Potion potion) {
 		thisPotion = potion;
@@ -81,6 +91,7 @@ public class ItemShopButton extends Button {
 
 	        Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
 	        Field fadeTimer = objBehavior.getClass().getDeclaredField("hideTimer");
+
 	        fieldTimer.setAccessible(true);
 	        fadeTimer.setAccessible(true);
 	        
@@ -120,12 +131,12 @@ public class ItemShopButton extends Button {
         (
     		"<h3>" + thisPotion.getName() + "</h3>" + thisPotion.getDescription()
 		);
-		
+        
 		Tooltip tooltip = new Tooltip();
 		tooltip.setPrefSize(700, 120);
+		tooltip.setStyle("-fx-background-color:white;");
 		tooltip.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 		tooltip.setGraphic(webView);
-		
 		
 		setTooltipTiming(tooltip);
 		this.setTooltip(tooltip);

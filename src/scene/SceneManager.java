@@ -21,7 +21,6 @@ public class SceneManager {
 	
 	public SceneManager() 
 	{
-		
 	}
 	
 	public static Village getVillagePane() 
