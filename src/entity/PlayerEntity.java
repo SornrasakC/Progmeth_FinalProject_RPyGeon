@@ -90,22 +90,24 @@ public class PlayerEntity extends Entity
 				if (frame == 1)
 				{
 //				this.sprite = RenderableHolder.playerSpriteSouth1;
-					this.sprite = RenderableHolder.emilia1;
+					this.sprite = RenderableHolder.emiliaE1;
 				}
 				else
 				{
 //				this.sprite = RenderableHolder.playerSpriteSouth2;
-					this.sprite = RenderableHolder.emilia2;
+					this.sprite = RenderableHolder.emiliaE2;
 				}
 				break;
 			case 3:
 				if (frame == 1)
 				{
-					this.sprite = RenderableHolder.playerSpriteWest1;
+//					this.sprite = RenderableHolder.playerSpriteWest1;
+					this.sprite = RenderableHolder.emiliaW1;
 				}
 				else
 				{
-					this.sprite = RenderableHolder.playerSpriteWest2;
+//					this.sprite = RenderableHolder.playerSpriteWest2;
+					this.sprite = RenderableHolder.emiliaW2;
 				}
 				break;
 		}

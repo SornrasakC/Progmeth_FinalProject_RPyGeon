@@ -76,6 +76,8 @@ public class Main extends Application
 		};
 		animation.start();
 		
+		
+		
 	}
 	
 	public static void changeScene(Scene scene)
