@@ -9,6 +9,7 @@ import item.ChestArmour;
 import item.PantsArmour;
 import item.ShoesArmour;
 import item.Weapon;
+import javafx.scene.image.Image;
 import logic.base.Droppable;
 import logic.base.Monster;
 
@@ -107,6 +108,14 @@ public class Dungeon
 		{
 			e.printStackTrace();
 		}
+		monsterList.forEach
+		(
+			monster ->
+			{
+				monster.setSprite(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 1 + ".png")));
+				monster.setSpriteAnimation(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 2 + ".png")));
+			}
+		);
 	}
 
 	public Monster generateMonster()

@@ -50,13 +50,17 @@ public class Player extends Character
 	private ArrayList<Magic> magicInventory = new ArrayList<Magic>();
 	private ArrayList<Magic> magicToLearn = new ArrayList<Magic>();
 
+	static
+	{
+		player = new Player();
+	}
 	@SuppressWarnings("unchecked")
-	public Player(String name)
+	public Player()
 	{
 		super();
 		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("player1.png"));
 		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("player2.png"));
-		this.name = name;
+		this.name = "name";
 		this.level = 1;
 
 		this.baseMaxPhyAtk = 2;
@@ -538,5 +542,6 @@ public class Player extends Character
 		gc.drawImage(sprite, x, y);
 		
 	}
+	
 
 }

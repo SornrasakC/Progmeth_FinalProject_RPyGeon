@@ -40,6 +40,8 @@ public class DungeonChooseFloor extends VBox
 						{
 							Battle.setMonster(dungeon.generateMonster());
 							Battle.setDungeon(dungeon);
+							Main.animation.stop();
+							Main.battleAnimation.start();
 							Main.changeScene(SceneManager.battleScene);
 							
 						}

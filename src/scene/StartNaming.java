@@ -69,7 +69,7 @@ public class StartNaming extends StackPane
 	            	String name = textField.getText();
 	            	if(name.length() > 0)
 	            	{
-	            		Player.player = new Player(name);
+	            		Player.player.setName(name);
 	            		Main.changeScene(SceneManager.confirmPrologueScene);
 	            	}
 	            }

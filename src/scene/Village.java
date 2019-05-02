@@ -42,12 +42,13 @@ public class Village extends Pane
 		
 	}
 
-	public void paintCanvas() {
+	public void paintCanvas() 
+	{
 		GraphicsContext gc = this.canvas.getGraphicsContext2D();
-//		gc.setFill(Color.AZURE);
-		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
-			// System.out.println(entity.getZ());
-			if (entity.isVisible()) {
+		for (IRenderable entity : RenderableHolder.getInstance().getEntities())
+		{
+			if (entity.isVisible())
+			{
 				entity.draw(gc);
 			}
 		}

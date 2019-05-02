@@ -41,4 +41,15 @@ public abstract class Entity implements IRenderable
 		Shape intersectedShape = Shape.intersect(r1, r2);
 		return intersectedShape.getBoundsInLocal().getWidth() != -1;
 	}
+
+	public Image getSprite()
+	{
+		return sprite;
+	}
+
+	public void setSprite(Image sprite)
+	{
+		this.sprite = sprite;
+	}
+	
 }

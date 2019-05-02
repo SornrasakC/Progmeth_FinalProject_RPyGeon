@@ -1,13 +1,15 @@
 package entity;
 
 import input.InputUtility;
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import sharedObject.RenderableHolder;
 
 public class PlayerEntity extends Entity
 {
-
+	private static final int WIDTH = 1280;
+	private static final int HEIGHT = 720;
 	private int direction;
 	private static final int MOVE_SPEED = 5;
 	private boolean isFreeze = false;
@@ -45,16 +47,7 @@ public class PlayerEntity extends Entity
 					{
 						e.printStackTrace();
 					}
-
-					if (frame == 1)
-					{
-						frame = 2;
-					}
-					else
-					{
-						frame = 1;
-					}
-
+					Platform.runLater(() -> frame = 3 - frame);
 				}
 			}
 		});
@@ -153,6 +146,7 @@ public class PlayerEntity extends Entity
 			{
 				moveToMouse();
 			}
+			boundBlock();
 		}
 	}
 	
@@ -228,7 +222,25 @@ public class PlayerEntity extends Entity
 			System.out.println("move right");
 		}
 	}
-
+	private void boundBlock()
+	{
+		if(y < 0)
+		{
+			y = 0;
+		}
+		if(x < 0)
+		{
+			x = 0;
+		}
+		if(x + sprite.getWidth() > WIDTH)
+		{
+			x = WIDTH - sprite.getWidth();
+		}
+		if(y + sprite.getHeight() > HEIGHT)
+		{
+			y = HEIGHT - sprite.getHeight();
+		}
+	}
 	public void freeze()
 	{
 		this.isFreeze = true;

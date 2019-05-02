@@ -6,9 +6,9 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import entity.BattleEntityLogic;
 import entity.VillageEntityLogic;
 import input.InputUtility;
-import item.Weapon;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -16,14 +16,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.logics.Dungeon;
-import logic.logics.Player;
 import scene.SceneManager;
-import shops.ItemShop;
 
 public class Main extends Application
 {
 
 	public static Stage primaryStage;
+	public static AnimationTimer animation, battleAnimation;
 
 	public static <T> ArrayList<T> readJson(String filename, TypeToken<ArrayList<T>> typeToken) throws Exception
 	{
@@ -38,10 +37,7 @@ public class Main extends Application
 	{
 		try
 		{
-			ItemShop shop = new ItemShop();
-			Player m = new Player("name");
-			Weapon wea1 = new Weapon("Wooden1 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
-			Weapon wea2 = new Weapon("Wooden2 Stick", "Normal woody stick", 1, 1, 0, 0, 1);
+//			ItemShop shop = new ItemShop();
 //			Dungeon.getMonsterList().forEach(x -> System.out.println(x));
 			System.out.println(Dungeon.getMonsterList().size());
 			launch(args);
@@ -56,14 +52,15 @@ public class Main extends Application
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
-		this.primaryStage = primaryStage;
+		Main.primaryStage = primaryStage;
 		primaryStage.setTitle("RJyGeon");
 		primaryStage.setScene(SceneManager.mainScreenScene);
 		primaryStage.show();
 
 		VillageEntityLogic villageLogic = new VillageEntityLogic();
+		BattleEntityLogic battleLogic = new BattleEntityLogic();
 
-		AnimationTimer animation = new AnimationTimer()
+		animation = new AnimationTimer()
 		{
 			public void handle(long now)
 			{
@@ -77,18 +74,20 @@ public class Main extends Application
 		};
 		animation.start();
 
-		AnimationTimer battleAnimation = new AnimationTimer()
+		battleAnimation = new AnimationTimer()
 		{
 			@Override
 			public void handle(long now)
 			{
-				
+				SceneManager.getBattlePane().drawBackground();
+				battleLogic.logicUpdate();
+				SceneManager.getBattlePane().paintCanvas();
+				InputUtility.updateInputState();
+				SceneManager.getBattlePane().getBattleCanvas().requestFocus();
 			}
 		};
-		battleAnimation.start();
+		
 
-		
-		
 	}
 
 	public static void changeScene(Scene scene)

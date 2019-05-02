@@ -42,6 +42,7 @@ public abstract class Character extends Entity
 	protected int modMagDef = 0;
 	protected int modMaxHp = 0;
 	protected int modMaxMp = 0;
+	
 	public int receiveDamage(int damage, StatType atkType)
 	{
 		int modDamage = 0;
@@ -298,5 +299,12 @@ public abstract class Character extends Entity
 	{
 		this.modMaxMp = modMaxMp;
 	}
-	
+	public Image getSpriteAnimation()
+	{
+		return spriteAnimation;
+	}
+	public void setSpriteAnimation(Image spriteAnimation)
+	{
+		this.spriteAnimation = spriteAnimation;
+	}
 }

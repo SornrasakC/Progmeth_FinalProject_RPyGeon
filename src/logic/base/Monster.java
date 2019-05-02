@@ -12,9 +12,9 @@ public abstract class Monster extends Character
 	public Monster(String name, int level, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk, int baseMaxMagAtk,
 			int basePhyDef, int baseMagDef, int baseMaxHp, int baseMaxMp)
 	{
-
-		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("Monster/" + this.name + "1.png"));
-		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("Monster/" + this.name + "2.png"));
+		System.out.println("Loaded monster : " + ClassLoader.getSystemResourceAsStream(this.name + "1.png"));
+		this.sprite = new Image(ClassLoader.getSystemResourceAsStream(this.name + "1.png"));
+		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream(this.name + "2.png"));
 		this.name = name;
 		this.level = level;
 
