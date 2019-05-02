@@ -33,6 +33,11 @@ public class SceneManager {
 	{
 		return battlePane;
 	}
+	public static void reDungeonChooseFloor()
+	{
+		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
+		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("DungeonChooseFloorStyle.css").toString());
+	}
 
 	static
 	{

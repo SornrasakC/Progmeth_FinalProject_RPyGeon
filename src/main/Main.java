@@ -92,6 +92,11 @@ public class Main extends Application
 
 	public static void changeScene(Scene scene)
 	{
+		if(scene.equals(SceneManager.dungeonChooseFloorScene))
+		{
+			SceneManager.reDungeonChooseFloor();
+			scene = SceneManager.dungeonChooseFloorScene;
+		}
 		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());
 		ft.setFromValue(1);
 		ft.setToValue(0);

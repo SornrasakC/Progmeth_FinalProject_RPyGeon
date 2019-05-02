@@ -37,7 +37,7 @@ public class BattleRenderableHolder
 	
 	public void add(IRenderable entity)
 	{
-		System.out.println("added entity");
+		System.out.println("added battle entity");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
 //		for(IRenderable x: entities)

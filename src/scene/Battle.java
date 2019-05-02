@@ -172,7 +172,7 @@ public class Battle extends GridPane
 	}
 	public void paintCanvas() 
 	{
-		GraphicsContext gc = this.battleCanvas.getGraphicsContext2D();
+		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		for (IRenderable entity : BattleRenderableHolder.getInstance().getEntities())
 		{
 			if (entity.isVisible())
