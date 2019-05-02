@@ -2,8 +2,7 @@ package scene;
 
 
 
-import java.io.*;
-import sun.audio.*;
+import java.io.File;
 
 import input.InputUtility;
 import javafx.scene.canvas.Canvas;
@@ -14,9 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
-import java.net.MalformedURLException;
-
 import javafx.scene.paint.Color;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
@@ -24,7 +20,7 @@ import sharedObject.RenderableHolder;
 public class Village extends Pane
 {
 	private Canvas canvas;
-	
+	private MediaPlayer mediaPlayer;
 	public Village()
 	{
 		canvas = new Canvas(1280, 720);
@@ -33,7 +29,7 @@ public class Village extends Pane
 		new File(ClassLoader.getSystemResource("FindTheWay.mp3").toString());
 
 		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
-		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+		mediaPlayer = new MediaPlayer(backgroundMusic);
 		mediaPlayer.play();
 		
 		addListerner();
