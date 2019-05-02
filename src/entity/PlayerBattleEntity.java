@@ -18,6 +18,8 @@ public class PlayerBattleEntity extends Entity
 		this.y = y;
 		this.z = 9;
 		this.sprite = RenderableHolder.emiliaE1;
+		
+		
 		idleThread = new Thread(new Runnable()
 		{
 
@@ -48,9 +50,11 @@ public class PlayerBattleEntity extends Entity
 		{
 			case(1):
 				sprite = RenderableHolder.emiliaE1;
+				break;
 				
 			case(2):
 				sprite = RenderableHolder.emiliaE2;
+				break;
 		}
 		gc.drawImage(sprite, this.x, this.y);
 	}
