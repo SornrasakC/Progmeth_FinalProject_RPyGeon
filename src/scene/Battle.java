@@ -3,11 +3,14 @@ package scene;
 import java.util.ArrayList;
 
 import entity.VillageEntityLogic;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -21,6 +24,8 @@ import logic.logics.Dungeon;
 import logic.logics.Player;
 import logic.logics.Rand;
 import main.Main;
+import sharedObject.BattleRenderableHolder;
+import sharedObject.IRenderable;
 
 public class Battle extends GridPane
 {
@@ -28,26 +33,33 @@ public class Battle extends GridPane
 	private static final int HEIGHT = 720;
 	private static Monster monster;
 	private static Dungeon dungeon;
+	private UiButton attackButton, spellButton, itemButton, escapeButton;
 	private boolean playerTurn = true;
-	Canvas battleCanvas;
+	private static Canvas battleCanvas;
+	private static ObservableList<Label> logDataList;
+	private static ListView<Label> listView;
 
 	public Battle()
 	{
-		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+//		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		
-		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
+		Battle.battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
 		
-		
-		ListView<String> listView = new ListView<String>();
+		logDataList = FXCollections.observableArrayList();
+				
+		listView = new ListView<Label>(logDataList);
 		listView.setPrefWidth(WIDTH / 5);
 		
-		UiButton attackButton = new UiButton("ATTACK");
-		UiButton spellButton = new UiButton("SPELL");
-		UiButton itemButton = new UiButton("ITEM");
-		UiButton escapeButton = new UiButton("ESCAPE");
+		Label label1 = new Label("asdasd");
+		logDataList.add(label1);
+		
+		attackButton = new UiButton("ATTACK");
+		spellButton = new UiButton("SPELL");
+		itemButton = new UiButton("ITEM");
+		escapeButton = new UiButton("ESCAPE");
 		
 		ArrayList<UiButton> buttonList = new ArrayList<UiButton>();
 		buttonList.add(attackButton);
@@ -64,7 +76,7 @@ public class Battle extends GridPane
 			}
 		);
 		GridPane.setMargin(escapeButton, new Insets(5, 5, 5, 5));
-//		setHgap(10);
+
 		add(battleCanvas, 0, 0, 4, 1);
 		add(listView, 4, 0, 1, 2);
 		add(attackButton, 0, 1);
@@ -79,14 +91,7 @@ public class Battle extends GridPane
 		setEscape(escapeButton);
 		
 	}
-	public static void setMonster(Monster monster)
-	{
-		Battle.monster = monster;
-	}
-	public static void setDungeon(Dungeon dungeon)
-	{
-		Battle.dungeon = dungeon;
-	}
+	
 	private void setAttack(UiButton attackButton)
 	{
 		attackButton.setOnAction
@@ -150,6 +155,8 @@ public class Battle extends GridPane
 					if(Rand.rand(100) < 35)
 					{
 						backToVillage();
+						Main.animation.start();
+						Main.battleAnimation.stop();
 					}
 					//TODO escape fail!
 				}
@@ -163,5 +170,65 @@ public class Battle extends GridPane
 		VillageEntityLogic.exitDungeon();
 		Main.changeScene(SceneManager.villageScene);
 	}
+	public void paintCanvas() 
+	{
+		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
+		for (IRenderable entity : BattleRenderableHolder.getInstance().getEntities())
+		{
+			if (entity.isVisible())
+			{
+				entity.draw(gc);
+			}
+		}
+	}
+	public void drawBackground()
+	{
+		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
+		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
+
+
+
+	}
+	public static void report(Label label)
+	{
+		Battle.logDataList.add(label);
+	}
+	public UiButton getAttackButton()
+	{
+		return attackButton;
+	}
+	public UiButton getSpellButton()
+	{
+		return spellButton;
+	}
+	public UiButton getItemButton()
+	{
+		return itemButton;
+	}
+	public UiButton getEscapeButton()
+	{
+		return escapeButton;
+	}
+	public Canvas getBattleCanvas()
+	{
+		return battleCanvas;
+	}
+	public static Monster getMonster()
+	{
+		return monster;
+	}
+	public static Dungeon getDungeon()
+	{
+		return dungeon;
+	}
+	public static void setMonster(Monster monster)
+	{
+		Battle.monster = monster;
+	}
+	public static void setDungeon(Dungeon dungeon)
+	{
+		Battle.dungeon = dungeon;
+	}
+	
 }
 

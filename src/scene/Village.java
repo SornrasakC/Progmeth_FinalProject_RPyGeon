@@ -6,11 +6,8 @@ import java.io.*;
 import sun.audio.*;
 
 import input.InputUtility;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -57,12 +54,13 @@ public class Village extends Pane
 		
 	}
 
-	public void paintCanvas() {
+	public void paintCanvas() 
+	{
 		GraphicsContext gc = this.canvas.getGraphicsContext2D();
-//		gc.setFill(Color.AZURE);
-		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
-			// System.out.println(entity.getZ());
-			if (entity.isVisible()) {
+		for (IRenderable entity : RenderableHolder.getInstance().getEntities())
+		{
+			if (entity.isVisible())
+			{
 				entity.draw(gc);
 			}
 		}

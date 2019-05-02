@@ -8,6 +8,7 @@ public class SceneManager {
 	private static final int HEIGHT = 720;
 	
 	public static Village villagePane = new Village();
+	public static Battle battlePane = new Battle();
 	
 	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT);
 	public static Scene creditScene = new Scene(new Credit(), WIDTH, HEIGHT);
@@ -16,7 +17,7 @@ public class SceneManager {
 	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT);
 	public static Scene prologueScene = new Scene(new Prologue(), WIDTH, HEIGHT);
 	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT);
-	public static Scene battleScene = new Scene(new Battle(), WIDTH, HEIGHT);
+	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT);
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 	
 	public SceneManager() 
@@ -27,6 +28,17 @@ public class SceneManager {
 	{
 		return villagePane;
 	}
+	
+	public static Battle getBattlePane()
+	{
+		return battlePane;
+	}
+	public static void reDungeonChooseFloor()
+	{
+		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
+		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("DungeonChooseFloorStyle.css").toString());
+	}
+
 	static
 	{
 		dungeonChooseFloorScene.getStylesheets().add(ClassLoader.getSystemResource("DungeonChooseFloorStyle.css").toString());

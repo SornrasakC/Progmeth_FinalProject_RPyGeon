@@ -12,7 +12,11 @@
 	<classpathentry kind="src" path="res/Backgrounds"/>
 	<classpathentry kind="src" path="res/Items"/>
 	<classpathentry kind="src" path="res/Monsters"/>
+<<<<<<< HEAD
 	<classpathentry excluding="Monster/|Items/|Monsters/|Backgrounds/|SoundEffects/|Musics/|Styles/" kind="src" path="res"/>
+=======
+	<classpathentry excluding="Monster/|Items/|Monsters/|Backgrounds/|Styles/" kind="src" path="res"/>
+>>>>>>> branch 'master' of https://github.com/SornrasakC/Progmeth_FinalProject_RPyGeon
 	<classpathentry kind="lib" path="json-20180813.jar"/>
 	<classpathentry kind="lib" path="gson-2.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
