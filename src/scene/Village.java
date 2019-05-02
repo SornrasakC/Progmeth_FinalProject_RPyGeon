@@ -14,6 +14,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+import java.net.MalformedURLException;
+
 import javafx.scene.paint.Color;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
@@ -27,10 +30,11 @@ public class Village extends Pane
 		canvas = new Canvas(1280, 720);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		this.getChildren().add(canvas);
-		
-//		Media backgroundMusic = new Media(new File("RES/mUSICFindTheWay.mp3").toURI().toString());
-//		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
-//		mediaPlayer.play();
+		new File(ClassLoader.getSystemResource("FindTheWay.mp3").toString());
+
+		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
+		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+		mediaPlayer.play();
 		
 		addListerner();
 		drawBackground();

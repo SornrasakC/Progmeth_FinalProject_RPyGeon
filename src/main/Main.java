@@ -1,5 +1,7 @@
 package main;
 
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,6 +41,8 @@ public class Main extends Application
 		{
 //			ItemShop shop = new ItemShop();
 //			Dungeon.getMonsterList().forEach(x -> System.out.println(x));
+			System.out.println(new File(ClassLoader.getSystemResource("FindTheWay.mp3").toString()).equals(null));
+			System.out.println(ClassLoader.getSystemResource("FindTheWay.mp3").toString());
 			System.out.println(Dungeon.getMonsterList().size());
 			launch(args);
 
