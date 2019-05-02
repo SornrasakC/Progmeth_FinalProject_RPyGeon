@@ -1,5 +1,10 @@
 package scene;
 
+
+
+import java.io.*;
+import sun.audio.*;
+
 import input.InputUtility;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +15,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
@@ -23,6 +30,11 @@ public class Village extends Pane
 		canvas = new Canvas(1280, 720);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		this.getChildren().add(canvas);
+		
+//		Media backgroundMusic = new Media(new File("RES/mUSICFindTheWay.mp3").toURI().toString());
+//		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+//		mediaPlayer.play();
+		
 		addListerner();
 		drawBackground();
 		drawDungeon(gc);

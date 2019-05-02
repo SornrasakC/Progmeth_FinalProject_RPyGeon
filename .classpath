@@ -6,11 +6,13 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res/SoundEffects"/>
+	<classpathentry kind="src" path="res/Musics"/>
 	<classpathentry kind="src" path="res/Styles"/>
 	<classpathentry kind="src" path="res/Backgrounds"/>
 	<classpathentry kind="src" path="res/Items"/>
 	<classpathentry kind="src" path="res/Monsters"/>
-	<classpathentry excluding="Monster/|Items/|Monsters/|Backgrounds/" kind="src" path="res"/>
+	<classpathentry excluding="Monster/|Items/|Monsters/|Backgrounds/|SoundEffects/|Musics/|Styles/" kind="src" path="res"/>
 	<classpathentry kind="lib" path="json-20180813.jar"/>
 	<classpathentry kind="lib" path="gson-2.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
