@@ -1,5 +1,7 @@
 package main;
 
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,8 +39,7 @@ public class Main extends Application
 	{
 		try
 		{
-//			ItemShop shop = new ItemShop();
-//			Dungeon.getMonsterList().forEach(x -> System.out.println(x));
+
 			System.out.println(Dungeon.getMonsterList().size());
 			launch(args);
 

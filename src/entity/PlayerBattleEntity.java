@@ -51,7 +51,6 @@ public class PlayerBattleEntity extends Entity
 			case(1):
 				sprite = RenderableHolder.emiliaE1;
 				break;
-				
 			case(2):
 				sprite = RenderableHolder.emiliaE2;
 				break;
