@@ -178,6 +178,7 @@ public class Battle extends GridPane
 			if (entity.isVisible())
 			{
 				entity.draw(gc);
+//				System.out.println("draw entity" );
 			}
 		}
 	}

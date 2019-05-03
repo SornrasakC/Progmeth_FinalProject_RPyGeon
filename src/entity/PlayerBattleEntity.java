@@ -18,6 +18,8 @@ public class PlayerBattleEntity extends Entity
 		this.y = y;
 		this.z = 9;
 		this.sprite = RenderableHolder.emiliaE1;
+		
+		
 		idleThread = new Thread(new Runnable()
 		{
 
