@@ -30,10 +30,12 @@ public class SpellList extends VBox
 							if(magic instanceof OffensiveMagic)
 							{
 								Battle.report(magic.getName() + " deals " + amount + " damage!");
+								Battle.endOverlay();
 							}
 							else // Healing magic
 							{
 								Battle.report(magic.getName() + " heals " + amount + " HP!");
+								Battle.endOverlay();
 							}
 						}
 						else

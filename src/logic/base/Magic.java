@@ -26,7 +26,7 @@ public abstract class Magic implements Cloneable
 	
 	public String toString()
 	{
-		return name + " : " + description; 
+		return name + " {" + description + "} mana : " + manaCost ; 
 	}
 	@Override
 	public int hashCode()

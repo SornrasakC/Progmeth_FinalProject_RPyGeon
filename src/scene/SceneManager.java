@@ -41,7 +41,7 @@ public class SceneManager {
 
 	static
 	{
-		battleScene.getStylesheets().add(SceneManager.class.getResource("SpellListStyle.css").toExternalForm());
+		battleScene.getStylesheets().add(SceneManager.class.getResource("BattleStyle.css").toExternalForm());
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
 	}
 

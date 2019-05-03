@@ -19,6 +19,7 @@ import javafx.util.Duration;
 import logic.logics.Dungeon;
 import logic.logics.Player;
 import scene.SceneManager;
+import shops.ItemShop;
 
 public class Main extends Application
 {
@@ -43,6 +44,18 @@ public class Main extends Application
 			System.out.println(Dungeon.getMonsterList().size());
 			Player.player.levelUp();
 			Player.player.levelUp();
+			ItemShop itemShop = new ItemShop();
+			
+			Player.player.gainPotion(itemShop.getPotionList().get(0));
+			Player.player.gainPotion(itemShop.getPotionList().get(0));
+			Player.player.gainPotion(itemShop.getPotionList().get(0));
+			Player.player.gainPotion(itemShop.getPotionList().get(1));
+			Player.player.gainPotion(itemShop.getPotionList().get(2));
+			Player.player.setConqueredFloor(8);
+			System.out.println(Player.player.getPotionInventory().keySet());
+
+
+
 			launch(args);
 
 		}

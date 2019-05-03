@@ -2,6 +2,7 @@ package entity;
 
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
 import sharedObject.RenderableHolder;
 
 public class PlayerBattleEntity extends Entity
@@ -55,7 +56,8 @@ public class PlayerBattleEntity extends Entity
 				sprite = RenderableHolder.emiliaE2;
 				break;
 		}
-		gc.drawImage(sprite, this.x, this.y);
+		gc.drawImage(sprite, this.x, this.y, 100, 100);
+
 	}
 	
 	public void update()

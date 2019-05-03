@@ -22,8 +22,8 @@ public class BattleEntityLogic
 	public BattleEntityLogic()
 	{
 		this.gameObjectContainer = new ArrayList<Entity>();
-		playerEntity = new PlayerBattleEntity(WIDTH / 2 - 150, HEIGHT / 2);
-		monsterEntity = new MonsterBattleEntity(WIDTH / 2 + 150, HEIGHT / 2, Battle.getMonster());
+		playerEntity = new PlayerBattleEntity(WIDTH / 2 - 250, HEIGHT / 2);
+		monsterEntity = new MonsterBattleEntity(WIDTH / 2 + 250, HEIGHT / 2, Battle.getMonster());
 		playerGauge = new HpMpGaugeEntity(0, 0, Player.player);
 		monsterGauge = new HpMpGaugeEntity(0, 0, Battle.getMonster());
 		

@@ -293,17 +293,17 @@ public class Player extends Character
 		}
 	}
 
-	public void gainPotion(Object item)
+	public boolean gainPotion(Object item)
 	{
 		Potion potion;
-		if (item == null) return;
+		if (item == null) return false;
 		if (item instanceof Potion)
 		{
 			potion = (Potion) item;
 		}
 		else
 		{
-			return;
+			return false;
 		}
 		if (potionInventory.containsKey(potion))
 		{
@@ -313,6 +313,7 @@ public class Player extends Character
 		{
 			potionInventory.put(potion, 1);
 		}
+		return true;
 	}
 
 	public boolean usePotion(Object item)

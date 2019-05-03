@@ -52,13 +52,11 @@ public class MonsterBattleEntity extends Entity
 		{
 			case(1):
 				this.sprite = monster.getSprite();
-//				System.out.println(monster);
 				
 			case(2):
 				this.sprite = monster.getSpriteAnimation();
-//				this.sprite = RenderableHolder.blueCookie;
 		}
-		gc.drawImage(sprite, this.x, this.y);
+		gc.drawImage(sprite, this.x, this.y, 100, 100);
 	}
 	public void update()
 	{

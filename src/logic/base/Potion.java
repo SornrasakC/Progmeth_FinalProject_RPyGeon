@@ -21,7 +21,7 @@ public abstract class Potion implements Cloneable
 	
 	public String toString()
 	{
-		return name + " des: " + description;
+		return name + " {" + description + "}";
 	}
 	@Override
 	public int hashCode()
