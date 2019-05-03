@@ -1,6 +1,7 @@
 package scene;
 
 import java.util.ArrayList;
+import java.util.logging.LogManager;
 
 import entity.VillageEntityLogic;
 import javafx.collections.FXCollections;
@@ -8,14 +9,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import logic.base.Monster;
@@ -24,6 +26,7 @@ import logic.logics.Dungeon;
 import logic.logics.Player;
 import logic.logics.Rand;
 import main.Main;
+import scene.battleOverlay.SpellList;
 import sharedObject.BattleRenderableHolder;
 import sharedObject.IRenderable;
 
@@ -38,15 +41,27 @@ public class Battle extends GridPane
 	private static Canvas battleCanvas;
 	private static ObservableList<Label> logDataList;
 	private static ListView<Label> listView;
-
+	private static Canvas overlayCanvas;
+	private static StackPane stackPane;
+	private static VBox spellList, itemList;
+	
 	public Battle()
 	{
 //		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		
-		Battle.battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
+		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
+		
+		stackPane = new StackPane();
+		stackPane.getChildren().add(battleCanvas);
+		
+		overlayCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
+		GraphicsContext gc2 = overlayCanvas.getGraphicsContext2D();
+		gc2.setFill(Color.BLACK);
+		gc2.fillRect(0, 0, WIDTH * 4 / 5, HEIGHT * 4 / 5);
+		overlayCanvas.setOpacity(0.6);
 		
 		logDataList = FXCollections.observableArrayList();
 				
@@ -77,7 +92,8 @@ public class Battle extends GridPane
 		);
 		GridPane.setMargin(escapeButton, new Insets(5, 5, 5, 5));
 
-		add(battleCanvas, 0, 0, 4, 1);
+//		add(battleCanvas, 0, 0, 4, 1);
+		add(stackPane, 0, 0, 4, 1);
 		add(listView, 4, 0, 1, 2);
 		add(attackButton, 0, 1);
 		add(spellButton, 1, 1);
@@ -104,7 +120,7 @@ public class Battle extends GridPane
 				{
 					playerTurn = false;
 					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
-					//TODO interfaces
+					report(Player.player.getName() + " deals " + damage + " damage!");
 				}
 			}
 		);
@@ -120,7 +136,11 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					playerTurn = false;
-					//TODO show magic list
+					spellList = new SpellList();
+					stackPane.getChildren().add(overlayCanvas);
+					stackPane.getChildren().add(spellList);
+					spellList.setPrefSize(WIDTH * 3 / 5, HEIGHT * 3 / 5);
+					StackPane.setAlignment(spellList, Pos.CENTER);
 				}
 			}
 		);
@@ -154,11 +174,12 @@ public class Battle extends GridPane
 					playerTurn = false;
 					if(Rand.rand(100) < 35)
 					{
-						backToVillage();
-						Main.animation.start();
-						Main.battleAnimation.stop();
+						backToVillage();		
 					}
-					//TODO escape fail!
+					else
+					{
+						report("Escape Failed!!");
+					}
 				}
 			}
 		);
@@ -168,6 +189,8 @@ public class Battle extends GridPane
 		monster.fullHeal();
 		Player.player.fullHeal();
 		VillageEntityLogic.exitDungeon();
+		Main.animation.start();
+		Main.battleAnimation.stop();
 		Main.changeScene(SceneManager.villageScene);
 	}
 	public void paintCanvas() 
@@ -186,13 +209,27 @@ public class Battle extends GridPane
 	{
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
-
-
-
 	}
+
+	public static void endOverlay()
+	{
+		stackPane.getChildren().remove(overlayCanvas);
+		stackPane.getChildren().remove(spellList);
+		stackPane.getChildren().remove(itemList);
+	}
+	
 	public static void report(Label label)
 	{
 		Battle.logDataList.add(label);
+		listView.scrollTo(label);
+		LogManager.getLogManager().reset();
+	}
+	public static void report(String report)
+	{
+		Label label = new Label(report);
+		Battle.logDataList.add(label);
+		listView.scrollTo(label);
+		LogManager.getLogManager().reset();
 	}
 	public UiButton getAttackButton()
 	{

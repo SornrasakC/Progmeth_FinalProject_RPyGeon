@@ -12,28 +12,30 @@ public class RecoveryPotion extends Potion
 	private int hpRecoverPercent;
 	private int mpRecoverPercent;
 	private LuckType luckType;
+	private String tempLuckType;
 	public RecoveryPotion(String name, String description, int cost, int hpRecoverPercent, int mpRecoverPercent,
-			String luckType)
+			String tempLuckType)
 	{
 		super(name, description, cost);
 		this.hpRecoverPercent = hpRecoverPercent;
 		this.mpRecoverPercent = mpRecoverPercent;
-		this.luckType = LuckType.convert(luckType);
+//		this.luckType = LuckType.convert(luckType);
+		this.tempLuckType = tempLuckType;
 	}
 	public void usePotion(Player player) //Can use potion that's not in the inventory
 	{
-		if(luckType.equals(LuckType.NORMAL))
+		if(luckType == LuckType.NORMAL)
 		{
 			player.receiveHeal(player.getMaxHp() * hpRecoverPercent / 100);
 			player.receiveMana(player.getMaxMp() * mpRecoverPercent / 100);
 		}
-		else if(luckType.equals(LuckType.RANDOM))
+		else if(luckType == LuckType.RANDOM)
 		{
 			Random rand = new Random();
 			player.receiveHeal(rand.nextInt(player.getMaxHp() * hpRecoverPercent / 100));
 			player.receiveMana(rand.nextInt(player.getMaxMp() * mpRecoverPercent / 100));
 		}
-		else if(luckType.equals(LuckType.BADRANDOM))
+		else if(luckType == LuckType.BADRANDOM)
 		{
 			Random rand = new Random();
 			int hp = player.getMaxHp() * hpRecoverPercent / 100;
@@ -57,6 +59,11 @@ public class RecoveryPotion extends Potion
 	public LuckType getLuckType()
 	{
 		return luckType;
+	}
+	@Override
+	public void init()
+	{
+		this.luckType = LuckType.convert(tempLuckType);		
 	}
 	
 }

@@ -1,7 +1,6 @@
 package main;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.logics.Dungeon;
+import logic.logics.Player;
 import scene.SceneManager;
 
 public class Main extends Application
@@ -41,6 +41,8 @@ public class Main extends Application
 		{
 
 			System.out.println(Dungeon.getMonsterList().size());
+			Player.player.levelUp();
+			Player.player.levelUp();
 			launch(args);
 
 		}

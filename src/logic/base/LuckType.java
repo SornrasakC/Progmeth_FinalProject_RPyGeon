@@ -7,11 +7,11 @@ public enum LuckType
 	{
 		switch(luckType)
 		{
-			case("NORMAL"):
+			case "NORMAL":
 				return NORMAL;
-			case("RANDOM"):
+			case "RANDOM":
 				return RANDOM;
-			case("BADRANDON"):
+			case "BADRANDON":
 				return BADRANDOM;
 			default:
 				return null;

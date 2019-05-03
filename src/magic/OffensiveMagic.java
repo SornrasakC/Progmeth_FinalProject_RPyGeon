@@ -6,6 +6,7 @@ import logic.base.Magic;
 import logic.base.Monster;
 import logic.base.StatType;
 import logic.logics.Player;
+import logic.logics.Rand;
 
 public class OffensiveMagic extends Magic
 {
@@ -13,23 +14,23 @@ public class OffensiveMagic extends Magic
 	{
 		super(name, description, manaCost, multiplier, luckType, level);
 	}
-	public int use(Player player, Monster monster) throws CustomException // ALWAYS confirm canUse() before using
+	public int use(Player player, Monster monster)  // ALWAYS confirm canUse() before using
 	{
 		player.setCurrentMp(player.getCurrentMp() - this.manaCost);
-		int damage;
+		int damage = 0;
 		int max = player.getMaxMagAtk() * multiplier;
 		int min = player.getMinMagAtk() * multiplier;
 		if(luckType == LuckType.NORMAL)
 		{
-			damage = min + rand.nextInt(max - min);
+			damage = Rand.rand(min, max);
 		}
 		else if(luckType == LuckType.RANDOM)
 		{
-			damage = rand.nextInt(max);
+			damage = Rand.rand(max);
 		}
 		else
 		{
-			throw new CustomException("Fail Offensive Magic");
+			new CustomException("Fail Offensive Magic").printStackTrace();
 		}
 		monster.receiveDamage(damage, StatType.MAGATK);
 		return damage;

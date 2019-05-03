@@ -9,11 +9,14 @@ public class StatPotion extends Potion
 	private StatType statType;
 	private int modStat;
 	private int modMaxStat = 0;
+	private String tempStatType;
+	
 
-	public StatPotion(String name, String description, int cost, String statType, int modStat)
+	public StatPotion(String name, String description, int cost, String tempStatType, int modStat)
 	{
 		super(name, description, cost);
-		this.statType = StatType.convert(statType);
+//		this.statType = StatType.convert(statType);
+		this.tempStatType = tempStatType;
 		this.modStat = modStat;
 	}
 
@@ -61,6 +64,13 @@ public class StatPotion extends Potion
 	public int getModMaxStat()
 	{
 		return modMaxStat;
+	}
+
+	@Override
+	public void init()
+	{
+		this.statType = StatType.convert(tempStatType);
+		
 	}
 
 }

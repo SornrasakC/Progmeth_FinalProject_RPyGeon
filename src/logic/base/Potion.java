@@ -17,7 +17,8 @@ public abstract class Potion implements Cloneable
 		this.cost = cost;
 	}
 	public abstract void usePotion(Player player);
-
+	public abstract void init();
+	
 	public String toString()
 	{
 		return name + " des: " + description;

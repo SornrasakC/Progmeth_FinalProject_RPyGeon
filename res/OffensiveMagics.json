@@ -5,7 +5,7 @@
         "multiplier": 1,
         "level": 2,
         "manaCost": 3,
-        "lucktype": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Prog Meth Beam",
@@ -13,7 +13,7 @@
         "multiplier": 2,
         "level": 4,
         "manaCost": 10,
-        "lucktype": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "PROG METH RNG BEAM",
@@ -21,7 +21,7 @@
         "multiplier": 4,
         "level": 5,
         "manaCost": 18,
-        "lucktype": "RANDOM"
+        "tempLuckType": "RANDOM"
     },
     {
         "name": "E-ku-su-pu-ro-shi-o-n",
@@ -29,6 +29,6 @@
         "multiplier": 15,
         "level": 7,
         "manaCost": 80,
-        "lucktype": "RANDOM"
+        "tempLuckType": "RANDOM"
     }
 ]

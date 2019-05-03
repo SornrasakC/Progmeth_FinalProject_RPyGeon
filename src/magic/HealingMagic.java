@@ -5,6 +5,7 @@ import logic.base.LuckType;
 import logic.base.Magic;
 import logic.base.Monster;
 import logic.logics.Player;
+import logic.logics.Rand;
 
 public class HealingMagic extends Magic
 {
@@ -15,23 +16,23 @@ public class HealingMagic extends Magic
 		super(name, description, manaCost, multiplier, luckType, level);
 	}
 
-	public int use(Player player, Monster monster) throws CustomException
+	public int use(Player player, Monster monster)
 	{
 		player.setCurrentMp(player.getCurrentMp() - this.manaCost);
-		int heal;
+		int heal = 0;
 		int max = player.getMaxMagAtk() * multiplier;
 		int min = player.getMinMagAtk() * multiplier;
 		if(luckType == LuckType.NORMAL)
 		{
-			heal = min + rand.nextInt(max - min);
+			heal = Rand.rand(min, max);
 		}
 		else if(luckType == LuckType.RANDOM)
 		{
-			heal = rand.nextInt(max);
+			heal = Rand.rand(max);
 		}
 		else
 		{
-			throw new CustomException("Fail Healing Magic");
+			new CustomException("Fail Healing Magic").printStackTrace();
 		}
 		player.receiveHeal(heal);
 		return heal;

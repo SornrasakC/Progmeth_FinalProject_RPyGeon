@@ -5,7 +5,7 @@
         "multiplier": 2,
         "level": 3,
         "manaCost": 7,
-        "lucktype": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "LoVe ToUcH eX",
@@ -13,6 +13,6 @@
         "multiplier": 6,
         "level": 6,
         "manaCost": 25,
-        "lucktype": "RANDOM"
+        "tempLuckType": "RANDOM"
     }
 ]

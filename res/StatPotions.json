@@ -4,7 +4,7 @@
         "description": "Boost physical attack (minimal +10 maximum +20) per battle",
         "modStat": 10,
         "modMaxStat": 20,
-        "statType": "PHYATK",
+        "tempStatType": "PHYATK",
         "cost": 80
     },
     {
@@ -12,21 +12,21 @@
         "description": "Boost magical attack (minimal +4 maximum +40) per battle",
         "modStat": 4,
         "modMaxStat": 40,
-        "statType": "MAGATK",
+        "tempStatType": "MAGATK",
         "cost": 100
     },
     {
         "name": "Oten's tear",
         "description": "Boost physical defense by 20 points per battle",
         "modStat": 20,
-        "statType": "PHYDEF",
+        "tempStatType": "PHYDEF",
         "cost": 120
     },
     {
         "name": "Trap Card: Mirror Force",
         "description": "Boost magical defense by 40 points per battle",
         "modStat": 40,
-        "statType": "MAGDEF",
+        "tempStatType": "MAGDEF",
         "cost": 120
     }
 ]

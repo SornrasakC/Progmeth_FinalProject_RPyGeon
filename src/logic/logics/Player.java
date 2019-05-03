@@ -60,7 +60,7 @@ public class Player extends Character
 		super();
 		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("player1.png"));
 		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("player2.png"));
-		this.name = "name";
+		this.name = "Name";
 		this.level = 1;
 
 		this.baseMaxPhyAtk = 2;
@@ -92,6 +92,13 @@ public class Player extends Character
 					return a.getLevel() - b.getLevel();
 				}
 			});
+			magicToLearn.forEach
+			(
+				(magic) ->
+				{
+					magic.initLuckType();
+				}
+			);
 		}
 		catch (Exception e)
 		{

@@ -28,9 +28,9 @@ public class Village extends Pane
 		this.getChildren().add(canvas);
 		new File(ClassLoader.getSystemResource("FindTheWay.mp3").toString());
 
-		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
-		mediaPlayer = new MediaPlayer(backgroundMusic);
-		mediaPlayer.play();
+//		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
+//		mediaPlayer = new MediaPlayer(backgroundMusic);
+//		mediaPlayer.play();
 		
 		addListerner();
 		drawBackground();

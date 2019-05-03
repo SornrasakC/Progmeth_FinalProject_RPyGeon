@@ -19,6 +19,7 @@ public class ItemShop
 		{
 			potionList.addAll((ArrayList<Potion>) (ArrayList<?>) main.Main.readJson("RecoveryPotions.json",new TypeToken<ArrayList<RecoveryPotion>>(){}));
 			potionList.addAll((ArrayList<Potion>) (ArrayList<?>) main.Main.readJson("StatPotions.json",new TypeToken<ArrayList<StatPotion>>(){}));
+			potionList.forEach(potion -> potion.init());
 //			potionList.sort
 //			(new Comparator<Weapon>()
 //				{

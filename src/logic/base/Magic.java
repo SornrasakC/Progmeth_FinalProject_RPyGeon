@@ -1,7 +1,5 @@
 package logic.base;
 
-import java.util.Random;
-
 import logic.logics.Player;
 
 public abstract class Magic implements Cloneable
@@ -12,37 +10,39 @@ public abstract class Magic implements Cloneable
 	protected int multiplier;
 	protected LuckType luckType;
 	protected int level;
+	protected String tempLuckType;
 	
-	protected Random rand = new Random();
 	
-	
-	public Magic(String name, String description, int manaCost, int multiplier, String luckType, int level)
+	public Magic(String name, String description, int manaCost, int multiplier, String tempLuckType, int level)
 	{
 		super();
 		this.name = name;
 		this.description = description;
 		this.manaCost = manaCost;
 		this.multiplier = multiplier;
-		this.luckType = LuckType.convert(luckType);
+		this.tempLuckType = tempLuckType;
 		this.level = level;
 	}
 	
 	public String toString()
 	{
-		return this.name + " level : " + level; 
+		return name + " : " + description; 
 	}
 	@Override
 	public int hashCode()
 	{
 		return (name + description).hashCode();
 	}
-	
+	public void initLuckType()
+	{
+		this.luckType = LuckType.convert(tempLuckType);
+	}
 	
 	public boolean canUse(Player player)
 	{
 		return player.getCurrentMp() >= this.manaCost;
 	}
-	public abstract int use(Player player, Monster monster) throws CustomException;
+	public abstract int use(Player player, Monster monster);
 
 	public String getName()
 	{
@@ -73,5 +73,6 @@ public abstract class Magic implements Cloneable
 	{
 		return level;
 	}
+	
 	
 }

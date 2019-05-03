@@ -5,7 +5,7 @@
         "hpRecoverPercent": 20,
         "mpRecoverPercent": 0,
         "cost": 10,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Blue Cookies",
@@ -13,7 +13,7 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 20,
         "cost": 10,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Fairly Normal HP Potion",
@@ -21,7 +21,7 @@
         "hpRecoverPercent": 50,
         "mpRecoverPercent": 0,
         "cost": 50,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Fairly Normal MP Potion",
@@ -29,7 +29,7 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 50,
         "cost": 50,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Chicken Dinner",
@@ -37,7 +37,7 @@
         "hpRecoverPercent": 80,
         "mpRecoverPercent": 0,
         "cost": 150,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Cocaine",
@@ -45,7 +45,7 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 80,
         "cost": 150,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Phoenix Kit",
@@ -53,7 +53,7 @@
         "hpRecoverPercent": 100,
         "mpRecoverPercent": 100,
         "cost": 300,
-        "luckType": "NORMAL"
+        "tempLuckType": "NORMAL"
     },
     {
         "name": "Low Quality Super Duper Lucky Randomly Recovering Potion",
@@ -61,7 +61,7 @@
         "hpRecoverPercent": 60,
         "mpRecoverPercent": 60,
         "cost": 20,
-        "luckType": "BADRANDOM"
+        "tempLuckType": "BADRANDOM"
     },
     {
         "name": "High Quality Super Duper Lucky Randomly Recovering Potion",
@@ -69,6 +69,6 @@
         "hpRecoverPercent": 100,
         "mpRecoverPercent": 100,
         "cost": 100,
-        "luckType": "RANDOM"
+        "tempLuckType": "RANDOM"
     }
 ]
