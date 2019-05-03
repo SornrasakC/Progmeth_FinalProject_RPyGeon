@@ -17,6 +17,7 @@ public class PlayerEntity extends Entity
 	private Thread thread;
 	private double destinateX, destinateY, hypote;
 	private boolean isInputed = false;
+	private double scale = Math.sqrt(2);
 
 	public PlayerEntity(double x, double y, int direction)
 	{
@@ -110,6 +111,15 @@ public class PlayerEntity extends Entity
 	public void update()
 	{
 		isInputed = false;
+		boolean w = InputUtility.getKeyPressed(KeyCode.W), a = InputUtility.getKeyPressed(KeyCode.A), s = InputUtility.getKeyPressed(KeyCode.S), d = InputUtility.getKeyPressed(KeyCode.D);
+		if(w^a == s^d)
+		{
+			scale = Math.sqrt(2);
+		}
+		else
+		{
+			scale = 1;
+		}
 		if (!isFreeze)
 		{
 			if (InputUtility.getKeyPressed(KeyCode.A))
@@ -187,7 +197,7 @@ public class PlayerEntity extends Entity
 	{
 		if (!isFreeze)
 		{
-			this.y -= MOVE_SPEED;
+			this.y -= MOVE_SPEED / scale;
 			this.direction = 0;
 			System.out.println("move up");
 		}
@@ -197,7 +207,7 @@ public class PlayerEntity extends Entity
 	{
 		if (!isFreeze)
 		{
-			this.y += MOVE_SPEED;
+			this.y += MOVE_SPEED / scale;
 			this.direction = 2;
 			System.out.println("move down");
 		}
@@ -207,7 +217,7 @@ public class PlayerEntity extends Entity
 	{
 		if (!isFreeze)
 		{
-			this.x -= MOVE_SPEED;
+			this.x -= MOVE_SPEED / scale;
 			this.direction = 3;
 			System.out.println("move left");
 		}
@@ -217,7 +227,7 @@ public class PlayerEntity extends Entity
 	{
 		if (!isFreeze)
 		{
-			this.x += MOVE_SPEED;
+			this.x += MOVE_SPEED / scale;
 			this.direction = 1;
 			System.out.println("move right");
 		}
