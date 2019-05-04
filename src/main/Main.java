@@ -14,6 +14,8 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.logics.Dungeon;
@@ -26,6 +28,8 @@ public class Main extends Application
 
 	public static Stage primaryStage;
 	public static AnimationTimer animation, battleAnimation;
+	private static VillageEntityLogic villageLogic;
+	private static BattleEntityLogic battleLogic;
 
 	public static <T> ArrayList<T> readJson(String filename, TypeToken<ArrayList<T>> typeToken) throws Exception
 	{
@@ -40,7 +44,7 @@ public class Main extends Application
 	{
 		try
 		{
-
+			System.out.println( 0.5 * 3);
 			System.out.println(Dungeon.getMonsterList().size());
 			Player.player.levelUp();
 			Player.player.levelUp();
@@ -73,8 +77,8 @@ public class Main extends Application
 		primaryStage.setScene(SceneManager.mainScreenScene);
 		primaryStage.show();
 
-		VillageEntityLogic villageLogic = new VillageEntityLogic();
-		BattleEntityLogic battleLogic = new BattleEntityLogic();
+		villageLogic = new VillageEntityLogic();
+		battleLogic = new BattleEntityLogic();
 
 		animation = new AnimationTimer()
 		{
@@ -89,7 +93,7 @@ public class Main extends Application
 			}
 		};
 		animation.start();
-
+		
 		battleAnimation = new AnimationTimer()
 		{
 			@Override
@@ -130,5 +134,11 @@ public class Main extends Application
 	{
 		return primaryStage;
 	}
+
+	public static BattleEntityLogic getBattleLogic()
+	{
+		return battleLogic;
+	}
+	
 
 }

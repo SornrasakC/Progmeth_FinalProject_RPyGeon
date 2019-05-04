@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import logic.base.Monster;
 import logic.logics.Dungeon;
+import scene.Battle;
 import sharedObject.RenderableHolder;
 
 public class MonsterBattleEntity extends Entity
@@ -17,7 +18,7 @@ public class MonsterBattleEntity extends Entity
 	public MonsterBattleEntity(int x, int y, Monster monster)
 	{
 		super();
-		this.monster = Dungeon.getMonsterList().get(0);
+		this.monster = Battle.getMonster();
 		this.x = x;
 		this.y = y;
 		this.z = 8;
@@ -52,9 +53,11 @@ public class MonsterBattleEntity extends Entity
 		{
 			case(1):
 				this.sprite = monster.getSprite();
+				break;
 				
 			case(2):
 				this.sprite = monster.getSpriteAnimation();
+				break;
 		}
 		gc.drawImage(sprite, this.x, this.y, 100, 100);
 	}
@@ -74,4 +77,25 @@ public class MonsterBattleEntity extends Entity
 	{
 		this.isFreeze = false;
 	}
+
+	public Monster getMonster()
+	{
+		return monster;
+	}
+
+	public void setMonster(Monster monster)
+	{
+		this.monster = monster;
+	}
+
+	public boolean isFreeze()
+	{
+		return isFreeze;
+	}
+
+	public void setFreeze(boolean isFreeze)
+	{
+		this.isFreeze = isFreeze;
+	}
+	
 }

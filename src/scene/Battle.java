@@ -38,7 +38,7 @@ public class Battle extends GridPane
 {
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
-	private static Monster monster;
+	private static Monster monster = Dungeon.getMonsterList().get(0);
 	private static Dungeon dungeon;
 	private UiButton attackButton, spellButton, itemButton, escapeButton;
 	private boolean playerTurn = true;
@@ -221,7 +221,6 @@ public class Battle extends GridPane
 			if (entity.isVisible())
 			{
 				entity.draw(gc);
-//				System.out.println("draw entity" );
 			}
 		}
 	}
@@ -238,7 +237,6 @@ public class Battle extends GridPane
 	}
 	public static void endOverlay()
 	{
-//		stackPane.getChildren().remove(overlayCanvas);
 		battleCanvas.setEffect(null);
 		stackPane.getChildren().remove(spellList);
 		stackPane.getChildren().remove(itemList);
@@ -289,6 +287,7 @@ public class Battle extends GridPane
 	public static void setMonster(Monster monster)
 	{
 		Battle.monster = monster;
+		
 	}
 	public static void setDungeon(Dungeon dungeon)
 	{

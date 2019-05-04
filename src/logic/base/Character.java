@@ -60,6 +60,7 @@ public abstract class Character extends Entity
 		}
 		this.currentHp = (this.currentHp < modDamage) ? 0 : this.currentHp - modDamage;
 		return damage;
+//		return modDamage;
 	}
 	public int receiveHeal(int heal)
 	{

@@ -1,5 +1,6 @@
 package scene;
 
+import entity.BattleEntityLogic;
 import entity.VillageEntityLogic;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +13,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import logic.base.Monster;
 import logic.logics.Dungeon;
 import main.Main;
 
@@ -38,8 +40,10 @@ public class DungeonChooseFloor extends VBox
 						@Override
 						public void handle(ActionEvent event)
 						{
-							Battle.setMonster(dungeon.generateMonster());
+							Monster monster = dungeon.generateMonster();
+							Battle.setMonster(monster);
 							Battle.setDungeon(dungeon);
+							Main.getBattleLogic().renewMonster(monster);
 							Main.animation.stop();
 							Main.battleAnimation.start();
 							Main.changeScene(SceneManager.battleScene);

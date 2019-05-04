@@ -63,7 +63,7 @@ public class Player extends Character
 		this.name = "Name";
 		this.level = 1;
 
-		this.baseMaxPhyAtk = 2;
+		this.baseMaxPhyAtk = 30;
 		this.baseMinPhyAtk = 1;
 		this.baseMaxMagAtk = 2;
 		this.baseMinMagAtk = 1;

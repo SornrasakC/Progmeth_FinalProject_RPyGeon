@@ -114,6 +114,7 @@ public class Dungeon
 			{
 				monster.setSprite(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 1 + ".png")));
 				monster.setSpriteAnimation(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 2 + ".png")));
+				monster.fullHeal();
 			}
 		);
 	}
