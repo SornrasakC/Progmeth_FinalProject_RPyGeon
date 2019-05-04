@@ -17,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -29,6 +31,7 @@ import logic.logics.Dungeon;
 import logic.logics.Player;
 import logic.logics.Rand;
 import main.Main;
+import scene.battleOverlay.BattleEnd;
 import scene.battleOverlay.ItemList;
 import scene.battleOverlay.SpellList;
 import sharedObject.BattleRenderableHolder;
@@ -41,21 +44,25 @@ public class Battle extends GridPane
 	private static Monster monster = Dungeon.getMonsterList().get(0);
 	private static Dungeon dungeon;
 	private UiButton attackButton, spellButton, itemButton, escapeButton;
-	private boolean playerTurn = true;
 	private static Canvas battleCanvas;
 	private static ObservableList<Label> logDataList;
 	private static ListView<Label> listView;
 //	private static Canvas overlayCanvas;
 	private static StackPane stackPane;
 	private static VBox spellList, itemList;
-	private static boolean inOverlay = false;
+	private static StackPane battleEnd;
+	private static boolean inOverlay;
+	private static boolean playerTurn;
+	private static boolean inAnimation;
 	
 	public Battle()
 	{
-//		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+		inOverlay = false;
+		playerTurn = true;
+		inAnimation = false;
+		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		
 		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
-		
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
@@ -63,19 +70,10 @@ public class Battle extends GridPane
 		stackPane = new StackPane();
 		stackPane.getChildren().add(battleCanvas);
 		
-//		overlayCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
-//		GraphicsContext gc2 = overlayCanvas.getGraphicsContext2D();
-//		gc2.setFill(Color.BLACK);
-//		gc2.fillRect(0, 0, WIDTH * 4 / 5, HEIGHT * 4 / 5);
-//		overlayCanvas.setOpacity(0.6);
-		
 		logDataList = FXCollections.observableArrayList();
 				
 		listView = new ListView<Label>(logDataList);
 		listView.setPrefWidth(WIDTH / 5);
-		
-		Label label1 = new Label("asdasd");
-		logDataList.add(label1);
 		
 		attackButton = new UiButton("ATTACK");
 		spellButton = new UiButton("SPELL");
@@ -98,7 +96,6 @@ public class Battle extends GridPane
 		);
 		GridPane.setMargin(escapeButton, new Insets(5, 5, 5, 5));
 
-//		add(battleCanvas, 0, 0, 4, 1);
 		add(stackPane, 0, 0, 4, 1);
 		add(listView, 4, 0, 1, 2);
 		add(attackButton, 0, 1);
@@ -125,6 +122,7 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					playerTurn = false;
+					inAnimation = true;
 					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
 					report(Player.player.getName() + " deals " + damage + " damage!");
 				}
@@ -192,7 +190,7 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					playerTurn = false;
-					if(Rand.rand(100) < 35)
+					if(Rand.chance(35))
 					{
 						backToVillage();		
 					}
@@ -222,6 +220,53 @@ public class Battle extends GridPane
 			{
 				entity.draw(gc);
 			}
+		}
+		if(Player.player.isDead() || monster.isDead())
+		{
+			
+			if(Player.player.isDead())
+			{
+				System.exit(0);
+			}
+			else if(!inOverlay)
+			{
+				startOverlay();
+				battleEnd = new BattleEnd();
+				
+				FadeTransition ftwait = new FadeTransition(Duration.millis(100), battleEnd);
+				ftwait.setOnFinished
+				((event)->
+					{
+						
+						stackPane.getChildren().add(battleEnd);
+					}
+				);
+				ftwait.play();
+				FadeTransition ft = new FadeTransition(Duration.millis(2100), battleEnd);
+				ft.setFromValue(0.0);
+				ft.setToValue(1.0);
+				ft.play();
+				
+				
+				
+				
+				battleEnd.setMaxSize(WIDTH * 3 / 5, HEIGHT * 3 / 5);
+				StackPane.setAlignment(battleEnd, Pos.CENTER);
+			}
+		}
+		if(!playerTurn || inAnimation || inOverlay)
+		{
+			attackButton.setDisable(true);
+			spellButton.setDisable(true);
+			itemButton.setDisable(true);
+			escapeButton.setDisable(true);
+		}
+		else
+		{
+			attackButton.setDisable(false);
+			spellButton.setDisable(false);
+			itemButton.setDisable(false);
+			escapeButton.setDisable(false);
 		}
 	}
 	public void drawBackground()
@@ -292,6 +337,121 @@ public class Battle extends GridPane
 	public static void setDungeon(Dungeon dungeon)
 	{
 		Battle.dungeon = dungeon;
+	}
+
+	public static ObservableList<Label> getLogDataList()
+	{
+		return logDataList;
+	}
+
+	public static void setLogDataList(ObservableList<Label> logDataList)
+	{
+		Battle.logDataList = logDataList;
+	}
+
+	public static ListView<Label> getListView()
+	{
+		return listView;
+	}
+
+	public static void setListView(ListView<Label> listView)
+	{
+		Battle.listView = listView;
+	}
+
+	public static StackPane getStackPane()
+	{
+		return stackPane;
+	}
+
+	public static void setStackPane(StackPane stackPane)
+	{
+		Battle.stackPane = stackPane;
+	}
+
+	public static VBox getSpellList()
+	{
+		return spellList;
+	}
+
+	public static void setSpellList(VBox spellList)
+	{
+		Battle.spellList = spellList;
+	}
+
+	public static VBox getItemList()
+	{
+		return itemList;
+	}
+
+	public static void setItemList(VBox itemList)
+	{
+		Battle.itemList = itemList;
+	}
+
+	public static boolean isInOverlay()
+	{
+		return inOverlay;
+	}
+
+	public static void setInOverlay(boolean inOverlay)
+	{
+		Battle.inOverlay = inOverlay;
+	}
+
+	public static boolean isPlayerTurn()
+	{
+		return playerTurn;
+	}
+
+	public static void setPlayerTurn(boolean playerTurn)
+	{
+		Battle.playerTurn = playerTurn;
+	}
+
+	public static boolean isInAnimation()
+	{
+		return inAnimation;
+	}
+
+	public static void setInAnimation(boolean inAnimation)
+	{
+		Battle.inAnimation = inAnimation;
+	}
+
+	public void setAttackButton(UiButton attackButton)
+	{
+		this.attackButton = attackButton;
+	}
+
+	public void setSpellButton(UiButton spellButton)
+	{
+		this.spellButton = spellButton;
+	}
+
+	public void setItemButton(UiButton itemButton)
+	{
+		this.itemButton = itemButton;
+	}
+
+	public void setEscapeButton(UiButton escapeButton)
+	{
+		this.escapeButton = escapeButton;
+	}
+
+	public static void setBattleCanvas(Canvas battleCanvas)
+	{
+		Battle.battleCanvas = battleCanvas;
+	}
+
+	public static StackPane getBattleEnd()
+	{
+		return battleEnd;
+	}
+
+	public static void setBattleEnd(StackPane battleEnd)
+	{
+		Battle.battleEnd = battleEnd;
 	}
 	
 }

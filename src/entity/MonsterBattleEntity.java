@@ -3,7 +3,7 @@ package entity;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import logic.base.Monster;
-import logic.logics.Dungeon;
+import logic.logics.Player;
 import scene.Battle;
 import sharedObject.RenderableHolder;
 
@@ -13,6 +13,8 @@ public class MonsterBattleEntity extends Entity
 	private boolean isFreeze = false;
 	private int frame = 1;
 	private Thread idleThread;
+	private Thread attackThread;
+	private boolean isAttacking;
 
 	
 	public MonsterBattleEntity(int x, int y, Monster monster)
@@ -44,6 +46,9 @@ public class MonsterBattleEntity extends Entity
 			}
 		});
 		idleThread.start();
+		attackThread = new Thread();
+		isAttacking = false;
+		
 	}
 
 	@Override
@@ -65,8 +70,45 @@ public class MonsterBattleEntity extends Entity
 	{
 		if(!isFreeze)
 		{
-			
+//			if(!Battle.isPlayerTurn() && !Battle.isInAnimation())
+			if(!Battle.isPlayerTurn())
+			{
+				if(!isAttacking)
+				{
+					isAttacking = true;
+					startAttack();
+				}
+			}
 		}
+	}
+	private void startAttack()
+	{
+		attackThread = new Thread
+				(
+					()->
+					{
+						try
+						{
+							Thread.sleep(1000); //ANIMATION
+						}
+						catch (InterruptedException e)
+						{
+							e.printStackTrace();
+						}
+						Platform.runLater
+						(
+							() -> 
+							{
+								Battle.setInAnimation(false); 
+								Battle.setPlayerTurn(true);
+								isAttacking = false;
+								int damage = monster.attack(Player.player);
+								Battle.report(monster.getName() + " attacked " + Player.player.getName() + " for " + damage + "!");
+							}
+						);
+					}
+				);
+		attackThread.start();
 	}
 	public void freeze()
 	{

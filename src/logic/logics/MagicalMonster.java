@@ -1,6 +1,5 @@
 package logic.logics;
 
-import logic.base.CustomException;
 import logic.base.Monster;
 import logic.base.StatType;
 
@@ -15,7 +14,7 @@ public class MagicalMonster extends Monster
 	}
 
 	@Override
-	public int attack(Player player) throws CustomException
+	public int attack(Player player)
 	{
 		int damage;
 		if(this.currentMp >= 5)

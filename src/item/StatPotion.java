@@ -36,16 +36,24 @@ public class StatPotion extends Potion
 			case PHYATK:
 				player.setModMinPhyAtk(player.getModMinPhyAtk() + modStat);
 				player.setModMaxPhyAtk(player.getModMaxPhyAtk() + modMaxStat);
+				
+				player.setBoostMinPhyAtk(player.getBoostMinPhyAtk() + modStat);
+				player.setBoostMaxPhyAtk(player.getBoostMaxPhyAtk() + modMaxStat);
 				break;
 			case MAGATK:
 				player.setModMinMagAtk(player.getModMinMagAtk() + modStat);
 				player.setModMaxMagAtk(player.getModMaxMagAtk() + modMaxStat);
+				
+				player.setBoostMinMagAtk(player.getBoostMinMagAtk() + modStat);
+				player.setBoostMaxMagAtk(player.getBoostMaxMagAtk() + modMaxStat);
 				break;
 			case PHYDEF:
 				player.setModPhyDef(player.getModPhyDef() + modStat);
+				player.setBoostPhyDef(player.getBoostPhyDef() + modStat);
 				break;
 			case MAGDEF:
 				player.setModMagDef(player.getModMagDef() + modStat);
+				player.setBoostMagDef(player.getBoostMagDef() + modStat);
 				break;
 		}
 

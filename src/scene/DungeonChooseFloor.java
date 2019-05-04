@@ -1,6 +1,5 @@
 package scene;
 
-import entity.BattleEntityLogic;
 import entity.VillageEntityLogic;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +22,6 @@ public class DungeonChooseFloor extends VBox
 //	private static final int HEIGHT = 720;
 	public DungeonChooseFloor()
 	{
-//		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		
 		setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream("chooseDungeon1.png")), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 		          BackgroundSize.DEFAULT)));
@@ -41,6 +39,7 @@ public class DungeonChooseFloor extends VBox
 						public void handle(ActionEvent event)
 						{
 							Monster monster = dungeon.generateMonster();
+							SceneManager.reBattle();
 							Battle.setMonster(monster);
 							Battle.setDungeon(dungeon);
 							Main.getBattleLogic().renewMonster(monster);

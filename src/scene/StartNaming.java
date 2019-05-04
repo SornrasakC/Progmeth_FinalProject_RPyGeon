@@ -2,6 +2,8 @@ package scene;
 
 
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -69,7 +71,7 @@ public class StartNaming extends StackPane
 	            	String name = textField.getText();
 	            	if(name.length() > 0)
 	            	{
-	            		Player.player.setName(name);
+	            		Player.player.setName(StringUtils.capitalize(name));
 	            		Main.changeScene(SceneManager.confirmPrologueScene);
 	            	}
 	            }

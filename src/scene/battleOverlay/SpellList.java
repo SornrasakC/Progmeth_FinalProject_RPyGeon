@@ -30,11 +30,15 @@ public class SpellList extends VBox
 							if(magic instanceof OffensiveMagic)
 							{
 								Battle.report(magic.getName() + " deals " + amount + " damage!");
+								Battle.setPlayerTurn(false);
+								Battle.setInAnimation(true);
 								Battle.endOverlay();
 							}
 							else // Healing magic
 							{
 								Battle.report(magic.getName() + " heals " + amount + " HP!");
+								Battle.setPlayerTurn(false);
+								Battle.setInAnimation(true);
 								Battle.endOverlay();
 							}
 						}
@@ -43,7 +47,6 @@ public class SpellList extends VBox
 							Battle.report("Not enough MP!");
 						}
 					}
-					
 				);
 				button.setPrefWidth(WIDTH * 3 / 5);
 				button.getStyleClass().add(SPELL_CLASS);

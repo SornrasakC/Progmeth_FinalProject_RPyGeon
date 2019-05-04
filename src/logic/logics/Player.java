@@ -49,6 +49,13 @@ public class Player extends Character
 	private HashMap<Potion, Integer> potionInventory = new HashMap<Potion, Integer>();
 	private ArrayList<Magic> magicInventory = new ArrayList<Magic>();
 	private ArrayList<Magic> magicToLearn = new ArrayList<Magic>();
+	
+	private int boostMinPhyAtk = 0;
+	private int boostMaxPhyAtk = 0;
+	private int boostMinMagAtk = 0;
+	private int boostMaxMagAtk = 0;
+	private int boostPhyDef = 0;
+	private int boostMagDef = 0;
 
 	static
 	{
@@ -69,7 +76,7 @@ public class Player extends Character
 		this.baseMinMagAtk = 1;
 		this.basePhyDef = 0;
 		this.baseMagDef = 0;
-		this.baseMaxHp = 10;
+		this.baseMaxHp = 1000;
 		this.baseMaxMp = 5;
 
 		this.modMaxPhyAtk = 1;
@@ -145,19 +152,18 @@ public class Player extends Character
 		return null;
 	}
 
-	public boolean gainExp(int exp) // return level up or not
+	public int gainExp(int exp) // return how many level up
 	{
-		if (exp < 0) return false;
+		if (exp < 0) return 0;
 		this.exp += exp;
-		Boolean b = this.exp > this.expToNextLevel;
+		int count = 0;
 		while (this.exp > this.expToNextLevel)
 		{
 			expToNextLevel = 2 * expToNextLevel + 150;
 			levelUp();
-			// TODO manualUpstat
-			// INTERFACE FOR MANUAL
+			count++;
 		}
-		return b;
+		return count;
 	}
 
 	public void levelUp()
@@ -368,7 +374,21 @@ public class Player extends Character
 		if (money < 0) return;
 		this.money += money;
 	}
-
+	public void resetStatPotionEffects()
+	{
+		modMinPhyAtk -= boostMinPhyAtk;
+		modMaxPhyAtk -= boostMaxPhyAtk;
+		modMinMagAtk -= boostMinMagAtk;
+		modMaxMagAtk -= boostMaxMagAtk;
+		modPhyDef -= boostPhyDef;
+		modMagDef -= boostMagDef;
+		boostMinPhyAtk = 0;
+		boostMaxPhyAtk = 0;
+		boostMinMagAtk = 0;
+		boostMaxMagAtk = 0;
+		boostPhyDef = 0;
+		boostMagDef = 0;
+	}
 	public int getExp()
 	{
 		return exp;
@@ -549,6 +569,66 @@ public class Player extends Character
 		// TODO Add animation
 		gc.drawImage(sprite, x, y);
 		
+	}
+
+	public int getBoostMinPhyAtk()
+	{
+		return boostMinPhyAtk;
+	}
+
+	public void setBoostMinPhyAtk(int boostMinPhyAtk)
+	{
+		this.boostMinPhyAtk = boostMinPhyAtk;
+	}
+
+	public int getBoostMaxPhyAtk()
+	{
+		return boostMaxPhyAtk;
+	}
+
+	public void setBoostMaxPhyAtk(int boostMaxPhyAtk)
+	{
+		this.boostMaxPhyAtk = boostMaxPhyAtk;
+	}
+
+	public int getBoostMinMagAtk()
+	{
+		return boostMinMagAtk;
+	}
+
+	public void setBoostMinMagAtk(int boostMinMagAtk)
+	{
+		this.boostMinMagAtk = boostMinMagAtk;
+	}
+
+	public int getBoostMaxMagAtk()
+	{
+		return boostMaxMagAtk;
+	}
+
+	public void setBoostMaxMagAtk(int boostMaxMagAtk)
+	{
+		this.boostMaxMagAtk = boostMaxMagAtk;
+	}
+
+	public int getBoostPhyDef()
+	{
+		return boostPhyDef;
+	}
+
+	public void setBoostPhyDef(int boostPhyDef)
+	{
+		this.boostPhyDef = boostPhyDef;
+	}
+
+	public int getBoostMagDef()
+	{
+		return boostMagDef;
+	}
+
+	public void setBoostMagDef(int boostMagDef)
+	{
+		this.boostMagDef = boostMagDef;
 	}
 	
 

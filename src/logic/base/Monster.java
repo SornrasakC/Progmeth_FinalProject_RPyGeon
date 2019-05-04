@@ -8,7 +8,6 @@ import logic.logics.Player;
 
 public abstract class Monster extends Character
 {
-//	private ArrayList<? extends Droppable> dropList = new ArrayList<? extends Droppable>();
 	public Monster(String name, int level, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk, int baseMaxMagAtk,
 			int basePhyDef, int baseMagDef, int baseMaxHp, int baseMaxMp)
 	{
@@ -27,10 +26,9 @@ public abstract class Monster extends Character
 		this.baseMaxHp = baseMaxHp;
 		this.baseMaxMp = baseMaxMp;
 		fullHeal();
-//		this.money = rand.nextInt((int)((level - 1) * 30 * 0.50)) + (int)((level - 1) * 30 * 0.75);
 	}
 
-	public abstract int attack(Player player) throws CustomException;
+	public abstract int attack(Player player);
 	
 	public String toString()
 	{
@@ -45,7 +43,7 @@ public abstract class Monster extends Character
 	
 	@Override
 	public void draw(GraphicsContext gc) {
-		//TODO add animation
+
 		gc.drawImage(sprite, x, y);
 	}
 

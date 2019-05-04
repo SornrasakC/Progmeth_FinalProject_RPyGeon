@@ -14,11 +14,8 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import logic.logics.Dungeon;
 import logic.logics.Player;
 import scene.SceneManager;
 import shops.ItemShop;
@@ -44,8 +41,6 @@ public class Main extends Application
 	{
 		try
 		{
-			System.out.println( 0.5 * 3);
-			System.out.println(Dungeon.getMonsterList().size());
 			Player.player.levelUp();
 			Player.player.levelUp();
 			ItemShop itemShop = new ItemShop();
@@ -57,8 +52,6 @@ public class Main extends Application
 			Player.player.gainPotion(itemShop.getPotionList().get(2));
 			Player.player.setConqueredFloor(8);
 			System.out.println(Player.player.getPotionInventory().keySet());
-
-
 
 			launch(args);
 

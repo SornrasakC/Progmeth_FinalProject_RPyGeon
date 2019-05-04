@@ -2,7 +2,6 @@ package entity;
 
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.ImageView;
 import sharedObject.RenderableHolder;
 
 public class PlayerBattleEntity extends Entity

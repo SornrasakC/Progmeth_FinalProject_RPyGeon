@@ -38,7 +38,12 @@ public class SceneManager {
 		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
 	}
-
+	public static void reBattle()
+	{
+		battlePane = new Battle();
+		battleScene = new Scene(battlePane, WIDTH, HEIGHT);
+		battleScene.getStylesheets().add(SceneManager.class.getResource("BattleStyle.css").toExternalForm());
+	}
 	static
 	{
 		battleScene.getStylesheets().add(SceneManager.class.getResource("BattleStyle.css").toExternalForm());
