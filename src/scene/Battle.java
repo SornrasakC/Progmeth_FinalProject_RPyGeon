@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.logging.LogManager;
 
 import entity.VillageEntityLogic;
+import input.InputUtility;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,12 +55,14 @@ public class Battle extends GridPane
 	private static boolean inOverlay;
 	private static boolean playerTurn;
 	private static boolean inAnimation;
+	private static int fightNumber;
 	
 	public Battle()
 	{
 		inOverlay = false;
 		playerTurn = true;
 		inAnimation = false;
+		fightNumber = 1;
 		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 		
 		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
@@ -140,7 +143,6 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					spellList = new SpellList();
-//					stackPane.getChildren().add(overlayCanvas);
 					startOverlay();
 					stackPane.getChildren().add(spellList);
 					FadeTransition fade = new FadeTransition(Duration.millis(500), spellList);
@@ -202,14 +204,16 @@ public class Battle extends GridPane
 			}
 		);
 	}
-	private void backToVillage()
+	public static void backToVillage()
 	{
-		monster.fullHeal();
+		Battle.monster.fullHeal();
 		Player.player.fullHeal();
 		VillageEntityLogic.exitDungeon();
-		Main.animation.start();
+		InputUtility.clearInput();
 		Main.battleAnimation.stop();
+		Main.animation.start();
 		Main.changeScene(SceneManager.villageScene);
+		
 	}
 	public void paintCanvas() 
 	{
@@ -247,9 +251,6 @@ public class Battle extends GridPane
 				ft.setToValue(1.0);
 				ft.play();
 				
-				
-				
-				
 				battleEnd.setMaxSize(WIDTH * 3 / 5, HEIGHT * 3 / 5);
 				StackPane.setAlignment(battleEnd, Pos.CENTER);
 			}
@@ -283,8 +284,8 @@ public class Battle extends GridPane
 	public static void endOverlay()
 	{
 		battleCanvas.setEffect(null);
-		stackPane.getChildren().remove(spellList);
-		stackPane.getChildren().remove(itemList);
+		stackPane.getChildren().clear();
+		stackPane.getChildren().add(battleCanvas);
 		inOverlay = false;
 	}
 	
@@ -297,6 +298,15 @@ public class Battle extends GridPane
 	public static void report(String report)
 	{
 		Label label = new Label(report);
+		label.getStyleClass().add("PlayerReport");
+		Battle.logDataList.add(label);
+		listView.scrollTo(label);
+		LogManager.getLogManager().reset();
+	}
+	public static void monsterReport(String report)
+	{
+		Label label = new Label(report);
+		label.getStyleClass().add("MonsterReport");
 		Battle.logDataList.add(label);
 		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
@@ -331,6 +341,7 @@ public class Battle extends GridPane
 	}
 	public static void setMonster(Monster monster)
 	{
+		Battle.monster.fullHeal();
 		Battle.monster = monster;
 		
 	}
@@ -452,6 +463,16 @@ public class Battle extends GridPane
 	public static void setBattleEnd(StackPane battleEnd)
 	{
 		Battle.battleEnd = battleEnd;
+	}
+
+	public static int getFightNumber()
+	{
+		return fightNumber;
+	}
+
+	public static void setFightNumber(int fightNumber)
+	{
+		Battle.fightNumber = fightNumber;
 	}
 	
 }

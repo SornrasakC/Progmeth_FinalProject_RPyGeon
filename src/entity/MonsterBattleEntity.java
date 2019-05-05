@@ -71,7 +71,7 @@ public class MonsterBattleEntity extends Entity
 		if(!isFreeze)
 		{
 //			if(!Battle.isPlayerTurn() && !Battle.isInAnimation())
-			if(!Battle.isPlayerTurn())
+			if(!Battle.isPlayerTurn() && !monster.isDead())
 			{
 				if(!isAttacking)
 				{
@@ -103,7 +103,7 @@ public class MonsterBattleEntity extends Entity
 								Battle.setPlayerTurn(true);
 								isAttacking = false;
 								int damage = monster.attack(Player.player);
-								Battle.report(monster.getName() + " attacked " + Player.player.getName() + " for " + damage + "!");
+								Battle.monsterReport(monster.getName() + " attacked " + Player.player.getName() + " for " + damage + "!");
 							}
 						);
 					}

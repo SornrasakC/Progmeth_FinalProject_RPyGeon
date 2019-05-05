@@ -9,6 +9,7 @@ public class SceneManager {
 	
 	public static Village villagePane = new Village();
 	public static Battle battlePane = new Battle();
+//	public static BattleEnd battleEndPane = new BattleEnd();
 	
 	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT);
 	public static Scene creditScene = new Scene(new Credit(), WIDTH, HEIGHT);
@@ -19,6 +20,7 @@ public class SceneManager {
 	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT);
 	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT);
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
+	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT);
 	
 	public SceneManager() 
 	{
@@ -35,6 +37,7 @@ public class SceneManager {
 	}
 	public static void reDungeonChooseFloor()
 	{
+		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
 	}

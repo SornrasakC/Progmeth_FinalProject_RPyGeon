@@ -32,9 +32,11 @@ public class Dungeon
 		this.cleared = false;
 	}
 
-	public static void dropMoney(Player player, Monster monster)
+	public static int dropMoney(Player player, Monster monster)
 	{
-		player.gainMoney(monster.getMoney());
+		int money = monster.getMoney();
+		player.gainMoney(money);
+		return money;
 	}
 	static
 	{

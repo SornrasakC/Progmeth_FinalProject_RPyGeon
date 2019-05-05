@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import logic.base.Character;
 import logic.base.CustomException;
 import logic.base.Magic;
+import logic.base.Monster;
 import logic.base.Potion;
 import magic.HealingMagic;
 import magic.OffensiveMagic;
@@ -56,6 +57,8 @@ public class Player extends Character
 	private int boostMaxMagAtk = 0;
 	private int boostPhyDef = 0;
 	private int boostMagDef = 0;
+	
+	private int gainedEXP = 0;
 
 	static
 	{
@@ -165,6 +168,30 @@ public class Player extends Character
 		}
 		return count;
 	}
+	public int gainExp(Monster monster) // return how many level up
+	{
+		int exp = 0;
+		double levelDiff = monster.getLevel() - this.level;
+		double bonusPercent = 1 + levelDiff / 4;
+		exp = (int) Math.round(Rand.rand(monster.getLevel() * 100, monster.getLevel() * 120) * bonusPercent);
+		
+		if (exp < 0) 
+		{
+			gainedEXP = 0;
+			return 0;
+		}
+		this.exp += exp;
+		gainedEXP = exp;
+		int count = 0;
+		while (this.exp > this.expToNextLevel)
+		{
+			expToNextLevel = 2 * expToNextLevel + 150;
+			levelUp();
+			count++;
+		}
+		return count;
+	}
+	
 
 	public void levelUp()
 	{
@@ -213,41 +240,50 @@ public class Player extends Character
 		}
 	}
 
-	public void gainItem(Object item)
+	public boolean gainItem(Object item)
 	{
-		if (item == null) return;
+		if (item == null) return false;
 		if (item instanceof Weapon)
 		{
 			Weapon weapon = (Weapon) item;
 			if (!weaponInventory.contains(weapon))
 			{
 				weaponInventory.add(weapon);
+				return true;
 			}
+			return false;
 		}
-		else if (item instanceof ChestArmour)
+		if (item instanceof ChestArmour)
 		{
 			ChestArmour armour = (ChestArmour) item;
 			if (!chestArmourInventory.contains(armour))
 			{
 				chestArmourInventory.add(armour);
+				return true;
 			}
+			return false;
 		}
-		else if (item instanceof PantsArmour)
+		if (item instanceof PantsArmour)
 		{
 			PantsArmour armour = (PantsArmour) item;
 			if (!pantsArmourInventory.contains(armour))
 			{
 				pantsArmourInventory.add(armour);
+				return true;
 			}
+			return false;
 		}
-		else if (item instanceof ShoesArmour)
+		if (item instanceof ShoesArmour)
 		{
 			ShoesArmour armour = (ShoesArmour) item;
 			if (!shoesArmourInventory.contains(armour))
 			{
 				shoesArmourInventory.add(armour);
+				return true;
 			}
+			return false;
 		}
+		return false;
 	}
 
 	public void equipItem(Object item)
@@ -630,6 +666,16 @@ public class Player extends Character
 	{
 		this.boostMagDef = boostMagDef;
 	}
-	
 
+	public int getGainedEXP()
+	{
+		return gainedEXP;
+	}
+
+	public void setGainedEXP(int gainedEXP)
+	{
+		this.gainedEXP = gainedEXP;
+	}
+	
+	
 }

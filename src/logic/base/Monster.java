@@ -5,6 +5,7 @@ import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.logics.Player;
+import logic.logics.Rand;
 
 public abstract class Monster extends Character
 {
@@ -37,8 +38,7 @@ public abstract class Monster extends Character
 	@Override
 	public int getMoney()
 	{
-		Random rand = new Random();
-		return rand.nextInt((int) ((level - 1) * 30 * 0.50)) + (int) ((level - 1) * 30 * 0.75);
+		return Rand.rand((int) ((level - 1) * 30 * 0.75), (int) ((level - 1) * 30 * 1.25));
 	}
 	
 	@Override

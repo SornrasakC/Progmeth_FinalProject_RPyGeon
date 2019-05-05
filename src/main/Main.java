@@ -24,6 +24,7 @@ public class Main extends Application
 {
 
 	public static Stage primaryStage;
+//	public static Scene currentScene;
 	public static AnimationTimer animation, battleAnimation;
 	private static VillageEntityLogic villageLogic;
 	private static BattleEntityLogic battleLogic;
@@ -50,7 +51,7 @@ public class Main extends Application
 			Player.player.gainPotion(itemShop.getPotionList().get(0));
 			Player.player.gainPotion(itemShop.getPotionList().get(1));
 			Player.player.gainPotion(itemShop.getPotionList().get(2));
-			Player.player.setConqueredFloor(8);
+//			Player.player.setConqueredFloor(8);
 			System.out.println(Player.player.getPotionInventory().keySet());
 
 			launch(args);
@@ -105,22 +106,28 @@ public class Main extends Application
 
 	public static void changeScene(Scene scene)
 	{
+		final Scene scene2 = scene;
 		if(scene.equals(SceneManager.dungeonChooseFloorScene))
 		{
 			SceneManager.reDungeonChooseFloor();
 			scene = SceneManager.dungeonChooseFloorScene;
 		}
-		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());
+		FadeTransition ft = new FadeTransition(Duration.millis(250), primaryStage.getScene().getRoot());
 		ft.setFromValue(1);
 		ft.setToValue(0);
+		ft.setOnFinished
+		(event->
+			{
+				FadeTransition ft2 = new FadeTransition(Duration.millis(250), scene2.getRoot());
+				ft2.setFromValue(0);
+				ft2.setToValue(1);
+				ft2.play();
+				primaryStage.setScene(scene2);
+				primaryStage.show();
+			}
+		);
 		ft.play();
-		FadeTransition ft2 = new FadeTransition(Duration.millis(500), scene.getRoot());
-		ft2.setFromValue(0);
-		ft2.setToValue(1);
-		ft2.play();
-		primaryStage.setScene(scene);
-
-		primaryStage.show();
+		
 	}
 
 	public static Stage getPrimaryStage()

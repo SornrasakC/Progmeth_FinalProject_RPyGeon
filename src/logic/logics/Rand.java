@@ -13,12 +13,14 @@ public class Rand extends Random
 	public static int rand(int min, int max)
 	{
 		if (max < min) return 0;
+		if(max == 0) return 0;
 		Random r = new Random();
 		return min + r.nextInt(max);
 	}
 
 	public static int rand(int max)
 	{
+		if(max == 0) return 0;
 		Random r = new Random();
 		return r.nextInt(max);
 	}
