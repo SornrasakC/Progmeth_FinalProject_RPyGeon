@@ -34,6 +34,7 @@ public class BattleEnd extends StackPane
 //	private static final int HEIGHT = 720;
 	private int levelup = 0;
 	private boolean leveluped = false;
+	private boolean proceeded = false;
 	private int moneyGain = 0;
 	private String dropItemName = "NaN";
 	private Label contLb, nameLb, expLb, moneyLb, dropLb, descLb;
@@ -76,7 +77,11 @@ public class BattleEnd extends StackPane
 		setOnMouseClicked
 		(event->
 			{
-				proceed();
+				if(!proceeded)
+				{
+					proceed();
+					proceeded = true;
+				}
 			}
 		);
 	}
@@ -84,7 +89,6 @@ public class BattleEnd extends StackPane
 	{
 		moneyGain = Dungeon.dropMoney(Player.player, Battle.getMonster());
 		levelup = Player.player.gainExp(Battle.getMonster());
-//		levelup = 5; // DELETE
 		Object dropItem = Battle.getDungeon().dropItem();
 		if(Player.player.gainItem(dropItem))
 		{
@@ -140,7 +144,8 @@ public class BattleEnd extends StackPane
 		ft.setFromValue(0);
 		ft.setToValue(1);
 		ft.play();
-		if(Battle.getFightNumber() < 4)
+		System.out.println("Battle NUm: " + Battle.getFightNumber());
+		if(Battle.getFightNumber() < 3)
 		{
 			Battle.setMonster(Battle.getDungeon().generateMonster());
 			Main.getBattleLogic().renewMonster(Battle.getMonster());
@@ -148,7 +153,6 @@ public class BattleEnd extends StackPane
 			Battle.setPlayerTurn(true);
 			Battle.setInAnimation(false); //???
 			Battle.setFightNumber(Battle.getFightNumber() + 1);
-			
 		}
 		else
 		{

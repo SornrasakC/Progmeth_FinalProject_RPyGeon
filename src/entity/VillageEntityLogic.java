@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import input.InputUtility;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.util.Duration;
 import main.Main;
 import scene.SceneManager;
 import sharedObject.RenderableHolder;
@@ -64,7 +66,11 @@ public class VillageEntityLogic
 				@Override
 				public void run()
 				{
-					Main.changeScene(SceneManager.dungeonChooseFloorScene);
+					SceneManager.reDungeonChooseFloor();
+					PauseTransition pt = new PauseTransition(Duration.millis(30));
+					pt.setOnFinished(event -> Main.changeScene(SceneManager.dungeonChooseFloorScene));
+					pt.play();
+//					Main.changeScene(SceneManager.dungeonChooseFloorScene);
 				}
 			});
 		}

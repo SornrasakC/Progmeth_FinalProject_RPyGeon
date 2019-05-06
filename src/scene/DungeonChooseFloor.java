@@ -39,6 +39,7 @@ public class DungeonChooseFloor extends VBox
 						public void handle(ActionEvent event)
 						{
 							Monster monster = dungeon.generateMonster();
+							System.out.println(monster);
 							SceneManager.reBattle();
 							Battle.setMonster(monster);
 							Battle.setDungeon(dungeon);

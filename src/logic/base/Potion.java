@@ -21,6 +21,8 @@ public abstract class Potion implements Cloneable
 	
 	public String toString()
 	{
+		if(name.equals("Low Quality Super Duper Lucky Randomly Recovering Potion") || name.equals("High Quality Super Duper Lucky Randomly Recovering Potion"))
+			return name;
 		return name + " {" + description + "}";
 	}
 	@Override

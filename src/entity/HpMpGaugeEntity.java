@@ -42,8 +42,8 @@ public class  HpMpGaugeEntity extends Entity
 			gc.strokeLine(x, y, x + 200 * (displayHP / 100.0), y);
 		}
 		
-		System.out.println(character.getName() + " HP : " + character.getCurrentHp());
-		System.out.println(displayHP);
+//		System.out.println(character.getName() + " HP : " + character.getCurrentHp());
+//		System.out.println(displayHP);
 	}
 	public void update()
 	{

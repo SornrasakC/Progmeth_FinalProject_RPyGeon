@@ -38,7 +38,6 @@ public class SceneManager {
 	public static void reDungeonChooseFloor()
 	{
 		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
-		dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
 	}
 	public static void reBattle()

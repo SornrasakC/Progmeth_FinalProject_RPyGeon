@@ -16,6 +16,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import logic.base.Potion;
 import logic.logics.Player;
 import scene.SceneManager;
 import shops.ItemShop;
@@ -46,11 +47,15 @@ public class Main extends Application
 			Player.player.levelUp();
 			ItemShop itemShop = new ItemShop();
 			
-			Player.player.gainPotion(itemShop.getPotionList().get(0));
-			Player.player.gainPotion(itemShop.getPotionList().get(0));
-			Player.player.gainPotion(itemShop.getPotionList().get(0));
-			Player.player.gainPotion(itemShop.getPotionList().get(1));
-			Player.player.gainPotion(itemShop.getPotionList().get(2));
+			for(Potion i : itemShop.getPotionList())
+			{
+				Player.player.gainPotion(i);
+			}
+//			Player.player.gainPotion(itemShop.getPotionList().get(0));
+//			Player.player.gainPotion(itemShop.getPotionList().get(0));
+//			Player.player.gainPotion(itemShop.getPotionList().get(0));
+//			Player.player.gainPotion(itemShop.getPotionList().get(1));
+//			Player.player.gainPotion(itemShop.getPotionList().get(2));
 //			Player.player.setConqueredFloor(8);
 			System.out.println(Player.player.getPotionInventory().keySet());
 
@@ -107,11 +112,7 @@ public class Main extends Application
 	public static void changeScene(Scene scene)
 	{
 		final Scene scene2 = scene;
-		if(scene.equals(SceneManager.dungeonChooseFloorScene))
-		{
-			SceneManager.reDungeonChooseFloor();
-			scene = SceneManager.dungeonChooseFloorScene;
-		}
+
 		FadeTransition ft = new FadeTransition(Duration.millis(250), primaryStage.getScene().getRoot());
 		ft.setFromValue(1);
 		ft.setToValue(0);

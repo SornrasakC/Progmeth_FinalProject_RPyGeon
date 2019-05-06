@@ -11,7 +11,7 @@ public enum LuckType
 				return NORMAL;
 			case "RANDOM":
 				return RANDOM;
-			case "BADRANDON":
+			case "BADRANDOM":
 				return BADRANDOM;
 			default:
 				return null;
