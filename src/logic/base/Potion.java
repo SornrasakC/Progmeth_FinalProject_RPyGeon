@@ -8,6 +8,7 @@ public abstract class Potion implements Cloneable
 	protected String description;
 	
 	protected int cost;
+	protected int priority;
 
 	public Potion(String name, String description, int cost)
 	{
@@ -49,6 +50,10 @@ public abstract class Potion implements Cloneable
 	public Potion clone() throws CloneNotSupportedException
 	{
 		return (Potion) super.clone();
+	}
+	public int getPriority()
+	{
+		return priority;
 	}
 	
 	

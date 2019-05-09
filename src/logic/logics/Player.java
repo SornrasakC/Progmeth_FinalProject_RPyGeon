@@ -79,7 +79,7 @@ public class Player extends Character
 		this.baseMinMagAtk = 1;
 		this.basePhyDef = 0;
 		this.baseMagDef = 0;
-		this.baseMaxHp = 1000;
+		this.baseMaxHp = 500;
 		this.baseMaxMp = 5;
 
 		this.modMaxPhyAtk = 1;

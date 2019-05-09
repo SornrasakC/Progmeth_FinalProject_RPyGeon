@@ -25,8 +25,10 @@ public class BattleEntityLogic
 		this.gameObjectContainer = new ArrayList<Entity>();
 		playerEntity = new PlayerBattleEntity(WIDTH / 2 - 250, HEIGHT / 2 - 75);
 		monsterEntity = new MonsterBattleEntity(WIDTH / 2 + 250, HEIGHT / 2 - 75, Battle.getMonster());
-		playerGauge = new HpMpGaugeEntity(WIDTH / 2 - 300, HEIGHT / 2 + 75, Player.player);
-		monsterGauge = new HpMpGaugeEntity(WIDTH / 2 + 200, HEIGHT / 2 + 75, Battle.getMonster());
+//		playerGauge = new HpMpGaugeEntity(WIDTH / 2 - 300, HEIGHT / 2 + 75, Player.player);
+//		monsterGauge = new HpMpGaugeEntity(WIDTH / 2 + 200, HEIGHT / 2 + 75, Battle.getMonster());
+		playerGauge = new HpMpGaugeEntity(5, HEIGHT - 90, Player.player);
+		monsterGauge = new HpMpGaugeEntity(WIDTH - 5, HEIGHT - 90, Battle.getMonster());
 		
 		addNewObject(playerEntity);
 		addNewObject(monsterEntity);
@@ -51,4 +53,37 @@ public class BattleEntityLogic
 		monsterGauge.setCharacter(monster);
 		monsterEntity.setMonster(monster);
 	}
+	public static PlayerBattleEntity getPlayerEntity()
+	{
+		return playerEntity;
+	}
+	public static void setPlayerEntity(PlayerBattleEntity playerEntity)
+	{
+		BattleEntityLogic.playerEntity = playerEntity;
+	}
+	public static MonsterBattleEntity getMonsterEntity()
+	{
+		return monsterEntity;
+	}
+	public static void setMonsterEntity(MonsterBattleEntity monsterEntity)
+	{
+		BattleEntityLogic.monsterEntity = monsterEntity;
+	}
+	public static HpMpGaugeEntity getPlayerGauge()
+	{
+		return playerGauge;
+	}
+	public static void setPlayerGauge(HpMpGaugeEntity playerGauge)
+	{
+		BattleEntityLogic.playerGauge = playerGauge;
+	}
+	public static HpMpGaugeEntity getMonsterGauge()
+	{
+		return monsterGauge;
+	}
+	public static void setMonsterGauge(HpMpGaugeEntity monsterGauge)
+	{
+		BattleEntityLogic.monsterGauge = monsterGauge;
+	}
+	
 }

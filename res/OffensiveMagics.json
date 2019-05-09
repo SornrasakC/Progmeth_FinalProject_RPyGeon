@@ -17,16 +17,16 @@
     },
     {
         "name": "PROG METH RNG BEAM",
-        "description": "A RNG beam dealing (at most) 4x maximum magical power",
-        "multiplier": 4,
+        "description": "A RNG beam Randomly deal 5x magical power",
+        "multiplier": 5,
         "level": 5,
         "manaCost": 18,
         "tempLuckType": "RANDOM"
     },
     {
         "name": "E-ku-su-pu-ro-shi-o-n",
-        "description": "MEGU-MEGU-MEGUMIN EXPLOSIONNNN DEALS (At MOST) 15X MAXIMUM MAGICAL POWER",
-        "multiplier": 15,
+        "description": "KABOOMM!! RANDOMLY DEALS 20X ZA POWAR",
+        "multiplier": 20,
         "level": 7,
         "manaCost": 80,
         "tempLuckType": "RANDOM"

@@ -9,7 +9,7 @@
     },
     {
         "name": "LoVe ToUcH eX",
-        "description": "Gayness win the game. heals (at most) 6x maximum magical power",
+        "description": "Gayness win the game. Random heals 6x magical power",
         "multiplier": 6,
         "level": 6,
         "manaCost": 25,

@@ -50,7 +50,9 @@ public class Main extends Application
 			for(Potion i : itemShop.getPotionList())
 			{
 				Player.player.gainPotion(i);
+				Player.player.levelUp();
 			}
+			Player.player.setConqueredFloor(8);
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));
@@ -71,6 +73,7 @@ public class Main extends Application
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
+		primaryStage.setOnCloseRequest(event -> System.exit(0));
 		Main.primaryStage = primaryStage;
 		primaryStage.setTitle("RJyGeon");
 		primaryStage.setScene(SceneManager.mainScreenScene);

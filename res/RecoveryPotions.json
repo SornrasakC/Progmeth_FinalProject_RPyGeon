@@ -5,7 +5,8 @@
         "hpRecoverPercent": 20,
         "mpRecoverPercent": 0,
         "cost": 10,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 1
     },
     {
         "name": "Blue Cookies",
@@ -13,7 +14,8 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 20,
         "cost": 10,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 2
     },
     {
         "name": "Fairly Normal HP Potion",
@@ -21,7 +23,8 @@
         "hpRecoverPercent": 50,
         "mpRecoverPercent": 0,
         "cost": 50,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 3
     },
     {
         "name": "Fairly Normal MP Potion",
@@ -29,7 +32,8 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 50,
         "cost": 50,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 4
     },
     {
         "name": "Chicken Dinner",
@@ -37,7 +41,8 @@
         "hpRecoverPercent": 80,
         "mpRecoverPercent": 0,
         "cost": 150,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 5
     },
     {
         "name": "Cocaine",
@@ -45,7 +50,8 @@
         "hpRecoverPercent": 0,
         "mpRecoverPercent": 80,
         "cost": 150,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 6
     },
     {
         "name": "Phoenix Kit",
@@ -53,7 +59,8 @@
         "hpRecoverPercent": 100,
         "mpRecoverPercent": 100,
         "cost": 300,
-        "tempLuckType": "NORMAL"
+        "tempLuckType": "NORMAL",
+        "priority": 7
     },
     {
         "name": "Low Quality Super Duper Lucky Randomly Recovering Potion",
@@ -61,7 +68,8 @@
         "hpRecoverPercent": 60,
         "mpRecoverPercent": 60,
         "cost": 20,
-        "tempLuckType": "BADRANDOM"
+        "tempLuckType": "BADRANDOM",
+        "priority": 8
     },
     {
         "name": "High Quality Super Duper Lucky Randomly Recovering Potion",
@@ -69,6 +77,7 @@
         "hpRecoverPercent": 100,
         "mpRecoverPercent": 100,
         "cost": 100,
-        "tempLuckType": "RANDOM"
+        "tempLuckType": "RANDOM",
+        "priority": 9
     }
 ]

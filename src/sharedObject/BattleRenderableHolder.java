@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class BattleRenderableHolder
 {
 	private static final BattleRenderableHolder instance = new BattleRenderableHolder();
@@ -16,6 +18,7 @@ public class BattleRenderableHolder
 	// TODO add sprite
 //	public static Image playerSpriteNorth1;
 //	public static Image playerSpriteEast1;
+	public static Image gaugeBackground;
 
 	public BattleRenderableHolder()
 	{
@@ -32,7 +35,7 @@ public class BattleRenderableHolder
 
 	static
 	{
-		//TODO start
+		gaugeBackground = new Image(ClassLoader.getSystemResourceAsStream("gauge.png"));
 	}
 	
 	public void add(IRenderable entity)

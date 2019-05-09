@@ -43,7 +43,7 @@ public class Battle extends GridPane
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
 	private static Monster monster = Dungeon.getMonsterList().get(0);
-	private static Dungeon dungeon;
+	private static Dungeon dungeon = Dungeon.getDungeonList().get(0);
 	private UiButton attackButton, spellButton, itemButton, escapeButton;
 	private static Canvas battleCanvas;
 	private static ObservableList<Label> logDataList;
@@ -68,7 +68,8 @@ public class Battle extends GridPane
 		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
-		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
+		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon" + dungeon.getFloor() + ".png")), 0, 0);
+//		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
 		
 		stackPane = new StackPane();
 		stackPane.getChildren().add(battleCanvas);
@@ -192,7 +193,7 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					playerTurn = false;
-					if(Rand.chance(35))
+					if(Rand.chance(50))
 					{
 						backToVillage();		
 					}
@@ -273,7 +274,7 @@ public class Battle extends GridPane
 	public void drawBackground()
 	{
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
-		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
+		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon" + dungeon.getFloor() + ".png")), 0, 0);
 	}
 	
 	public static void startOverlay()

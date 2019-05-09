@@ -1,7 +1,11 @@
 package scene.battleOverlay;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import logic.base.Potion;
 import logic.logics.Player;
 import scene.Battle;
 
@@ -12,7 +16,9 @@ public class ItemList extends VBox
 	private static final String ITEM_CLASS = "itemListButton";
 	public ItemList()
 	{
-		Player.player.getPotionInventory().keySet().forEach
+		ArrayList<Potion> list = Player.player.getPotionInventory().keySet().stream().collect(Collectors.toCollection(ArrayList::new));
+		list.sort((a, b) -> compare(a, b));
+		list.forEach
 		(
 			potion ->
 			{
@@ -44,6 +50,10 @@ public class ItemList extends VBox
 		returnButton.setPrefWidth(WIDTH * 3 / 5);
 		returnButton.getStyleClass().add(ITEM_CLASS);
 		getChildren().add(returnButton);
+	}
+	private int compare(Potion a, Potion b)
+	{
+		return a.getPriority() - b.getPriority();
 	}
 
 }

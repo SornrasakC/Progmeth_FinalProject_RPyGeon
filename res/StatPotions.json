@@ -5,7 +5,8 @@
         "modStat": 10,
         "modMaxStat": 20,
         "tempStatType": "PHYATK",
-        "cost": 80
+        "cost": 80,
+        "priority": 10
     },
     {
         "name": "Shroud's right arm",
@@ -13,20 +14,23 @@
         "modStat": 4,
         "modMaxStat": 40,
         "tempStatType": "MAGATK",
-        "cost": 100
+        "cost": 100,
+        "priority": 11
     },
     {
         "name": "Oten's tear",
         "description": "Boost physical defense by 20 points per battle",
         "modStat": 20,
         "tempStatType": "PHYDEF",
-        "cost": 120
+        "cost": 120,
+        "priority": 12
     },
     {
         "name": "Trap Card: Mirror Force",
         "description": "Boost magical defense by 40 points per battle",
         "modStat": 40,
         "tempStatType": "MAGDEF",
-        "cost": 120
+        "cost": 120,
+        "priority": 13
     }
 ]
