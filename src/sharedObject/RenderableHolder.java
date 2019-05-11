@@ -34,6 +34,9 @@ public class RenderableHolder {
 	
 	//TODO add some sound
 	public static AudioClip song;
+	
+	//epilogue
+	public static Image epilogueBackground;
 
 	static {
 		loadResource();
@@ -71,6 +74,8 @@ public class RenderableHolder {
 		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"));
 		blueCookie = new Image(ClassLoader.getSystemResourceAsStream("bluecookie.png"));
 		
+		//epilogue
+		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
 		
 	}
 

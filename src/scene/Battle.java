@@ -193,13 +193,20 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					playerTurn = false;
-					if(Rand.chance(50))
+					if(dungeon.getFloor() > 5)
 					{
-						backToVillage();		
+						report("You are not allowed to escape from the boss!!");
 					}
 					else
 					{
-						report("Escape Failed!!");
+						if(Rand.chance(50))
+						{
+							backToVillage();		
+						}
+						else
+						{
+							report("Escape Failed!!");
+						}
 					}
 				}
 			}
@@ -342,6 +349,10 @@ public class Battle extends GridPane
 	}
 	public static void setMonster(Monster monster)
 	{
+		if(monster.getLevel() == 12)
+		{
+			dungeon.setFloor(61);
+		}
 		Battle.monster.fullHeal();
 		Battle.monster = monster;
 		

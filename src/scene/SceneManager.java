@@ -1,6 +1,7 @@
 package scene;
 
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 
 public class SceneManager {
 	
@@ -9,18 +10,20 @@ public class SceneManager {
 	
 	public static Village villagePane = new Village();
 	public static Battle battlePane = new Battle();
+	public static Epilogue epilogueRoot = new Epilogue();
 //	public static BattleEnd battleEndPane = new BattleEnd();
 	
-	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT);
-	public static Scene creditScene = new Scene(new Credit(), WIDTH, HEIGHT);
-	public static Scene mainScreenScene = new Scene(new MainMenu(), WIDTH, HEIGHT);
-	public static Scene startNamingScene = new Scene(new StartNaming(), WIDTH, HEIGHT);
-	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT);
-	public static Scene prologueScene = new Scene(new Prologue(), WIDTH, HEIGHT);
-	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT);
-	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT);
-	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT);
-	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT);
+	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT, Color.BLACK);
+	public static Scene creditScene = new Scene(new Credit(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene mainScreenScene = new Scene(new MainMenu(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene startNamingScene = new Scene(new StartNaming(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene prologueScene = new Scene(new Prologue(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene itemshopScene = new Scene(new ItemShop(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT, Color.BLACK);
+	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene epilogueScene = new Scene(epilogueRoot, WIDTH, HEIGHT, Color.BLACK);
 	
 	public SceneManager() 
 	{
@@ -50,6 +53,8 @@ public class SceneManager {
 	{
 		battleScene.getStylesheets().add(SceneManager.class.getResource("BattleStyle.css").toExternalForm());
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
+		prologueScene.getStylesheets().add(SceneManager.class.getResource("Prologue.css").toExternalForm());
+		epilogueScene.getStylesheets().add(SceneManager.class.getResource("Epilogue.css").toExternalForm());
 	}
 
 }

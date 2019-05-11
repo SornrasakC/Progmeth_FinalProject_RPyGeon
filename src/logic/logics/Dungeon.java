@@ -156,7 +156,11 @@ public class Dungeon
 		}
 		return null;
 	}
-
+	
+	public static Monster generateSlime()
+	{
+		return monsterList.stream().filter(x -> x.getName().equals("Slime")).findAny().get();
+	}
 	public String getName()
 	{
 		return name;
@@ -190,5 +194,9 @@ public class Dungeon
 	public void setCleared(boolean cleared)
 	{
 		this.cleared = cleared;
+	}
+	public void setFloor(int floor)
+	{
+		this.floor = floor;
 	}
 }

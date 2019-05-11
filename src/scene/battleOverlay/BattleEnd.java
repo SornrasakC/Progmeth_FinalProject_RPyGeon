@@ -87,6 +87,13 @@ public class BattleEnd extends StackPane
 	}
 	private void logicUpdate()
 	{
+		if(Battle.getMonster().getLevel() == 12)
+		{
+			Main.changeScene(SceneManager.epilogueScene);
+			SceneManager.epilogueRoot.startCall();
+			Main.battleAnimation.stop();
+			return;
+		}
 		moneyGain = Dungeon.dropMoney(Player.player, Battle.getMonster());
 		levelup = Player.player.gainExp(Battle.getMonster());
 		Object dropItem = Battle.getDungeon().dropItem();
@@ -131,6 +138,16 @@ public class BattleEnd extends StackPane
 		}
 		if(levelup <= 0)
 		{
+			if(Battle.getFightNumber() >= 3)
+			{
+				if(!Battle.getDungeon().isCleared())
+				{
+					Battle.getDungeon().setCleared(true);
+					Player.player.setConqueredFloor(Player.player.getConqueredFloor() + 1);
+				}
+				Battle.backToVillage();
+				return;
+			}
 			FadeTransition ft = new FadeTransition(Duration.millis(1000), SceneManager.battlePane);
 			ft.setFromValue(1);
 			ft.setToValue(0);
@@ -140,30 +157,17 @@ public class BattleEnd extends StackPane
 	}
 	private void proceed2()
 	{
+//		if(Battle.getFightNumber() < 3)
 		FadeTransition ft = new FadeTransition(Duration.millis(1000), SceneManager.battlePane);
 		ft.setFromValue(0);
 		ft.setToValue(1);
 		ft.play();
-		System.out.println("Battle NUm: " + Battle.getFightNumber());
-		if(Battle.getFightNumber() < 3)
-		{
-			Battle.setMonster(Battle.getDungeon().generateMonster());
-			Main.getBattleLogic().renewMonster(Battle.getMonster());
-			Battle.endOverlay();
-			Battle.setPlayerTurn(true);
-			Battle.setInAnimation(false); //???
-			Battle.setFightNumber(Battle.getFightNumber() + 1);
-		}
-		else
-		{
-			if(!Battle.getDungeon().isCleared())
-			{
-				Battle.getDungeon().setCleared(true);
-				Player.player.setConqueredFloor(Player.player.getConqueredFloor() + 1);
-			}
-			
-			Battle.backToVillage();
-		}
+		Battle.setMonster(Battle.getDungeon().generateMonster());
+		Main.getBattleLogic().renewMonster(Battle.getMonster());
+		Battle.endOverlay();
+		Battle.setPlayerTurn(true);
+		Battle.setInAnimation(false); //???
+		Battle.setFightNumber(Battle.getFightNumber() + 1);
 	}
 	private void addClass()
 	{

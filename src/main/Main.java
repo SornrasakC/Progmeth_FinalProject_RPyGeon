@@ -12,6 +12,7 @@ import entity.VillageEntityLogic;
 import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -74,6 +75,7 @@ public class Main extends Application
 	public void start(Stage primaryStage) throws Exception
 	{
 		primaryStage.setOnCloseRequest(event -> System.exit(0));
+
 		Main.primaryStage = primaryStage;
 		primaryStage.setTitle("RJyGeon");
 		primaryStage.setScene(SceneManager.mainScreenScene);
@@ -116,18 +118,25 @@ public class Main extends Application
 	{
 		final Scene scene2 = scene;
 
-		FadeTransition ft = new FadeTransition(Duration.millis(250), primaryStage.getScene().getRoot());
+		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());
 		ft.setFromValue(1);
 		ft.setToValue(0);
 		ft.setOnFinished
 		(event->
 			{
-				FadeTransition ft2 = new FadeTransition(Duration.millis(250), scene2.getRoot());
+				FadeTransition ft2 = new FadeTransition(Duration.millis(530), scene2.getRoot());
 				ft2.setFromValue(0);
 				ft2.setToValue(1);
 				ft2.play();
-				primaryStage.setScene(scene2);
-				primaryStage.show();
+				PauseTransition pt = new PauseTransition(Duration.millis(30));
+				pt.setOnFinished
+				(event2->
+					{
+						primaryStage.setScene(scene2);
+						primaryStage.show();
+					}
+				);
+				pt.play();
 			}
 		);
 		ft.play();

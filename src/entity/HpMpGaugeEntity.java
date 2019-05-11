@@ -50,7 +50,7 @@ public class  HpMpGaugeEntity extends Entity
 		{
 			gc.setFill(Color.ORANGERED);
 			gc.drawImage(BattleRenderableHolder.gaugeBackground, x - 440, y - 80);
-			gc.fillText(character.getName(), x - (character.getName().length() * 21), y - 40);
+			gc.fillText(character.getName(), x - (character.getName().length() * 22), y - 40);
 		}
 		
 		gc.setLineWidth(30);

@@ -28,6 +28,8 @@ public class Rand extends Random
 	public static <T> Object rand(ArrayList<T> t)
 	{
 //		Random r = new Random();
+		if(t.size() == 0)
+			return null;
 		return t.get(rand(t.size()));
 	}
 
