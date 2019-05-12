@@ -114,8 +114,20 @@ public class BattleAnimation extends Pane{
 	
 	private void changeSprite(ImageView imageView, Image image) {
 		this.getChildren().clear();
-		imageView = new ImageView(image); 
-		this.getChildren().add(imageView);
+//		imageView = new ImageView(image); 
+		if(imageView.equals(playerSprite))
+		{
+			playerSprite = new ImageView(image); 
+			testTransition.setNode(playerSprite);
+			this.getChildren().add(playerSprite);
+		}
+		else
+		{
+			MonsterSprite = new ImageView(image); 
+			testTransition.setNode(MonsterSprite);
+			this.getChildren().add(MonsterSprite);
+		}
+		this.getChildren().add(new ImageView(image));
 		
 	}
 
