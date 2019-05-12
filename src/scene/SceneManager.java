@@ -60,6 +60,7 @@ public class SceneManager {
 		dungeonChooseFloorScene.getStylesheets().add(SceneManager.class.getResource("DungeonChooseFloorStyle.css").toExternalForm());
 		prologueScene.getStylesheets().add(SceneManager.class.getResource("Prologue.css").toExternalForm());
 		epilogueScene.getStylesheets().add(SceneManager.class.getResource("Epilogue.css").toExternalForm());
+		mainScreenScene.getStylesheets().add(SceneManager.class.getResource("MainMenu.css").toExternalForm());
 	}
 
 }

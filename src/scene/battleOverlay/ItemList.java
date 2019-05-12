@@ -28,7 +28,7 @@ public class ItemList extends VBox
 					action ->
 					{
 						Player.player.usePotion(potion);
-						Battle.report(Player.player.getName() + " used " + potion.getName() + "!");
+						Battle.playerReport(Player.player.getName() + " used " + potion.getName() + "!");
 						Battle.setPlayerTurn(false);
 						Battle.setInAnimation(true);
 						Battle.endOverlay();

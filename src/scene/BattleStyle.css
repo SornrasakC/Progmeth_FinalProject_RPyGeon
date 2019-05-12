@@ -122,7 +122,7 @@
 }
 .itemButton
 {
-  	-fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(13,144,15,1), rgba(237,255,4,1));
+  	-fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(13,144,15,1), rgba(237,255,4,1));
 	-fx-text-fill: rgba(139,0,139,1);
 }
 .itemButton:hover 
@@ -145,4 +145,16 @@
 .escapeButton:pressed 
 {
   -fx-background-color: rgba(255,192,203,1);
+}
+.PlayerReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(3,204,205,1), rgba(25,249,55,1));
+}
+.MonsterReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(252,121,34,1), rgba(233,35,35,1));
+}
+.SystemReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,0,1));
 }

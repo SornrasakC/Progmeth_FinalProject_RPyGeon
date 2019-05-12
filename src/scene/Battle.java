@@ -3,6 +3,8 @@ package scene;
 import java.util.ArrayList;
 import java.util.logging.LogManager;
 
+import org.omg.CORBA.Object;
+
 import entity.VillageEntityLogic;
 import input.InputUtility;
 import javafx.animation.FadeTransition;
@@ -16,6 +18,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
@@ -26,6 +29,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import logic.base.Monster;
 import logic.base.StatType;
@@ -111,7 +115,7 @@ public class Battle extends GridPane
 		add(escapeButton, 3, 1);
 		//test animation
 		battleAnimation = new BattleAnimation();
-		this.stackPane.getChildren().add(battleAnimation);
+		stackPane.getChildren().add(battleAnimation);
 		//test animation
 		
 		
@@ -119,6 +123,7 @@ public class Battle extends GridPane
 		setSpell(spellButton);
 		setItem(itemButton);
 		setEscape(escapeButton);
+//		setListViewCss();
 		
 		attackButton.getStyleClass().addAll("attackButton", "actionButton");
 		spellButton.getStyleClass().addAll("spellButton", "actionButton");
@@ -140,7 +145,7 @@ public class Battle extends GridPane
 					playerTurn = false;
 					inAnimation = true;
 					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
-					report(Player.player.getName() + " deals " + damage + " damage!");
+					playerReport(Player.player.getName() + " deals " + damage + " damage!");
 				}
 			}
 		);
@@ -203,21 +208,21 @@ public class Battle extends GridPane
 				
 				@Override
 				public void handle(ActionEvent event)
-				{
-					playerTurn = false;
+				{	
 					if(dungeon.getFloor() > 5)
 					{
-						report("You are not allowed to escape from the boss!!");
+						systemReport("You are not allowed to escape from the boss!!");
 					}
 					else
 					{
+						playerTurn = false;
 						if(Rand.chance(50))
 						{
 							backToVillage();		
 						}
 						else
 						{
-							report("Escape Failed!!");
+							systemReport("Escape Failed!!");
 						}
 					}
 				}
@@ -238,7 +243,7 @@ public class Battle extends GridPane
 	public void paintCanvas() 
 	{
 		//test
-		this.battleAnimation.update();
+		battleAnimation.update();
 		//test
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		for (IRenderable entity : BattleRenderableHolder.getInstance().getEntities())
@@ -315,27 +320,63 @@ public class Battle extends GridPane
 		inOverlay = false;
 	}
 	
-	public static void report(Label label)
-	{
-		Battle.logDataList.add(label);
-		listView.scrollTo(label);
-		LogManager.getLogManager().reset();
-	}
-	public static void report(String report)
+//	public static void report(Label label)
+//	{
+//		Battle.logDataList.add(label);
+//		listView.scrollTo(label);
+//		LogManager.getLogManager().reset();
+//	}
+	public static void playerReport(String report)
 	{
 		Label label = new Label(report);
 		label.getStyleClass().add("PlayerReport");
-		Battle.logDataList.add(label);
-		listView.scrollTo(label);
+		label.setMinWidth(WIDTH / 4);
+		Battle.logDataList.add(0, label);
+//		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
 	}
 	public static void monsterReport(String report)
 	{
 		Label label = new Label(report);
 		label.getStyleClass().add("MonsterReport");
-		Battle.logDataList.add(label);
-		listView.scrollTo(label);
+		label.setMinWidth(WIDTH / 4);
+		Battle.logDataList.add(0, label);
+//		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
+	}
+	public static void systemReport(String report)
+	{
+		Label label = new Label(report);
+		label.getStyleClass().add("SystemReport");
+		label.setMinWidth(WIDTH / 4);
+		Battle.logDataList.add(0, label);
+//		listView.scrollTo(label);
+		LogManager.getLogManager().reset();
+	}
+	private void setListViewCss()
+	{
+		listView.setCellFactory(new Callback<ListView<Label>, ListCell<Label>>()
+		{
+			@Override
+			public ListCell<Label> call(ListView<Label> p)
+			{
+				ListCell<Label> cell = new ListCell<Label>()
+				{
+					@Override
+					protected void updateItem(Label lb, boolean bln)
+					{
+						super.updateItem(lb, bln);
+						// if (t != null ) {
+						// setText( t);
+						if (!getStyleClass().contains(lb.getStyleClass()))
+						{
+							getStyleClass().add(lb.getStyleClass().get(0));
+						}
+					}
+				};
+				return cell;
+			}
+		});
 	}
 	public Button getAttackButton()
 	{

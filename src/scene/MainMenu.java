@@ -3,9 +3,13 @@ package scene;
 import java.util.Arrays;
 import java.util.List;
 
+import com.sun.prism.paint.RadialGradient;
+
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -26,6 +30,9 @@ public class MainMenu extends Pane
 	private List<Pair<String, Runnable>> menuList;
 
 	public MainMenu() {
+		
+//		setBackground(new Background(new BackgroundFill(Color.DARKRED, null, null)));
+		setId("background");
 		menuList = Arrays.asList(new Pair<String, Runnable>("Start", () -> Platform.runLater(new Runnable()
 		{
 			@Override
@@ -68,7 +75,7 @@ public class MainMenu extends Pane
 		title.setAlignment(Pos.CENTER);
 //        title.setTranslateX(WIDTH / 2 - title.getWidth() / 2);
 		title.setTranslateY(HEIGHT / 4);
-		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.WHITE);
+		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.TRANSPARENT);
 		this.getChildren().add(rectBG);
 		this.getChildren().add(title);
 		this.getChildren().add(menuBox);
