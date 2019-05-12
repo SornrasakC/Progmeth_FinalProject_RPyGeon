@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
@@ -44,7 +45,7 @@ public class Battle extends GridPane
 	private static final int HEIGHT = 720;
 	private static Monster monster = Dungeon.getMonsterList().get(0);
 	private static Dungeon dungeon = Dungeon.getDungeonList().get(0);
-	private UiButton attackButton, spellButton, itemButton, escapeButton;
+	private Button attackButton, spellButton, itemButton, escapeButton;
 	private static Canvas battleCanvas;
 	private static ObservableList<Label> logDataList;
 	private static ListView<Label> listView;
@@ -79,12 +80,12 @@ public class Battle extends GridPane
 		listView = new ListView<Label>(logDataList);
 		listView.setPrefWidth(WIDTH / 5);
 		
-		attackButton = new UiButton("ATTACK");
-		spellButton = new UiButton("SPELL");
-		itemButton = new UiButton("ITEM");
-		escapeButton = new UiButton("ESCAPE");
+		attackButton = new Button("ATTACK");
+		spellButton = new Button("SPELL");
+		itemButton = new Button("ITEM");
+		escapeButton = new Button("ESCAPE");
 		
-		ArrayList<UiButton> buttonList = new ArrayList<UiButton>();
+		ArrayList<Button> buttonList = new ArrayList<Button>();
 		buttonList.add(attackButton);
 		buttonList.add(spellButton);
 		buttonList.add(itemButton);
@@ -113,9 +114,13 @@ public class Battle extends GridPane
 		setItem(itemButton);
 		setEscape(escapeButton);
 		
+		attackButton.getStyleClass().addAll("attackButton", "actionButton");
+		spellButton.getStyleClass().addAll("spellButton", "actionButton");
+		itemButton.getStyleClass().addAll("itemButton", "actionButton");
+		escapeButton.getStyleClass().addAll("escapeButton", "actionButton");
 	}
 	
-	private void setAttack(UiButton attackButton)
+	private void setAttack(Button attackButton)
 	{
 		attackButton.setOnAction
 		(
@@ -133,7 +138,7 @@ public class Battle extends GridPane
 			}
 		);
 	}
-	private void setSpell(UiButton spellButton)
+	private void setSpell(Button spellButton)
 	{
 		spellButton.setOnAction
 		(
@@ -158,7 +163,7 @@ public class Battle extends GridPane
 			}
 		);
 	}
-	private void setItem(UiButton itemButton)
+	private void setItem(Button itemButton)
 	{
 		itemButton.setOnAction
 		(
@@ -182,7 +187,7 @@ public class Battle extends GridPane
 			}
 		);
 	}
-	private void setEscape(UiButton escapeButton)
+	private void setEscape(Button escapeButton)
 	{
 		escapeButton.setOnAction
 		(
@@ -319,19 +324,19 @@ public class Battle extends GridPane
 		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
 	}
-	public UiButton getAttackButton()
+	public Button getAttackButton()
 	{
 		return attackButton;
 	}
-	public UiButton getSpellButton()
+	public Button getSpellButton()
 	{
 		return spellButton;
 	}
-	public UiButton getItemButton()
+	public Button getItemButton()
 	{
 		return itemButton;
 	}
-	public UiButton getEscapeButton()
+	public Button getEscapeButton()
 	{
 		return escapeButton;
 	}
@@ -442,22 +447,22 @@ public class Battle extends GridPane
 		Battle.inAnimation = inAnimation;
 	}
 
-	public void setAttackButton(UiButton attackButton)
+	public void setAttackButton(Button attackButton)
 	{
 		this.attackButton = attackButton;
 	}
 
-	public void setSpellButton(UiButton spellButton)
+	public void setSpellButton(Button spellButton)
 	{
 		this.spellButton = spellButton;
 	}
 
-	public void setItemButton(UiButton itemButton)
+	public void setItemButton(Button itemButton)
 	{
 		this.itemButton = itemButton;
 	}
 
-	public void setEscapeButton(UiButton escapeButton)
+	public void setEscapeButton(Button escapeButton)
 	{
 		this.escapeButton = escapeButton;
 	}
