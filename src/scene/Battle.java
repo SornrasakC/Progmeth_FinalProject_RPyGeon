@@ -33,6 +33,7 @@ import logic.logics.Dungeon;
 import logic.logics.Player;
 import logic.logics.Rand;
 import main.Main;
+import scene.battleOverlay.BattleAnimation;
 import scene.battleOverlay.BattleEnd;
 import scene.battleOverlay.ItemList;
 import scene.battleOverlay.SpellList;
@@ -57,6 +58,7 @@ public class Battle extends GridPane
 	private static boolean playerTurn;
 	private static boolean inAnimation;
 	private static int fightNumber;
+	private static BattleAnimation battleAnimation;
 	
 	public Battle()
 	{
@@ -107,6 +109,10 @@ public class Battle extends GridPane
 		add(spellButton, 1, 1);
 		add(itemButton, 2, 1);
 		add(escapeButton, 3, 1);
+		//test animation
+		battleAnimation = new BattleAnimation();
+		this.stackPane.getChildren().add(battleAnimation);
+		//test animation
 		
 		
 		setAttack(attackButton);
@@ -130,6 +136,7 @@ public class Battle extends GridPane
 				@Override
 				public void handle(ActionEvent event)
 				{
+					battleAnimation.playAttackAnimation();
 					playerTurn = false;
 					inAnimation = true;
 					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
@@ -230,6 +237,9 @@ public class Battle extends GridPane
 	}
 	public void paintCanvas() 
 	{
+		//test
+		this.battleAnimation.update();
+		//test
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		for (IRenderable entity : BattleRenderableHolder.getInstance().getEntities())
 		{
@@ -299,6 +309,9 @@ public class Battle extends GridPane
 		battleCanvas.setEffect(null);
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(battleCanvas);
+		//test animation
+		stackPane.getChildren().add(battleAnimation);
+		//test animation
 		inOverlay = false;
 	}
 	

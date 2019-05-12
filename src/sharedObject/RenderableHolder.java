@@ -23,10 +23,14 @@ public class RenderableHolder {
 	public static Image playerSpriteWest2; 
 	public static Image playerSpriteSouth2;
 	public static Image genericVendor;
+	public static Image emiliaN1;
+	public static Image emiliaN2;
 	public static Image emiliaE1;
 	public static Image emiliaE2;
 	public static Image emiliaW1;
 	public static Image emiliaW2;
+	public static Image emiliaS1;
+	public static Image emiliaS2;
 	
 	//itemshop
 	public static Image redCookie;
@@ -65,10 +69,18 @@ public class RenderableHolder {
 		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
 		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
-		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
-		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
-		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
-		emiliaW2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+//		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
+//		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+//		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
+//		emiliaW2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
+		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright01.PNG"));
+		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright02.PNG"));
+		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("emilialeft01.PNG"));
+		emiliaW2 = new Image(ClassLoader.getSystemResourceAsStream("emilialeft02.PNG"));
+		emiliaN1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaback01.png"));
+		emiliaN2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaback02.png"));
+		emiliaS1 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront01.png"));
+		emiliaS2 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront02.png"));
 		
 		//items
 		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"));
