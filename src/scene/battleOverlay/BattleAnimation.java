@@ -1,18 +1,12 @@
 package scene.battleOverlay;
 
-import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.CacheHint;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 import sharedObject.RenderableHolder;
 
@@ -113,9 +107,19 @@ public class BattleAnimation extends Pane{
 	}
 	
 	private void changeSprite(ImageView imageView, Image image) {
-		this.getChildren().clear();
-		imageView = new ImageView(image); 
-		this.getChildren().add(imageView);
+		getChildren().clear();
+//		imageView = new ImageView(image); 
+		if(imageView.equals(playerSprite))
+		{
+			playerSprite = new ImageView(image); 
+			getChildren().add(playerSprite);
+		}
+		else
+		{
+			MonsterSprite = new ImageView(image); 
+			getChildren().add(MonsterSprite);
+		}
+//		this.getChildren().add(new ImageView(image));
 		
 	}
 

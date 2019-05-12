@@ -111,7 +111,6 @@ public class Epilogue extends StackPane
 						{
 							getChildren().remove(1);
 						}catch(Exception e) {}
-//						getChildren().clear();
 						getChildren().add(lb);
 						StackPane.setAlignment(lb, Pos.CENTER);
 					}
