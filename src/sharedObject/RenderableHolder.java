@@ -35,6 +35,19 @@ public class RenderableHolder {
 	//itemshop
 	public static Image redCookie;
 	public static Image blueCookie;
+	public static Image hpPotion;
+	public static Image mpPotion;
+	public static Image chickenDinner;
+	public static Image cocain;
+	public static Image phoenixKit;
+	public static Image lowRecPotion;
+	public static Image highRecPotion;
+	public static Image m44;
+	public static Image rightArm;
+	public static Image otenTear;
+	public static Image mirrorForce;
+	public static Image coin;
+	
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -69,10 +82,6 @@ public class RenderableHolder {
 		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
 		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
-//		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
-//		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
-//		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("01emilia.PNG"),40,60,true,false);
-//		emiliaW2 = new Image(ClassLoader.getSystemResourceAsStream("02emilia.PNG"),40,60,true,false);
 		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright01.PNG"));
 		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright02.PNG"));
 		emiliaW1 = new Image(ClassLoader.getSystemResourceAsStream("emilialeft01.PNG"));
@@ -83,8 +92,20 @@ public class RenderableHolder {
 		emiliaS2 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront02.png"));
 		
 		//items
-		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"));
-		blueCookie = new Image(ClassLoader.getSystemResourceAsStream("bluecookie.png"));
+		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"),80,80,true,false);
+		blueCookie = new Image(ClassLoader.getSystemResourceAsStream("bluecookie.png"),80,80,true,false);
+		hpPotion = new Image(ClassLoader.getSystemResourceAsStream("redpotion.png"),80,80,true,false);
+		mpPotion = new Image(ClassLoader.getSystemResourceAsStream("bluepotion.png"),80,80,true,false);
+		chickenDinner = new Image(ClassLoader.getSystemResourceAsStream("chickendinner.png"),80,80,true,false);
+		cocain = new Image(ClassLoader.getSystemResourceAsStream("cocain.png"),80,80,true,false);
+		phoenixKit = new Image(ClassLoader.getSystemResourceAsStream("phoenixkit2.png"),80,80,true,false);
+		lowRecPotion = new Image(ClassLoader.getSystemResourceAsStream("lowrecoverypotion.png"),80,80,true,false);
+		highRecPotion = new Image(ClassLoader.getSystemResourceAsStream("highrecoverypotion.png"),80,80,true,false);
+		m44 = new Image(ClassLoader.getSystemResourceAsStream("M44a.png"),120,80,true,false);
+		rightArm = new Image(ClassLoader.getSystemResourceAsStream("WIP.png"),80,80,true,false);
+		otenTear = new Image(ClassLoader.getSystemResourceAsStream("otentear.png"),80,80,true,false);
+		mirrorForce = new Image(ClassLoader.getSystemResourceAsStream("trapcard.png"),80,80,true,false);
+		coin = new Image(ClassLoader.getSystemResourceAsStream("coin.png"),80,80,true,false);
 		
 		//epilogue
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
