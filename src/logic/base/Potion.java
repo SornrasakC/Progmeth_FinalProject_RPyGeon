@@ -31,7 +31,15 @@ public abstract class Potion implements Cloneable
 	{
 		return (name + description).hashCode();
 	}
-
+	
+	@Override
+	public boolean equals(Object arg0)
+	{
+		if(arg0 == null)
+			return false;
+		Potion potion = (Potion) arg0;
+		return name.equals(potion.getName());
+	}
 	public String getName()
 	{
 		return name;

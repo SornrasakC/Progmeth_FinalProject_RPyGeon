@@ -54,6 +54,7 @@ public class VillageEntityLogic
 				@Override
 				public void run()
 				{
+					SceneManager.getItemshopPane().updateMoney();
 					Main.changeScene(SceneManager.itemshopScene);
 				}
 			});

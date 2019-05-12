@@ -3,13 +3,9 @@ package scene;
 import java.util.Arrays;
 import java.util.List;
 
-import com.sun.prism.paint.RadialGradient;
-
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,7 +20,7 @@ public class MainMenu extends Pane
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
 
-	private Label menuTitle = new Label("Main Menu");
+//	private Label menuTitle = new Label("Main Menu");
 	private VBox menuBox = new VBox(15);
 
 	private List<Pair<String, Runnable>> menuList;

@@ -3,8 +3,6 @@ package scene;
 import java.util.ArrayList;
 import java.util.logging.LogManager;
 
-import org.omg.CORBA.Object;
-
 import entity.VillageEntityLogic;
 import input.InputUtility;
 import javafx.animation.FadeTransition;
@@ -18,7 +16,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
@@ -29,7 +26,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import logic.base.Monster;
 import logic.base.StatType;
@@ -320,64 +316,69 @@ public class Battle extends GridPane
 		inOverlay = false;
 	}
 	
-//	public static void report(Label label)
-//	{
-//		Battle.logDataList.add(label);
-//		listView.scrollTo(label);
-//		LogManager.getLogManager().reset();
-//	}
 	public static void playerReport(String report)
 	{
+		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("PlayerReport");
-		label.setMinWidth(WIDTH / 4);
+		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-//		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
 	}
 	public static void monsterReport(String report)
 	{
+		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("MonsterReport");
-		label.setMinWidth(WIDTH / 4);
+		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-//		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
 	}
 	public static void systemReport(String report)
 	{
+		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("SystemReport");
-		label.setMinWidth(WIDTH / 4);
+		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-//		listView.scrollTo(label);
 		LogManager.getLogManager().reset();
 	}
-	private void setListViewCss()
+	private static String formatReport(String report)
 	{
-		listView.setCellFactory(new Callback<ListView<Label>, ListCell<Label>>()
+		String newReport = "";
+		while(report.length() > 21)
 		{
-			@Override
-			public ListCell<Label> call(ListView<Label> p)
-			{
-				ListCell<Label> cell = new ListCell<Label>()
-				{
-					@Override
-					protected void updateItem(Label lb, boolean bln)
-					{
-						super.updateItem(lb, bln);
-						// if (t != null ) {
-						// setText( t);
-						if (!getStyleClass().contains(lb.getStyleClass()))
-						{
-							getStyleClass().add(lb.getStyleClass().get(0));
-						}
-					}
-				};
-				return cell;
-			}
-		});
+			newReport += report.substring(0,21) + "\n";
+			report = report.substring(21);
+		}
+		newReport += report;
+		return newReport;
 	}
+//	private void setListViewCss()
+//	{
+//		listView.setCellFactory(new Callback<ListView<Label>, ListCell<Label>>()
+//		{
+//			@Override
+//			public ListCell<Label> call(ListView<Label> p)
+//			{
+//				ListCell<Label> cell = new ListCell<Label>()
+//				{
+//					@Override
+//					protected void updateItem(Label lb, boolean bln)
+//					{
+//						super.updateItem(lb, bln);
+//						// if (t != null ) {
+//						// setText( t);
+//						if (!getStyleClass().contains(lb.getStyleClass()))
+//						{
+//							getStyleClass().add(lb.getStyleClass().get(0));
+//						}
+//					}
+//				};
+//				return cell;
+//			}
+//		});
+//	}
 	public Button getAttackButton()
 	{
 		return attackButton;

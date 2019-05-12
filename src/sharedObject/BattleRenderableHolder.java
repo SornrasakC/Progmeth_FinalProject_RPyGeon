@@ -19,6 +19,7 @@ public class BattleRenderableHolder
 //	public static Image playerSpriteNorth1;
 //	public static Image playerSpriteEast1;
 	public static Image gaugeBackground;
+	public static Image listViewBackground;
 
 	public BattleRenderableHolder()
 	{
@@ -36,6 +37,7 @@ public class BattleRenderableHolder
 	static
 	{
 		gaugeBackground = new Image(ClassLoader.getSystemResourceAsStream("gauge.png"));
+//		listViewBackground = new Image(ClassLoader.getSystemResourceAsStream("listView.png"));
 	}
 	
 	public void add(IRenderable entity)

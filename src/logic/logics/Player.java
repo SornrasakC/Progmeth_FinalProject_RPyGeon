@@ -349,10 +349,12 @@ public class Player extends Character
 		}
 		if (potionInventory.containsKey(potion))
 		{
+			
 			potionInventory.put(potion, potionInventory.get(potion) + 1);
 		}
 		else
 		{
+			System.out.println("got new stuff");
 			potionInventory.put(potion, 1);
 		}
 		return true;
