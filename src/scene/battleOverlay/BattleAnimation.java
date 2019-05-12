@@ -127,7 +127,7 @@ public class BattleAnimation extends Pane{
 			testTransition.setNode(MonsterSprite);
 			this.getChildren().add(MonsterSprite);
 		}
-		this.getChildren().add(new ImageView(image));
+//		this.getChildren().add(new ImageView(image));
 		
 	}
 
