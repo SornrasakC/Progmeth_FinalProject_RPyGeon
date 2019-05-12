@@ -9,6 +9,8 @@ public class PlayerBattleEntity extends Entity
 	private boolean isFreeze = false;
 	private int frame = 1;
 	private Thread idleThread;
+	private int animationType;
+	private int isAnimating;
 	
 	
 	public PlayerBattleEntity(int x, int y)
@@ -18,6 +20,7 @@ public class PlayerBattleEntity extends Entity
 		this.y = y;
 		this.z = 9;
 		this.sprite = RenderableHolder.emiliaE1;
+		this.animationType = 0; // 0 = idle, 1 = attack
 		
 		
 		idleThread = new Thread(new Runnable()
@@ -56,7 +59,6 @@ public class PlayerBattleEntity extends Entity
 				break;
 		}
 		gc.drawImage(sprite, this.x, this.y, 100, 100);
-
 	}
 	
 	public void update()

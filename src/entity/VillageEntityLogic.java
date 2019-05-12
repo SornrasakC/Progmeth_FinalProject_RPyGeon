@@ -27,7 +27,7 @@ public class VillageEntityLogic
 	{
 		this.gameObjectContainer = new ArrayList<Entity>();
 
-		player = new PlayerEntity(320, 240, 2);
+		player = new PlayerEntity(940, 150, 2);
 		shop1 = new ShopEntity(300, 50);
 		shop2 = new ShopEntity(620, 50);
 		dungeon = new ShopEntity(940, 50);
