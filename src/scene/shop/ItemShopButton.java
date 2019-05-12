@@ -23,6 +23,7 @@ import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import logic.base.Potion;
 import logic.logics.Player;
+import scene.SceneManager;
 import sharedObject.RenderableHolder;
 import shops.ItemShop;
 
@@ -61,6 +62,17 @@ public class ItemShopButton extends Button {
 		switch(potion.getName()) {
 		case("Red Cookies"): image = RenderableHolder.redCookie; break;
 		case("Blue Cookies"): image = RenderableHolder.blueCookie; break;
+		case("Fairly Normal HP Potion"): image = RenderableHolder.hpPotion; break;
+		case("Fairly Normal MP Potion"): image = RenderableHolder.mpPotion; break;
+		case("Chicken Dinner"): image = RenderableHolder.chickenDinner; break;
+		case("Cocaine"): image = RenderableHolder.cocain; break;
+		case("Phoenix Kit"): image = RenderableHolder.phoenixKit; break;
+		case("Low Quality Super Duper Lucky Randomly Recovering Potion"): image = RenderableHolder.lowRecPotion; break;
+		case("High Quality Super Duper Lucky Randomly Recovering Potion"): image = RenderableHolder.highRecPotion; break;
+		case("M44"): image = RenderableHolder.m44; break;
+		case("Shroud's right arm"): image = RenderableHolder.rightArm; break;
+		case("Oten's tear"): image = RenderableHolder.otenTear; break;
+		case("Trap Card: Mirror Force"): image = RenderableHolder.mirrorForce; break;
 		default:path =  "WIP.png";
 				image = new Image(ClassLoader.getSystemResourceAsStream(path));
 				break;
@@ -91,6 +103,7 @@ public class ItemShopButton extends Button {
 			public void handle(ActionEvent event) {
 				System.out.println("Bought" + thisPotion.getName());
 				Player.player.buyPotion(itemShop, thisPotion);
+				SceneManager.getItemshopPane().updateMoney();
 			}
 		});
 	}
