@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import logic.base.Potion;
 import main.Main;
@@ -51,6 +52,14 @@ public class BlacksmithShop extends GridPane {
 		for(Weapon weapon : blacksmithShop.getWeaponAvailableList(logic.logics.Player.player)) {
 			System.out.println(weapon.getName());
 		}
+		
+		Button btt = new Button("test");
+		SVGPath shape = new SVGPath();
+		shape.setContent("M 0 40 L 40 0 L 400 0 L 400 80 L 40 80 Z ");
+		btt.setShape(shape);
+		btt.setPrefSize(150, 50);
+		this.add(btt, 1, 0);
+		
 
 	}
 
