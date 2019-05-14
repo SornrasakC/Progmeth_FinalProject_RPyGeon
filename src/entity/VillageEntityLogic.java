@@ -81,6 +81,8 @@ public class VillageEntityLogic
 				@Override
 				public void run()
 				{
+					SceneManager.getBlacksmithShopPane().updateAvailableWeapon();
+					SceneManager.getBlacksmithShopPane().updateMoney();
 					//change to blacksmith scene
 					Main.changeScene(SceneManager.blacksmithScene);
 				}

@@ -116,19 +116,6 @@ public class BlacksmithShop extends StackPane {
 		itemGrid.setVgap(VGAP);
 		itemGrid.setPadding(new Insets(20));
 		
-//		int i = 0;
-//		int j = 0;
-//		for(Weapon weapon : blacksmithShop.getWeaponAvailableList(Player.player)) {
-//			System.out.println("Blacksmith shop load button @ "+ i + "," + j);
-//			ShopButton itemButton = new ShopButton(weapon);
-//			itemButton.setLogic(blacksmithShop);
-//			itemButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-//			if(weapon.getFloor() <= Player.player.getConqueredFloor()) {
-//				itemButton.setDisable(true);
-//			}
-//			itemGrid.add(itemButton, i, j);
-//			if(i < 4) i++; else {i = 0; j++;}
-//		}
 		this.updateAvailableWeapon();
 		
 		contentBox.getChildren().addAll(topBar,itemGrid);
@@ -152,6 +139,10 @@ public class BlacksmithShop extends StackPane {
 			itemGrid.add(itemButton, i, j);
 			if(i < 4) i++; else {i = 0; j++;}
 		}
+	}
+	
+	public void updateMoney() {
+		this.money.setText(Player.player.getMoney() + "");
 	}
 
 	

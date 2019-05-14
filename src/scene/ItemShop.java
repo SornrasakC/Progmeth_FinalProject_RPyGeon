@@ -109,7 +109,6 @@ public class ItemShop extends StackPane {
 			}
 		});
 		
-//		itemGrid.add(btn, 0, 0);
 		itemGrid.setHgap(HGAP);
 		itemGrid.setVgap(VGAP);
 		itemGrid.setPadding(new Insets(20));

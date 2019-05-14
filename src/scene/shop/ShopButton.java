@@ -166,7 +166,7 @@ public class ShopButton extends Button {
 
 				System.out.println("Weapon bought : " + thisWeapon.getName());
 				Player.player.buyWeapon(blacksmith, thisWeapon);
-				SceneManager.getItemshopPane().updateMoney();
+				SceneManager.getBlacksmithShopPane().updateMoney();
 				if(Player.player.getMoney() < price) {
 	        		node.setStyle(HOVERED_STYLE_RED);
 	        	}else {

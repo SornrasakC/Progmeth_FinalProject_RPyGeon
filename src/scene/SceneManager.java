@@ -19,6 +19,7 @@ public class SceneManager {
 	public static Epilogue epilogueRoot = new Epilogue();
 	public static Prologue prologueRoot = new Prologue();
 	public static ItemShop itemshopPane = new ItemShop();
+	public static BlacksmithShop blacksmithPane = new BlacksmithShop();
 //	public static BattleEnd battleEndPane = new BattleEnd();
 	
 	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT, Color.BLACK);
@@ -28,7 +29,7 @@ public class SceneManager {
 	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene prologueScene = new Scene(prologueRoot, WIDTH, HEIGHT, Color.BLACK);
 	public static Scene itemshopScene = new Scene(itemshopPane, WIDTH, HEIGHT, Color.BLACK);
-	public static Scene blacksmithScene = new Scene(new BlacksmithShop(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene blacksmithScene = new Scene(blacksmithPane, WIDTH, HEIGHT, Color.BLACK);
 	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT, Color.BLACK);
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT, Color.BLACK);
@@ -70,6 +71,7 @@ public class SceneManager {
 		epilogueScene.getStylesheets().add(SceneManager.class.getResource("Epilogue.css").toExternalForm());
 		mainScreenScene.getStylesheets().add(SceneManager.class.getResource("MainMenu.css").toExternalForm());
 	}
+	
 	public static void changeSceneToBattle()
 	{
 		StackPane root = new StackPane();
@@ -99,5 +101,9 @@ public class SceneManager {
 			}
 		);
 		ft.play();
+	}
+	
+	public static BlacksmithShop getBlacksmithShopPane() {
+		return blacksmithPane;
 	}
 }
