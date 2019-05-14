@@ -1,5 +1,7 @@
 package scene;
 
+import java.util.ArrayList;
+
 import entity.VillageEntityLogic;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +22,7 @@ public class DungeonChooseFloor extends VBox
 {
 	private static final int WIDTH = 1280;
 //	private static final int HEIGHT = 720;
+	private ArrayList<Button> bList = new ArrayList<Button>();
 	public DungeonChooseFloor()
 	{
 		
@@ -47,11 +50,12 @@ public class DungeonChooseFloor extends VBox
 							Main.animation.stop();
 							Main.battleAnimation.start();
 							Main.changeScene(SceneManager.battleScene);
-							
+							disableAll();
 						}
 					}
 				);
 				getChildren().add(button);
+				bList.add(button);
 			}
 		);
 		Button button = new Button("RETURN");
@@ -66,12 +70,18 @@ public class DungeonChooseFloor extends VBox
 				{
 					VillageEntityLogic.exitDungeon();
 					Main.changeScene(SceneManager.villageScene);
+					disableAll();
 				}
 			}
 		);
 		getChildren().add(button);
 		setSpacing(10);
+		bList.add(button);
 
+	}
+	private void disableAll()
+	{
+		bList.forEach(b -> b.setDisable(true));
 	}
 	
 }

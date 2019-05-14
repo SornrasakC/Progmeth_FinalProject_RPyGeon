@@ -15,6 +15,7 @@ public class ConfirmPrologue extends StackPane
 {
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
+	private UiButton yesButton, noButton;
 	public ConfirmPrologue()
 	{
 		Canvas canvas = new Canvas(WIDTH, HEIGHT);
@@ -32,7 +33,7 @@ public class ConfirmPrologue extends StackPane
 		label.setFont(new Font(30));
 		label.setTranslateY(-HEIGHT/5);
 		
-		UiButton yesButton = new UiButton("YES");
+		yesButton = new UiButton("YES");
 		yesButton.setFont(new Font(30));
 		yesButton.setTranslateX(-60);
 		yesButton.setTextFill(Color.DARKRED);
@@ -45,12 +46,13 @@ public class ConfirmPrologue extends StackPane
 				public void handle(ActionEvent event)
 				{
 					Main.changeScene(SceneManager.villageScene);
+					disableAll();
 					
 				}
 			}
 		);
 		
-		UiButton noButton = new UiButton("NO");
+		noButton = new UiButton("NO");
 		noButton.setFont(new Font(30));
 		noButton.setTranslateX(60);
 		noButton.setTextFill(Color.GREEN);
@@ -64,6 +66,7 @@ public class ConfirmPrologue extends StackPane
 				{
 					Main.changeScene(SceneManager.prologueScene);
 					SceneManager.prologueRoot.call();
+					disableAll();
 				}
 			}
 		);
@@ -72,6 +75,11 @@ public class ConfirmPrologue extends StackPane
 		StackPane.setAlignment(label, Pos.CENTER);
 		StackPane.setAlignment(yesButton, Pos.CENTER);
 		StackPane.setAlignment(noButton, Pos.CENTER);
+	}
+	private void disableAll()
+	{
+		yesButton.setDisable(true);
+		noButton.setDisable(true);
 	}
 	
 }
