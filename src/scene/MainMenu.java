@@ -6,13 +6,20 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Pair;
 import main.Main;
+import sharedObject.RenderableHolder;
 
 public class MainMenu extends Pane
 {
@@ -28,7 +35,13 @@ public class MainMenu extends Pane
 	public MainMenu() {
 		
 //		setBackground(new Background(new BackgroundFill(Color.DARKRED, null, null)));
-		setId("background");
+//		setId("background");
+//		Pane bgPane = new Pane();
+//		BackgroundImage bgImage = new BackgroundImage(RenderableHolder.mainMenuBackground, null, null, null, new BackgroundSize(WIDTH, HEIGHT, false, false, false, false));
+//		bgPane.setBackground(new Background(bgImage));
+//		bgPane.setEffect(new GaussianBlur());
+//		this.getChildren().add(bgPane);
+		
 		menuList = Arrays.asList(new Pair<String, Runnable>("Start", () -> Platform.runLater(new Runnable()
 		{
 			@Override
@@ -50,7 +63,7 @@ public class MainMenu extends Pane
 	} 
 	
 	private void addMenu(double x, double y)
-	{
+	{	
 		menuBox.setTranslateX(x);
 		menuBox.setTranslateY(y);
 		menuList.forEach
@@ -65,14 +78,18 @@ public class MainMenu extends Pane
 			}
 		);
 
-		Label title = new Label("RJyGeon");
+		Label title = new Label("ReeJyGeon");
 		title.setFont(new Font(50));
 		title.setPrefWidth(WIDTH);
 		title.setAlignment(Pos.CENTER);
 //        title.setTranslateX(WIDTH / 2 - title.getWidth() / 2);
 		title.setTranslateY(HEIGHT / 4);
-		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.TRANSPARENT);
-		this.getChildren().add(rectBG);
+//		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.TRANSPARENT);
+		ImageView imageBG = new ImageView(RenderableHolder.mainMenuBackground);
+		imageBG.setFitHeight(HEIGHT);
+		imageBG.setFitWidth(WIDTH);
+		imageBG.setEffect(new GaussianBlur());
+		this.getChildren().add(imageBG);
 		this.getChildren().add(title);
 		this.getChildren().add(menuBox);
 	}

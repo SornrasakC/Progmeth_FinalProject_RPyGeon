@@ -6,9 +6,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
@@ -18,12 +20,13 @@ import main.Main;
 import scene.shop.ItemShopButton;
 import sharedObject.RenderableHolder;
 
-public class ItemShop extends VBox {
+public class ItemShop extends StackPane {
 	
 	private static final double VGAP = 20;
 	private static final double HGAP = 20;
-	
 	private static final int BUTTON_SIZE = 230;
+	private static final int WIDTH = 1280;
+	private static final int HEIGHT = 720;
 	
 	private Label label = new Label("Item Shop");
 	private Button backButton = new Button("back");
@@ -32,6 +35,8 @@ public class ItemShop extends VBox {
 	private GridPane itemGrid;
 	private HBox topBar;
 	private ImageView coin;
+	private VBox contentBox;
+	private ImageView imageBG;
 	
 	private static final String BACK_BUTTON_NORMAL ="-fx-background-color: \r\n" + 
 													"    linear-gradient(#ffd65b, #e68400),\r\n" + 
@@ -60,11 +65,17 @@ public class ItemShop extends VBox {
 													" -fx-padding: 10 20 10 20;";
 	
 	public ItemShop() {
+		contentBox = new VBox();
 		itemGrid = new GridPane();
 		topBar = new HBox();
 		itemShop = new shops.ItemShop();
 		label.setFont(new Font(40));
 		label.setPadding(new Insets(15, 0, 0, 0));
+		
+		imageBG = new ImageView(RenderableHolder.itemShopBackground);
+		imageBG.setFitHeight(HEIGHT);
+		imageBG.setFitWidth(WIDTH);
+		imageBG.setEffect(new GaussianBlur());
 		
 		coin = new ImageView(RenderableHolder.coin);
 		money = new Label(Player.player.getMoney() + "");
@@ -76,6 +87,7 @@ public class ItemShop extends VBox {
 		topBar.getChildren().addAll(backButton,label,coin,money);
 		label.setPadding(new Insets(0, 300, 0, 300));
 		
+		//create back button
 		SVGPath shape = new SVGPath();
 		shape.setContent("M 0 40 L 40 0 L 400 0 L 400 80 L 40 80 Z ");
 		backButton.setShape(shape);
@@ -96,6 +108,7 @@ public class ItemShop extends VBox {
 				VillageEntityLogic.exitShop();
 			}
 		});
+		
 //		itemGrid.add(btn, 0, 0);
 		itemGrid.setHgap(HGAP);
 		itemGrid.setVgap(VGAP);
@@ -113,7 +126,8 @@ public class ItemShop extends VBox {
 			if(i < 4) i++; else {i = 0; j++;}
 		}
 		
-		this.getChildren().addAll(topBar,itemGrid);
+		contentBox.getChildren().addAll(topBar,itemGrid);
+		this.getChildren().addAll(imageBG, contentBox);
 	}
 	
 	public void updateMoney() {
