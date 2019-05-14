@@ -28,6 +28,7 @@ public class SceneManager {
 	public static Scene confirmPrologueScene = new Scene(new ConfirmPrologue(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene prologueScene = new Scene(prologueRoot, WIDTH, HEIGHT, Color.BLACK);
 	public static Scene itemshopScene = new Scene(itemshopPane, WIDTH, HEIGHT, Color.BLACK);
+	public static Scene blacksmithScene = new Scene(new BlacksmithShop(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene battleScene = new Scene(battlePane, WIDTH, HEIGHT, Color.BLACK);
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT, Color.BLACK);

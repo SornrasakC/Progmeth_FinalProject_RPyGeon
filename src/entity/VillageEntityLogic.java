@@ -17,9 +17,9 @@ public class VillageEntityLogic
 	private List<Entity> gameObjectContainer;
 
 	private static PlayerEntity player;
-	private static ShopEntity shop1;
-	private static ShopEntity shop2;
-	private static ShopEntity dungeon;
+	private static ShopEntity itemShop;
+	private static BlacksmithEntity blacksmith;
+	private static DungeonEntity dungeon;
 
 	private static boolean isInOtherEntity = false;
 
@@ -28,12 +28,12 @@ public class VillageEntityLogic
 		this.gameObjectContainer = new ArrayList<Entity>();
 
 		player = new PlayerEntity(940, 150, 2);
-		shop1 = new ShopEntity(300, 50);
-		shop2 = new ShopEntity(620, 50);
-		dungeon = new ShopEntity(940, 50);
+		itemShop = new ShopEntity(300, 50);
+		blacksmith = new BlacksmithEntity(620, 50);
+		dungeon = new DungeonEntity(940, 50);
 		addNewObject(player);
-		addNewObject(shop1);
-		addNewObject(shop2);
+		addNewObject(itemShop);
+		addNewObject(blacksmith);
 		addNewObject(dungeon);
 	}
 
@@ -46,7 +46,7 @@ public class VillageEntityLogic
 	public void logicUpdate()
 	{
 		player.update();
-		if (!isInOtherEntity && player.collideWith(shop1))
+		if (!isInOtherEntity && player.collideWith(itemShop))
 		{
 			enterShop();
 			Platform.runLater(new Runnable()
@@ -74,6 +74,17 @@ public class VillageEntityLogic
 //					Main.changeScene(SceneManager.dungeonChooseFloorScene);
 				}
 			});
+		}else if(!isInOtherEntity && player.collideWith(blacksmith)) {
+			enterShop();
+			Platform.runLater(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					//change to blacksmith scene
+					Main.changeScene(SceneManager.blacksmithScene);
+				}
+			});
 		}
 
 	}
@@ -90,7 +101,7 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(shop1.x + (shop1.sprite.getWidth() / 2), shop1.y + shop1.sprite.getHeight() + 70);
+		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 70);
 	}
 	
 	public static void enterDungeon()

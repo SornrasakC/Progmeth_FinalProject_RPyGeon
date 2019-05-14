@@ -52,8 +52,11 @@ public class RenderableHolder {
 	//TODO add some sound
 	public static AudioClip song;
 	
-	//epilogue
+	//Backgrounds
 	public static Image epilogueBackground;
+	public static Image mainMenuBackground;
+	public static Image itemShopBackground;
+	
 
 	static {
 		loadResource();
@@ -107,8 +110,10 @@ public class RenderableHolder {
 		mirrorForce = new Image(ClassLoader.getSystemResourceAsStream("trapcard.png"),80,80,true,false);
 		coin = new Image(ClassLoader.getSystemResourceAsStream("coin.png"),80,80,true,false);
 		
-		//epilogue
+		//backgrounds
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
+		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("MainMenu.jpg"));
+		itemShopBackground = new Image(ClassLoader.getSystemResourceAsStream("itemShop.PNG"));
 		
 	}
 

@@ -52,6 +52,15 @@ public class ItemShopButton extends Button {
 											    "-fx-padding: 3 30 3 30;" +
 											    "-fx-text-fill: black;" +
 											    "-fx-font-size: 14px;";
+	private static final String HOVERED_STYLE_RED = "-fx-background-color:" +
+										        "#af3c3c," +
+										        "linear-gradient(#fafdfe, #fce8e8)," +
+										        "linear-gradient(#fde8e8 0%, #fcd9d9 49%, #fdbfbf 50%, #f5a8a8 100%);" +
+											    "-fx-background-insets: 0,1,2;" +
+											    "-fx-background-radius: 3,2,1;" +
+											    "-fx-padding: 3 30 3 30;" +
+											    "-fx-text-fill: black;" +
+											    "-fx-font-size: 14px;";
 	
 	public ItemShopButton(Potion potion) {
 		thisPotion = potion;
@@ -83,6 +92,7 @@ public class ItemShopButton extends Button {
 		
 		
 		setCustomTooltip();
+		this.setStyle(NORMAL_STYLE);
 		changeBackgroundOnHover(this);
 		
 //		this.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
@@ -95,6 +105,7 @@ public class ItemShopButton extends Button {
 	}
 	
 	public void setLogic(ItemShop itemShop){
+		ItemShopButton node = this;
 		this.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -102,6 +113,12 @@ public class ItemShopButton extends Button {
 				System.out.println("Bought" + thisPotion.getName());
 				Player.player.buyPotion(itemShop, thisPotion);
 				SceneManager.getItemshopPane().updateMoney();
+				if(Player.player.getMoney() < ((ItemShopButton) node).thisPotion.getCost()) {
+	        		node.setStyle(HOVERED_STYLE_RED);
+	        	}else {
+	        		node.setStyle(HOVERED_STYLE);
+	        	}
+				//add play sound
 			}
 		});
 	}
@@ -132,16 +149,27 @@ public class ItemShopButton extends Button {
 	}
 	
 	 private void changeBackgroundOnHover(Node node) {
-		    node.styleProperty().bind(
-		      Bindings
-		        .when(node.hoverProperty())
-		          .then(
-		            new SimpleStringProperty(HOVERED_STYLE)
-		          )
-		          .otherwise(
-		            new SimpleStringProperty(NORMAL_STYLE)
-		          )
-		    );
+//		    node.styleProperty().bind(
+//		      Bindings
+//		        .when(node.hoverProperty())
+//		          .then(
+//		            new SimpleStringProperty(HOVERED_STYLE)
+//		          )
+//		          .otherwise(
+//		            new SimpleStringProperty(NORMAL_STYLE)
+//		          )
+//		    );
+		 node.setOnMouseEntered(e -> {
+			 if(Player.player.getMoney() < ((ItemShopButton) node).thisPotion.getCost()) {
+	        		node.setStyle(HOVERED_STYLE_RED);
+	        	}else {
+	        		node.setStyle(HOVERED_STYLE);
+	        	}
+		 });
+		 node.setOnMouseExited(e -> {
+			 node.setStyle(NORMAL_STYLE);
+		 });
+		    
 		  }
 	 
 	 private void setCustomTooltip() {
@@ -152,7 +180,7 @@ public class ItemShopButton extends Button {
         WebEngine webEngine = webView.getEngine();
         webEngine.loadContent
         (
-    		"<h3>" + thisPotion.getName() + "</h3>" + thisPotion.getDescription()
+    		"<h3>" + thisPotion.getName() + " — Price: " + thisPotion.getCost() + " Gold</h3>" + thisPotion.getDescription()
 		);
         
 		Tooltip tooltip = new Tooltip();
