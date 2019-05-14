@@ -1,36 +1,36 @@
 [
     {
         "name": "Tattered Leather Armour",
-        "phy_def": 1,
-        "mag_def": 1,
+        "basePhyDef": 1,
+        "baseMagDef": 1,
         "description": "",
         "floor" : 1
     },
     {
         "name": "Gambeson",
-        "phy_def": 2,
-        "mag_def": 0,
+        "basePhyDef": 2,
+        "baseMagDef": 0,
         "description": "",
         "floor" : 2
     },
     {
         "name": "Chain Shirt",
-        "phy_def": 3,
-        "mag_def": 2,
+        "basePhyDef": 3,
+        "baseMagDef": 2,
         "description": "",
         "floor" : 3
     },
     {
         "name": "Magic Steel Armour",
-        "phy_def": 2,
-        "mag_def": 5,
+        "basePhyDef": 2,
+        "baseMagDef": 5,
         "description": "",
         "floor" : 4
     },
     {
         "name": "Adamantium Breastplate",
-        "phy_def": 5,
-        "mag_def": 4,
+        "basePhyDef": 5,
+        "baseMagDef": 4,
         "description": "",
         "floor" : 5
     }
