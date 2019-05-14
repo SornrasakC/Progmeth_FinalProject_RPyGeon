@@ -23,12 +23,15 @@ import logic.base.Potion;
 import logic.logics.Player;
 import scene.SceneManager;
 import sharedObject.RenderableHolder;
+import shops.BlackSmith;
 import shops.ItemShop;
 
-public class ItemShopButton extends Button {
-	String path;
-	Image image;
-	Potion thisPotion;
+public class ShopButton extends Button {
+	private String path;
+	private Image image;
+	private Potion thisPotion;
+	private Weapon thisWeapon;
+	private int price;
 	
 	private static final int HOVER_TO_APPEAR_DURATION = 250;
 	private static final int APPEAR_DURATION = 50000;
@@ -62,10 +65,11 @@ public class ItemShopButton extends Button {
 											    "-fx-text-fill: black;" +
 											    "-fx-font-size: 14px;";
 	
-	public ItemShopButton(Potion potion) {
-		thisPotion = potion;
-		//TODO add sprites
-//		path = potion.getName() + ".png";
+	public ShopButton(Potion potion) {
+		this.thisPotion = potion;
+		this.price = potion.getCost();
+		
+		//select sprite
 		switch(potion.getName()) {
 		case("Red Cookies"): image = RenderableHolder.redCookie; break;
 		case("Blue Cookies"): image = RenderableHolder.blueCookie; break;
@@ -91,7 +95,7 @@ public class ItemShopButton extends Button {
 		
 		
 		
-		setCustomTooltip();
+		setItemCustomTooltip();
 		this.setStyle(NORMAL_STYLE);
 		changeBackgroundOnHover(this);
 		
@@ -99,21 +103,51 @@ public class ItemShopButton extends Button {
 		
 	}
 	
-	public ItemShopButton(Weapon weapon) {
+	public ShopButton(Weapon weapon) {
+		this.thisWeapon = weapon;
+		this.price = weapon.getPrice();
+				
+		//select sprite
+		switch(weapon.getName()) {
+		case("Red Cookies"): image = RenderableHolder.redCookie; break;
+		case("Blue Cookies"): image = RenderableHolder.blueCookie; break;
+		case("Fairly Normal HP Potion"): image = RenderableHolder.hpPotion; break;
+		case("Fairly Normal MP Potion"): image = RenderableHolder.mpPotion; break;
+		case("Chicken Dinner"): image = RenderableHolder.chickenDinner; break;
+		case("Cocaine"): image = RenderableHolder.cocain; break;
+		case("Phoenix Kit"): image = RenderableHolder.phoenixKit; break;
+		case("Low Quality Super Duper Lucky Randomly Recovering Potion"): image = RenderableHolder.lowRecPotion; break;
+		case("High Quality Super Duper Lucky Randomly Recovering Potion"): image = RenderableHolder.highRecPotion; break;
+		case("M44"): image = RenderableHolder.m44; break;
+		case("Shroud's right arm"): image = RenderableHolder.rightArm; break;
+		case("Oten's tear"): image = RenderableHolder.otenTear; break;
+		case("Trap Card: Mirror Force"): image = RenderableHolder.mirrorForce; break;
+		default:path =  "WIP.png";
+				image = new Image(ClassLoader.getSystemResourceAsStream(path));
+				break;
+		}
+		
+		this.setGraphic(new ImageView(image));
+		this.setPadding(new Insets(4));
 		
 		
+		
+		setWeaponCustomTooltip();
+		this.setStyle(NORMAL_STYLE);
+		changeBackgroundOnHover(this);
 	}
 	
 	public void setLogic(ItemShop itemShop){
-		ItemShopButton node = this;
+		ShopButton node = this;
 		this.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("Bought" + thisPotion.getName());
+
+				System.out.println("Potion bought : " + thisPotion.getName());
 				Player.player.buyPotion(itemShop, thisPotion);
 				SceneManager.getItemshopPane().updateMoney();
-				if(Player.player.getMoney() < ((ItemShopButton) node).thisPotion.getCost()) {
+				if(Player.player.getMoney() < price) {
 	        		node.setStyle(HOVERED_STYLE_RED);
 	        	}else {
 	        		node.setStyle(HOVERED_STYLE);
@@ -122,6 +156,26 @@ public class ItemShopButton extends Button {
 			}
 		});
 	}
+	
+	public void setLogic(BlackSmith blacksmith){
+		ShopButton node = this;
+		this.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+
+				System.out.println("Weapon bought : " + thisWeapon.getName());
+				Player.player.buyWeapon(blacksmith, thisWeapon);
+				SceneManager.getItemshopPane().updateMoney();
+				if(Player.player.getMoney() < price) {
+	        		node.setStyle(HOVERED_STYLE_RED);
+	        	}else {
+	        		node.setStyle(HOVERED_STYLE);
+	        	}
+				//add play sound
+			}
+		});
+	} 
 	
 	public static void setTooltipTiming(Tooltip tooltip) {
 	    try {
@@ -159,8 +213,9 @@ public class ItemShopButton extends Button {
 //		            new SimpleStringProperty(NORMAL_STYLE)
 //		          )
 //		    );
+		 
 		 node.setOnMouseEntered(e -> {
-			 if(Player.player.getMoney() < ((ItemShopButton) node).thisPotion.getCost()) {
+			 if(Player.player.getMoney() < price) {
 	        		node.setStyle(HOVERED_STYLE_RED);
 	        	}else {
 	        		node.setStyle(HOVERED_STYLE);
@@ -169,13 +224,10 @@ public class ItemShopButton extends Button {
 		 node.setOnMouseExited(e -> {
 			 node.setStyle(NORMAL_STYLE);
 		 });
-		    
 		  }
 	 
-	 private void setCustomTooltip() {
+	 private void setItemCustomTooltip() {
 		 
-		//TODO More graphic
-
 		WebView  webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         webEngine.loadContent
@@ -191,6 +243,28 @@ public class ItemShopButton extends Button {
 		
 		setTooltipTiming(tooltip);
 		this.setTooltip(tooltip);
+	 }
+	 
+	 private void setWeaponCustomTooltip() {
+		 WebView  webView = new WebView();
+	        WebEngine webEngine = webView.getEngine();
+	        webEngine.loadContent
+	        (
+	    		"<h3>" + thisWeapon.getName() + " — Price: " + thisWeapon.getPrice() + " Gold</h3>" + thisWeapon.getDescription() +
+	    		"<ul = \"stats\">" +
+	    		"<li>Physical Attack : " + thisWeapon.getBaseMinPhyAtk() + " - " + thisWeapon.getBaseMaxPhyAtk() + "</li>" + 
+	    		"<li>Magical Attack : " + thisWeapon.getBaseMinMagAtk() + " - " + thisWeapon.getBaseMaxMagAtk() + "</li>" + 
+	    		"</ul>"
+			);
+	        
+			Tooltip tooltip = new Tooltip();
+			tooltip.setPrefSize(700, 150);
+			tooltip.setStyle("-fx-background-color:white;");
+			tooltip.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+			tooltip.setGraphic(webView);
+			
+			setTooltipTiming(tooltip);
+			this.setTooltip(tooltip);
 	 }
 
 }

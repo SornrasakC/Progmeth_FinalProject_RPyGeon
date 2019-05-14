@@ -31,7 +31,8 @@ public class Weapon implements Droppable
 	{
 		super();
 		this.name = name;
-		this.description = description; //No description yet
+		this.description = 	"Physical Attack = " + baseMinPhyAtk + " - " + baseMaxPhyAtk + "\n" +
+							"Magical Attack = " + baseMinMagAtk + " - " + baseMaxMagAtk + "\n";
 		this.baseMinPhyAtk = baseMinPhyAtk;
 		this.baseMaxPhyAtk = baseMaxPhyAtk;
 		this.baseMinMagAtk = baseMinMagAtk;

@@ -1,6 +1,7 @@
 [
     {
         "name": "Wooden Sword",
+        "description": "A crude sword made from wood, suitable for training",
         "min_phy_atk": 1,
         "max_phy_atk": 3,
         "min_mag_atk": 0,
@@ -10,6 +11,7 @@
     },
     {
         "name": "Slightly Magical Stick",
+        "description": "A wooden twig said to be imbued with magical power",
         "min_phy_atk": 1,
         "max_phy_atk": 1,
         "min_mag_atk": 2,
@@ -19,6 +21,7 @@
     },
     {
         "name": "Iron Sword",
+        "description": "An iron sword with questionable craftmanship, it will get the job done",
         "min_phy_atk": 3,
         "max_phy_atk": 6,
         "min_mag_atk": 0,
@@ -28,6 +31,7 @@
     },
     {
         "name": "Wooden Staff",
+        "description": "A magic staff for wizard apprentice",
         "min_phy_atk": 1,
         "max_phy_atk": 2,
         "min_mag_atk": 4,
@@ -37,6 +41,7 @@
     },
     {
         "name": "Steel Sword",
+        "description": "A fine looking sword made from steel",
         "min_phy_atk": 6,
         "max_phy_atk": 9,
         "min_mag_atk": 1,
@@ -46,6 +51,7 @@
     },
     {
         "name": "Emerald Staff",
+        "description": "A beautiful staff with large emerald at the tip",
         "min_phy_atk": 3,
         "max_phy_atk": 3,
         "min_mag_atk": 6,
@@ -55,6 +61,7 @@
     },
     {
         "name": "Palladium Sword",
+        "description": "A high quality sword made from magic metal, can conduct magic reasonably well",
         "min_phy_atk": 8,
         "max_phy_atk": 12,
         "min_mag_atk": 5,
@@ -64,6 +71,7 @@
     },
     {
         "name": "Caster's Ring",
+        "description": "A sturdy ring with gem around it, can be use both as a physical and magical weapon",
         "min_phy_atk": 6,
         "max_phy_atk": 7,
         "min_mag_atk": 8,
@@ -73,6 +81,7 @@
     },
     {
         "name": "Chinese Adamantium Sword",
+        "description": "A legendary adamantium sword! But something doesn't look right...",
         "min_phy_atk": 0,
         "max_phy_atk": 40,
         "min_mag_atk": 2,
@@ -82,6 +91,7 @@
     },
     {
         "name": "Chinese Diamond Staff",
+        "description": "A legendary staff! But something doesn't look right...",
         "min_phy_atk": 4,
         "max_phy_atk": 5,
         "min_mag_atk": 0,

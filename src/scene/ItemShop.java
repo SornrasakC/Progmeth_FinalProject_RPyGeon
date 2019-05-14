@@ -17,7 +17,7 @@ import javafx.scene.text.Font;
 import logic.base.Potion;
 import logic.logics.Player;
 import main.Main;
-import scene.shop.ItemShopButton;
+import scene.shop.ShopButton;
 import sharedObject.RenderableHolder;
 
 public class ItemShop extends StackPane {
@@ -118,8 +118,8 @@ public class ItemShop extends StackPane {
 		int i = 0;
 		int j = 0;
 		for(Potion potion : itemShop.getPotionList()) {
-			System.out.println(i + "," + j);
-			ItemShopButton itemButton = new ItemShopButton(potion);
+			System.out.println("Item shop load button @ "+i + "," + j);
+			ShopButton itemButton = new ShopButton(potion);
 			itemButton.setLogic(itemShop);
 			itemButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 			itemGrid.add(itemButton, i, j);
