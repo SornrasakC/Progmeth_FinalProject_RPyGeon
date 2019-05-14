@@ -142,15 +142,16 @@ public class Player extends Character
 	public Weapon buyWeapon(BlackSmith blackSmith, Weapon weapon)
 	{
 		if (weapon == null) return null;
-		if (blackSmith.getWeaponAvailableList(this).contains(weapon))
+		if (blackSmith.getWeaponAvailableList().contains(weapon))
 		{
-			if (weapon.getPrice() > money)
+			if (weapon.getPrice() > money || weapon.isBought())
 			{
 				return null;
 			}
 			money -= weapon.getPrice();
+			weapon.setBought(true);
 			gainItem(weapon);
-			return (Weapon) pop(weapon, blackSmith.getWeaponAvailableList(this));
+			return (Weapon) pop(weapon, blackSmith.getAllWeaponList());
 		}
 		return null;
 	}

@@ -46,6 +46,7 @@ public class Main extends Application
 		{
 			Player.player.levelUp();
 			Player.player.levelUp();
+			Player.player.gainMoney(5000);
 			ItemShop itemShop = new ItemShop();
 			
 			for(Potion i : itemShop.getPotionList())

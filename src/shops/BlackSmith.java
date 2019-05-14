@@ -11,7 +11,7 @@ import logic.logics.Player;
 
 public class BlackSmith
 {
-	private ArrayList<Weapon> weaponToSellList = new ArrayList<Weapon>();
+	private ArrayList<Weapon> allWeaponList = new ArrayList<Weapon>();
 	private ArrayList<Weapon> weaponAvailableList = new ArrayList<Weapon>();
 	@SuppressWarnings("unchecked")
 	public BlackSmith()
@@ -19,8 +19,9 @@ public class BlackSmith
 		
 		try
 		{
-			weaponToSellList.addAll((ArrayList<Weapon>) (ArrayList<?>) main.Main.readJson("WeaponsStore.json",new TypeToken<ArrayList<Weapon>>(){}));
-			weaponToSellList.sort
+			
+			allWeaponList.addAll((ArrayList<Weapon>) (ArrayList<?>) main.Main.readJson("WeaponsStore.json",new TypeToken<ArrayList<Weapon>>(){}));
+			allWeaponList.sort
 			(new Comparator<Weapon>()
 				{
 					public int compare(Weapon a, Weapon b)
@@ -29,20 +30,20 @@ public class BlackSmith
 					}
 				}
 			);
+			weaponAvailableList = allWeaponList.stream().filter(x -> x.getFloor() <= Player.player.getConqueredFloor()).collect(Collectors.toCollection(ArrayList::new));
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<Weapon> getWeaponAvailableList(Player player)
+	public ArrayList<Weapon> getWeaponAvailableList()
 	{
-		weaponAvailableList = weaponToSellList.stream().filter(x -> x.getFloor() <= player.getConqueredFloor()).collect(Collectors.toCollection(ArrayList::new));
 		return weaponAvailableList;
 	}
-	public ArrayList<Weapon> getWeaponToSellList()
+	public ArrayList<Weapon> getAllWeaponList()
 	{
-		return weaponToSellList;
+		return allWeaponList;
 	}
 	
 }
