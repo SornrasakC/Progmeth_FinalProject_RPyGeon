@@ -63,6 +63,7 @@ public class ConfirmPrologue extends StackPane
 				public void handle(ActionEvent event)
 				{
 					Main.changeScene(SceneManager.prologueScene);
+					SceneManager.prologueRoot.call();
 				}
 			}
 		);

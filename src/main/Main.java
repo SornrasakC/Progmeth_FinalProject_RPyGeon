@@ -124,7 +124,7 @@ public class Main extends Application
 		ft.setOnFinished
 		(event->
 			{
-				FadeTransition ft2 = new FadeTransition(Duration.millis(530), scene2.getRoot());
+				FadeTransition ft2 = new FadeTransition(Duration.millis(560), scene2.getRoot());
 				ft2.setFromValue(0);
 				ft2.setToValue(1);
 				ft2.play();
@@ -142,7 +142,6 @@ public class Main extends Application
 		ft.play();
 		
 	}
-
 	public static Stage getPrimaryStage()
 	{
 		return primaryStage;

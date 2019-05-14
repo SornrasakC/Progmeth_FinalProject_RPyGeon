@@ -62,6 +62,7 @@ public class UiButton extends Button
 	{
 
 		this.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(20), Insets.EMPTY)));
-
+	
 	}
 }
+

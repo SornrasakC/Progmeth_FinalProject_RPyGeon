@@ -116,9 +116,9 @@ public class RenderableHolder {
 		System.out.println("added entity");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-		for(IRenderable x: entities){
-			
-		}
+//		for(IRenderable x: entities){
+//			
+//		}
 	}
 
 

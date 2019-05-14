@@ -1,7 +1,6 @@
 package scene;
 
 import java.util.ArrayList;
-import java.util.logging.LogManager;
 
 import entity.VillageEntityLogic;
 import input.InputUtility;
@@ -16,6 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
@@ -119,7 +119,8 @@ public class Battle extends GridPane
 		setSpell(spellButton);
 		setItem(itemButton);
 		setEscape(escapeButton);
-//		setListViewCss();
+		setListViewBackground();
+		setListViewCss();
 		
 		attackButton.getStyleClass().addAll("attackButton", "actionButton");
 		spellButton.getStyleClass().addAll("spellButton", "actionButton");
@@ -321,64 +322,115 @@ public class Battle extends GridPane
 		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("PlayerReport");
-		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-		LogManager.getLogManager().reset();
+//		LogManager.getLogManager().reset();
 	}
 	public static void monsterReport(String report)
 	{
 		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("MonsterReport");
-		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-		LogManager.getLogManager().reset();
+//		LogManager.getLogManager().reset();
 	}
 	public static void systemReport(String report)
 	{
 		report = formatReport(report);
 		Label label = new Label(report);
 		label.getStyleClass().add("SystemReport");
-		label.setPrefWidth(WIDTH / 5 - 10);
 		Battle.logDataList.add(0, label);
-		LogManager.getLogManager().reset();
+//		LogManager.getLogManager().reset();
 	}
 	private static String formatReport(String report)
 	{
+		int count = 0;
 		String newReport = "";
-		while(report.length() > 21)
+		String[] inputs = report.split(" ");
+		for(String input : inputs)
 		{
-			newReport += report.substring(0,21) + "\n";
-			report = report.substring(21);
+			count += input.length() + 1;
+			if(input.length() > 21)
+			{
+				newReport += "\n" + input + "\n";
+				count = 0;
+				continue;
+			}
+			if(count > 21)
+			{
+				newReport += "\n" + input;
+				count = input.length();
+				continue;
+			}
+			newReport += " " + input;
+
 		}
-		newReport += report;
-		return newReport;
+		return newReport.substring(1);
 	}
-//	private void setListViewCss()
-//	{
-//		listView.setCellFactory(new Callback<ListView<Label>, ListCell<Label>>()
-//		{
-//			@Override
-//			public ListCell<Label> call(ListView<Label> p)
-//			{
-//				ListCell<Label> cell = new ListCell<Label>()
-//				{
-//					@Override
-//					protected void updateItem(Label lb, boolean bln)
-//					{
-//						super.updateItem(lb, bln);
-//						// if (t != null ) {
-//						// setText( t);
-//						if (!getStyleClass().contains(lb.getStyleClass()))
-//						{
-//							getStyleClass().add(lb.getStyleClass().get(0));
-//						}
-//					}
-//				};
-//				return cell;
-//			}
-//		});
-//	}
+	private static void setListViewBackground()
+	{
+		for(int i = 0; i < 32; i++)
+		{
+			Label label = new Label(" ");
+			label.getStyleClass().add("Fill");
+			Battle.logDataList.add(0, label);
+//			LogManager.getLogManager().reset();
+		}
+//		listView.setBackground(new Background(new BackgroundImage(BattleRenderableHolder.listViewBackground, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+	}
+	private void setListViewCss()
+	{
+		listView.setCellFactory(x ->
+			{
+				ListCell<Label> cell = new ListCell<Label>()
+				{
+					
+					@Override
+					protected void updateItem(Label item, boolean empty)
+					{
+						super.updateItem(item, empty);
+//						setStyle(null);
+//						setGraphic(null);
+						if (empty || item == null)
+						{
+							// There is no item to display in this cell, so leave it empty
+							setGraphic(null);
+
+							// Clear the style from the cell
+							setStyle(null);
+						}
+						else
+						{
+							if (item.getStyleClass().contains("PlayerReport"))
+							{
+								System.out.println("GETPlayer");
+								getStyleClass().removeAll("PlayerReport", "MonsterReport", "SystemReport", "Fill");
+								getStyleClass().add("PlayerReport");
+							}
+							if (item.getStyleClass().contains("MonsterReport"))
+							{
+								System.out.println("GETMonster");
+								getStyleClass().removeAll("PlayerReport", "MonsterReport", "SystemReport", "Fill");
+								getStyleClass().add("MonsterReport");
+							}
+							if (item.getStyleClass().contains("SystemReport"))
+							{
+								getStyleClass().removeAll("PlayerReport", "MonsterReport", "SystemReport", "Fill");
+								getStyleClass().add("SystemReport");
+							}
+							if (item.getStyleClass().contains("Fill"))
+							{
+								getStyleClass().removeAll("PlayerReport", "MonsterReport", "SystemReport", "Fill");
+								getStyleClass().add("Fill");
+							}
+							// Finally, show the item text in the cell
+							setText(item.getText());
+
+						}
+					}
+				};
+				return cell;
+			});
+	}
 	public Button getAttackButton()
 	{
 		return attackButton;

@@ -56,7 +56,6 @@ public class StartNaming extends StackPane
 		
 		TextField textField = new TextField();
 		textField.setFont(new Font(30));
-		textField.setPromptText("Your Name"); // ???
 		textField.setAlignment(Pos.CENTER);
 		textField.setMaxWidth(WIDTH / 3);
 		textField.setBackground(new Background(new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, null)));
@@ -69,13 +68,17 @@ public class StartNaming extends StackPane
 	            if (ke.getCode().equals(KeyCode.ENTER))
 	            {
 	            	String name = textField.getText();
-	            	if(name.length() > 0)
+	            	if(name.length() > 0 && name.length() < 10)
 	            	{
 	            		Player.player.setName(StringUtils.capitalize(name));
 	            		Main.changeScene(SceneManager.confirmPrologueScene);
+	            		setDisable(true);
 	            	}
+	            	
 	            }
+	            
 	        }
+	        
 	    });
 
 		

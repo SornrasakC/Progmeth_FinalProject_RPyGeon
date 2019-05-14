@@ -37,7 +37,7 @@ public class BattleRenderableHolder
 	static
 	{
 		gaugeBackground = new Image(ClassLoader.getSystemResourceAsStream("gauge.png"));
-//		listViewBackground = new Image(ClassLoader.getSystemResourceAsStream("listView.png"));
+		listViewBackground = new Image(ClassLoader.getSystemResourceAsStream("listView.png"));
 	}
 	
 	public void add(IRenderable entity)

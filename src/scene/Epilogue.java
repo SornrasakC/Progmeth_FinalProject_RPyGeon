@@ -68,9 +68,6 @@ public class Epilogue extends StackPane
 	private Label init(String content)
 	{
 		Label lb = new Label(content);
-//		lb.setFont(new Font(40));
-//		lb.setTextFill(Color.WHITE);
-//		lb.setTextFill(Color.valueOf("#8757BF"));
 		lb.getStyleClass().add("epilogue");
 		return lb;
 	}

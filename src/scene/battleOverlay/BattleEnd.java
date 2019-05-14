@@ -1,6 +1,8 @@
 package scene.battleOverlay;
 
+import input.InputUtility;
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,6 +28,7 @@ import logic.logics.Dungeon;
 import logic.logics.Player;
 import main.Main;
 import scene.Battle;
+import scene.Prologue;
 import scene.SceneManager;
 
 public class BattleEnd extends StackPane
@@ -140,6 +143,20 @@ public class BattleEnd extends StackPane
 		{
 			if(Battle.getFightNumber() >= 3)
 			{
+				if(Prologue.inSlimeBattle)
+				{
+					Battle.getMonster().fullHeal();
+					Player.player.fullHeal();
+					InputUtility.clearInput();
+					Main.battleAnimation.stop();
+					PauseTransition temp = new PauseTransition(Duration.millis(1000));
+					temp.setOnFinished(eventTemp -> Main.changeScene(SceneManager.prologueScene));
+					temp.play();	
+					Prologue.inSlimeBattle = false;
+					Prologue.phase = 2;
+					SceneManager.prologueRoot.call();
+					return;
+				}
 				if(!Battle.getDungeon().isCleared())
 				{
 					Battle.getDungeon().setCleared(true);
