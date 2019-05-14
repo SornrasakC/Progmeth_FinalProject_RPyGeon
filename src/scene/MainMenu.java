@@ -20,12 +20,15 @@ public class MainMenu extends Pane
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
 
-	private Label menuTitle = new Label("Main Menu");
+//	private Label menuTitle = new Label("Main Menu");
 	private VBox menuBox = new VBox(15);
 
 	private List<Pair<String, Runnable>> menuList;
 
 	public MainMenu() {
+		
+//		setBackground(new Background(new BackgroundFill(Color.DARKRED, null, null)));
+		setId("background");
 		menuList = Arrays.asList(new Pair<String, Runnable>("Start", () -> Platform.runLater(new Runnable()
 		{
 			@Override
@@ -68,7 +71,7 @@ public class MainMenu extends Pane
 		title.setAlignment(Pos.CENTER);
 //        title.setTranslateX(WIDTH / 2 - title.getWidth() / 2);
 		title.setTranslateY(HEIGHT / 4);
-		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.WHITE);
+		Rectangle rectBG = new Rectangle(WIDTH, HEIGHT, Color.TRANSPARENT);
 		this.getChildren().add(rectBG);
 		this.getChildren().add(title);
 		this.getChildren().add(menuBox);

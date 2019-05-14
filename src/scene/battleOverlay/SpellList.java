@@ -29,14 +29,14 @@ public class SpellList extends VBox
 							int amount = magic.use(Player.player, Battle.getMonster());
 							if(magic instanceof OffensiveMagic)
 							{
-								Battle.report(magic.getName() + " deals " + amount + " damage!");
+								Battle.playerReport(magic.getName() + " deals " + amount + " damage!");
 								Battle.setPlayerTurn(false);
 								Battle.setInAnimation(true);
 								Battle.endOverlay();
 							}
 							else // Healing magic
 							{
-								Battle.report(magic.getName() + " heals " + amount + " HP!");
+								Battle.playerReport(magic.getName() + " heals " + amount + " HP!");
 								Battle.setPlayerTurn(false);
 								Battle.setInAnimation(true);
 								Battle.endOverlay();
@@ -44,7 +44,7 @@ public class SpellList extends VBox
 						}
 						else
 						{
-							Battle.report("Not enough MP!");
+							Battle.systemReport("Not enough MP!");
 						}
 					}
 				);

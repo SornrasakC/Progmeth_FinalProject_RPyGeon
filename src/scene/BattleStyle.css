@@ -58,13 +58,12 @@
 }
 .BattleEnd
 {
+	-fx-text-fill: #696969;
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 30px;
 }
 .BattleEnd.label .text
 {
-    -fx-text-fill: #91fe5a; //lightseagreen;
-    //-fx-text-fill: red; //lightseagreen;
     -fx-stroke: #DDFDCE; // lesser lightseagreen
     -fx-stroke-width: 2px;
 }
@@ -72,10 +71,11 @@
 {
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 30px;
+	-fx-text-fill: #696969;
 }
 .BattleEnd2.label .text
 {
-    -fx-text-fill: #91fe5a; //lightseagreen;
+    
     -fx-stroke: #DDFDCE; // lesser lightseagreen
     -fx-stroke-width: 2px;
 }
@@ -85,20 +85,103 @@
 }
 .actionButton
 {
-  //-fx-background-color: #ff0000;
-  -fx-border-radius: 50px;
-
-  -fx-font-family: Courier New;
-  -fx-text-color: #204ce6;
-  -fx-font-size: 30px;
-  //-fx-padding: 10px 20px 10px 20px;
-  -fx-border: solid #f06969 2px;
-  -fx-stroke: #c6e7f5;
-  -fx-stroke-width: 3px;
-  -fx-text-shadow:rgb(198, 231, 245) 3px 0px 0px, rgb(198, 231, 245) 2.83487px 0.981584px 0px, rgb(198, 231, 245) 2.35766px 1.85511px 0px, rgb(198, 231, 245) 1.62091px 2.52441px 0px, rgb(198, 231, 245) 0.705713px 2.91581px 0px, rgb(198, 231, 245) -0.287171px 2.98622px 0px, rgb(198, 231, 245) -1.24844px 2.72789px 0px, rgb(198, 231, 245) -2.07227px 2.16926px 0px, rgb(198, 231, 245) -2.66798px 1.37182px 0px, rgb(198, 231, 245) -2.96998px 0.42336px 0px, rgb(198, 231, 245) -2.94502px -0.571704px 0px, rgb(198, 231, 245) -2.59586px -1.50383px 0px, rgb(198, 231, 245) -1.96093px -2.27041px 0px, rgb(198, 231, 245) -1.11013px -2.78704px 0px, rgb(198, 231, 245) -0.137119px -2.99686px 0px, rgb(198, 231, 245) 0.850987px -2.87677px 0px, rgb(198, 231, 245) 1.74541px -2.43999px 0px, rgb(198, 231, 245) 2.44769px -1.73459px 0px, rgb(198, 231, 245) 2.88051px -0.838247px 0px;
+    	-fx-background-insets: 0,1,4,5;
+	-fx-background-radius: 30;
+    	-fx-padding: 15 30 15 30;
+    	-fx-font-family: "Helvetica";
+    	-fx-font-size: 30px;
+    	-fx-font-weight: bold;
+    	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
 }
 
-.actionButton:hover 
+.attackButton
 {
-  -fx-background-color: #ffb700;
+  	-fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(242,26,26,1), rgba(242,196,6,1));
+	-fx-text-fill: rgba(0,191,255,1);
+}
+.attackButton:hover 
+{
+  -fx-background-color: radial-gradient(center 50% 50%, radius 80%, rgba(242,26,26,1), rgba(242,196,6,1));
+}
+.attackButton:pressed 
+{
+  -fx-background-color: rgba(242,26,26,1);
+}
+.spellButton
+{
+  	-fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(26,242,232,1), rgba(29,6,242,1));
+	-fx-text-fill: rgba(255,69,0,1);
+}
+.spellButton:hover 
+{
+  -fx-background-color: radial-gradient(center 50% 50%, radius 80%, rgba(26,242,232,1), rgba(29,6,242,1));
+}
+.spellButton:pressed 
+{
+  -fx-background-color: rgba(0,191,255,1);
+}
+.itemButton
+{
+  	-fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(13,144,15,1), rgba(237,255,4,1));
+	-fx-text-fill: rgba(139,0,139,1);
+}
+.itemButton:hover 
+{
+  -fx-background-color: radial-gradient(center 50% 50%, radius 80%, rgba(13,144,15,1), rgba(237,255,4,1));
+}
+.itemButton:pressed 
+{
+  -fx-background-color: rgba(0,100,0,1);
+}
+.escapeButton
+{
+  	-fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(252,136,215,1), rgba(66,0,69,1));
+	-fx-text-fill: rgba(124,252,0,1);
+}
+.escapeButton:hover 
+{
+  -fx-background-color: radial-gradient(center 50% 50%, radius 80%, rgba(252,136,215,1), rgba(66,0,69,1));
+}
+.escapeButton:pressed 
+{
+  -fx-background-color: rgba(255,192,203,1);
+}
+.PlayerReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(3,204,205,1), rgba(25,249,55,1));
+	-fx-text-fill: #B22222;
+}
+.PlayerReport.label .text
+{
+    	-fx-font-family: "Comic Sans MS", cursive, sans-serif;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+	-fx-stroke: #FFFFFF;
+	-fx-font-style: italic;
+}
+.MonsterReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(252,121,34,1), rgba(233,35,35,1));
+	-fx-text-fill: #0000CD;
+}
+.MonsterReport.label .text
+{
+    	-fx-font-family: "Comic Sans MS", cursive, sans-serif;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+	-fx-stroke: #000000;
+	-fx-font-style: italic;
+}
+.SystemReport
+{
+	-fx-background-color: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,0,1));
+	-fx-text-fill: #FF4500;
+}
+.SystemReport.label .text
+{
+    	-fx-font-family: "Comic Sans MS", cursive, sans-serif;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+	-fx-stroke: #FF0000;
+	-fx-font-style: italic;
 }

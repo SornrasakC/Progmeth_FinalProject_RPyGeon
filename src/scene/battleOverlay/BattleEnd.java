@@ -157,7 +157,6 @@ public class BattleEnd extends StackPane
 	}
 	private void proceed2()
 	{
-//		if(Battle.getFightNumber() < 3)
 		FadeTransition ft = new FadeTransition(Duration.millis(1000), SceneManager.battlePane);
 		ft.setFromValue(0);
 		ft.setToValue(1);

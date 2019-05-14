@@ -2,8 +2,6 @@ package scene.shop;
 
 import java.lang.reflect.Field;
 
-import javax.swing.ToolTipManager;
-
 import item.Weapon;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
