@@ -1,5 +1,8 @@
 package scene.battleOverlay;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -23,7 +26,10 @@ public class BattleAnimation extends Pane{
 	
 	private Thread idleThread;
 	private int frame = 1;
-	private TranslateTransition testTransition;
+	private TranslateTransition playerAttackMoveTransition;
+	private ScaleTransition playerAttackScaleTransition;
+	private RotateTransition playerAttackRotateTransition;
+	private ParallelTransition playerAttackAnimation;
 	
 	private boolean isAnimating = false;
 	private boolean isTestFin = false;
@@ -38,22 +44,54 @@ public class BattleAnimation extends Pane{
 		playerSprite.setTranslateX(IDLE_X);
 		playerSprite.setTranslateY(IDLE_Y);
 		
-		testTransition = new TranslateTransition();
-		testTransition.setFromX(IDLE_X);
-		testTransition.setFromY(IDLE_Y);
-		testTransition.setToX(IDLE_X + 300);
-		testTransition.setToY(IDLE_Y + 300);
-		testTransition.setDuration(Duration.seconds(0.5));
-		testTransition.setAutoReverse(true);
-		testTransition.setCycleCount(2);
-		testTransition.setNode(playerSprite);
-		testTransition.setOnFinished(new EventHandler<ActionEvent>() {
+		playerAttackMoveTransition = new TranslateTransition();
+		playerAttackMoveTransition.setFromX(IDLE_X);
+		playerAttackMoveTransition.setFromY(IDLE_Y);
+		playerAttackMoveTransition.setToX(IDLE_X + 400);
+//		playerAttackMoveTransition.setToY(IDLE_Y + 300);
+		playerAttackMoveTransition.setDuration(Duration.seconds(0.5));
+		playerAttackMoveTransition.setAutoReverse(true);
+		playerAttackMoveTransition.setCycleCount(2);
+//		playerAttackMoveTransition.setNode(playerSprite);
+		playerAttackMoveTransition.setOnFinished(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
 				isAnimating = false;
 			}
 		});
+		
+		playerAttackRotateTransition = new RotateTransition();
+		playerAttackRotateTransition.setToAngle(60);
+		playerAttackRotateTransition.setDuration(Duration.seconds(0.5));
+		playerAttackRotateTransition.setCycleCount(2);
+		playerAttackRotateTransition.setAutoReverse(true);
+//		playerAttackRotateTransition.setNode(playerSprite);
+		playerAttackRotateTransition.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				isAnimating = false;
+			}
+		});
+		
+		playerAttackScaleTransition = new ScaleTransition();
+		playerAttackScaleTransition.setByX(10);
+		playerAttackScaleTransition.setByY(10);
+		playerAttackScaleTransition.setDuration(Duration.seconds(0.5));
+		playerAttackScaleTransition.setCycleCount(2);
+		playerAttackScaleTransition.setAutoReverse(true);
+//		playerAttackScaleTransition.setNode(playerSprite);
+		playerAttackScaleTransition.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				isAnimating = false;
+			}
+		});
+		
+		playerAttackAnimation = new ParallelTransition(playerAttackMoveTransition, playerAttackRotateTransition, playerAttackScaleTransition);
+		playerAttackAnimation.setNode(playerSprite);
 		
 		idleThread = new Thread(new Runnable()
 		{
@@ -100,8 +138,14 @@ public class BattleAnimation extends Pane{
 	
 	public void playAttackAnimation() {
 		changeSprite(playerSprite, RenderableHolder.genericVendor);
-		testTransition.setNode(playerSprite);
-		testTransition.play();
+//		playerAttackMoveTransition.setNode(playerSprite);
+//		playerAttackMoveTransition.play();
+//		playerAttackRotateTransition.setNode(playerSprite);
+//		playerAttackRotateTransition.play();
+//		playerAttackScaleTransition.setNode(playerSprite);
+//		playerAttackScaleTransition.play();
+		playerAttackAnimation.setNode(playerSprite);
+		playerAttackAnimation.play();
 		isAnimating = true;
 		System.out.println("play attack animation");
 	}
@@ -112,7 +156,7 @@ public class BattleAnimation extends Pane{
 		if(imageView.equals(playerSprite))
 		{
 			playerSprite = new ImageView(image); 
-			getChildren().add(playerSprite);
+			this.getChildren().add(playerSprite);
 		}
 		else
 		{
