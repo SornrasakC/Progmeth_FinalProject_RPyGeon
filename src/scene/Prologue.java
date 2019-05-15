@@ -23,7 +23,6 @@ public class Prologue extends StackPane
 	private Label lb = new Label();
 	private boolean calling = true, finish = false;
 	private PauseTransition pt = new PauseTransition(Duration.millis(5500));
-//	private ImageView background = new ImageView(RenderableHolder.epilogueBackground); // 1080 -> 720
 	public Prologue()
 	{
 		setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
@@ -45,7 +44,6 @@ public class Prologue extends StackPane
 			}
 		);
 		getChildren().add(lb);
-//		StackPane.setAlignment(background, Pos.TOP_LEFT);
 		StackPane.setAlignment(lb, Pos.CENTER);
 		initListLb();
 		setOnMouseClicked
@@ -82,7 +80,7 @@ public class Prologue extends StackPane
 		listLb2.add(init("You inquire them about what is this place and why are they here"));
 		listLb2.add(init("The villagers say nobody in this village knows why are they here"));
 		listLb2.add(init("The only thing they know\nis that there's a stair to go up inside the dungeon besides the village"));//6
-		listLb2.add(init("They say that they might be a way out of this place\nat the end of that dungeon"));
+		listLb2.add(init("They say that there might be a way out of this place\nat the end of that dungeon"));
 		listLb2.add(init("You decided to use this village as your base\nand try to find a way back to the outside world"));//8
 	}
 
@@ -125,9 +123,6 @@ public class Prologue extends StackPane
 						Battle.setInAnimation(false); //???
 						Battle.setFightNumber(3);
 						Main.changeScene(SceneManager.battleScene);
-//						PauseTransition temp = new PauseTransition(Duration.millis(30));
-//						temp.setOnFinished(eventTemp -> SceneManager.changeSceneToBattle());
-//						temp.play();
 						return;
 					}
 					lb = listLb1.get(index1);

@@ -1,6 +1,7 @@
 package scene.battleOverlay;
 
 import javafx.animation.ParallelTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -79,8 +80,11 @@ public class BattleAnimation extends Pane{
 		playerAttackAnimation.setOnFinished
 		(event->
 			{
+				isAnimating = false;
 //				Battle.setInAnimation(true);
-				Battle.setPlayerTurn(false);
+				PauseTransition pauseForAnimation = new PauseTransition(Duration.millis(100));
+				pauseForAnimation.setOnFinished(pause -> Battle.setPlayerTurn(false));
+				pauseForAnimation.play();
 //				playerTurn = false;
 				
 				int damage = Battle.getMonster().receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
