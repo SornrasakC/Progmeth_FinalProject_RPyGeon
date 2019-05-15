@@ -7,7 +7,6 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -30,6 +29,7 @@ import main.Main;
 import scene.Battle;
 import scene.Prologue;
 import scene.SceneManager;
+import sharedObject.BattleRenderableHolder;
 
 public class BattleEnd extends StackPane
 {
@@ -47,7 +47,7 @@ public class BattleEnd extends StackPane
 	{
 		setBorder(new Border(new BorderStroke(Color.WHITESMOKE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(10))));
 		
-		setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResourceAsStream("BattleEnd2.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+		setBackground(new Background(new BackgroundImage(BattleRenderableHolder.battleEndBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 		          BackgroundSize.DEFAULT)));
 		
 		logicUpdate();

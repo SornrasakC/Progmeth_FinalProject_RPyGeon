@@ -36,7 +36,6 @@ public class BattleAnimation extends Pane{
 	private ParallelTransition playerAttackAnimation;
 	
 	private boolean isAnimating = false;
-	private boolean isTestFin = false;
 	
 	
 	public BattleAnimation() {
@@ -152,7 +151,7 @@ public class BattleAnimation extends Pane{
 		if(imageView.equals(playerSprite))
 		{
 			playerSprite = new ImageView(image);
-			playerWeaponSprite = new ImageView(Player.player.getEquipedWeapon().getSprite());
+			playerWeaponSprite = new ImageView(Player.player.getEquippedWeapon().getSprite());
 			playerWeaponSprite.setTranslateX(playerSprite.getImage().getWidth() - 15);
 			if(!isAnimating){
 				//idle animation

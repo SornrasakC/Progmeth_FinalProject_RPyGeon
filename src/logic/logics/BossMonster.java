@@ -17,8 +17,9 @@ public class BossMonster extends Monster
 	public int attack(Player player)
 	{
 		int phyDamage = randPhyAtk(), magDamage = randMagAtk();
-		if((this.currentMp >= 5) & (magDamage - player.getMagDef() > phyDamage - player.getPhyDef()))
+		if((this.currentMp >= 5) && (magDamage - player.getMagDef() > phyDamage - player.getPhyDef()))
 		{
+			this.currentMp -= 5;
 			player.receiveDamage(magDamage, StatType.MAGATK);
 			return magDamage;
 		}
