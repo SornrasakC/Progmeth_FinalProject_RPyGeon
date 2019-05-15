@@ -37,7 +37,7 @@ public class BlackSmith
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<Weapon> getWeaponAvailableList(Player player)
+	public ArrayList<Weapon> getWeaponAvailableList()
 	{
 		return weaponAvailableList;
 	}
