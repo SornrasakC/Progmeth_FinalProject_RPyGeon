@@ -145,6 +145,7 @@ public class BattleEnd extends StackPane
 			{
 				if(Prologue.inSlimeBattle)
 				{
+					SceneManager.prologueScene.setFill(Color.BLACK);
 					Battle.getMonster().fullHeal();
 					Player.player.fullHeal();
 					InputUtility.clearInput();

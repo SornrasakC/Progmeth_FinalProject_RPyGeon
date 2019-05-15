@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
@@ -297,7 +296,7 @@ public class Battle extends GridPane
 	public void drawBackground()
 	{
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
-		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon" + dungeon.getFloor() + ".png")), 0, 0);
+		gc.drawImage(BattleRenderableHolder.dungeonBackgrounds[dungeon.getFloor()], 0, 0);
 	}
 	
 	public static void startOverlay()
