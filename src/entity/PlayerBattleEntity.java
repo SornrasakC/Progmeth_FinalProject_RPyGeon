@@ -21,6 +21,7 @@ public class PlayerBattleEntity extends Entity
 		this.z = 9;
 		this.sprite = RenderableHolder.emiliaE1;
 		this.animationType = 0; // 0 = idle, 1 = attack
+		this.visible = false;
 		
 		
 		idleThread = new Thread(new Runnable()

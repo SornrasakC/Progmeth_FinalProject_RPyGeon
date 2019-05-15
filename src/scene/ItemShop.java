@@ -125,6 +125,7 @@ public class ItemShop extends StackPane {
 			if(i < 4) i++; else {i = 0; j++;}
 		}
 		
+		
 		contentBox.getChildren().addAll(topBar,itemGrid);
 		this.getChildren().addAll(imageBG, contentBox);
 	}

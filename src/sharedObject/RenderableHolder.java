@@ -31,8 +31,9 @@ public class RenderableHolder {
 	public static Image emiliaW2;
 	public static Image emiliaS1;
 	public static Image emiliaS2;
+	public static Image emiliaAttack;
 	
-	//itemshop
+	//items
 	public static Image redCookie;
 	public static Image blueCookie;
 	public static Image hpPotion;
@@ -48,6 +49,8 @@ public class RenderableHolder {
 	public static Image mirrorForce;
 	public static Image coin;
 	
+	//weapons
+	public static Image woodenStick;
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -57,6 +60,7 @@ public class RenderableHolder {
 	public static Image mainMenuBackground;
 	public static Image itemShopBackground;
 	
+	public static Image placeHolder;
 
 	static {
 		loadResource();
@@ -93,6 +97,7 @@ public class RenderableHolder {
 		emiliaN2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaback02.png"));
 		emiliaS1 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront01.png"));
 		emiliaS2 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront02.png"));
+		emiliaAttack = new Image(ClassLoader.getSystemResourceAsStream("emiliaAttack.png"));
 		
 		//items
 		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"),80,80,true,false);
@@ -110,11 +115,15 @@ public class RenderableHolder {
 		mirrorForce = new Image(ClassLoader.getSystemResourceAsStream("trapcard.png"),80,80,true,false);
 		coin = new Image(ClassLoader.getSystemResourceAsStream("coin.png"),80,80,true,false);
 		
+		//weapons
+		woodenStick = new Image(ClassLoader.getSystemResourceAsStream("woodenStick.png"));
+		
 		//backgrounds
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
 		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("MainMenu.jpg"));
 		itemShopBackground = new Image(ClassLoader.getSystemResourceAsStream("itemShop.PNG"));
 		
+		placeHolder = new Image(ClassLoader.getSystemResourceAsStream("WIP.png"),80,80,true,false);
 	}
 
 	public void add(IRenderable entity) {

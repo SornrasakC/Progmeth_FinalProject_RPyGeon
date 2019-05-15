@@ -153,6 +153,11 @@ public class BlacksmithShop extends StackPane
 				j++;
 			}
 		}
+		Button fillerButton = new Button();
+		fillerButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+		fillerButton.setVisible(false);
+		System.out.println(i + j + "");
+		itemGrid.add(fillerButton, i, j);
 	}
 
 	public void updateMoney()
