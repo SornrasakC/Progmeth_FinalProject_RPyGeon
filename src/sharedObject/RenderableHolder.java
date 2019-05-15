@@ -51,6 +51,30 @@ public class RenderableHolder {
 	
 	//weapons
 	public static Image woodenStick;
+	public static Image excalibur;
+	public static Image yggdrasilBranch;
+	public static Image rustedIronSword;
+	public static Image rottenWoodStaff;
+	public static Image slightlyDullSteelSword;
+	public static Image shinyStoneRod;
+	public static Image polishedSteelSword;
+	public static Image rubyStaff;
+	public static Image fieryBlade;
+	public static Image mythrilSword;
+	public static Image bookOfPower;
+	public static Image tellulam;
+	public static Image grimoirOfTruth;
+	public static Image woodenSword;
+	public static Image slightlyMagicalStick;
+	public static Image ironSword;
+	public static Image woodenStaff;
+	public static Image steelSword;
+	public static Image emeraldStaff;
+	public static Image palladiumSword;
+	public static Image casterRing;
+	public static Image chineseAdamantiumSword;
+	public static Image chineseDiamondStaff;
+	
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -116,7 +140,30 @@ public class RenderableHolder {
 		coin = new Image(ClassLoader.getSystemResourceAsStream("coin.png"),80,80,true,false);
 		
 		//weapons
-		woodenStick = new Image(ClassLoader.getSystemResourceAsStream("woodenStick.png"));
+		woodenStick  = new Image(ClassLoader.getSystemResourceAsStream("woodenStick.png"));
+		excalibur = new Image(ClassLoader.getSystemResourceAsStream("excalibur.png"));
+		yggdrasilBranch = new Image(ClassLoader.getSystemResourceAsStream("yggdrasilBranch.png"));
+		rustedIronSword = new Image(ClassLoader.getSystemResourceAsStream("rustyIronSword.png"));
+		rottenWoodStaff = new Image(ClassLoader.getSystemResourceAsStream("rottenWoodenStaff.png"));
+		slightlyDullSteelSword = new Image(ClassLoader.getSystemResourceAsStream("dullSteelSword.png"));
+		shinyStoneRod = new Image(ClassLoader.getSystemResourceAsStream("shinyStoneRod.png"));
+		polishedSteelSword = new Image(ClassLoader.getSystemResourceAsStream("polishedSteelSword.png"));
+		rubyStaff = new Image(ClassLoader.getSystemResourceAsStream("rubyStaff.png"));
+		fieryBlade = new Image(ClassLoader.getSystemResourceAsStream("fieryBlade.png"));
+		mythrilSword = new Image(ClassLoader.getSystemResourceAsStream("mithrilSword.png"));
+		bookOfPower = new Image(ClassLoader.getSystemResourceAsStream("bookOfPower.png"));
+		tellulam = new Image(ClassLoader.getSystemResourceAsStream("tellulum.png"));
+		grimoirOfTruth = new Image(ClassLoader.getSystemResourceAsStream("grimoirOfTruth.png"));
+		woodenSword = new Image(ClassLoader.getSystemResourceAsStream("woodenSword.png"));
+		slightlyMagicalStick = new Image(ClassLoader.getSystemResourceAsStream("slightlyMagicalStick.png"));
+		ironSword = new Image(ClassLoader.getSystemResourceAsStream("ironSword.png"));
+		woodenStaff = new Image(ClassLoader.getSystemResourceAsStream("woodenStaff.png"));
+		steelSword = new Image(ClassLoader.getSystemResourceAsStream("steelSword.png"));
+		emeraldStaff = new Image(ClassLoader.getSystemResourceAsStream("emeraldStaff.png"));
+		palladiumSword = new Image(ClassLoader.getSystemResourceAsStream("palladiumSword.png"));
+		casterRing = new Image(ClassLoader.getSystemResourceAsStream("casterRing.png"));
+		chineseAdamantiumSword = new Image(ClassLoader.getSystemResourceAsStream("chineseExcalibur.png"));
+		chineseDiamondStaff = new Image(ClassLoader.getSystemResourceAsStream("chineseDiamondStaff.png"));
 		
 		//backgrounds
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));

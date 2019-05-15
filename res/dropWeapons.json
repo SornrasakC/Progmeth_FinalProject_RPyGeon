@@ -6,7 +6,7 @@
         "baseMinMagAtk": 25,
         "baseMaxMagAtk": 30,
         "floor": 0,
-        "description": ""
+        "description": "A legendary sword said to be forged by the god himself"
     },
     {
         "name": "Branch of Yggdrasil",
@@ -15,7 +15,7 @@
         "baseMinMagAtk": 30,
         "baseMaxMagAtk": 130,
         "floor": 0,
-        "description": ""
+        "description": "Branch of the world tree, holds tremendous magical power"
     },
     {
         "name": "Rusted Iron Sword",
@@ -24,7 +24,7 @@
         "baseMinMagAtk": 0,
         "baseMaxMagAtk": 0,
         "floor": 1,
-        "description": ""
+        "description": "An old, battle-tested sword"
     },
     {
         "name": "Rotten Wooden Staff",
@@ -33,7 +33,7 @@
         "baseMinMagAtk": 2,
         "baseMaxMagAtk": 4,
         "floor": 1,
-        "description": ""
+        "description": "Staff of an apprentice mage from century ago"
     },
     {
         "name": "Slightly Dull Steel Sword",
@@ -42,7 +42,7 @@
         "baseMinMagAtk": 0,
         "baseMaxMagAtk": 1,
         "floor": 2,
-        "description": ""
+        "description": "A failure piece of equipment from the renowned blacksmith"
     },
     {
         "name": "Shiny Stone Rod",
@@ -51,7 +51,7 @@
         "baseMinMagAtk": 4,
         "baseMaxMagAtk": 6,
         "floor": 2,
-        "description": ""
+        "description": "A stone rod. But it is so shiny!"
     },
     {
         "name": "Polished Steel Sword",
@@ -60,7 +60,7 @@
         "baseMinMagAtk": 1,
         "baseMaxMagAtk": 3,
         "floor": 3,
-        "description": ""
+        "description": "A masterpiece from the renowned blacksmith, it's still in good condition"
     },
     {
         "name": "Ruby Staff",
@@ -69,16 +69,16 @@
         "baseMinMagAtk": 5,
         "baseMaxMagAtk": 8,
         "floor": 3,
-        "description": ""
+        "description": "A wizard staff with ruby conduit at the tip"
     },
     {
-        "name": "Enchanted Sword",
+        "name": "Fiery Blade",
         "baseMinPhyAtk": 6,
         "baseMaxPhyAtk": 8,
         "baseMinMagAtk": 5,
         "baseMaxMagAtk": 8,
         "floor": 4,
-        "description": ""
+        "description": "A magical sword that is lit with eternal flame, good for warming yourself up in the winter"
     },
     {
         "name": "Mythril Sword",
@@ -87,7 +87,7 @@
         "baseMinMagAtk": 5,
         "baseMaxMagAtk": 6,
         "floor": 4,
-        "description": ""
+        "description": "A sword made from mithril, has good magical capability"
     },
     {
         "name": "Book of Power",
@@ -96,7 +96,7 @@
         "baseMinMagAtk": 7,
         "baseMaxMagAtk": 10,
         "floor": 5,
-        "description": ""
+        "description": "A tome popular among wealthy wizard"
     },
     {
         "name": "Tellulam",
@@ -105,7 +105,7 @@
         "baseMinMagAtk": 8,
         "baseMaxMagAtk": 9,
         "floor": 5,
-        "description": ""
+        "description": "A unique sword forged in the depth of hell, said to corrupt the user's mind"
     },
     {
         "name": "Grimoir of Truth",
@@ -114,6 +114,6 @@
         "baseMinMagAtk": 15,
         "baseMaxMagAtk": 19,
         "floor": 5,
-        "description": ""
+        "description": "A grimoir recorded all that is true, all that is good and all that is evil"
     }
 ]

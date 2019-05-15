@@ -130,13 +130,9 @@ public class BattleAnimation extends Pane{
 			{
 			case(1):
 				changeSprite(playerSprite, RenderableHolder.emiliaE1);
-//				playerSprite.setTranslateX(IDLE_X);
-//				playerSprite.setTranslateY(IDLE_Y);
 				break;
 			case(2):
 				changeSprite(playerSprite, RenderableHolder.emiliaE2);
-//				playerSprite.setTranslateX(IDLE_X);
-//				playerSprite.setTranslateY(IDLE_Y);
 				break;
 			}
 		}
@@ -144,12 +140,6 @@ public class BattleAnimation extends Pane{
 	
 	public void playAttackAnimation() {
 		changeSprite(playerSprite, RenderableHolder.emiliaAttack);
-//		playerAttackMoveTransition.setNode(playerSprite);
-//		playerAttackMoveTransition.play();
-//		playerAttackRotateTransition.setNode(playerSprite);
-//		playerAttackRotateTransition.play();
-//		playerAttackScaleTransition.setNode(playerSprite);
-//		playerAttackScaleTransition.play();
 		playerAttackAnimation.setNode(playerSpriteGroup);
 		playerAttackAnimation.play();
 		isAnimating = true;
@@ -163,8 +153,21 @@ public class BattleAnimation extends Pane{
 		{
 			playerSprite = new ImageView(image);
 			playerWeaponSprite = new ImageView(Player.player.getEquipedWeapon().getSprite());
-			playerWeaponSprite.setTranslateX(35);
-			playerWeaponSprite.setTranslateY(-20);
+			playerWeaponSprite.setTranslateX(playerSprite.getImage().getWidth() - 15);
+			if(!isAnimating){
+				//idle animation
+				switch(frame)
+				{
+				case(1):
+					playerWeaponSprite.setTranslateY(-12);
+					break;
+				case(2):
+					playerWeaponSprite.setTranslateY(-10);
+					break;
+				}
+			}else {
+				playerWeaponSprite.setTranslateY(-12);
+			}
 			playerSpriteGroup.getChildren().clear();
 			playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite);
 			this.getChildren().add(playerSpriteGroup);
