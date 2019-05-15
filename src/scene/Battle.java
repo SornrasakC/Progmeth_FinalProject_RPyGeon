@@ -71,7 +71,7 @@ public class Battle extends GridPane
 		battleCanvas = new Canvas(WIDTH * 4 / 5,HEIGHT * 4 / 5);
 		
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
-		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon" + dungeon.getFloor() + ".png")), 0, 0);
+		gc.drawImage(BattleRenderableHolder.dungeonBackgrounds[dungeon.getFloor()], 0, 0);
 //		gc.drawImage(new Image(ClassLoader.getSystemResourceAsStream("dungeon1.png")), 0, 0);
 		
 		stackPane = new StackPane();
@@ -373,9 +373,8 @@ public class Battle extends GridPane
 			Label label = new Label(" ");
 			label.getStyleClass().add("Fill");
 			Battle.logDataList.add(0, label);
-//			LogManager.getLogManager().reset();
 		}
-//		listView.setBackground(new Background(new BackgroundImage(BattleRenderableHolder.listViewBackground, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+
 	}
 	private void setListViewCss()
 	{
@@ -388,8 +387,6 @@ public class Battle extends GridPane
 					protected void updateItem(Label item, boolean empty)
 					{
 						super.updateItem(item, empty);
-//						setStyle(null);
-//						setGraphic(null);
 						if (empty || item == null)
 						{
 							// There is no item to display in this cell, so leave it empty
@@ -463,7 +460,9 @@ public class Battle extends GridPane
 	{
 		if(monster.getLevel() == 12)
 		{
-			dungeon.setFloor(61);
+			dungeon.setFloor(7);
+			Player.player.resetStatPotionEffects();
+			systemReport("Gate Guardian reset your stats!!");
 		}
 		Battle.monster.fullHeal();
 		Battle.monster = monster;

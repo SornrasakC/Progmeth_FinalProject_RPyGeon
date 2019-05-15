@@ -20,6 +20,7 @@ public class BattleRenderableHolder
 //	public static Image playerSpriteEast1;
 	public static Image gaugeBackground;
 	public static Image listViewBackground;
+	public static Image[] dungeonBackgrounds;
 
 	public BattleRenderableHolder()
 	{
@@ -38,6 +39,11 @@ public class BattleRenderableHolder
 	{
 		gaugeBackground = new Image(ClassLoader.getSystemResourceAsStream("gauge.png"));
 		listViewBackground = new Image(ClassLoader.getSystemResourceAsStream("listView.png"));
+		dungeonBackgrounds = new Image[8];
+		for(int i = 1; i < 8; i++)
+		{
+			dungeonBackgrounds[i] = new Image(ClassLoader.getSystemResourceAsStream("dungeon" + i + ".png"));
+		}
 	}
 	
 	public void add(IRenderable entity)

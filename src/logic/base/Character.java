@@ -15,14 +15,7 @@ public abstract class Character extends Entity
 //	protected boolean isDead = false;
 	protected int money = 0;
 	
-	public int getMoney()
-	{
-		return money;
-	}
-	public void setMoney(int money)
-	{
-		this.money = money;
-	}
+	
 	protected int baseMinPhyAtk;
 	protected int baseMaxPhyAtk;
 	protected int baseMinMagAtk;
@@ -120,18 +113,25 @@ public abstract class Character extends Entity
 		Random rand = new Random();
 		return rand.nextInt(this.baseMaxMagAtk - this.baseMinMagAtk) + this.baseMinMagAtk;
 	}
-	public void resetModStat()
+//	public void resetModStat()
+//	{
+//		modMinPhyAtk = 0;
+//		modMaxPhyAtk = 0;
+//		modMinMagAtk = 0;
+//		modMaxMagAtk = 0;
+//		modPhyDef = 0;
+//		modMagDef = 0;
+//		modMaxHp = 0;
+//		modMaxMp = 0;
+//	}
+	public int getMoney()
 	{
-		modMinPhyAtk = 0;
-		modMaxPhyAtk = 0;
-		modMinMagAtk = 0;
-		modMaxMagAtk = 0;
-		modPhyDef = 0;
-		modMagDef = 0;
-		modMaxHp = 0;
-		modMaxMp = 0;
+		return money;
 	}
-	
+	public void setMoney(int money)
+	{
+		this.money = money;
+	}
 	public String getName()
 	{
 		return name;

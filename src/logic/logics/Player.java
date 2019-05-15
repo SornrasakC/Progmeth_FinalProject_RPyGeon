@@ -37,10 +37,10 @@ public class Player extends Character
 	private ChestArmour startingChestArmour = new ChestArmour("Normal Cotton T-Shirt", "This is T-shirt", 0, 0, 1);
 	private ShoesArmour startingShoesArmour = new ShoesArmour("Normal Shoes", "This is shoes", 0, 0, 1);
 
-	private Weapon equipedWeapon = startingWeapon;
-	private PantsArmour equipedPantsArmour = startingPantsArmour;
-	private ChestArmour equipedChestArmour = startingChestArmour;
-	private ShoesArmour equipedShoesArmour = startingShoesArmour;
+	private Weapon equippedWeapon = startingWeapon;
+	private PantsArmour equippedPantsArmour = startingPantsArmour;
+	private ChestArmour equippedChestArmour = startingChestArmour;
+	private ShoesArmour equippedShoesArmour = startingShoesArmour;
 
 	private ArrayList<Weapon> weaponInventory = new ArrayList<Weapon>();
 	private ArrayList<PantsArmour> pantsArmourInventory = new ArrayList<PantsArmour>();
@@ -75,8 +75,8 @@ public class Player extends Character
 
 		this.baseMaxPhyAtk = 1; //testing
 		this.baseMinPhyAtk = 1; //testing
-		this.baseMaxMagAtk = 2;
-		this.baseMinMagAtk = 1;
+		this.baseMaxMagAtk = 2000;
+		this.baseMinMagAtk = 1000;
 		this.basePhyDef = 0;
 		this.baseMagDef = 0;
 		this.baseMaxHp = 500;
@@ -116,6 +116,12 @@ public class Player extends Character
 		}
 	}
 
+	public void fullHeal()
+	{
+		this.currentHp = this.baseMaxHp;
+		this.currentMp = this.baseMaxMp;
+		resetStatPotionEffects();
+	}
 	public Potion buyPotion(ItemShop itemShop, Potion potion)
 	{
 		if (potion == null) return null;
@@ -139,10 +145,10 @@ public class Player extends Character
 		return null;
 	}
 
-	public Weapon buyWeapon(BlackSmith blackSmith, Weapon weapon)
+	public Weapon buyWeapon(BlackSmith blacksmith, Weapon weapon)
 	{
 		if (weapon == null) return null;
-		if (blackSmith.getWeaponAvailableList().contains(weapon))
+		if (blacksmith.getWeaponAvailableList().contains(weapon))
 		{
 			if (weapon.getPrice() > money || weapon.isBought())
 			{
@@ -151,7 +157,7 @@ public class Player extends Character
 			money -= weapon.getPrice();
 			weapon.setBought(true);
 			gainItem(weapon);
-			return (Weapon) pop(weapon, blackSmith.getAllWeaponList());
+			return (Weapon) pop(weapon, blacksmith.getAllWeaponList());
 		}
 		return null;
 	}
@@ -293,46 +299,50 @@ public class Player extends Character
 		if (item instanceof Weapon)
 		{
 			Weapon weapon = (Weapon) item;
-			gainItem(equipedWeapon);
-			modMinPhyAtk -= equipedWeapon.getBaseMinPhyAtk();
-			modMaxPhyAtk -= equipedWeapon.getBaseMaxPhyAtk();
-			modMinMagAtk -= equipedWeapon.getBaseMinMagAtk();
-			modMinMagAtk -= equipedWeapon.getBaseMinMagAtk();
-			equipedWeapon = weapon;
-			modMinPhyAtk += equipedWeapon.getBaseMinPhyAtk();
-			modMaxPhyAtk += equipedWeapon.getBaseMaxPhyAtk();
-			modMinMagAtk += equipedWeapon.getBaseMinMagAtk();
-			modMinMagAtk += equipedWeapon.getBaseMinMagAtk();
+			gainItem(equippedWeapon);
+			modMinPhyAtk -= equippedWeapon.getBaseMinPhyAtk();
+			modMaxPhyAtk -= equippedWeapon.getBaseMaxPhyAtk();
+			modMinMagAtk -= equippedWeapon.getBaseMinMagAtk();
+			modMinMagAtk -= equippedWeapon.getBaseMinMagAtk();
+			equippedWeapon = weapon;
+			modMinPhyAtk += equippedWeapon.getBaseMinPhyAtk();
+			modMaxPhyAtk += equippedWeapon.getBaseMaxPhyAtk();
+			modMinMagAtk += equippedWeapon.getBaseMinMagAtk();
+			modMinMagAtk += equippedWeapon.getBaseMinMagAtk();
+			pop(weapon, weaponInventory);
 		}
 		else if (item instanceof ChestArmour)
 		{
 			ChestArmour armour = (ChestArmour) item;
-			gainItem(equipedChestArmour);
-			modPhyDef -= equipedChestArmour.getBasePhyDef();
-			modMagDef -= equipedChestArmour.getBaseMagDef();
-			equipedChestArmour = armour;
-			modPhyDef += equipedChestArmour.getBasePhyDef();
-			modMagDef += equipedChestArmour.getBaseMagDef();
+			gainItem(equippedChestArmour);
+			modPhyDef -= equippedChestArmour.getBasePhyDef();
+			modMagDef -= equippedChestArmour.getBaseMagDef();
+			equippedChestArmour = armour;
+			modPhyDef += equippedChestArmour.getBasePhyDef();
+			modMagDef += equippedChestArmour.getBaseMagDef();
+			pop(armour, chestArmourInventory);
 		}
 		else if (item instanceof PantsArmour)
 		{
 			PantsArmour armour = (PantsArmour) item;
-			gainItem(equipedPantsArmour);
-			modPhyDef -= equipedPantsArmour.getBasePhyDef();
-			modMagDef -= equipedPantsArmour.getBaseMagDef();
-			equipedPantsArmour = armour;
-			modPhyDef += equipedPantsArmour.getBasePhyDef();
-			modMagDef += equipedPantsArmour.getBaseMagDef();
+			gainItem(equippedPantsArmour);
+			modPhyDef -= equippedPantsArmour.getBasePhyDef();
+			modMagDef -= equippedPantsArmour.getBaseMagDef();
+			equippedPantsArmour = armour;
+			modPhyDef += equippedPantsArmour.getBasePhyDef();
+			modMagDef += equippedPantsArmour.getBaseMagDef();
+			pop(armour, pantsArmourInventory);
 		}
 		else if (item instanceof ShoesArmour)
 		{
 			ShoesArmour armour = (ShoesArmour) item;
-			gainItem(equipedShoesArmour);
-			modPhyDef -= equipedShoesArmour.getBasePhyDef();
-			modMagDef -= equipedShoesArmour.getBaseMagDef();
-			equipedShoesArmour = armour;
-			modPhyDef += equipedShoesArmour.getBasePhyDef();
-			modMagDef += equipedShoesArmour.getBaseMagDef();
+			gainItem(equippedShoesArmour);
+			modPhyDef -= equippedShoesArmour.getBasePhyDef();
+			modMagDef -= equippedShoesArmour.getBaseMagDef();
+			equippedShoesArmour = armour;
+			modPhyDef += equippedShoesArmour.getBasePhyDef();
+			modMagDef += equippedShoesArmour.getBaseMagDef();
+			pop(armour, shoesArmourInventory);
 		}
 	}
 
@@ -488,24 +498,24 @@ public class Player extends Character
 		this.startingChestArmour = startingChestArmour;
 	}
 
-	public Weapon getEquipedWeapon()
+	public Weapon getEquippedWeapon()
 	{
-		return equipedWeapon;
+		return equippedWeapon;
 	}
 
-	public void setEquipedWeapon(Weapon equipedWeapon)
+	public void setEquippedWeapon(Weapon equipedWeapon)
 	{
-		this.equipedWeapon = equipedWeapon;
+		this.equippedWeapon = equipedWeapon;
 	}
 
-	public ChestArmour getEquipedChestArmour()
+	public ChestArmour getEquippedChestArmour()
 	{
-		return equipedChestArmour;
+		return equippedChestArmour;
 	}
 
-	public void setEquipedChestArmour(ChestArmour equipedChestArmour)
+	public void setEquippedChestArmour(ChestArmour equipedChestArmour)
 	{
-		this.equipedChestArmour = equipedChestArmour;
+		this.equippedChestArmour = equipedChestArmour;
 	}
 
 	public ArrayList<Weapon> getWeaponInventory()
@@ -513,24 +523,24 @@ public class Player extends Character
 		return weaponInventory;
 	}
 
-	public PantsArmour getEquipedPantsArmour()
+	public PantsArmour getEquippedPantsArmour()
 	{
-		return equipedPantsArmour;
+		return equippedPantsArmour;
 	}
 
-	public void setEquipedPantsArmour(PantsArmour equipedPantsArmour)
+	public void setEquippedPantsArmour(PantsArmour equipedPantsArmour)
 	{
-		this.equipedPantsArmour = equipedPantsArmour;
+		this.equippedPantsArmour = equipedPantsArmour;
 	}
 
-	public ShoesArmour getEquipedShoesArmour()
+	public ShoesArmour getEquippedShoesArmour()
 	{
-		return equipedShoesArmour;
+		return equippedShoesArmour;
 	}
 
-	public void setEquipedShoesArmour(ShoesArmour equipedShoesArmour)
+	public void setEquippedShoesArmour(ShoesArmour equipedShoesArmour)
 	{
-		this.equipedShoesArmour = equipedShoesArmour;
+		this.equippedShoesArmour = equipedShoesArmour;
 	}
 
 	public ArrayList<PantsArmour> getPantsArmourInventory()
