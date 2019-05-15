@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import logic.logics.Player;
+import scene.Battle;
 import sharedObject.RenderableHolder;
 
 public class BattleAnimation extends Pane{
@@ -57,28 +58,14 @@ public class BattleAnimation extends Pane{
 		playerAttackMoveTransition.setDuration(Duration.seconds(0.5));
 		playerAttackMoveTransition.setAutoReverse(true);
 		playerAttackMoveTransition.setCycleCount(2);
-//		playerAttackMoveTransition.setNode(playerSprite);
-		playerAttackMoveTransition.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				isAnimating = false;
-			}
-		});
+
 		
 		playerAttackRotateTransition = new RotateTransition();
 		playerAttackRotateTransition.setToAngle(60);
 		playerAttackRotateTransition.setDuration(Duration.seconds(0.5));
 		playerAttackRotateTransition.setCycleCount(2);
 		playerAttackRotateTransition.setAutoReverse(true);
-//		playerAttackRotateTransition.setNode(playerSprite);
-		playerAttackRotateTransition.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				isAnimating = false;
-			}
-		});
+
 		
 		playerAttackScaleTransition = new ScaleTransition();
 		playerAttackScaleTransition.setByX(10);
@@ -86,17 +73,16 @@ public class BattleAnimation extends Pane{
 		playerAttackScaleTransition.setDuration(Duration.seconds(0.5));
 		playerAttackScaleTransition.setCycleCount(2);
 		playerAttackScaleTransition.setAutoReverse(true);
-//		playerAttackScaleTransition.setNode(playerSprite);
-		playerAttackScaleTransition.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				isAnimating = false;
-			}
-		});
+
 		
 		playerAttackAnimation = new ParallelTransition(playerAttackMoveTransition, playerAttackRotateTransition, playerAttackScaleTransition);
 		playerAttackAnimation.setNode(playerSprite);
+		playerAttackAnimation.setOnFinished
+		(event->
+			{
+				Battle.setInAnimation(false);
+			}
+		);
 		
 		idleThread = new Thread(new Runnable()
 		{
