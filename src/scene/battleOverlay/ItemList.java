@@ -27,6 +27,7 @@ public class ItemList extends VBox
 				(
 					action ->
 					{
+						startItemAnimation();
 						Player.player.usePotion(potion);
 						Battle.playerReport(Player.player.getName() + " used " + potion.getName() + "!");
 						Battle.setPlayerTurn(false);
@@ -55,5 +56,8 @@ public class ItemList extends VBox
 	{
 		return a.getPriority() - b.getPriority();
 	}
-
+	private void startItemAnimation()
+	{
+		
+	}
 }

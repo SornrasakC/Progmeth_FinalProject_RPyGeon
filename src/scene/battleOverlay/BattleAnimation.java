@@ -5,13 +5,12 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import logic.base.StatType;
 import logic.logics.Player;
 import scene.Battle;
 import sharedObject.RenderableHolder;
@@ -80,7 +79,12 @@ public class BattleAnimation extends Pane{
 		playerAttackAnimation.setOnFinished
 		(event->
 			{
-				Battle.setInAnimation(false);
+//				Battle.setInAnimation(true);
+				Battle.setPlayerTurn(false);
+//				playerTurn = false;
+				
+				int damage = Battle.getMonster().receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
+				Battle.playerReport(Player.player.getName() + " deals " + damage + " damage!");
 			}
 		);
 		

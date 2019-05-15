@@ -29,6 +29,7 @@ public class SpellList extends VBox
 							int amount = magic.use(Player.player, Battle.getMonster());
 							if(magic instanceof OffensiveMagic)
 							{
+								startSpellAnimation();
 								Battle.playerReport(magic.getName() + " deals " + amount + " damage!");
 								Battle.setPlayerTurn(false);
 								Battle.setInAnimation(true);
@@ -36,6 +37,7 @@ public class SpellList extends VBox
 							}
 							else // Healing magic
 							{
+								startSpellAnimation();
 								Battle.playerReport(magic.getName() + " heals " + amount + " HP!");
 								Battle.setPlayerTurn(false);
 								Battle.setInAnimation(true);
@@ -65,5 +67,8 @@ public class SpellList extends VBox
 		returnButton.getStyleClass().add(SPELL_CLASS);
 		getChildren().add(returnButton);
 	}
-	
+	private void startSpellAnimation()
+	{
+		//TODO ANIMATION
+	}
 }
