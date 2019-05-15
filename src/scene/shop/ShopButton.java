@@ -258,7 +258,7 @@ public class ShopButton extends Button {
 			);
 	        
 			Tooltip tooltip = new Tooltip();
-			tooltip.setPrefSize(700, 150);
+			tooltip.setPrefSize(700, 160);
 			tooltip.setStyle("-fx-background-color:white;");
 			tooltip.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 			tooltip.setGraphic(webView);

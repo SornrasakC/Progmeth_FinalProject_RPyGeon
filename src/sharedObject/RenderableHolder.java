@@ -134,7 +134,7 @@ public class RenderableHolder {
 		lowRecPotion = new Image(ClassLoader.getSystemResourceAsStream("lowrecoverypotion.png"),80,80,true,false);
 		highRecPotion = new Image(ClassLoader.getSystemResourceAsStream("highrecoverypotion.png"),80,80,true,false);
 		m44 = new Image(ClassLoader.getSystemResourceAsStream("M44a.png"),120,80,true,false);
-		rightArm = new Image(ClassLoader.getSystemResourceAsStream("WIP.png"),80,80,true,false);
+		rightArm = new Image(ClassLoader.getSystemResourceAsStream("shroudRightArm.png"),80,80,true,false);
 		otenTear = new Image(ClassLoader.getSystemResourceAsStream("otentear.png"),80,80,true,false);
 		mirrorForce = new Image(ClassLoader.getSystemResourceAsStream("trapcard.png"),80,80,true,false);
 		coin = new Image(ClassLoader.getSystemResourceAsStream("coin.png"),80,80,true,false);
