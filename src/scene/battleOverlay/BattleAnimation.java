@@ -119,9 +119,11 @@ public class BattleAnimation extends Pane{
 			{
 			case(1):
 				changeSprite(playerSprite, RenderableHolder.emiliaE1);
+				System.out.println("idle 1");
 				break;
 			case(2):
 				changeSprite(playerSprite, RenderableHolder.emiliaE2);
+				System.out.println("idle 2");
 				break;
 			}
 		}
