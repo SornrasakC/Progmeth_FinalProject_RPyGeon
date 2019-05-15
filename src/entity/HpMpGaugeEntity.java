@@ -1,5 +1,9 @@
 package entity;
 
+//import java.awt.Font;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
@@ -14,6 +18,9 @@ public class  HpMpGaugeEntity extends Entity
 	private logic.base.Character character;
 	private int displayHP, displayMP;
 	private static final int SPEED = 2;
+	private AffineTransform affinetransform = new AffineTransform();     
+	private FontRenderContext frc = new FontRenderContext(affinetransform,true,true);
+	private java.awt.Font font = new java.awt.Font("Helvetica", java.awt.Font.PLAIN, 40);
 	public HpMpGaugeEntity(int x, int y, Monster character)
 	{
 		super();
@@ -22,6 +29,9 @@ public class  HpMpGaugeEntity extends Entity
 		this.character = character;
 		displayHP = (int) (100.0 * character.getCurrentHp()) / character.getBaseMaxHp();
 		displayMP = (character.getBaseMaxMp() == 0) ? 0 : (int) (100.0 * character.getCurrentMp()) / character.getBaseMaxMp();
+		 
+		
+//		int textwidth = (int)(font.getStringBounds(text, frc).getWidth());
 
 	}
 	public HpMpGaugeEntity(int x, int y, Player character)
@@ -37,6 +47,7 @@ public class  HpMpGaugeEntity extends Entity
 	@Override
 	public void draw(GraphicsContext gc)
 	{
+		
 		gc.setStroke(Color.GHOSTWHITE);
 		gc.setLineCap(StrokeLineCap.ROUND);
 		gc.setFont(new Font("Helvetica", 40));
@@ -44,13 +55,17 @@ public class  HpMpGaugeEntity extends Entity
 		{
 			gc.setFill(Color.NAVAJOWHITE);
 			gc.drawImage(BattleRenderableHolder.gaugeBackground, x - 10, y - 80);
-			gc.fillText(character.getName(), x + 10, y - 40);
+			String name = character.getName() + " LV: " + character.getLevel();
+			gc.fillText(name, x + 10, y - 40);
 		}
 		else
 		{
 			gc.setFill(Color.ORANGERED);
 			gc.drawImage(BattleRenderableHolder.gaugeBackground, x - 440, y - 80);
-			gc.fillText(character.getName(), x - (character.getName().length() * 22), y - 40);
+			String name = character.getName() + " LV: " + character.getLevel();
+			int textwidth = (int)(font.getStringBounds(name, frc).getWidth());
+//			gc.fillText(name, x - (name.length() * 22), y - 40);
+			gc.fillText(name, x - textwidth, y - 40);
 		}
 		
 		gc.setLineWidth(30);
@@ -81,8 +96,18 @@ public class  HpMpGaugeEntity extends Entity
 		gc.setFont(Font.getDefault());
 		gc.setStroke(Color.GHOSTWHITE);
 		gc.setLineWidth(2);
+		int currentHP = (int) (100.0 * character.getCurrentHp()) / character.getBaseMaxHp();
+		int currentMP = (character.getBaseMaxMp() == 0) ? 0 : (int) (100.0 * character.getCurrentMp()) / character.getBaseMaxMp();
 		int rawDisplayHp = (int) ((displayHP / 100.0) * character.getMaxHp());
 		int rawDisplayMp = (int) ((displayMP / 100.0) * character.getMaxMp());
+		if(Math.abs(displayHP - currentHP) < SPEED)
+		{
+			rawDisplayHp = character.getCurrentHp();
+		}
+		if(Math.abs(displayMP - currentMP) < SPEED)
+		{
+			rawDisplayMp = character.getCurrentMp();
+		}
 		String HpString = rawDisplayHp + " / " + character.getMaxHp();
 		String MpString = rawDisplayMp + " / " + character.getMaxMp();
 		int surplusHp = (character instanceof Monster) ? HpString.length() * 5 : 0, surplusMp = (character instanceof Monster) ? MpString.length() * 5 : 0;

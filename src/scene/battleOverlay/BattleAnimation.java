@@ -162,7 +162,7 @@ public class BattleAnimation extends Pane{
 		if(imageView.equals(playerSprite))
 		{
 			playerSprite = new ImageView(image);
-			playerWeaponSprite = new ImageView(Player.player.getEquipedWeapon().getSprite());
+			playerWeaponSprite = new ImageView(Player.player.getEquippedWeapon().getSprite());
 			playerWeaponSprite.setTranslateX(35);
 			playerWeaponSprite.setTranslateY(-20);
 			playerSpriteGroup.getChildren().clear();
