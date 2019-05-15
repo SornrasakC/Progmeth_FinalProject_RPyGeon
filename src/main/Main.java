@@ -44,8 +44,8 @@ public class Main extends Application
 	{
 		try
 		{
-			Player.player.levelUp();
-			Player.player.levelUp();
+//			Player.player.levelUp();
+//			Player.player.levelUp();
 			Player.player.gainMoney(5000);
 			ItemShop itemShop = new ItemShop();
 			

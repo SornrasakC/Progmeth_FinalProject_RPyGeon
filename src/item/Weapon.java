@@ -1,6 +1,8 @@
 package item;
 
+import javafx.scene.image.Image;
 import logic.base.Droppable;
+import sharedObject.RenderableHolder;
 
 public class Weapon implements Droppable
 {
@@ -15,6 +17,7 @@ public class Weapon implements Droppable
 	private boolean isBought = false;
 	private int price = 0;
 	private int floor;
+	private Image sprite;
 	public Weapon(String name, String description, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk,
 			int baseMaxMagAtk, int floor)
 	{
@@ -32,8 +35,6 @@ public class Weapon implements Droppable
 	{
 		super();
 		this.name = name;
-		this.description = 	"Physical Attack = " + baseMinPhyAtk + " - " + baseMaxPhyAtk + "\n" +
-							"Magical Attack = " + baseMinMagAtk + " - " + baseMaxMagAtk + "\n";
 		this.baseMinPhyAtk = baseMinPhyAtk;
 		this.baseMaxPhyAtk = baseMaxPhyAtk;
 		this.baseMinMagAtk = baseMinMagAtk;
@@ -86,6 +87,38 @@ public class Weapon implements Droppable
 	public int getPrice()
 	{
 		return price;
+	}
+	
+	public Image getSprite() {
+		switch(this.getName()) {
+		case("Wooden Stick"): sprite = RenderableHolder.woodenStick; break;
+		case("Excalibur"): sprite = RenderableHolder.redCookie; break;
+		case("Branch of Yggdrasil"): sprite = RenderableHolder.redCookie; break;
+		case("Rusted Iron Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Fairly Normal MP Potion"): sprite = RenderableHolder.redCookie; break;
+		case("Rotten Wooden Staff"): sprite = RenderableHolder.redCookie; break;
+		case("Slightly Dull Steel Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Shiny Stone Rod"): sprite = RenderableHolder.redCookie; break;
+		case("Polished Steel Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Ruby Staff"): sprite = RenderableHolder.redCookie; break;
+		case("Enchanted Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Mythril Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Book of Power"): sprite = RenderableHolder.redCookie; break;
+		case("Tellulam"): sprite = RenderableHolder.redCookie; break;
+		case("Grimoir of Truth"): sprite = RenderableHolder.redCookie; break;
+		case("Wooden Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Slightly Magical Stick"): sprite = RenderableHolder.redCookie; break;
+		case("Iron Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Wooden Staff"): sprite = RenderableHolder.redCookie; break;
+		case("Steel Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Emerald Staff"): sprite = RenderableHolder.redCookie; break;
+		case("Palladium Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Caster's Ring"): sprite = RenderableHolder.redCookie; break;
+		case("Chinese Adamantium Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Chinese Diamond Staff"): sprite = RenderableHolder.redCookie; break;
+		default:sprite = RenderableHolder.redCookie;
+		}
+		return this.sprite;
 	}
 	
 }
