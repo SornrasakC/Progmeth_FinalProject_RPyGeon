@@ -95,13 +95,12 @@ public class Weapon implements Droppable
 		case("Excalibur"): sprite = RenderableHolder.redCookie; break;
 		case("Branch of Yggdrasil"): sprite = RenderableHolder.redCookie; break;
 		case("Rusted Iron Sword"): sprite = RenderableHolder.redCookie; break;
-		case("Fairly Normal MP Potion"): sprite = RenderableHolder.redCookie; break;
 		case("Rotten Wooden Staff"): sprite = RenderableHolder.redCookie; break;
 		case("Slightly Dull Steel Sword"): sprite = RenderableHolder.redCookie; break;
 		case("Shiny Stone Rod"): sprite = RenderableHolder.redCookie; break;
 		case("Polished Steel Sword"): sprite = RenderableHolder.redCookie; break;
 		case("Ruby Staff"): sprite = RenderableHolder.redCookie; break;
-		case("Enchanted Sword"): sprite = RenderableHolder.redCookie; break;
+		case("Fiery Blade"): sprite = RenderableHolder.redCookie; break;
 		case("Mythril Sword"): sprite = RenderableHolder.redCookie; break;
 		case("Book of Power"): sprite = RenderableHolder.redCookie; break;
 		case("Tellulam"): sprite = RenderableHolder.redCookie; break;
@@ -116,7 +115,7 @@ public class Weapon implements Droppable
 		case("Caster's Ring"): sprite = RenderableHolder.redCookie; break;
 		case("Chinese Adamantium Sword"): sprite = RenderableHolder.redCookie; break;
 		case("Chinese Diamond Staff"): sprite = RenderableHolder.redCookie; break;
-		default:sprite = RenderableHolder.redCookie;
+		default:sprite = RenderableHolder.placeHolder;
 		}
 		return this.sprite;
 	}
