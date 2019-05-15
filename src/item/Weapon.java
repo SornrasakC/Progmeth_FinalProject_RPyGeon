@@ -12,6 +12,7 @@ public class Weapon implements Droppable
 	private int baseMinMagAtk;
 	private int baseMaxMagAtk;
 	
+	private boolean isBought = false;
 	private int price = 0;
 	private int floor;
 	public Weapon(String name, String description, int baseMinPhyAtk, int baseMaxPhyAtk, int baseMinMagAtk,
@@ -43,6 +44,16 @@ public class Weapon implements Droppable
 	public String toString()
 	{
 		return name + ", floor :" + floor;
+	}
+	
+	
+	public boolean isBought()
+	{
+		return isBought;
+	}
+	public void setBought(boolean isBought)
+	{
+		this.isBought = isBought;
 	}
 	public String getName()
 	{

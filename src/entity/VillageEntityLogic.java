@@ -120,5 +120,10 @@ public class VillageEntityLogic
 		player.unFreeze();
 		player.teleportTo(dungeon.x + (dungeon.sprite.getWidth() / 2), dungeon.y + dungeon.sprite.getHeight() + 70);
 	}
-
+	public static void exitBlacksmith()
+	{
+		isInOtherEntity = false;
+		player.unFreeze();
+		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2), blacksmith.y + blacksmith.sprite.getHeight() + 70);
+	}
 }
