@@ -28,7 +28,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import logic.base.Monster;
-import logic.base.StatType;
 import logic.logics.Dungeon;
 import logic.logics.Player;
 import logic.logics.Rand;
@@ -139,10 +138,10 @@ public class Battle extends GridPane
 				public void handle(ActionEvent event)
 				{
 					battleAnimation.playAttackAnimation();
-					playerTurn = false;
+//					playerTurn = false;
 					inAnimation = true;
-					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
-					playerReport(Player.player.getName() + " deals " + damage + " damage!");
+//					int damage = monster.receiveDamage(Player.player.randPhyAtk(), StatType.PHYATK);
+//					playerReport(Player.player.getName() + " deals " + damage + " damage!");
 				}
 			}
 		);
