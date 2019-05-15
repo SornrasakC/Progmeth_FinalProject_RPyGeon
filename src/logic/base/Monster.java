@@ -36,7 +36,7 @@ public abstract class Monster extends Character
 	@Override
 	public int getMoney()
 	{
-		return Rand.rand((int) ((level - 1) * 30 * 0.75), (int) ((level - 1) * 30 * 1.25));
+		return Rand.rand((int) ((level - 1) * 15 * 0.75), (int) ((level - 1) * 15 * 1.25));
 	}
 	
 	@Override
