@@ -14,6 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import logic.logics.Player;
@@ -86,7 +88,7 @@ public class BlacksmithShop extends StackPane
 		SVGPath shape = new SVGPath();
 		shape.setContent("M 0 40 L 40 0 L 400 0 L 400 80 L 40 80 Z ");
 		backButton.setShape(shape);
-		backButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+		backButton.setPrefSize(BUTTON_SIZE, 70);
 
 		backButton.setStyle(BACK_BUTTON_NORMAL);
 		backButton.setOnMouseEntered(e ->
@@ -140,8 +142,15 @@ public class BlacksmithShop extends StackPane
 				{
 					if(null != Player.player.buyWeapon(blacksmithShop, weapon))
 					{
+						Media successSound = new Media(getClass().getClassLoader().getResource("purchase.wav").toExternalForm());
+						MediaPlayer successSoundPlayer = new MediaPlayer(successSound);
+						successSoundPlayer.play();
 						itemButton.setDisable(true);
 						updateMoney();
+					}else {
+						Media failSound = new Media(getClass().getClassLoader().getResource("denyPurchase.wav").toExternalForm());
+						MediaPlayer failSoundPlayer = new MediaPlayer(failSound);
+						failSoundPlayer.play();
 					}
 				}
 			);

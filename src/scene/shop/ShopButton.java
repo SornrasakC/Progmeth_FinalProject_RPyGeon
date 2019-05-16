@@ -5,8 +5,6 @@ import java.lang.reflect.Field;
 import item.Weapon;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -16,6 +14,8 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -32,6 +32,10 @@ public class ShopButton extends Button {
 	private Potion thisPotion;
 	private Weapon thisWeapon;
 	private int price;
+//	private Media successSound;
+//	private MediaPlayer successSoundPlayer;
+//	private Media failSound;
+//	private MediaPlayer failSoundPlayer;
 	
 	private static final int HOVER_TO_APPEAR_DURATION = 250;
 	private static final int APPEAR_DURATION = 50000;
@@ -132,6 +136,8 @@ public class ShopButton extends Button {
 		
 		
 		
+		
+		
 		setWeaponCustomTooltip();
 		this.setStyle(NORMAL_STYLE);
 		changeBackgroundOnHover(this);
@@ -149,10 +155,11 @@ public class ShopButton extends Button {
 				SceneManager.getItemshopPane().updateMoney();
 				if(Player.player.getMoney() < price) {
 	        		node.setStyle(HOVERED_STYLE_RED);
+	        		playFailSound();
 	        	}else {
 	        		node.setStyle(HOVERED_STYLE);
+	        		playSuccessSound();
 	        	}
-				//add play sound
 			}
 		});
 	}
@@ -169,8 +176,10 @@ public class ShopButton extends Button {
 				SceneManager.getBlacksmithShopPane().updateMoney();
 				if(Player.player.getMoney() < price) {
 	        		node.setStyle(HOVERED_STYLE_RED);
+	        		playFailSound();
 	        	}else {
 	        		node.setStyle(HOVERED_STYLE);
+	        		playSuccessSound();
 	        	}
 				//add play sound
 			}
@@ -265,6 +274,18 @@ public class ShopButton extends Button {
 			
 			setTooltipTiming(tooltip);
 			this.setTooltip(tooltip);
+	 }
+	 
+	 private void playSuccessSound() {
+		Media successSound = new Media(getClass().getClassLoader().getResource("purchase.wav").toExternalForm());
+		MediaPlayer successSoundPlayer = new MediaPlayer(successSound);
+		successSoundPlayer.play();
+	 }
+	 
+	 private void playFailSound() {
+		 Media failSound = new Media(getClass().getClassLoader().getResource("denyPurchase.wav").toExternalForm());
+		 MediaPlayer failSoundPlayer = new MediaPlayer(failSound);
+		 failSoundPlayer.play();
 	 }
 
 }
