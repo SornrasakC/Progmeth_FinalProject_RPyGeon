@@ -20,6 +20,7 @@ import javafx.util.Duration;
 import logic.base.Potion;
 import logic.logics.Player;
 import scene.SceneManager;
+import sharedObject.Music;
 import shops.ItemShop;
 
 public class Main extends Application
@@ -60,6 +61,8 @@ public class Main extends Application
 			System.out.println(Player.player.getPotionInventory().keySet());
 
 			launch(args);
+//			Music.currentBGM.play();
+			
 
 		}
 		catch (Exception e)
@@ -71,6 +74,7 @@ public class Main extends Application
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
+		Music.villageBGM.play();
 		primaryStage.setOnCloseRequest(event -> System.exit(0));
 
 		Main.primaryStage = primaryStage;
@@ -113,6 +117,14 @@ public class Main extends Application
 
 	public static void changeScene(Scene scene)
 	{
+		if(scene.equals(SceneManager.battleScene))
+		{
+			Music.changeBGM(Music.battleBGM);
+		}
+		if(scene.equals(SceneManager.villageScene))
+		{
+			Music.changeBGM(Music.villageBGM);
+		}
 		final Scene scene2 = scene;
 
 		FadeTransition ft = new FadeTransition(Duration.millis(500), primaryStage.getScene().getRoot());

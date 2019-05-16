@@ -78,4 +78,30 @@ public class PlayerBattleEntity extends Entity
 	{
 		this.isFreeze = false;
 	}
+
+	public boolean isFreeze()
+	{
+		return isFreeze;
+	}
+
+	public int getFrame()
+	{
+		return frame;
+	}
+
+	public Thread getIdleThread()
+	{
+		return idleThread;
+	}
+
+	public int getAnimationType()
+	{
+		return animationType;
+	}
+
+	public int getIsAnimating()
+	{
+		return isAnimating;
+	}
+	
 }

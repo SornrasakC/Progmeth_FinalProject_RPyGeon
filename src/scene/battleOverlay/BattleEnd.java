@@ -183,7 +183,7 @@ public class BattleEnd extends StackPane
 		Main.getBattleLogic().renewMonster(Battle.getMonster());
 		Battle.endOverlay();
 		Battle.setPlayerTurn(true);
-		Battle.setInAnimation(false); //???
+		Battle.setInAnimation(false);
 		Battle.setFightNumber(Battle.getFightNumber() + 1);
 	}
 	private void addClass()
