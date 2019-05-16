@@ -368,9 +368,6 @@ public class Battle extends GridPane
 		}
 		return newReport.substring(1);
 	}
-	public static BattleAnimation getBattleAnimation() {
-		return battleAnimation;
-	}
 
 	public static void setBattleAnimation(BattleAnimation battleAnimation) {
 		Battle.battleAnimation = battleAnimation;

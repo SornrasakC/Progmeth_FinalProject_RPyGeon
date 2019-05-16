@@ -8,6 +8,7 @@ import item.Weapon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -16,12 +17,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
-import logic.base.Potion;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import logic.logics.Player;
 import main.Main;
 import scene.component.BaseButton;
 import scene.component.InventoryItemButton;
-import scene.component.ShopButton;
 import sharedObject.RenderableHolder;
 
 public class Base extends StackPane
@@ -35,7 +37,7 @@ public class Base extends StackPane
 	
 	private Label label = new Label("Base");
 	private Button backButton = new Button("back");
-	private Label inventoryLabel = new Label("Inventory");
+	private Label inventoryText = new Label("Inventory");
 	private VBox inventoryBox;
 	private GridPane inventoryGrid;
 	private HBox equipmentBox;
@@ -135,10 +137,15 @@ public class Base extends StackPane
 		playerModel.setFitHeight(HEIGHT - 100);
 		
 		
-		inventoryBox.getChildren().addAll(inventoryLabel, inventoryGrid);
+		inventoryBox.getChildren().addAll(inventoryText, inventoryGrid);
+//		inventoryText.setTextAlignment(TextAlignment.CENTER);
+		inventoryText.setPrefWidth(WIDTH/2);
+		inventoryText.setFont(new Font(28));
+		inventoryText.setPadding(new Insets(HGAP,WIDTH/5,HGAP,WIDTH/5));
+		inventoryText.setStyle("-fx-font-weight: bold");
 		
 		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, rightSideEquipmentsBox);
-		wholePane.getChildren().addAll(equipmentBox, inventoryGrid);
+		wholePane.getChildren().addAll(equipmentBox, inventoryBox);
 		setEquippedButtonLogic();
 		this.getChildren().add(wholePane);
 	}
@@ -191,6 +198,9 @@ public class Base extends StackPane
 			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 			inventoryGrid.add(inventoryButton, i, j);
 			if(i < 3) i++; else {i = 0; j++;}
+		}
+		if(Player.player.getWeaponInventory().size() == 0) {
+			Label label
 		}
 		System.out.println("Load complete");
 	}
