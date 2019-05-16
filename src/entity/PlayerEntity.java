@@ -144,8 +144,8 @@ public class PlayerEntity extends Entity
 			}
 			if (InputUtility.isLeftClickTriggered())
 			{
-				destinateX = InputUtility.mouseX;
-				destinateY = InputUtility.mouseY;			
+				destinateX = InputUtility.mouseX - this.sprite.getWidth() / 2;
+				destinateY = InputUtility.mouseY - this.sprite.getHeight() / 2;			
 			}
 			if(isInputed)
 			{

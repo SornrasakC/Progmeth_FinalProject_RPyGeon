@@ -71,16 +71,19 @@ public class Dungeon
 		try
 		{
 			monsterList = new ArrayList<Monster>();
+			System.out.println("Parsing bossMonster json...");
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
 					"BossMonsters.json",
 					new TypeToken<ArrayList<BossMonster>>()
 					{
 					}));
+			System.out.println("Parsing PhysicalMonsters json...");
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
 					"PhysicalMonsters.json",
 					new TypeToken<ArrayList<PhysicalMonster>>()
 					{
 					}));
+			System.out.println("Parsing MagicalMonsters json...");
 			monsterList.addAll((ArrayList<Monster>) (ArrayList<?>) main.Main.readJson(
 					"MagicalMonsters.json",
 					new TypeToken<ArrayList<MagicalMonster>>()
@@ -88,18 +91,22 @@ public class Dungeon
 					}));
 
 			dropList = new ArrayList<Droppable>();
+			System.out.println("Parsing dropWeapons json...");
 			dropList.addAll(main.Main.readJson("dropWeapons.json",
 					new TypeToken<ArrayList<Weapon>>()
 					{
 					}));
+			System.out.println("Parsing ChestArmours json...");
 			dropList.addAll(main.Main.readJson("ChestArmours.json",
 					new TypeToken<ArrayList<ChestArmour>>()
 					{
 					}));
+			System.out.println("Parsing PantsArmours json...");
 			dropList.addAll(main.Main.readJson("PantsArmours.json",
 					new TypeToken<ArrayList<PantsArmour>>()
 					{
 					}));
+			System.out.println("Parsing ShoesArmours json...");
 			dropList.addAll(main.Main.readJson("ShoesArmours.json",
 					new TypeToken<ArrayList<ShoesArmour>>()
 					{
@@ -114,8 +121,9 @@ public class Dungeon
 		(
 			monster ->
 			{
-				monster.setSprite(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 1 + ".png")));
-				monster.setSpriteAnimation(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + 2 + ".png")));
+				System.out.println("setting sprite for " + monster.getName());
+				monster.setSprite(new Image(ClassLoader.getSystemResourceAsStream(monster.getName() + "01.png")));
+				monster.setSpriteAnimation(new Image(ClassLoader.getSystemResourceAsStream(monster.getName()  + "02.png")));
 				monster.fullHeal();
 			}
 		);

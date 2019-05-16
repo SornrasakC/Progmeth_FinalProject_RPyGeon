@@ -24,7 +24,7 @@
         "baseMagDefense": 0
     },
     {
-        "name": "Giant Rat",
+        "name": "Goblin Warrior",
         "level": 3,
         "baseMaxPhyAtk": 5,
         "baseMinPhyAtk": 4,
@@ -36,7 +36,7 @@
         "baseMagDefense": 0
     },
     {
-        "name": "Kobold Soldier",
+        "name": "Lizard Brute",
         "level": 4,
         "baseMaxPhyAtk": 7,
         "baseMinPhyAtk": 5,
@@ -48,7 +48,7 @@
         "baseMagDefense": 2
     },
     {
-        "name": "Kobold Brute",
+        "name": "Lizard Warrior",
         "level": 4,
         "baseMaxPhyAtk": 9,
         "baseMinPhyAtk": 7,
@@ -72,7 +72,7 @@
         "baseMagDefense": 0
     },
     {
-        "name": "Minotaur",
+        "name": "Undead Champion",
         "level": 6,
         "baseMaxPhyAtk": 16,
         "baseMinPhyAtk": 10,
@@ -96,7 +96,7 @@
         "baseMagDefense": 3
     },
     {
-        "name": "Mantrapper",
+        "name": "White Abomination",
         "level": 8,
         "baseMaxPhyAtk": 20,
         "baseMinPhyAtk": 17,
@@ -108,7 +108,7 @@
         "baseMagDefense": 0
     },
     {
-        "name": "Flesh Golem",
+        "name": "Ice Golem",
         "level": 8,
         "baseMaxPhyAtk": 15,
         "baseMinPhyAtk": 10,
@@ -120,7 +120,7 @@
         "baseMagDefense": 0
     },
     {
-        "name": "Troll",
+        "name": "Nightmare",
         "level": 9,
         "baseMaxPhyAtk": 25,
         "baseMinPhyAtk": 8,
@@ -132,7 +132,7 @@
         "baseMagDefense": 5
     },
     {
-        "name": "Behemoth",
+        "name": "Cerberus",
         "level": 10,
         "baseMaxPhyAtk": 40,
         "baseMinPhyAtk": 25,

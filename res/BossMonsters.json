@@ -1,6 +1,6 @@
 [
     {
-        "name": "Kobold Champion",
+        "name": "Ogre",
         "level": 5,
         "baseMaxPhyAtk": 10,
         "baseMinPhyAtk": 8,
@@ -12,7 +12,7 @@
         "baseMagDefense": 5
     },
     {
-        "name": "Lavasioth",
+        "name": "Flame Imp",
         "level": 6,
         "baseMaxPhyAtk": 13,
         "baseMinPhyAtk": 8,
@@ -24,7 +24,7 @@
         "baseMagDefense": 7
     },
     {
-        "name": "Phase Spider",
+        "name": "Magic Slime",
         "level": 7,
         "baseMaxPhyAtk": 14,
         "baseMinPhyAtk": 12,
@@ -36,7 +36,7 @@
         "baseMagDefense": 9
     },
     {
-        "name": "Wyvern",
+        "name": "Dark Arch Mage",
         "level": 8,
         "baseMaxPhyAtk": 18,
         "baseMinPhyAtk": 16,
@@ -48,7 +48,7 @@
         "baseMagDefense": 12
     },
     {
-        "name": "Type O-10",
+        "name": "Cursed Paladin",
         "level": 10,
         "baseMaxPhyAtk": 150,
         "baseMinPhyAtk": 0,
@@ -60,7 +60,7 @@
         "baseMagDefense": 100
     },
     {
-        "name": "SL-1-M3 Robot",
+        "name": "King Slime",
         "level": 11,
         "baseMaxPhyAtk": 70,
         "baseMinPhyAtk": 55,
