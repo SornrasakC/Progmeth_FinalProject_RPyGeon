@@ -48,6 +48,22 @@ public class Weapon implements Droppable
 	}
 	
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(!(obj instanceof Weapon))
+		{
+			return false;
+		}
+		Weapon weapon = (Weapon) obj;
+		return name.equals(weapon.getName());
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return (name + description).hashCode();
+	}
 	public boolean isBought()
 	{
 		return isBought;

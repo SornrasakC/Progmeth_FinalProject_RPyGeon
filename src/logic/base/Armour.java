@@ -24,7 +24,18 @@ public abstract class Armour implements Cloneable, Droppable
 	@Override
 	public int hashCode()
 	{
-		return name.hashCode() + description.hashCode();
+		return (name + description).hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(!(obj instanceof Armour))
+		{
+			return false;
+		}
+		Armour armour = (Armour) obj;
+		return name.equals(armour.getName());
 	}
 	public String getName()
 	{

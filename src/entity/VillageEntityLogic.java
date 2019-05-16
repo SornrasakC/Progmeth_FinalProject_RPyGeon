@@ -20,6 +20,7 @@ public class VillageEntityLogic
 	private static ShopEntity itemShop;
 	private static BlacksmithEntity blacksmith;
 	private static DungeonEntity dungeon;
+	private static BaseEntity base;
 
 	private static boolean isInOtherEntity = false;
 
@@ -31,10 +32,12 @@ public class VillageEntityLogic
 		itemShop = new ShopEntity(300, 50);
 		blacksmith = new BlacksmithEntity(620, 50);
 		dungeon = new DungeonEntity(940, 50);
+		base = new BaseEntity(620, 500);
 		addNewObject(player);
 		addNewObject(itemShop);
 		addNewObject(blacksmith);
 		addNewObject(dungeon);
+		addNewObject(base);
 	}
 
 	protected void addNewObject(Entity entity)
@@ -59,7 +62,7 @@ public class VillageEntityLogic
 				}
 			});
 		}
-		else if(!isInOtherEntity && player.collideWith(dungeon))
+		else if (!isInOtherEntity && player.collideWith(dungeon))
 		{
 			enterDungeon();
 			Platform.runLater(new Runnable()
@@ -74,7 +77,9 @@ public class VillageEntityLogic
 //					Main.changeScene(SceneManager.dungeonChooseFloorScene);
 				}
 			});
-		}else if(!isInOtherEntity && player.collideWith(blacksmith)) {
+		}
+		else if (!isInOtherEntity && player.collideWith(blacksmith))
+		{
 			enterShop();
 			Platform.runLater(new Runnable()
 			{
@@ -83,8 +88,20 @@ public class VillageEntityLogic
 				{
 					SceneManager.getBlacksmithShopPane().updateAvailableWeapon();
 					SceneManager.getBlacksmithShopPane().updateMoney();
-					//change to blacksmith scene
+					// change to blacksmith scene
 					Main.changeScene(SceneManager.blacksmithScene);
+				}
+			});
+		}
+		else if (!isInOtherEntity && player.collideWith(base))
+		{
+			enterShop();
+			Platform.runLater(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+//					Main.changeScene(SceneManager.blacksmithScene);
 				}
 			});
 		}
@@ -105,7 +122,7 @@ public class VillageEntityLogic
 		player.unFreeze();
 		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 70);
 	}
-	
+
 	public static void enterDungeon()
 	{
 		isInOtherEntity = true;
@@ -113,17 +130,26 @@ public class VillageEntityLogic
 		System.out.println("Collision detected");
 		InputUtility.clearInput();
 	}
-	
+
 	public static void exitDungeon()
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
 		player.teleportTo(dungeon.x + (dungeon.sprite.getWidth() / 2), dungeon.y + dungeon.sprite.getHeight() + 70);
 	}
+
 	public static void exitBlacksmith()
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2), blacksmith.y + blacksmith.sprite.getHeight() + 70);
+		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2),
+				blacksmith.y + blacksmith.sprite.getHeight() + 70);
+	}
+
+	public static void exitBase()
+	{
+		isInOtherEntity = false;
+		player.unFreeze();
+		player.teleportTo(base.x + (base.sprite.getWidth() / 2), base.y + base.sprite.getHeight() + 70);
 	}
 }
