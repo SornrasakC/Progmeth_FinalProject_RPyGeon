@@ -26,7 +26,7 @@ public class Player extends Character
 	public static Player player;
 	private int exp = 0;
 	private int expToNextLevel = 100;
-	private int money = 120;
+	private int money = 0;
 	private int conqueredFloor = 0;
 
 	private Weapon startingWeapon = new Weapon("Wooden Stick", "Normal woody stick", 1, 1, 0, 0, 1);
