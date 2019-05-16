@@ -34,6 +34,7 @@ public class SceneManager {
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene epilogueScene = new Scene(epilogueRoot, WIDTH, HEIGHT, Color.BLACK);
+	public static Scene baseScene = new Scene(new Base(), WIDTH, HEIGHT, Color.BLACK);
 	
 	public SceneManager() 
 	{

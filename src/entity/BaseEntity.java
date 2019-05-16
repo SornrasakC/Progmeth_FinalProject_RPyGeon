@@ -10,14 +10,13 @@ public class BaseEntity extends Entity
 	{
 		this.x = x;
 		this.y = y;
-		this.sprite = RenderableHolder.genericVendor;
+		this.sprite = RenderableHolder.tent;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc)
 	{
 		gc.drawImage(sprite, x, y);
-
 	}
 
 }

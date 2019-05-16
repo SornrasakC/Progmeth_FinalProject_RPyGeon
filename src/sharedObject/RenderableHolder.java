@@ -14,6 +14,7 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	
+	public static Image tent;
 	public static Image genericVendor;
 	public static Image emiliaN1;
 	public static Image emiliaN2;
@@ -25,6 +26,7 @@ public class RenderableHolder {
 	public static Image emiliaS2;
 	public static Image emiliaAttack;
 	public static Image emiliaSpell;
+	public static Image emiliaFullBody;
 	
 	//items
 	public static Image redCookie;
@@ -119,6 +121,7 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
+		tent = new Image(ClassLoader.getSystemResourceAsStream("tentSprite.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
 		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright01.PNG"));
 		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright02.PNG"));
@@ -129,6 +132,8 @@ public class RenderableHolder {
 		emiliaS1 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront01.png"));
 		emiliaS2 = new Image(ClassLoader.getSystemResourceAsStream("emiliafront02.png"));
 		emiliaAttack = new Image(ClassLoader.getSystemResourceAsStream("emiliaAttack.png"));
+		emiliaFullBody = new Image(ClassLoader.getSystemResourceAsStream("bigEmilia.png"),650,650,true,false);
+		
 		
 		//items
 		redCookie = new Image(ClassLoader.getSystemResourceAsStream("redcookie.png"),80,80,true,false);

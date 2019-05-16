@@ -101,7 +101,7 @@ public class VillageEntityLogic
 				@Override
 				public void run()
 				{
-//					Main.changeScene(SceneManager.blacksmithScene);
+					Main.changeScene(SceneManager.baseScene);
 				}
 			});
 		}
