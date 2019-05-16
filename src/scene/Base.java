@@ -44,6 +44,7 @@ public class Base extends StackPane
 	private HBox wholePane;
 	private ImageView imageBG;
 	private ImageView playerModel;
+	private StackPane inventoryStack;
 	
 	private BaseButton weaponButton;
 	private BaseButton shirtButton;
@@ -83,6 +84,7 @@ public class Base extends StackPane
 		inventoryGrid = new GridPane();
 		equipmentBox = new HBox();
 		inventoryBox = new VBox();
+		inventoryStack = new StackPane();
 		wholePane.setPadding(new Insets(INSETS));
 		inventoryGrid.setHgap(HGAP);
 		inventoryGrid.setVgap(VGAP);
@@ -139,12 +141,15 @@ public class Base extends StackPane
 		
 		inventoryBox.getChildren().addAll(inventoryText, inventoryGrid);
 //		inventoryText.setTextAlignment(TextAlignment.CENTER);
-		inventoryText.setPrefWidth(WIDTH/2);
+		inventoryText.setPrefWidth(inventoryBox.getWidth());
 		inventoryText.setFont(new Font(28));
-		inventoryText.setPadding(new Insets(HGAP,WIDTH/5,HGAP,WIDTH/5));
+		inventoryText.setPadding(new Insets(HGAP,inventoryBox.getWidth()/ 2,HGAP,100));
 		inventoryText.setStyle("-fx-font-weight: bold");
 		
-		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, rightSideEquipmentsBox);
+		ImageView inventoryBG =  new ImageView(RenderableHolder.inventoryBackground);
+		inventoryStack.getChildren().addAll(inventoryBG, rightSideEquipmentsBox);
+		
+		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, inventoryStack);
 		wholePane.getChildren().addAll(equipmentBox, inventoryBox);
 		setEquippedButtonLogic();
 		this.getChildren().add(wholePane);
@@ -200,7 +205,6 @@ public class Base extends StackPane
 			if(i < 3) i++; else {i = 0; j++;}
 		}
 		if(Player.player.getWeaponInventory().size() == 0) {
-			Label label
 		}
 		System.out.println("Load complete");
 	}

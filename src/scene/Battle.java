@@ -609,6 +609,10 @@ public class Battle extends GridPane
 	{
 		return monsterBattleAnimation;
 	}
+
+	public static BattleAnimation getBattleAnimation() {
+		return battleAnimation;
+	}
 	
 }
 
