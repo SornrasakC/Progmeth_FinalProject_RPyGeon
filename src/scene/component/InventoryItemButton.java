@@ -22,13 +22,12 @@ import javafx.util.Duration;
 import logic.base.Armour;
 import logic.logics.Player;
 import scene.SceneManager;
-import shops.BlackSmith;
 
 public class InventoryItemButton extends Button {
 	private Image image;
 	private Armour thisArmour;
 	private Weapon thisWeapon;
-	private int position;
+//	private int position;
 
 	private static final int HOVER_TO_APPEAR_DURATION = 250;
 	private static final int APPEAR_DURATION = 50000;

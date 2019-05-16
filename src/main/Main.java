@@ -17,11 +17,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import logic.base.Potion;
-import logic.logics.Player;
 import scene.SceneManager;
 import sharedObject.Music;
-import shops.ItemShop;
 
 public class Main extends Application
 {
@@ -45,25 +42,7 @@ public class Main extends Application
 	{
 		try
 		{
-//			Player.player.levelUp();
-			Player.player.setBaseMinMagAtk(1000);
-			Player.player.setBaseMaxMagAtk(2000);
-			Player.player.gainMoney(5000);
-			ItemShop itemShop = new ItemShop();
-			
-			for(Potion i : itemShop.getPotionList())
-			{
-				Player.player.gainPotion(i);
-				Player.player.levelUp();
-			}
-			Player.player.setConqueredFloor(8);
-
-			System.out.println(Player.player.getPotionInventory().keySet());
-
 			launch(args);
-//			Music.currentBGM.play();
-			
-
 		}
 		catch (Exception e)
 		{

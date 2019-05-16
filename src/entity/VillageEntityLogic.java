@@ -120,7 +120,7 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 150);
+		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 75);
 	}
 
 	public static void enterDungeon()
@@ -142,14 +142,14 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2),
-				blacksmith.y + blacksmith.sprite.getHeight() + 150);
+		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2 - 150),
+				blacksmith.y + blacksmith.sprite.getHeight());
 	}
 
 	public static void exitBase()
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(base.x + (base.sprite.getWidth() / 2), base.y + base.sprite.getHeight() - 200);
+		player.teleportTo(base.x + (base.sprite.getWidth() / 2) + 150, base.y + base.sprite.getHeight());
 	}
 }

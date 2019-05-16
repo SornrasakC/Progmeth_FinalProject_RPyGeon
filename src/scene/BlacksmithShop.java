@@ -118,6 +118,7 @@ public class BlacksmithShop extends StackPane
 				backButton.setDisable(true);
 				PauseTransition pt = new PauseTransition(Duration.millis(1000));
 				pt.setOnFinished(event2 -> backButton.setDisable(false));
+				pt.play();
 			}
 		});
 

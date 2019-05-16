@@ -5,10 +5,10 @@ import item.ChestArmour;
 import item.PantsArmour;
 import item.ShoesArmour;
 import item.Weapon;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -18,8 +18,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.util.Duration;
 import logic.logics.Player;
 import main.Main;
 import scene.component.BaseButton;
@@ -35,7 +35,7 @@ public class Base extends StackPane
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
 	
-	private Label label = new Label("Base");
+//	private Label label = new Label("Base");
 	private Button backButton = new Button("back");
 	private Label inventoryText = new Label("Inventory");
 	private VBox inventoryBox;
@@ -113,6 +113,10 @@ public class Base extends StackPane
 			{
 				Main.changeScene(SceneManager.villageScene);
 				VillageEntityLogic.exitBase();
+				backButton.setDisable(true);
+				PauseTransition pt = new PauseTransition(Duration.millis(1000));
+				pt.setOnFinished(event2 -> backButton.setDisable(false));
+				pt.play();
 			}
 		});
 		

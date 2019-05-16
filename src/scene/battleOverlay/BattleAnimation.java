@@ -46,7 +46,6 @@ public class BattleAnimation extends Pane{
 	private ParallelTransition playerSpellTransition;
 	private RotateTransition playerSpellRotateTransition;
 	private FadeTransition playerSpellFadeTransition;
-	private ScaleTransition playerSpellScaleTransition;
 	
 	private boolean isAnimating = false;
 	
@@ -64,8 +63,6 @@ public class BattleAnimation extends Pane{
 		this.getChildren().add(playerSpriteGroup);
 		playerSpriteGroup.setTranslateX(IDLE_X);
 		playerSpriteGroup.setTranslateY(IDLE_Y);
-//		spellEffectSprite.setTranslateX(IDLE_X - (spellEffectSprite.getImage().getWidth() - playerSprite.getImage().getWidth()) / 2);
-//		spellEffectSprite.setTranslateY(IDLE_Y - (spellEffectSprite.getImage().getHeight() - playerSprite.getImage().getHeight()) / 2);
 		spellEffectSprite.setTranslateX(IDLE_X - 350);
 		spellEffectSprite.setTranslateY(IDLE_Y - 350);
 		
@@ -74,7 +71,6 @@ public class BattleAnimation extends Pane{
 		playerAttackMoveTransition.setFromX(IDLE_X);
 		playerAttackMoveTransition.setFromY(IDLE_Y);
 		playerAttackMoveTransition.setToX(IDLE_X + 400);
-//		playerAttackMoveTransition.setToY(IDLE_Y + 300);
 		playerAttackMoveTransition.setDuration(Duration.seconds(0.5));
 		playerAttackMoveTransition.setAutoReverse(true);
 		playerAttackMoveTransition.setCycleCount(2);

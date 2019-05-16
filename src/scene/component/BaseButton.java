@@ -21,13 +21,11 @@ import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import logic.base.Armour;
 import logic.logics.Player;
-import scene.SceneManager;
 import sharedObject.RenderableHolder;
-import shops.ItemShop;
 
 public class BaseButton extends Button
 {
-	private String path;
+//	private String path;
 	private Image image;
 	private Armour thisArmour;
 	private Weapon thisWeapon;
@@ -46,11 +44,11 @@ public class BaseButton extends Button
 			+ "linear-gradient(#fdf2e8 0%, #fcebd9 49%, #fddebf 50%, #f5cfa8 100%);" + "-fx-background-insets: 0,1,2;"
 			+ "-fx-background-radius: 3,2,1;" + "-fx-padding: 3 30 3 30;" + "-fx-text-fill: black;"
 			+ "-fx-font-size: 14px;";
-	private static final String HOVERED_STYLE_RED = "-fx-background-color:" + "#af3c3c,"
-			+ "linear-gradient(#fafdfe, #fce8e8),"
-			+ "linear-gradient(#fde8e8 0%, #fcd9d9 49%, #fdbfbf 50%, #f5a8a8 100%);" + "-fx-background-insets: 0,1,2;"
-			+ "-fx-background-radius: 3,2,1;" + "-fx-padding: 3 30 3 30;" + "-fx-text-fill: black;"
-			+ "-fx-font-size: 14px;";
+//	private static final String HOVERED_STYLE_RED = "-fx-background-color:" + "#af3c3c,"
+//			+ "linear-gradient(#fafdfe, #fce8e8),"
+//			+ "linear-gradient(#fde8e8 0%, #fcd9d9 49%, #fdbfbf 50%, #f5a8a8 100%);" + "-fx-background-insets: 0,1,2;"
+//			+ "-fx-background-radius: 3,2,1;" + "-fx-padding: 3 30 3 30;" + "-fx-text-fill: black;"
+//			+ "-fx-font-size: 14px;";
 
 	public BaseButton(int position)
 	{
