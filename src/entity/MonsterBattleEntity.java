@@ -25,6 +25,8 @@ public class MonsterBattleEntity extends Entity
 		this.y = y;
 		this.z = 8;
 		this.sprite = RenderableHolder.emiliaE1;
+		freeze();
+		this.visible = false;
 		idleThread = new Thread(new Runnable()
 		{
 

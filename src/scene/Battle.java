@@ -34,6 +34,7 @@ import main.Main;
 import scene.battleOverlay.BattleAnimation;
 import scene.battleOverlay.BattleEnd;
 import scene.battleOverlay.ItemList;
+import scene.battleOverlay.MonsterBattleAnimation;
 import scene.battleOverlay.SpellList;
 import sharedObject.BattleRenderableHolder;
 import sharedObject.IRenderable;
@@ -57,6 +58,7 @@ public class Battle extends GridPane
 	private static boolean inAnimation;
 	private static int fightNumber;
 	private static BattleAnimation battleAnimation;
+	private static MonsterBattleAnimation monsterBattleAnimation;
 	
 	public Battle()
 	{
@@ -109,7 +111,8 @@ public class Battle extends GridPane
 		add(escapeButton, 3, 1);
 		//test animation
 		battleAnimation = new BattleAnimation();
-		stackPane.getChildren().add(battleAnimation);
+		monsterBattleAnimation = new MonsterBattleAnimation();
+		stackPane.getChildren().addAll(battleAnimation, monsterBattleAnimation);
 		//test animation
 		
 		
@@ -239,6 +242,7 @@ public class Battle extends GridPane
 	{
 		//test
 		battleAnimation.update();
+		monsterBattleAnimation.update();
 		//test
 		GraphicsContext gc = battleCanvas.getGraphicsContext2D();
 		for (IRenderable entity : BattleRenderableHolder.getInstance().getEntities())
@@ -310,7 +314,7 @@ public class Battle extends GridPane
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(battleCanvas);
 		//test animation
-		stackPane.getChildren().add(battleAnimation);
+		stackPane.getChildren().addAll(battleAnimation, monsterBattleAnimation);
 		//test animation
 		inOverlay = false;
 	}

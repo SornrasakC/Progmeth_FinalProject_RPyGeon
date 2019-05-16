@@ -45,7 +45,6 @@ public class Main extends Application
 		try
 		{
 //			Player.player.levelUp();
-//			Player.player.levelUp();
 			Player.player.setBaseMinMagAtk(1000);
 			Player.player.setBaseMaxMagAtk(2000);
 			Player.player.gainMoney(5000);
@@ -54,15 +53,10 @@ public class Main extends Application
 			for(Potion i : itemShop.getPotionList())
 			{
 				Player.player.gainPotion(i);
-//				Player.player.levelUp();
+				Player.player.levelUp();
 			}
 			Player.player.setConqueredFloor(8);
-//			Player.player.gainPotion(itemShop.getPotionList().get(0));
-//			Player.player.gainPotion(itemShop.getPotionList().get(0));
-//			Player.player.gainPotion(itemShop.getPotionList().get(0));
-//			Player.player.gainPotion(itemShop.getPotionList().get(1));
-//			Player.player.gainPotion(itemShop.getPotionList().get(2));
-//			Player.player.setConqueredFloor(8);
+
 			System.out.println(Player.player.getPotionInventory().keySet());
 
 			launch(args);

@@ -65,6 +65,11 @@ public class ItemShop extends StackPane {
 													" -fx-padding: 10 20 10 20;";
 	
 	public ItemShop() {
+		//add style class
+		label.getStyleClass().add("Shop");
+
+		//add style class
+				
 		contentBox = new VBox();
 		itemGrid = new GridPane();
 		topBar = new HBox();
@@ -81,6 +86,7 @@ public class ItemShop extends StackPane {
 		money = new Label(Player.player.getMoney() + "");
 		money.setFont(new Font(30));
 		money.setPadding(new Insets(15, 0, 0, 0));
+		money.getStyleClass().add("Shop");
 		
 		topBar.setSpacing(20);
 		topBar.setPadding(new Insets(20, 20, 0, 20));
