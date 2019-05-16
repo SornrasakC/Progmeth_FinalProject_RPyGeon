@@ -105,6 +105,7 @@ public class RenderableHolder {
 	public static Image blacksmithShopBackground;
 	public static Image villageBackground;
 	public static Image inventoryBackground;
+	public static Image leafyBackground;
 	
 	public static Image placeHolder;
 
@@ -215,6 +216,7 @@ public class RenderableHolder {
 		blacksmithShopBackground = new Image(ClassLoader.getSystemResourceAsStream("blacksmithBG.jpg"));
 		villageBackground = new Image(ClassLoader.getSystemResourceAsStream("villageBG.jpg"));
 		inventoryBackground = new Image(ClassLoader.getSystemResourceAsStream("inventoryBG.png"));
+		leafyBackground = new Image(ClassLoader.getSystemResourceAsStream("leafyBG.jpg"));
 		
 		
 		placeHolder = new Image(ClassLoader.getSystemResourceAsStream("WIP.png"),80,80,true,false);

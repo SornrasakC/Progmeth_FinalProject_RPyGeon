@@ -31,7 +31,7 @@ public class Base extends StackPane
 	private static final double INSETS = 20;
 	private static final double VGAP = 20;
 	private static final double HGAP = 20;
-	private static final int BUTTON_SIZE = 150;
+	private static final int BUTTON_SIZE = 130;
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = 720;
 	
@@ -50,7 +50,6 @@ public class Base extends StackPane
 	private BaseButton shirtButton;
 	private BaseButton pantsButton;
 	private BaseButton bootsButton;
-	private Button invisButton;
 	
 	private static final String BACK_BUTTON_NORMAL ="-fx-background-color: \r\n" + 
 			"    linear-gradient(#ffd65b, #e68400),\r\n" + 
@@ -89,6 +88,7 @@ public class Base extends StackPane
 		inventoryGrid.setHgap(HGAP);
 		inventoryGrid.setVgap(VGAP);
 		inventoryGrid.setPrefSize(WIDTH/2, HEIGHT - 200);;
+		inventoryGrid.setPadding(new Insets(20));
 		equipmentBox.setSpacing(HGAP);
 		
 		SVGPath shape = new SVGPath();
@@ -137,22 +137,29 @@ public class Base extends StackPane
 		
 		playerModel = new ImageView(RenderableHolder.emiliaFullBody);
 		playerModel.setFitHeight(HEIGHT - 100);
+		playerModel.setPreserveRatio(true);
 		
 		
 		inventoryBox.getChildren().addAll(inventoryText, inventoryGrid);
-//		inventoryText.setTextAlignment(TextAlignment.CENTER);
+		inventoryText.setTextAlignment(TextAlignment.CENTER);
 		inventoryText.setPrefWidth(inventoryBox.getWidth());
 		inventoryText.setFont(new Font(28));
 		inventoryText.setPadding(new Insets(HGAP,inventoryBox.getWidth()/ 2,HGAP,100));
 		inventoryText.setStyle("-fx-font-weight: bold");
 		
 		ImageView inventoryBG =  new ImageView(RenderableHolder.inventoryBackground);
-		inventoryStack.getChildren().addAll(inventoryBG, rightSideEquipmentsBox);
+		inventoryBG.setFitWidth((WIDTH/2) - 50);
+		inventoryStack.getChildren().addAll(inventoryBG, inventoryBox);
 		
-		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, inventoryStack);
-		wholePane.getChildren().addAll(equipmentBox, inventoryBox);
+		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, rightSideEquipmentsBox);
+		wholePane.getChildren().addAll(equipmentBox, inventoryStack);
+//		wholePane.setPadding(new Insets(20));
+		imageBG = new ImageView(RenderableHolder.leafyBackground);
+		imageBG.prefHeight(HEIGHT);
+		imageBG.prefWidth(WIDTH);
 		setEquippedButtonLogic();
-		this.getChildren().add(wholePane);
+		this.getChildren().addAll(imageBG, wholePane);
+		this.setPadding(new Insets(20));
 	}
 	
 	private void setEquippedButtonLogic() {
