@@ -200,7 +200,8 @@ public class RenderableHolder {
 		
 		//backgrounds
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
-		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("MainMenu.jpg"));
+//		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("MainMenu.jpg"));
+		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("sky1.png"));
 		itemShopBackground = new Image(ClassLoader.getSystemResourceAsStream("itemShop.PNG"));
 		blacksmithShopBackground = new Image(ClassLoader.getSystemResourceAsStream("blacksmithBG.jpg"));
 		villageBackground = new Image(ClassLoader.getSystemResourceAsStream("villageBG.jpg"));

@@ -3,6 +3,8 @@ package logic.logics;
 import java.util.ArrayList;
 import java.util.Random;
 
+import logic.base.CustomException;
+
 public class Rand extends Random
 {
 	/**
@@ -12,14 +14,22 @@ public class Rand extends Random
 
 	public static int randInclusive(int min, int max)
 	{
-		if (max < min) return 0;
+		if (max < min) 
+		{
+			new CustomException("Max < Min random").printStackTrace();
+			return 0;
+		}
 		if(max == 0) return 0;
 		Random r = new Random();
 		return min + r.nextInt(max - min + 1);
 	}
 	public static int randExclusive(int min, int max)
 	{
-		if (max < min) return 0;
+		if (max < min) 
+		{
+			new CustomException("Max < Min random").printStackTrace();
+			return 0;
+		}
 		if(max == 0) return 0;
 		Random r = new Random();
 		return min + r.nextInt(max - min);
