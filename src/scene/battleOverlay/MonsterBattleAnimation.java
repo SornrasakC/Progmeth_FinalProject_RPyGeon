@@ -1,5 +1,6 @@
 package scene.battleOverlay;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Group;
