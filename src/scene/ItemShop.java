@@ -91,7 +91,7 @@ public class ItemShop extends StackPane {
 		SVGPath shape = new SVGPath();
 		shape.setContent("M 0 40 L 40 0 L 400 0 L 400 80 L 40 80 Z ");
 		backButton.setShape(shape);
-		backButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+		backButton.setPrefSize(BUTTON_SIZE, 70);
 		
 		backButton.setStyle(BACK_BUTTON_NORMAL);
 		backButton.setOnMouseEntered(e -> {
