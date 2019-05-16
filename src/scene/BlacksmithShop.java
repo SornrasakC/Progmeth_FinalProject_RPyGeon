@@ -81,6 +81,7 @@ public class BlacksmithShop extends StackPane
 		topBar.setSpacing(20);
 		topBar.setPadding(new Insets(20, 20, 0, 20));
 		topBar.getChildren().addAll(backButton, label, coin, money);
+		topBar.setPrefHeight(100);
 		label.setPadding(new Insets(0, 300, 0, 300));
 
 		// create back button
