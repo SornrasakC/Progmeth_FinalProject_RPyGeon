@@ -32,7 +32,7 @@ public class VillageEntityLogic
 		itemShop = new ShopEntity(520, 30);
 		blacksmith = new BlacksmithEntity(880, 160);
 		dungeon = new DungeonEntity(610, 610);
-		base = new BaseEntity(220, 400);
+		base = new BaseEntity(150, 180);
 		addNewObject(player);
 		addNewObject(itemShop);
 		addNewObject(blacksmith);
