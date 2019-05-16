@@ -88,7 +88,7 @@ public class Base extends StackPane
 		inventoryGrid.setHgap(HGAP);
 		inventoryGrid.setVgap(VGAP);
 		inventoryGrid.setPrefSize(WIDTH/2, HEIGHT - 200);;
-		inventoryGrid.setPadding(new Insets(20));
+		inventoryGrid.setPadding(new Insets(INSETS));
 		equipmentBox.setSpacing(HGAP);
 		
 		SVGPath shape = new SVGPath();
@@ -163,7 +163,7 @@ public class Base extends StackPane
 		imageBG.prefWidth(WIDTH);
 		setEquippedButtonLogic();
 		this.getChildren().addAll(imageBG, wholePane);
-		this.setPadding(new Insets(20));
+		this.setPadding(new Insets(INSETS));
 	}
 	
 	private void setEquippedButtonLogic() {
