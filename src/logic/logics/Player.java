@@ -11,7 +11,6 @@ import item.PantsArmour;
 import item.ShoesArmour;
 import item.Weapon;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import logic.base.Character;
 import logic.base.CustomException;
 import logic.base.Magic;
@@ -66,8 +65,8 @@ public class Player extends Character
 	public Player()
 	{
 		super();
-		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("player1.png"));
-		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("player2.png"));
+//		this.sprite = new Image(ClassLoader.getSystemResourceAsStream("player1.png"));
+//		this.spriteAnimation = new Image(ClassLoader.getSystemResourceAsStream("player2.png"));
 		this.name = "Name";
 		this.level = 1;
 
