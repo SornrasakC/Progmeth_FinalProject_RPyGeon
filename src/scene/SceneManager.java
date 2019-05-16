@@ -20,6 +20,7 @@ public class SceneManager {
 	public static Prologue prologueRoot = new Prologue();
 	public static ItemShop itemshopPane = new ItemShop();
 	public static BlacksmithShop blacksmithPane = new BlacksmithShop();
+	public static Base basePane = new Base();
 //	public static BattleEnd battleEndPane = new BattleEnd();
 	
 	public static Scene villageScene = new Scene(villagePane, WIDTH, HEIGHT, Color.BLACK);
@@ -34,7 +35,7 @@ public class SceneManager {
 	public static Scene dungeonChooseFloorScene = new Scene(new DungeonChooseFloor(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene blackScreenScene = new Scene(new BlackScreen(), WIDTH, HEIGHT, Color.BLACK);
 	public static Scene epilogueScene = new Scene(epilogueRoot, WIDTH, HEIGHT, Color.BLACK);
-	public static Scene baseScene = new Scene(new Base(), WIDTH, HEIGHT, Color.BLACK);
+	public static Scene baseScene = new Scene(basePane , WIDTH, HEIGHT, Color.BLACK);
 	
 	public SceneManager() 
 	{
@@ -106,5 +107,9 @@ public class SceneManager {
 	
 	public static BlacksmithShop getBlacksmithShopPane() {
 		return blacksmithPane;
+	}
+	
+	public static Base getBasePane() {
+		return basePane;
 	}
 }

@@ -1,5 +1,8 @@
 package scene;
 
+import item.Weapon;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +11,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import logic.base.Potion;
+import logic.logics.Player;
+import scene.component.BaseButton;
+import scene.component.InventoryItemButton;
+import scene.component.ShopButton;
 import sharedObject.RenderableHolder;
 
 public class Base extends StackPane
@@ -21,16 +29,18 @@ public class Base extends StackPane
 	
 	private Label label = new Label("Base");
 	private Button backButton = new Button("back");
+	private Label inventoryLabel = new Label("Inventory");
+	private VBox inventoryBox;
 	private GridPane inventoryGrid;
 	private HBox equipmentBox;
 	private HBox wholePane;
 	private ImageView imageBG;
 	private ImageView playerModel;
 	
-	private Button weaponButton;
-	private Button shirtButton;
-	private Button pantsButton;
-	private Button bootsButton;
+	private BaseButton weaponButton;
+	private BaseButton shirtButton;
+	private BaseButton pantsButton;
+	private BaseButton bootsButton;
 	private Button invisButton;
 	
 	private static final String BACK_BUTTON_NORMAL ="-fx-background-color: \r\n" + 
@@ -64,17 +74,17 @@ public class Base extends StackPane
 		wholePane = new HBox();
 		inventoryGrid = new GridPane();
 		equipmentBox = new HBox();
+		inventoryBox = new VBox();
 		wholePane.setPadding(new Insets(INSETS));
 		inventoryGrid.setHgap(HGAP);
 		inventoryGrid.setVgap(VGAP);
+		inventoryGrid.setPrefSize(WIDTH/2, HEIGHT - 200);;
 		equipmentBox.setSpacing(HGAP);
 		
-		weaponButton = new Button();
-		shirtButton = new Button();
-		pantsButton = new Button();
-		bootsButton = new Button();
-		invisButton = new Button();
-		invisButton.setVisible(false);
+		weaponButton = new BaseButton(0);
+		shirtButton = new BaseButton(1);
+		pantsButton = new BaseButton(2);
+		bootsButton = new BaseButton(3);
 		weaponButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 		shirtButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 		pantsButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
@@ -93,9 +103,65 @@ public class Base extends StackPane
 		playerModel = new ImageView(RenderableHolder.emiliaFullBody);
 		playerModel.setFitHeight(HEIGHT - 100);
 		
+		
+		inventoryBox.getChildren().addAll(inventoryLabel, inventoryGrid);
+		
 		equipmentBox.getChildren().addAll(leftSideEquipmentsBox, playerModel, rightSideEquipmentsBox);
 		wholePane.getChildren().addAll(equipmentBox, inventoryGrid);
+		setEquippedButtonLogic();
 		this.getChildren().add(wholePane);
 	}
+	
+	private void setEquippedButtonLogic() {
+		weaponButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				inventoryShowWeapons();
+			}
+		});
+		
+		shirtButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		pantsButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		bootsButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+			}
+		});
+	}
+	
+	public void inventoryShowWeapons() {
+		inventoryGrid.getChildren().clear();
+
+		int i = 0;
+		int j = 0;
+		for(Weapon weapon : Player.player.getWeaponInventory()) {
+			System.out.println("Base load weapon button @ "+i + "," + j);
+			InventoryItemButton inventoryButton = new InventoryItemButton(weapon);
+			inventoryButton.setWeaponButtonLogic(weaponButton);
+			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+			inventoryGrid.add(inventoryButton, i, j);
+			if(i < 4) i++; else {i = 0; j++;}
+		}
+	}
+	
 
 }
