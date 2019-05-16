@@ -43,7 +43,6 @@ public class SpellList extends VBox
 									else // Healing magic
 									{
 										Battle.getBattleAnimation().playSpellAnimation();
-										startSpellAnimation();
 										Battle.playerReport(magic.getName() + " heals " + amount + " HP!");
 										Battle.setPlayerTurn(false);
 									}
@@ -76,9 +75,5 @@ public class SpellList extends VBox
 		returnButton.setPrefWidth(WIDTH * 3 / 5);
 		returnButton.getStyleClass().add(SPELL_CLASS);
 		getChildren().add(returnButton);
-	}
-	private void startSpellAnimation()
-	{
-		//TODO ANIMATION
 	}
 }
