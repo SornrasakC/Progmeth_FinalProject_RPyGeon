@@ -46,6 +46,8 @@ public class Main extends Application
 		{
 //			Player.player.levelUp();
 //			Player.player.levelUp();
+			Player.player.setBaseMinMagAtk(1000);
+			Player.player.setBaseMaxMagAtk(2000);
 			Player.player.gainMoney(5000);
 			ItemShop itemShop = new ItemShop();
 			
@@ -54,7 +56,7 @@ public class Main extends Application
 				Player.player.gainPotion(i);
 //				Player.player.levelUp();
 			}
-//			Player.player.setConqueredFloor(8);
+			Player.player.setConqueredFloor(8);
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));
 //			Player.player.gainPotion(itemShop.getPotionList().get(0));

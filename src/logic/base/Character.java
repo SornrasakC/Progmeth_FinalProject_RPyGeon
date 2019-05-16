@@ -106,7 +106,7 @@ public abstract class Character extends Entity
 	}
 	public int randPhyAtk()
 	{
-		return Rand.rand(getMinPhyAtk(), getMaxPhyAtk());
+		return Rand.randInclusive(getMinPhyAtk(), getMaxPhyAtk());
 	}
 	public int randMagAtk()
 	{

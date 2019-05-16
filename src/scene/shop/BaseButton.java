@@ -160,11 +160,9 @@ public class BaseButton extends Button
 	{
 		setOnAction(new EventHandler<ActionEvent>()
 		{
-
 			@Override
 			public void handle(ActionEvent event)
 			{
-
 				
 //				SceneManager.getItemshopPane().updateMoney();
 //				if (Player.player.getMoney() < price)

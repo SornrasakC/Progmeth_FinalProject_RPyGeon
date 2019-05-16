@@ -50,6 +50,7 @@ public class MainMenu extends Pane
 			@Override
 			public void run()
 			{
+				Credit.setBacked(false);
 				Main.changeScene(SceneManager.creditScene);
 			}
 		})), new Pair<String, Runnable>("Exit", Platform::exit));

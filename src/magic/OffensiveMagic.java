@@ -22,7 +22,7 @@ public class OffensiveMagic extends Magic
 		int min = player.getMinMagAtk() * multiplier;
 		if(luckType == LuckType.NORMAL)
 		{
-			damage = Rand.rand(min, max);
+			damage = Rand.randInclusive(min, max);
 		}
 		else if(luckType == LuckType.RANDOM)
 		{

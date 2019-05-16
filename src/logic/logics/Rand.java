@@ -10,12 +10,19 @@ public class Rand extends Random
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static int rand(int min, int max)
+	public static int randInclusive(int min, int max)
 	{
 		if (max < min) return 0;
 		if(max == 0) return 0;
 		Random r = new Random();
-		return min + r.nextInt(max);
+		return min + r.nextInt(max - min + 1);
+	}
+	public static int randExclusive(int min, int max)
+	{
+		if (max < min) return 0;
+		if(max == 0) return 0;
+		Random r = new Random();
+		return min + r.nextInt(max - min);
 	}
 
 	public static int rand(int max)

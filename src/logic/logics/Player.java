@@ -73,13 +73,13 @@ public class Player extends Character
 		this.name = "Name";
 		this.level = 1;
 
-		this.baseMaxPhyAtk = 50; //testing
-		this.baseMinPhyAtk = 1; //testing
-		this.baseMaxMagAtk = 2000;
-		this.baseMinMagAtk = 1000;
+		this.baseMaxPhyAtk = 2;
+		this.baseMinPhyAtk = 1; 
+		this.baseMaxMagAtk = 2;
+		this.baseMinMagAtk = 1;
 		this.basePhyDef = 0;
 		this.baseMagDef = 0;
-		this.baseMaxHp = 500;
+		this.baseMaxHp = 10;
 		this.baseMaxMp = 5;
 
 		this.modMaxPhyAtk = 1;
@@ -180,7 +180,7 @@ public class Player extends Character
 		int exp = 0;
 		double levelDiff = monster.getLevel() - this.level;
 		double bonusPercent = 1 + levelDiff / 4;
-		exp = (int) Math.round(Rand.rand(monster.getLevel() * 100, monster.getLevel() * 120) * bonusPercent);
+		exp = (int) Math.round(Rand.randInclusive(monster.getLevel() * 100, monster.getLevel() * 120) * bonusPercent);
 		
 		if (exp < 0) 
 		{
