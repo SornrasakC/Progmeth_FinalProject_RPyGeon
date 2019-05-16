@@ -2,6 +2,7 @@ package scene;
 
 import entity.VillageEntityLogic;
 import item.Weapon;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,6 +18,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 import logic.logics.Player;
 import main.Main;
 import scene.component.ShopButton;
@@ -113,6 +115,9 @@ public class BlacksmithShop extends StackPane
 			{
 				Main.changeScene(SceneManager.villageScene);
 				VillageEntityLogic.exitBlacksmith();
+				backButton.setDisable(true);
+				PauseTransition pt = new PauseTransition(Duration.millis(1000));
+				pt.setOnFinished(event2 -> backButton.setDisable(false));
 			}
 		});
 

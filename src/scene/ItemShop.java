@@ -1,6 +1,7 @@
 package scene;
 
 import entity.VillageEntityLogic;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,6 +15,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 import logic.base.Potion;
 import logic.logics.Player;
 import main.Main;
@@ -112,6 +114,9 @@ public class ItemShop extends StackPane {
 			public void handle(ActionEvent event) {
 				Main.changeScene(SceneManager.villageScene);
 				VillageEntityLogic.exitShop();
+				backButton.setDisable(true);
+				PauseTransition pt = new PauseTransition(Duration.millis(1000));
+				pt.setOnFinished(event2 -> backButton.setDisable(false));
 			}
 		});
 		
