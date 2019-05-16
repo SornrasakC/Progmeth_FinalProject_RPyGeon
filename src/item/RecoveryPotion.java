@@ -1,11 +1,10 @@
 package item;
 
-import java.util.Random;
-
 import logic.base.CustomException;
 import logic.base.LuckType;
 import logic.base.Potion;
 import logic.logics.Player;
+import logic.logics.Rand;
 
 public class RecoveryPotion extends Potion
 {
@@ -19,7 +18,6 @@ public class RecoveryPotion extends Potion
 		super(name, description, cost);
 		this.hpRecoverPercent = hpRecoverPercent;
 		this.mpRecoverPercent = mpRecoverPercent;
-//		this.luckType = LuckType.convert(luckType);
 		this.tempLuckType = tempLuckType;
 	}
 	public void usePotion(Player player) //Can use potion that's not in the inventory
@@ -31,17 +29,15 @@ public class RecoveryPotion extends Potion
 		}
 		else if(luckType == LuckType.RANDOM)
 		{
-			Random rand = new Random();
-			player.receiveHeal(rand.nextInt(player.getMaxHp() * hpRecoverPercent / 100));
-			player.receiveMana(rand.nextInt(player.getMaxMp() * mpRecoverPercent / 100));
+			player.receiveHeal(Rand.rand(player.getMaxHp() * hpRecoverPercent / 100));
+			player.receiveMana(Rand.rand(player.getMaxMp() * mpRecoverPercent / 100));
 		}
 		else if(luckType == LuckType.BADRANDOM)
 		{
-			Random rand = new Random();
 			int hp = player.getMaxHp() * hpRecoverPercent / 100;
 			int mp = player.getMaxMp() * mpRecoverPercent / 100;
-			player.receiveHeal(rand.nextInt(hp * 2) - hp);
-			player.receiveMana(rand.nextInt(mp * 2) - mp);
+			player.receiveHeal(Rand.randInclusive(-hp, hp));
+			player.receiveMana(Rand.randInclusive(-mp, mp));
 		}
 		else
 		{

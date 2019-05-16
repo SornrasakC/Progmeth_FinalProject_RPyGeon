@@ -24,7 +24,7 @@ public class HealingMagic extends Magic
 		int min = player.getMinMagAtk() * multiplier;
 		if(luckType == LuckType.NORMAL)
 		{
-			heal = Rand.rand(min, max);
+			heal = Rand.randInclusive(min, max);
 		}
 		else if(luckType == LuckType.RANDOM)
 		{
