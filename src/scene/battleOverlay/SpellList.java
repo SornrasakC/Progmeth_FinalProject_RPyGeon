@@ -6,7 +6,6 @@ import javafx.scene.layout.VBox;
 import logic.logics.Player;
 import magic.OffensiveMagic;
 import scene.Battle;
-import scene.SceneManager;
 
 public class SpellList extends VBox
 {

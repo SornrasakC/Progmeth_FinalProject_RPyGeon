@@ -1,7 +1,5 @@
 package scene.battleOverlay;
 
-import java.sql.Time;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -33,7 +31,6 @@ public class BattleAnimation extends Pane{
 	private static final int IDLE_Y = 270;
 	
 	private ImageView playerSprite; 
-	private ImageView monsterSprite;
 	private ImageView playerWeaponSprite;
 	private Group playerSpriteGroup;
 	private ImageView spellEffectSprite;
@@ -148,7 +145,6 @@ public class BattleAnimation extends Pane{
 	        			getChildren().clear();
 	        			playerSpriteGroup.getChildren().clear();
 	        			playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite, BattleRenderableHolder.itemAnimations[indexItem]);
-//	        			playerSpriteGroup.getChildren().addAll(playerWeaponSprite, BattleRenderableHolder.itemAnimations[indexItem]);
 	        			getChildren().add(playerSpriteGroup);
 	        			indexItem++;
 		            }
@@ -186,23 +182,30 @@ public class BattleAnimation extends Pane{
 			switch(frame)
 			{
 			case(1):
-				changeSprite(playerSprite, RenderableHolder.emiliaE1);
+				changeSprite(RenderableHolder.emiliaE1);
 				System.out.println("idle 1");
 				break;
 			case(2):
-				changeSprite(playerSprite, RenderableHolder.emiliaE2);
+				changeSprite(RenderableHolder.emiliaE2);
 				System.out.println("idle 2");
 				break;
 			}
 		}
+		
 	}
 	
 	public void playAttackAnimation() {
 		spellEffectSprite.setVisible(true);
-		changeSprite(playerSprite, RenderableHolder.emiliaAttack);
+		changeSprite(RenderableHolder.emiliaAttack);
 		playerAttackAnimation.setNode(playerSpriteGroup);
 		playerAttackAnimation.play();
 		isAnimating = true;
+		//fix
+		getChildren().clear();
+		playerSpriteGroup.getChildren().clear();
+		playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite);
+		getChildren().add(playerSpriteGroup);
+
 		System.out.println("play attack animation");
 	}
 	
@@ -210,39 +213,42 @@ public class BattleAnimation extends Pane{
 		playerSpellTransition.setNode(spellEffectSprite);
 		playerSpellTransition.play();
 		isAnimating = true;
+		
+		//fix
+		getChildren().clear();
+		playerSpriteGroup.getChildren().clear();
+		playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite, spellEffectSprite);
+		getChildren().add(playerSpriteGroup);
+
 		System.out.println("play spell animation");
 	}
 	
-	private void changeSprite(ImageView imageView, Image image) {
+	private void changeSprite(Image image) {
 		getChildren().clear();
 //		imageView = new ImageView(image); 
-		if(imageView.equals(playerSprite))
+		playerSprite = new ImageView(image);
+		playerWeaponSprite = new ImageView(Player.player.getEquippedWeapon().getSprite());
+		playerWeaponSprite.setTranslateX(playerSprite.getImage().getWidth() - 15);
+		if(!isAnimating)
 		{
-			playerSprite = new ImageView(image);
-			playerWeaponSprite = new ImageView(Player.player.getEquippedWeapon().getSprite());
-			playerWeaponSprite.setTranslateX(playerSprite.getImage().getWidth() - 15);
-			if(!isAnimating){
 				//idle animation
-				switch(frame)
-				{
-				case(1):
-					playerWeaponSprite.setTranslateY(-12);
-					break;
-				case(2):
-					playerWeaponSprite.setTranslateY(-10);
-					break;
-				}
-			}else {
+			switch(frame)
+			{
+			case(1):
 				playerWeaponSprite.setTranslateY(-12);
+				break;
+			case(2):
+				playerWeaponSprite.setTranslateY(-10);
+				break;
 			}
-			playerSpriteGroup.getChildren().clear();
-			playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite);
 		}
-		else
+		else 
 		{
-			monsterSprite = new ImageView(image); 
-			getChildren().add(monsterSprite);
+			playerWeaponSprite.setTranslateY(-12);
 		}
+		playerSpriteGroup.getChildren().clear();
+		playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite);
+		getChildren().add(playerSpriteGroup);
 //		this.getChildren().add(new ImageView(image));
 //		this.getChildren().add(spellEffectSprite);
 	}
