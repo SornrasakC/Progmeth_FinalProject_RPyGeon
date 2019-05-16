@@ -24,13 +24,12 @@ public class PlayerEntity extends Entity
 		super();
 		// 0 = north, 1 = east, 2 = south, 3 = west
 		this.direction = direction;
-		this.sprite = RenderableHolder.playerSpriteSouth1;
+		this.sprite = RenderableHolder.emiliaS1;
 		this.x = x;
 		this.y = y;
 		destinateX = x;
 		destinateY = y;
 		this.z = 9;
-		
 
 		thread = new Thread(new Runnable()
 		{

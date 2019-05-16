@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res/Effects"/>
+	<classpathentry kind="src" path="res/Player"/>
 	<classpathentry kind="src" path="res/SoundEffects"/>
 	<classpathentry kind="src" path="res/Armours"/>
 	<classpathentry kind="src" path="res/Weapons"/>
@@ -9,7 +11,7 @@
 	<classpathentry kind="src" path="res/Items"/>
 	<classpathentry kind="src" path="res/Styles"/>
 	<classpathentry kind="src" path="res/Musics"/>
-	<classpathentry excluding="Monsters/|Backgrounds/|Items/|Styles/|Musics/|SoundEffects/|Weapons/|Armours/|SoundEffects/" kind="src" path="res"/>
+	<classpathentry excluding="Monsters/|Backgrounds/|Items/|Styles/|Musics/|SoundEffects/|Weapons/|Armours/|SoundEffects/|Effects/|Player/" kind="src" path="res"/>
 	<classpathentry kind="lib" path="json-20180813.jar"/>
 	<classpathentry kind="lib" path="gson-2.8.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">

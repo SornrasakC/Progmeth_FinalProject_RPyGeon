@@ -14,14 +14,6 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	
-	public static Image playerSpriteNorth1;
-	public static Image playerSpriteEast1;
-	public static Image playerSpriteWest1; 
-	public static Image playerSpriteSouth1;
-	public static Image playerSpriteNorth2;
-	public static Image playerSpriteEast2;
-	public static Image playerSpriteWest2; 
-	public static Image playerSpriteSouth2;
 	public static Image genericVendor;
 	public static Image emiliaN1;
 	public static Image emiliaN2;
@@ -32,6 +24,7 @@ public class RenderableHolder {
 	public static Image emiliaS1;
 	public static Image emiliaS2;
 	public static Image emiliaAttack;
+	public static Image emiliaSpell;
 	
 	//items
 	public static Image redCookie;
@@ -106,14 +99,6 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		playerSpriteNorth1 = new Image(ClassLoader.getSystemResourceAsStream("11.png"));
-		playerSpriteEast1 = new Image(ClassLoader.getSystemResourceAsStream("21.png"));
-		playerSpriteSouth1 = new Image(ClassLoader.getSystemResourceAsStream("31.png"));
-		playerSpriteWest1 = new Image(ClassLoader.getSystemResourceAsStream("41.png"));
-		playerSpriteNorth2 = new Image(ClassLoader.getSystemResourceAsStream("12.png"));
-		playerSpriteEast2 = new Image(ClassLoader.getSystemResourceAsStream("22.png"));
-		playerSpriteSouth2 = new Image(ClassLoader.getSystemResourceAsStream("32.png"));
-		playerSpriteWest2 = new Image(ClassLoader.getSystemResourceAsStream("42.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
 		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright01.PNG"));
 		emiliaE2 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright02.PNG"));
