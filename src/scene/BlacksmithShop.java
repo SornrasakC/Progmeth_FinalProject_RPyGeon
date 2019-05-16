@@ -61,6 +61,11 @@ public class BlacksmithShop extends StackPane
 
 	public BlacksmithShop()
 	{
+		//add style class
+		label.getStyleClass().add("Shop");
+		
+		//add style class
+		
 		blacksmithShop = new shops.BlackSmith();
 		contentBox = new VBox();
 		itemGrid = new GridPane();
@@ -77,6 +82,7 @@ public class BlacksmithShop extends StackPane
 		money = new Label(Player.player.getMoney() + "");
 		money.setFont(new Font(30));
 		money.setPadding(new Insets(15, 0, 0, 0));
+		money.getStyleClass().add("Shop");
 
 		topBar.setSpacing(20);
 		topBar.setPadding(new Insets(20, 20, 0, 20));

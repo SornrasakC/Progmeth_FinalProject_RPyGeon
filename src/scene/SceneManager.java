@@ -71,6 +71,8 @@ public class SceneManager {
 		prologueScene.getStylesheets().add(SceneManager.class.getResource("Prologue.css").toExternalForm());
 		epilogueScene.getStylesheets().add(SceneManager.class.getResource("Epilogue.css").toExternalForm());
 		mainScreenScene.getStylesheets().add(SceneManager.class.getResource("MainMenu.css").toExternalForm());
+		blacksmithScene.getStylesheets().add(SceneManager.class.getResource("Shop.css").toExternalForm());
+		itemshopScene.getStylesheets().add(SceneManager.class.getResource("Shop.css").toExternalForm());
 	}
 	
 	public static void changeSceneToBattle()

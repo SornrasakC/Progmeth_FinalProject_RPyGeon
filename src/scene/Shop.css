@@ -1,0 +1,12 @@
+.Shop
+{
+	-fx-font-family: "Helvetica";
+	//-fx-font-size: 30px;
+	-fx-text-fill: rgba(255,255,0,1);
+}
+.Shop.label .text
+{
+    
+    -fx-stroke: rgba(255,69,0,1);
+    -fx-stroke-width: 2px;
+}
