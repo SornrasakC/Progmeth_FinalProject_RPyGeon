@@ -1,9 +1,11 @@
 package scene.battleOverlay;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -14,6 +16,7 @@ import javafx.util.Duration;
 import logic.base.StatType;
 import logic.logics.Player;
 import scene.Battle;
+import sharedObject.BattleRenderableHolder;
 import sharedObject.RenderableHolder;
 
 public class BattleAnimation extends Pane{
@@ -35,9 +38,12 @@ public class BattleAnimation extends Pane{
 	private ScaleTransition playerAttackScaleTransition;
 	private RotateTransition playerAttackRotateTransition;
 	private ParallelTransition playerAttackAnimation;
+	private Timeline itemAnimation;
 	
 	private boolean isAnimating = false;
 	
+	//to use in item eff
+	private static int indexItem;
 	
 	public BattleAnimation() {
 		this.setWidth(WIDTH);
@@ -92,6 +98,22 @@ public class BattleAnimation extends Pane{
 			}
 		);
 		
+		itemAnimation = new Timeline();
+		itemAnimation.setCycleCount(4);
+        KeyFrame kf = new KeyFrame
+        		(Duration.millis(250),
+	                event-> 
+	        		{
+	        			getChildren().clear();
+	        			playerSpriteGroup.getChildren().clear();
+	        			playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite, BattleRenderableHolder.itemAnimations[indexItem]);
+//	        			playerSpriteGroup.getChildren().addAll(playerWeaponSprite, BattleRenderableHolder.itemAnimations[indexItem]);
+	        			getChildren().add(playerSpriteGroup);
+	        			indexItem++;
+		            }
+        		);
+        itemAnimation.getKeyFrames().add(kf);
+		itemAnimation.setOnFinished(event-> isAnimating = false);
 		idleThread = new Thread(new Runnable()
 		{
 
@@ -175,5 +197,10 @@ public class BattleAnimation extends Pane{
 //		this.getChildren().add(new ImageView(image));
 		
 	}
-
+	public void playItemAnimation()
+	{
+		isAnimating = true;
+		indexItem = 0;
+        itemAnimation.play();
+	}
 }

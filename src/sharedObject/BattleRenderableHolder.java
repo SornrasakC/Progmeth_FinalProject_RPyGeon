@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class BattleRenderableHolder
 {
@@ -22,7 +23,8 @@ public class BattleRenderableHolder
 	public static Image listViewBackground;
 	public static Image[] dungeonBackgrounds;
 	public static Image battleEndBackground;
-
+	
+	public static ImageView[] itemAnimations;
 	public BattleRenderableHolder()
 	{
 		entities = new ArrayList<IRenderable>();
@@ -46,6 +48,13 @@ public class BattleRenderableHolder
 			dungeonBackgrounds[i] = new Image(ClassLoader.getSystemResourceAsStream("dungeon" + i + ".png"));
 		}
 		battleEndBackground = new Image(ClassLoader.getSystemResourceAsStream("BattleEnd2.png"));
+		itemAnimations = new ImageView[4];
+		for(int i = 0; i < 4; i++)
+		{
+			itemAnimations[i] = new ImageView(new Image(ClassLoader.getSystemResourceAsStream("halo0" + (i + 1) + ".png")));
+			itemAnimations[i].setTranslateX((i+1) * -70);
+			itemAnimations[i].setTranslateY((i+1) * -70);
+		}
 	}
 	
 	public void add(IRenderable entity)

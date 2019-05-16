@@ -599,6 +599,16 @@ public class Battle extends GridPane
 	{
 		Battle.fightNumber = fightNumber;
 	}
+
+	public static BattleAnimation getBattleAnimation()
+	{
+		return battleAnimation;
+	}
+
+	public static MonsterBattleAnimation getMonsterBattleAnimation()
+	{
+		return monsterBattleAnimation;
+	}
 	
 }
 
