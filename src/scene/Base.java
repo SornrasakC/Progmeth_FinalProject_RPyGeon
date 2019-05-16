@@ -18,7 +18,8 @@ public class Base extends StackPane
 	
 	private Label label = new Label("Base");
 	private Button backButton = new Button("back");
-	private GridPane itemGrid;
+	private GridPane inventoryGrid;
+	private GridPane equipmentGrid;
 	private HBox topBar;
 	private VBox contentBox;
 	private ImageView imageBG;
@@ -35,7 +36,7 @@ public class Base extends StackPane
 			"-fx-font-size: 14px;\r\n" + 
 			"-fx-padding: 10 20 10 20;";
 			
-private static final String BACK_BUTTON_HOVER = "-fx-background-color: \r\n" + 
+	private static final String BACK_BUTTON_HOVER = "-fx-background-color: \r\n" + 
 			"     linear-gradient(#ffd65b, #e68400),\r\n" + 
 			"     linear-gradient(#ffef84, #f2ba44),\r\n" + 
 			"     linear-gradient(#ffea6a, #efaa22),\r\n" + 
@@ -47,9 +48,11 @@ private static final String BACK_BUTTON_HOVER = "-fx-background-color: \r\n" +
 			" -fx-font-weight: bold;\r\n" + 
 			" -fx-font-size: 14px;\r\n" +
 			" -fx-padding: 10 20 10 20;";
+	
 	public Base()
 	{
-		
+		inventoryGrid = new GridPane();
+		equipmentGrid = new GridPane();
 	}
 
 }
