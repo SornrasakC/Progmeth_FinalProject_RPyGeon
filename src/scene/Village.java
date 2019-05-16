@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import sharedObject.IRenderable;
@@ -27,9 +28,10 @@ public class Village extends Pane
 		this.getChildren().add(canvas);
 		new File(ClassLoader.getSystemResource("FindTheWay.mp3").toString());
 
-//		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
-//		mediaPlayer = new MediaPlayer(backgroundMusic);
-//		mediaPlayer.play();
+		Media backgroundMusic = new Media(getClass().getClassLoader().getResource("FindTheWay.mp3").toExternalForm());
+		mediaPlayer = new MediaPlayer(backgroundMusic);
+		mediaPlayer.play();
+		mediaPlayer.setOnEndOfMedia(()->mediaPlayer.play());
 		
 		addListerner();
 		drawBackground();
