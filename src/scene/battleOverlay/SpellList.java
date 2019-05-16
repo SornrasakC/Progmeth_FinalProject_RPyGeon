@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import logic.logics.Player;
 import magic.OffensiveMagic;
 import scene.Battle;
+import scene.SceneManager;
 
 public class SpellList extends VBox
 {
@@ -29,7 +30,7 @@ public class SpellList extends VBox
 							int amount = magic.use(Player.player, Battle.getMonster());
 							if(magic instanceof OffensiveMagic)
 							{
-								startSpellAnimation();
+								Battle.getBattleAnimation().playSpellAnimation();
 								Battle.playerReport(magic.getName() + " deals " + amount + " damage!");
 								Battle.setPlayerTurn(false);
 								Battle.setInAnimation(true);
@@ -37,6 +38,7 @@ public class SpellList extends VBox
 							}
 							else // Healing magic
 							{
+								Battle.getBattleAnimation().playSpellAnimation();
 								startSpellAnimation();
 								Battle.playerReport(magic.getName() + " heals " + amount + " HP!");
 								Battle.setPlayerTurn(false);

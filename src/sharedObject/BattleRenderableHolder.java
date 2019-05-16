@@ -15,13 +15,12 @@ public class BattleRenderableHolder
 	private Comparator<IRenderable> comparator;
 
 	
-	// TODO add sprite
-//	public static Image playerSpriteNorth1;
-//	public static Image playerSpriteEast1;
 	public static Image gaugeBackground;
 	public static Image listViewBackground;
 	public static Image[] dungeonBackgrounds;
 	public static Image battleEndBackground;
+	
+	public static Image spellEffect;
 
 	public BattleRenderableHolder()
 	{
@@ -38,6 +37,7 @@ public class BattleRenderableHolder
 
 	static
 	{
+		spellEffect = new Image(ClassLoader.getSystemResourceAsStream("magicCircle.png"));
 		gaugeBackground = new Image(ClassLoader.getSystemResourceAsStream("gauge.png"));
 		listViewBackground = new Image(ClassLoader.getSystemResourceAsStream("listView.png"));
 		dungeonBackgrounds = new Image[8];

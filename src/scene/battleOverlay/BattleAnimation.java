@@ -1,9 +1,16 @@
 package scene.battleOverlay;
 
+import java.sql.Time;
+
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -14,6 +21,7 @@ import javafx.util.Duration;
 import logic.base.StatType;
 import logic.logics.Player;
 import scene.Battle;
+import sharedObject.BattleRenderableHolder;
 import sharedObject.RenderableHolder;
 
 public class BattleAnimation extends Pane{
@@ -25,9 +33,10 @@ public class BattleAnimation extends Pane{
 	private static final int IDLE_Y = 270;
 	
 	private ImageView playerSprite; 
-	private ImageView MonsterSprite;
+	private ImageView monsterSprite;
 	private ImageView playerWeaponSprite;
 	private Group playerSpriteGroup;
+	private ImageView spellEffectSprite;
 	
 	private Thread idleThread;
 	private int frame = 1;
@@ -35,6 +44,11 @@ public class BattleAnimation extends Pane{
 	private ScaleTransition playerAttackScaleTransition;
 	private RotateTransition playerAttackRotateTransition;
 	private ParallelTransition playerAttackAnimation;
+	
+	private ParallelTransition playerSpellTransition;
+	private RotateTransition playerSpellRotateTransition;
+	private FadeTransition playerSpellFadeTransition;
+	private ScaleTransition playerSpellScaleTransition;
 	
 	private boolean isAnimating = false;
 	
@@ -44,12 +58,16 @@ public class BattleAnimation extends Pane{
 		this.setHeight(HEIGHT);
 		playerSpriteGroup = new Group();
 		
+		spellEffectSprite = new ImageView(BattleRenderableHolder.spellEffect);
 		playerSprite = new ImageView(RenderableHolder.emiliaE1);
 		playerSpriteGroup.getChildren().add(playerSprite);
 		this.getChildren().add(playerSpriteGroup);
 		playerSpriteGroup.setTranslateX(IDLE_X);
 		playerSpriteGroup.setTranslateY(IDLE_Y);
+		spellEffectSprite.setTranslateX(IDLE_X - (spellEffectSprite.getImage().getWidth() - playerSprite.getImage().getWidth()) / 2);
+		spellEffectSprite.setTranslateY(IDLE_Y - (spellEffectSprite.getImage().getHeight() - playerSprite.getImage().getHeight()) / 2);
 		
+		//initialize attack animation
 		playerAttackMoveTransition = new TranslateTransition();
 		playerAttackMoveTransition.setFromX(IDLE_X);
 		playerAttackMoveTransition.setFromY(IDLE_Y);
@@ -91,6 +109,32 @@ public class BattleAnimation extends Pane{
 				Battle.playerReport(Player.player.getName() + " deals " + damage + " damage!");
 			}
 		);
+		
+		//initialize spell animation
+		KeyValue scaleKVx = new KeyValue(spellEffectSprite.scaleXProperty(), 3);
+		KeyValue scaleKVy = new KeyValue(spellEffectSprite.scaleYProperty(), 3);
+		KeyFrame scaleKF = new KeyFrame(Duration.seconds(0.5), scaleKVx, scaleKVy);
+		Timeline scaleup = new Timeline();
+		scaleup.getKeyFrames().add(scaleKF);
+		
+		playerSpellRotateTransition = new RotateTransition(Duration.seconds(0.5));
+		playerSpellRotateTransition.setInterpolator(Interpolator.LINEAR);
+		playerSpellRotateTransition.setByAngle(360);
+		
+		playerSpellFadeTransition = new FadeTransition(Duration.seconds(0.5));
+		playerSpellFadeTransition.setFromValue(1.0);
+		playerSpellFadeTransition.setToValue(0.2);
+		
+		playerSpellTransition = new ParallelTransition(scaleup, playerSpellRotateTransition, playerSpellFadeTransition);
+		playerSpellTransition.setNode(spellEffectSprite);
+		playerSpellTransition.setOnFinished(event -> {
+			isAnimating = false;
+			spellEffectSprite.setVisible(false);
+			
+			PauseTransition pauseForAnimation = new PauseTransition(Duration.millis(500));
+			pauseForAnimation.setOnFinished(pause -> Battle.setPlayerTurn(false));
+			pauseForAnimation.play();
+		});
 		
 		idleThread = new Thread(new Runnable()
 		{
@@ -134,11 +178,19 @@ public class BattleAnimation extends Pane{
 	}
 	
 	public void playAttackAnimation() {
+		spellEffectSprite.setVisible(true);
 		changeSprite(playerSprite, RenderableHolder.emiliaAttack);
 		playerAttackAnimation.setNode(playerSpriteGroup);
 		playerAttackAnimation.play();
 		isAnimating = true;
 		System.out.println("play attack animation");
+	}
+	
+	public void playSpellAnimation() {
+		playerSpellTransition.setNode(spellEffectSprite);
+		playerSpellTransition.play();
+		isAnimating = true;
+		System.out.println("play spell animation");
 	}
 	
 	private void changeSprite(ImageView imageView, Image image) {
@@ -165,15 +217,14 @@ public class BattleAnimation extends Pane{
 			}
 			playerSpriteGroup.getChildren().clear();
 			playerSpriteGroup.getChildren().addAll(playerSprite, playerWeaponSprite);
-			this.getChildren().add(playerSpriteGroup);
 		}
 		else
 		{
-			MonsterSprite = new ImageView(image); 
-			getChildren().add(MonsterSprite);
+			monsterSprite = new ImageView(image); 
+			getChildren().add(monsterSprite);
 		}
 //		this.getChildren().add(new ImageView(image));
-		
+//		this.getChildren().add(spellEffectSprite);
 	}
 
 }
