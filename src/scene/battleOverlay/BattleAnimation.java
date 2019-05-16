@@ -129,10 +129,10 @@ public class BattleAnimation extends Pane{
 		playerSpellTransition.setNode(spellEffectSprite);
 		playerSpellTransition.setOnFinished(event -> {
 			isAnimating = false;
-			spellEffectSprite.setVisible(false);
+//			spellEffectSprite.setVisible(false);
 			
 			PauseTransition pauseForAnimation = new PauseTransition(Duration.millis(500));
-			pauseForAnimation.setOnFinished(pause -> Battle.setPlayerTurn(false));
+			pauseForAnimation.setOnFinished(pause -> Battle.setInAnimation(false));
 			pauseForAnimation.play();
 		});
 		
@@ -195,7 +195,7 @@ public class BattleAnimation extends Pane{
 	}
 	
 	public void playAttackAnimation() {
-		spellEffectSprite.setVisible(true);
+//		spellEffectSprite.setVisible(true);
 		changeSprite(RenderableHolder.emiliaAttack);
 		playerAttackAnimation.setNode(playerSpriteGroup);
 		playerAttackAnimation.play();
