@@ -68,6 +68,26 @@ public class RenderableHolder {
 	public static Image chineseAdamantiumSword;
 	public static Image chineseDiamondStaff;
 	
+	//armour
+	public static Image startingShirt;
+	public static Image startingPants;
+	public static Image startingBoots;
+	public static Image leatherShirt;
+	public static Image leatherPants;
+	public static Image leatherBoots;
+	public static Image chainShirt;
+	public static Image chainPants;
+	public static Image chainBoots;
+	public static Image steelShirt;
+	public static Image steelPants;
+	public static Image steelBoots;
+	public static Image magicMetalShirt;
+	public static Image magicMetalPants;
+	public static Image magicMetalBoots;
+	public static Image adamantiumShirt;
+	public static Image adamantiumPants;
+	public static Image adamantiumBoots;
+	
 	
 	//TODO add some sound
 	public static AudioClip song;
@@ -151,6 +171,27 @@ public class RenderableHolder {
 		casterRing = new Image(ClassLoader.getSystemResourceAsStream("casterRing.png"));
 		chineseAdamantiumSword = new Image(ClassLoader.getSystemResourceAsStream("chineseExcalibur.png"));
 		chineseDiamondStaff = new Image(ClassLoader.getSystemResourceAsStream("chineseDiamondStaff.png"));
+		
+		//armours
+		startingShirt = new Image(ClassLoader.getSystemResourceAsStream("startingShirt.png"));
+		startingPants = new Image(ClassLoader.getSystemResourceAsStream("startingPants.png"));
+		startingBoots = new Image(ClassLoader.getSystemResourceAsStream("startingBoots.png"));
+		leatherShirt = new Image(ClassLoader.getSystemResourceAsStream("leatherShirt.png"));
+		leatherPants = new Image(ClassLoader.getSystemResourceAsStream("leatherPants.png"));
+		leatherBoots = new Image(ClassLoader.getSystemResourceAsStream("leatherBoots.png"));
+		chainShirt = new Image(ClassLoader.getSystemResourceAsStream("chainShirt.png"));
+		chainPants = new Image(ClassLoader.getSystemResourceAsStream("chainPants.png"));
+		chainBoots = new Image(ClassLoader.getSystemResourceAsStream("chainBoots.png"));
+		steelShirt = new Image(ClassLoader.getSystemResourceAsStream("steelShirt.png"));
+		steelPants = new Image(ClassLoader.getSystemResourceAsStream("steelPants.png"));
+		steelBoots = new Image(ClassLoader.getSystemResourceAsStream("steelBoots.png"));
+		magicMetalShirt = new Image(ClassLoader.getSystemResourceAsStream("magicShirt.png"));
+		magicMetalPants = new Image(ClassLoader.getSystemResourceAsStream("magicPants.png"));
+		magicMetalBoots = new Image(ClassLoader.getSystemResourceAsStream("magicBoots.png"));
+		adamantiumShirt = new Image(ClassLoader.getSystemResourceAsStream("adamantiumShirt.png"));
+		adamantiumPants = new Image(ClassLoader.getSystemResourceAsStream("adamantiumPants.png"));
+		adamantiumBoots = new Image(ClassLoader.getSystemResourceAsStream("adamantiumBoots.png"));
+		
 		
 		//backgrounds
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));

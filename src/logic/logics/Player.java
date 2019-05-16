@@ -25,8 +25,6 @@ import shops.ItemShop;
 public class Player extends Character
 {
 	public static Player player;
-	private String battleClass = "jobless";
-
 	private int exp = 0;
 	private int expToNextLevel = 100;
 	private int money = 120;
@@ -466,16 +464,6 @@ public class Player extends Character
 	public void setMoney(int money)
 	{
 		this.money = money;
-	}
-
-	public String getBattleClass()
-	{
-		return battleClass;
-	}
-
-	public void setBattleClass(String battleClass)
-	{
-		this.battleClass = battleClass;
 	}
 
 	public Weapon getStartingWeapon()
