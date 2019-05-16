@@ -98,22 +98,6 @@ public class BaseButton extends Button
 		});
 	}
 	
-	public void setWeaponLogic() {
-		
-	}
-	
-	public void setShirtLogic() {
-			
-	}
-
-	public void setPantsLogic() {
-		
-	}	
-
-	public void setBootsLogic() {
-		
-	}
-	
 	public void updateButton() {
 		switch(position) {
 			case 0: image = Player.player.getEquippedWeapon().getSprite(); this.thisWeapon =  Player.player.getEquippedWeapon(); break;

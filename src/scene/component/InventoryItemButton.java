@@ -164,5 +164,47 @@ public class InventoryItemButton extends Button {
 				}
 			});
 		} 
+	 
+	 public void setShirtButtonLogic(BaseButton baseButton){
+			this.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent event) {
+
+					System.out.println("Equiped : " + thisArmour.getName());
+					Player.player.equipItem(thisArmour);
+					SceneManager.getBasePane().inventoryShowShirtArmour();
+					baseButton.updateButton();
+				}
+			});
+		}
+	 
+	 public void setPantsButtonLogic(BaseButton baseButton){
+			this.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent event) {
+
+					System.out.println("Equiped : " + thisArmour.getName());
+					Player.player.equipItem(thisArmour);
+					SceneManager.getBasePane().inventoryShowPantsArmour();
+					baseButton.updateButton();
+				}
+			});
+		} 
+	 
+	 public void setBootsButtonLogic(BaseButton baseButton){
+			this.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent event) {
+
+					System.out.println("Equiped : " + thisArmour.getName());
+					Player.player.equipItem(thisArmour);
+					SceneManager.getBasePane().inventoryShowBootsArmour();
+					baseButton.updateButton();
+				}
+			});
+		} 
 
 }

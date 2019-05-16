@@ -150,6 +150,6 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(base.x + (base.sprite.getWidth() / 2), base.y + base.sprite.getHeight() + 70);
+		player.teleportTo(base.x + (base.sprite.getWidth() / 2), base.y + base.sprite.getHeight() - 200);
 	}
 }

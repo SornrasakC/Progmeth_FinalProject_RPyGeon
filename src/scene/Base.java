@@ -1,5 +1,9 @@
 package scene;
 
+import entity.VillageEntityLogic;
+import item.ChestArmour;
+import item.PantsArmour;
+import item.ShoesArmour;
 import item.Weapon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,8 +15,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 import logic.base.Potion;
 import logic.logics.Player;
+import main.Main;
 import scene.component.BaseButton;
 import scene.component.InventoryItemButton;
 import scene.component.ShopButton;
@@ -81,6 +87,31 @@ public class Base extends StackPane
 		inventoryGrid.setPrefSize(WIDTH/2, HEIGHT - 200);;
 		equipmentBox.setSpacing(HGAP);
 		
+		SVGPath shape = new SVGPath();
+		shape.setContent("M 0 40 L 40 0 L 400 0 L 400 80 L 40 80 Z ");
+		backButton.setShape(shape);
+		backButton.setPrefSize(BUTTON_SIZE, 70);
+
+		backButton.setStyle(BACK_BUTTON_NORMAL);
+		backButton.setOnMouseEntered(e ->
+			{
+				backButton.setStyle(BACK_BUTTON_HOVER);
+			});
+		backButton.setOnMouseExited(e ->
+			{
+				backButton.setStyle(BACK_BUTTON_NORMAL);
+			});
+		backButton.setOnAction(new EventHandler<ActionEvent>()
+		{
+
+			@Override
+			public void handle(ActionEvent event)
+			{
+				Main.changeScene(SceneManager.villageScene);
+				VillageEntityLogic.exitBase();
+			}
+		});
+		
 		weaponButton = new BaseButton(0);
 		shirtButton = new BaseButton(1);
 		pantsButton = new BaseButton(2);
@@ -97,8 +128,8 @@ public class Base extends StackPane
 		
 		VBox leftSideEquipmentsBox = new VBox();
 		leftSideEquipmentsBox.setSpacing(VGAP);
-		leftSideEquipmentsBox.setPadding(new Insets(HEIGHT / 2 - 200 , HGAP, HEIGHT / 2 - 100, HGAP));
-		leftSideEquipmentsBox.getChildren().addAll(weaponButton);
+		leftSideEquipmentsBox.setPadding(new Insets(HEIGHT / 3 - 50 , HGAP, VGAP, HGAP));
+		leftSideEquipmentsBox.getChildren().addAll(backButton,weaponButton);
 		
 		playerModel = new ImageView(RenderableHolder.emiliaFullBody);
 		playerModel.setFitHeight(HEIGHT - 100);
@@ -125,7 +156,7 @@ public class Base extends StackPane
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				inventoryShowShirtArmour();
 				
 			}
 		});
@@ -134,7 +165,7 @@ public class Base extends StackPane
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				inventoryShowPantsArmour();
 				
 			}
 		});
@@ -143,14 +174,14 @@ public class Base extends StackPane
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				inventoryShowBootsArmour();
 			}
 		});
 	}
 	
 	public void inventoryShowWeapons() {
 		inventoryGrid.getChildren().clear();
-
+		System.out.println("Loading weapon inventory");
 		int i = 0;
 		int j = 0;
 		for(Weapon weapon : Player.player.getWeaponInventory()) {
@@ -159,8 +190,57 @@ public class Base extends StackPane
 			inventoryButton.setWeaponButtonLogic(weaponButton);
 			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 			inventoryGrid.add(inventoryButton, i, j);
-			if(i < 4) i++; else {i = 0; j++;}
+			if(i < 3) i++; else {i = 0; j++;}
 		}
+		System.out.println("Load complete");
+	}
+	
+	public void inventoryShowShirtArmour() {
+		inventoryGrid.getChildren().clear();
+		System.out.println("Loading shirt armour inventory");
+		int i = 0;
+		int j = 0;
+		for(ChestArmour armour : Player.player.getChestArmourInventory()) {
+			System.out.println("Base load shirt armour button @ "+i + "," + j);
+			InventoryItemButton inventoryButton = new InventoryItemButton(armour);
+			inventoryButton.setShirtButtonLogic(shirtButton);
+			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+			inventoryGrid.add(inventoryButton, i, j);
+			if(i < 3) i++; else {i = 0; j++;}
+		}
+		System.out.println("Load complete");
+	}
+	
+	public void inventoryShowPantsArmour() {
+		inventoryGrid.getChildren().clear();
+		System.out.println("Loading pants armour inventory");
+		int i = 0;
+		int j = 0;
+		for(PantsArmour armour : Player.player.getPantsArmourInventory()) {
+			System.out.println("Base load shirt armour button @ "+i + "," + j);
+			InventoryItemButton inventoryButton = new InventoryItemButton(armour);
+			inventoryButton.setPantsButtonLogic(pantsButton);
+			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+			inventoryGrid.add(inventoryButton, i, j);
+			if(i < 3) i++; else {i = 0; j++;}
+		}
+		System.out.println("Load complete");
+	}
+	
+	public void inventoryShowBootsArmour() {
+		inventoryGrid.getChildren().clear();
+		System.out.println("Loading shirt armour inventory");
+		int i = 0;
+		int j = 0;
+		for(ShoesArmour armour : Player.player.getShoesArmourInventory()) {
+			System.out.println("Base load shirt armour button @ "+i + "," + j);
+			InventoryItemButton inventoryButton = new InventoryItemButton(armour);
+			inventoryButton.setBootsButtonLogic(bootsButton);
+			inventoryButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+			inventoryGrid.add(inventoryButton, i, j);
+			if(i < 3) i++; else {i = 0; j++;}
+		}
+		System.out.println("Load complete");
 	}
 	
 
