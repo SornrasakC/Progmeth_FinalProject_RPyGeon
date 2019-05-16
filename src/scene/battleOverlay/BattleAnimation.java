@@ -82,7 +82,7 @@ public class BattleAnimation extends Pane{
 			{
 				isAnimating = false;
 //				Battle.setInAnimation(true);
-				PauseTransition pauseForAnimation = new PauseTransition(Duration.millis(100));
+				PauseTransition pauseForAnimation = new PauseTransition(Duration.millis(500));
 				pauseForAnimation.setOnFinished(pause -> Battle.setPlayerTurn(false));
 				pauseForAnimation.play();
 //				playerTurn = false;
