@@ -28,11 +28,11 @@ public class VillageEntityLogic
 	{
 		this.gameObjectContainer = new ArrayList<Entity>();
 
-		player = new PlayerEntity(940, 150, 2);
-		itemShop = new ShopEntity(300, 50);
-		blacksmith = new BlacksmithEntity(620, 50);
-		dungeon = new DungeonEntity(940, 50);
-		base = new BaseEntity(620, 500);
+		player = new PlayerEntity(640, 510, 2);
+		itemShop = new ShopEntity(520, 30);
+		blacksmith = new BlacksmithEntity(880, 160);
+		dungeon = new DungeonEntity(610, 610);
+		base = new BaseEntity(220, 400);
 		addNewObject(player);
 		addNewObject(itemShop);
 		addNewObject(blacksmith);
@@ -120,7 +120,7 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 70);
+		player.teleportTo(itemShop.x + (itemShop.sprite.getWidth() / 2), itemShop.y + itemShop.sprite.getHeight() + 150);
 	}
 
 	public static void enterDungeon()
@@ -135,7 +135,7 @@ public class VillageEntityLogic
 	{
 		isInOtherEntity = false;
 		player.unFreeze();
-		player.teleportTo(dungeon.x + (dungeon.sprite.getWidth() / 2), dungeon.y + dungeon.sprite.getHeight() + 70);
+		player.teleportTo(dungeon.x + (dungeon.sprite.getWidth() / 2), dungeon.y + dungeon.sprite.getHeight() - 150);
 	}
 
 	public static void exitBlacksmith()
@@ -143,7 +143,7 @@ public class VillageEntityLogic
 		isInOtherEntity = false;
 		player.unFreeze();
 		player.teleportTo(blacksmith.x + (blacksmith.sprite.getWidth() / 2),
-				blacksmith.y + blacksmith.sprite.getHeight() + 70);
+				blacksmith.y + blacksmith.sprite.getHeight() + 150);
 	}
 
 	public static void exitBase()

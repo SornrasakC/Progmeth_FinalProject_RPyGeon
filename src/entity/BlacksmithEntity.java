@@ -8,7 +8,7 @@ public class BlacksmithEntity extends Entity {
 	public BlacksmithEntity(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.sprite = RenderableHolder.genericVendor;
+		this.sprite = RenderableHolder.blacksmith;
 	}
 
 	@Override

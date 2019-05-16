@@ -8,7 +8,7 @@ public class ShopEntity extends Entity {
 	public ShopEntity(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.sprite = RenderableHolder.genericVendor;
+		this.sprite = RenderableHolder.itemshop;
 	}
 
 	@Override

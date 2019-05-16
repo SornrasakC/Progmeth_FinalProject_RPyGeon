@@ -15,6 +15,10 @@ public class RenderableHolder {
 	private Comparator<IRenderable> comparator;
 	
 	public static Image tent;
+	public static Image itemshop;
+	public static Image blacksmith;
+	public static Image dungeonSign;
+	public static Image campfire;
 	public static Image genericVendor;
 	public static Image emiliaN1;
 	public static Image emiliaN2;
@@ -121,6 +125,10 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
+		itemshop = new Image(ClassLoader.getSystemResourceAsStream("itemshop2.png"));
+		blacksmith = new Image(ClassLoader.getSystemResourceAsStream("blacksmith2.png"));
+		dungeonSign = new Image(ClassLoader.getSystemResourceAsStream("dungeon.png"));
+		campfire = new Image(ClassLoader.getSystemResourceAsStream("camp.png"));
 		tent = new Image(ClassLoader.getSystemResourceAsStream("tentSprite.png"));
 		genericVendor = new Image(ClassLoader.getSystemResourceAsStream("generic-rpg-vendor.png"));
 		emiliaE1 = new Image(ClassLoader.getSystemResourceAsStream("emiliaright01.PNG"));

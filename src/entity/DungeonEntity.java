@@ -9,7 +9,7 @@ public class DungeonEntity extends Entity
 	public DungeonEntity(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.sprite = RenderableHolder.genericVendor;
+		this.sprite = RenderableHolder.dungeonSign;
 	}
 
 	@Override
