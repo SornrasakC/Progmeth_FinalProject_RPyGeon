@@ -17,7 +17,7 @@ import javafx.scene.text.Font;
 import logic.base.Potion;
 import logic.logics.Player;
 import main.Main;
-import scene.shop.ShopButton;
+import scene.component.ShopButton;
 import sharedObject.RenderableHolder;
 
 public class ItemShop extends StackPane {

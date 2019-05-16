@@ -1,4 +1,4 @@
-package scene.shop;
+package scene.component;
 
 import java.lang.reflect.Field;
 

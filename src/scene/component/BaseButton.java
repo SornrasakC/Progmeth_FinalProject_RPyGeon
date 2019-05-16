@@ -1,4 +1,4 @@
-package scene.shop;
+package scene.component;
 
 import item.Weapon;
 import javafx.event.ActionEvent;
@@ -20,6 +20,7 @@ public class BaseButton extends Button
 	private Image image;
 	private Armour thisArmour;
 	private Weapon thisWeapon;
+	private int buttonType;
 
 	private static final int HOVER_TO_APPEAR_DURATION = 250;
 	private static final int APPEAR_DURATION = 50000;
@@ -40,55 +41,9 @@ public class BaseButton extends Button
 			+ "-fx-background-radius: 3,2,1;" + "-fx-padding: 3 30 3 30;" + "-fx-text-fill: black;"
 			+ "-fx-font-size: 14px;";
 
-	public BaseButton(Armour armour)
+	public BaseButton(int buttonType)
 	{
-		thisArmour = armour;
-		switch (armour.getName())
-		{
-			case ("Red Cookies"):
-				image = RenderableHolder.redCookie;
-				break;
-			case ("Blue Cookies"):
-				image = RenderableHolder.blueCookie;
-				break;
-			case ("Fairly Normal HP Potion"):
-				image = RenderableHolder.hpPotion;
-				break;
-			case ("Fairly Normal MP Potion"):
-				image = RenderableHolder.mpPotion;
-				break;
-			case ("Chicken Dinner"):
-				image = RenderableHolder.chickenDinner;
-				break;
-			case ("Cocaine"):
-				image = RenderableHolder.cocain;
-				break;
-			case ("Phoenix Kit"):
-				image = RenderableHolder.phoenixKit;
-				break;
-			case ("Low Quality Super Duper Lucky Randomly Recovering Potion"):
-				image = RenderableHolder.lowRecPotion;
-				break;
-			case ("High Quality Super Duper Lucky Randomly Recovering Potion"):
-				image = RenderableHolder.highRecPotion;
-				break;
-			case ("M44"):
-				image = RenderableHolder.m44;
-				break;
-			case ("Shroud's right arm"):
-				image = RenderableHolder.rightArm;
-				break;
-			case ("Oten's tear"):
-				image = RenderableHolder.otenTear;
-				break;
-			case ("Trap Card: Mirror Force"):
-				image = RenderableHolder.mirrorForce;
-				break;
-			default:
-				path = "WIP.png";
-				image = new Image(ClassLoader.getSystemResourceAsStream(path));
-				break;
-		}
+		//Type 0:
 
 		setGraphic(new ImageView(image));
 		setPadding(new Insets(4));
@@ -160,9 +115,11 @@ public class BaseButton extends Button
 	{
 		setOnAction(new EventHandler<ActionEvent>()
 		{
+
 			@Override
 			public void handle(ActionEvent event)
 			{
+
 				
 //				SceneManager.getItemshopPane().updateMoney();
 //				if (Player.player.getMoney() < price)

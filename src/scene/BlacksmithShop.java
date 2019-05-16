@@ -19,7 +19,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import logic.logics.Player;
 import main.Main;
-import scene.shop.ShopButton;
+import scene.component.ShopButton;
 import sharedObject.RenderableHolder;
 
 public class BlacksmithShop extends StackPane
