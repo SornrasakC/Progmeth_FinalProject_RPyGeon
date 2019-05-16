@@ -83,6 +83,8 @@ public class RenderableHolder {
 	public static Image epilogueBackground;
 	public static Image mainMenuBackground;
 	public static Image itemShopBackground;
+	public static Image blacksmithShopBackground;
+	public static Image villageBackground;
 	
 	public static Image placeHolder;
 
@@ -169,6 +171,8 @@ public class RenderableHolder {
 		epilogueBackground = new Image(ClassLoader.getSystemResourceAsStream("epilogue.png"));
 		mainMenuBackground = new Image(ClassLoader.getSystemResourceAsStream("MainMenu.jpg"));
 		itemShopBackground = new Image(ClassLoader.getSystemResourceAsStream("itemShop.PNG"));
+		blacksmithShopBackground = new Image(ClassLoader.getSystemResourceAsStream("blacksmithBG.jpg"));
+		villageBackground = new Image(ClassLoader.getSystemResourceAsStream("villageBG.jpg"));
 		
 		placeHolder = new Image(ClassLoader.getSystemResourceAsStream("WIP.png"),80,80,true,false);
 	}

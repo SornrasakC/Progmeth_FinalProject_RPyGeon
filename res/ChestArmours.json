@@ -7,14 +7,14 @@
         "floor" : 1
     },
     {
-        "name": "Gambeson",
+        "name": "Chain Shirt",
         "basePhyDef": 2,
         "baseMagDef": 0,
         "description": "",
         "floor" : 2
     },
     {
-        "name": "Chain Shirt",
+        "name": "Steel Breastplate",
         "basePhyDef": 3,
         "baseMagDef": 2,
         "description": "",

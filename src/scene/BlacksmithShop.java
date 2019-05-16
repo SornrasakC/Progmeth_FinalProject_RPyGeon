@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -66,7 +67,7 @@ public class BlacksmithShop extends StackPane
 		label.setFont(new Font(40));
 		label.setPadding(new Insets(15, 0, 0, 0));
 
-		imageBG = new ImageView(RenderableHolder.itemShopBackground);
+		imageBG = new ImageView(RenderableHolder.blacksmithShopBackground);
 		imageBG.setFitHeight(HEIGHT);
 		imageBG.setFitWidth(WIDTH);
 		imageBG.setEffect(new GaussianBlur());

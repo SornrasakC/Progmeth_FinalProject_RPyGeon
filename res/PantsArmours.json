@@ -7,14 +7,14 @@
         "floor" : 1
     },
     {
-        "name": "Studded Leather Pant",
+        "name": "Chain Pants",
         "basePhyDef": 1,
         "baseMagDef": 2,
         "description": "",
         "floor" : 2
     },
     {
-        "name": "Chain Pants",
+        "name": "Metal Pants",
         "basePhyDef": 2,
         "baseMagDef": 2,
         "description": "",

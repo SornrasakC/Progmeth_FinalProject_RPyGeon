@@ -43,6 +43,7 @@ public class Village extends Pane
 		GraphicsContext gc = this.canvas.getGraphicsContext2D();
 		gc.setFill(Color.GREEN);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		gc.drawImage(RenderableHolder.villageBackground, 0, 0, this.canvas.getWidth(), this.canvas.getHeight());
 	}
 
 	public void drawDungeon(GraphicsContext gc)
