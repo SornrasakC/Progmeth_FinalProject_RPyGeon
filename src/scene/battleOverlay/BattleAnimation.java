@@ -64,8 +64,10 @@ public class BattleAnimation extends Pane{
 		this.getChildren().add(playerSpriteGroup);
 		playerSpriteGroup.setTranslateX(IDLE_X);
 		playerSpriteGroup.setTranslateY(IDLE_Y);
-		spellEffectSprite.setTranslateX(IDLE_X - (spellEffectSprite.getImage().getWidth() - playerSprite.getImage().getWidth()) / 2);
-		spellEffectSprite.setTranslateY(IDLE_Y - (spellEffectSprite.getImage().getHeight() - playerSprite.getImage().getHeight()) / 2);
+//		spellEffectSprite.setTranslateX(IDLE_X - (spellEffectSprite.getImage().getWidth() - playerSprite.getImage().getWidth()) / 2);
+//		spellEffectSprite.setTranslateY(IDLE_Y - (spellEffectSprite.getImage().getHeight() - playerSprite.getImage().getHeight()) / 2);
+		spellEffectSprite.setTranslateX(IDLE_X - 350);
+		spellEffectSprite.setTranslateY(IDLE_Y - 350);
 		
 		//initialize attack animation
 		playerAttackMoveTransition = new TranslateTransition();
