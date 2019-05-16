@@ -46,5 +46,29 @@ public class InputUtility {
 	public static void clearInput() {
 		keyPressed.clear();
 	}
+	public static double getMouseX()
+	{
+		return mouseX;
+	}
+	public static double getMouseY()
+	{
+		return mouseY;
+	}
+	public static boolean isMouseOnScreen()
+	{
+		return mouseOnScreen;
+	}
+	public static boolean isLeftDown()
+	{
+		return isLeftDown;
+	}
+	public static boolean isLeftClickedLastTick()
+	{
+		return isLeftClickedLastTick;
+	}
+	public static ArrayList<KeyCode> getKeyPressed()
+	{
+		return keyPressed;
+	}
 	
 }

@@ -241,7 +241,7 @@ public class ShopButton extends Button {
         WebEngine webEngine = webView.getEngine();
         webEngine.loadContent
         (
-    		"<h3>" + thisPotion.getName() + " — Price: " + thisPotion.getCost() + " Gold</h3>" + thisPotion.getDescription()
+    		"<h3>" + thisPotion.getName() + " ï¿½ Price: " + thisPotion.getCost() + " Gold</h3>" + thisPotion.getDescription()
 		);
         
 		Tooltip tooltip = new Tooltip();
@@ -259,7 +259,7 @@ public class ShopButton extends Button {
 	        WebEngine webEngine = webView.getEngine();
 	        webEngine.loadContent
 	        (
-	    		"<h3>" + thisWeapon.getName() + " — Price: " + thisWeapon.getPrice() + " Gold</h3>" + thisWeapon.getDescription() +
+	    		"<h3>" + thisWeapon.getName() + " ï¿½ Price: " + thisWeapon.getPrice() + " Gold</h3>" + thisWeapon.getDescription() +
 	    		"<ul = \"stats\">" +
 	    		"<li>Physical Attack : " + thisWeapon.getBaseMinPhyAtk() + " - " + thisWeapon.getBaseMaxPhyAtk() + "</li>" + 
 	    		"<li>Magical Attack : " + thisWeapon.getBaseMinMagAtk() + " - " + thisWeapon.getBaseMaxMagAtk() + "</li>" + 
