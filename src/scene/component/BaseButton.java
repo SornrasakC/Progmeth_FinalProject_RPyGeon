@@ -107,6 +107,11 @@ public class BaseButton extends Button
 			default: image = RenderableHolder.placeHolder;
 		}
 		setGraphic(new ImageView(image));
+		if(this.position == 0) {
+			setWeaponCustomTooltip();
+		}else {
+			setArmourCustomTooltip();
+		}
 	}
 	
 	 private void setWeaponCustomTooltip() {
